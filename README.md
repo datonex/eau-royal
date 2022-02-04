@@ -1,5 +1,4 @@
-
-# Project Name
+# Eau Royal
 
 ## Overview
 
@@ -264,6 +263,7 @@ From line 345, column 63; to line 345, column 118
 `="button"><a href="https://www.evisa.gov.zw/home" target="_blank">Apply`
 
 <!-- markdownlint-disable-next-line MD029 -->
+
 2. Error: The element a must not appear as a descendant of the button element.
 
 From line 376, column 38; to line 376, column 89
