@@ -49,50 +49,23 @@ This section is also where you would share links to any wireframes, mockups, dia
 
 ### Design
 
+#### Wireframes
+
 #### Colour Scheme
-
-Initially the colour scheme of the website was supposed to represent the national colours of the zimbabwean flag. However the colours were too bright and did not blend well together.
-
-Instead, I used the idea that Zimbabwe has a lot of wild life, the colour was meant to mimic the savannah during a sunset. The colour is subtle without grabbing to much attention while giving more focus to the images. The main colour was picked using the colour picker on the header website to obtain the colour light salmon (#fdcba6) The buttons were matched using the compound approach from [adobe color wheel](https://color.adobe.com/create/color-wheel). to obtain the colour (#71C9A2)
-
-<img src="./assets/images/readme-images/colour-scheme.png" height="100px"/>
 
 #### Typography
 
-- Font used for headings was Lobster with a back-up font of sans-serif. The font is eye catching and decorated white still easy to read.
-
-<img src="./assets/images/readme-images/lobster-font.png" height="50px" />
-
-- Font used for main text was Open Sans with a back-up font of sans-serif. The font is easy to read and well spaced out.
-
-<img src="./assets/images/readme-images/open-sans-font.png" height="50px"/>
-
 #### Imagery
 
-- Images on the website were the top if not second priority on the website. They needed to supplement the text and offer visual aid to illustrate favourable tourist locations.
-
-#### Mockups/wireframes
-
-Mockups were made using Balsamiq Wireframes
-
-[Mockup](./assets/planning/mockup-1.pdf)
-
-- Wireframes were created using Adobe Xd, however, the layout and design was fallowed very loosely and changed during the mockup stage.
-- [Mobile Wireframes](https://xd.adobe.com/view/9071beee-abcf-426e-6c19-ffe3212c5172-e640/) :point_left:
-
-              <img src="./assets/images/readme-images/mobile-wire.png" />
-
-  - [Desktop Wireframes](https://xd.adobe.com/view/d44aebce-000d-4a7c-4e4b-7ea4372b445b-a27b/) :point_left:
-
-                    <img src="./assets/images/readme-images/desktop-wire.png" />
-
-- #### Mockups
-
-  - Mockups were also created using Adobe Xd and the final design of the webpage is very closely related hence I haven't included any screenshots.
-  - [Mobile Wireframes](https://xd.adobe.com/view/97a16e82-02a0-41e3-598d-31bbba422cec-e190/) :point_left:
-  - [Desktop Wireframes](https://xd.adobe.com/view/f42e5201-83f0-490e-75a5-c2ee85a8d6fb-821f/) :point_left:
-
 ### Existing Features
+
+#### Mockups and Prototype
+
+### Database
+
+#### Conceptual ERD
+
+#### Physical ERD
 
 For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
 
@@ -144,49 +117,57 @@ In this section, you should mention all of the languages, frameworks, libraries,
 
 ### Languages used
 
-- [**HTML**](https://en.wikipedia.org/wiki/HTML5)
-- description of how it was used
-- [**CSS**](https://en.wikipedia.org/wiki/CSS)
-- [JavaScript](https://www.javascript.com/)
+- [HTML](https://en.wikipedia.org/wiki/HTML5) - Add content and formatting to web page.
+- [CSS](https://en.wikipedia.org/wiki/CSS) - Add styling and colours to web page.
+- [JavaScript](https://www.javascript.com/) - Add interactive features to web page
+
+- [Python](https://www.python.org/) - Add code to allow app to access database.
 
 ### Frameworks, Libraries and Programs Used
 
-- [Fontawesome _v.5.15.3_](https://fontawesome.com/)
-- We use **Font Awesome** javascript link to insert icons in the website to make site more visually appealing and easy to navigate.
+- [Visual Studio Code](https://code.visualstudio.com/) - Source-code editor optimised for debugging, testing, syntax highlighting and extension support
 
-- [Favicon](https://favicon.io/)
-- Favicon.io was used to generate favicon and copied the syntax
+- [Git](https://git-scm.com/) - used to allow for tracking of any changes in the code and for the version control.
 
-- [Google Fonts](https://fonts.google.com/)
-- Google Fonts was used to import 'Lobster' and 'Open Sans' fonts in the style.css stylesheet.
+- [Github](https://github.com/) - used to host the project files
 
-- [Visual Studio Code](https://code.visualstudio.com/)
-- Source-code editor optimised fro debugging, syntax highlighting and extension support
+- [Heroku](https://www.heroku.com/) - used to deploy web application
 
-- [Git](https://git-scm.com/)
-- Git was used to allow for tracking of any changes in the code and for the version control.
+- [Postgres](https://postgresapp.com/) - used as the DBMS to store user profile data and hosted on Heroku
 
-- [Github](https://github.com/)
-- GitHub is used to host the project files and publish the live website by using Git Pages.
+- [Figma](https://www.figma.com/) - used to create wireframes mockups and prototypes
 
-- [TinyPNG](https://tinypng.com/)
-- Used to reduce resolution of images
+- [Creatt Studios](https://www.figma.com/@creatt) - component template to illustrate mockups
 
-- [Bootstrap v4.5.0](https://getbootstrap.com/) - Used for the responsive layout as well as custom components such as image carousel, navigation bar, footer, cards, and collapse element.
+- [Google Sheets](https://docs.google.com/spreadsheets/) - Tabulate user stories
+
+- [Zapier](https://www.zapier.com/) - Automate process of adding user stories from google sheets to Trello
+
+- [Trello](https://trello.com/) - Agile tool of choice to manage and plan web app.
+
+- [MindNode](https://www.mindnode.com/) - app used to draw mind maps to show entities and their attributes.
+
+- [Lucid Chart](https://www.lucidchart.com/) - web app use to illustrated database schema.
+
+- [Canva](https://www.canva.com/) - webapp used to design logo and favicon.
+
+- [Django](https://www.djangoproject.com/) - Python web framework to create web application and provide security to users.
+
+- [Fontawesome](https://fontawesome.com/) - to insert icons in the website to make site more visually appealing and easy to navigate.
+
+- [Favicon.io](https://favicon.io/) - used to generate favicon to webpage
+
+- [Google Fonts](https://fonts.google.com/) - used to import fonts in the style.css stylesheet.
+
+- [TinyPNG](https://tinypng.com/) - used to reduce resolution of images
+
+- [Bootstrap](https://getbootstrap.com/) - Used for the responsive layout as well as custom components such as image carousel, navigation bar, footer, cards, and collapse element.
+
 - [jquery](https://jquery.com/) - Used in some of the clickable elements such as collapsible 'hamburger' nav bar and collapse element.
+
 - [popper.js](https://popper.js.org/) - Used in some of the clickable elements such as collapsible 'hamburger' navbar and collapse element.
-- [Font Awesome](https://fontawesome.com/) - Font Awesome was used to add social icons and complement the design.
-- [Google Fonts](https://fonts.google.com/) - Google Fonts was used to import 'Exo' and 'PT Sarif' fonts in the main.css stylesheet.
-- [Adobe Fonts](https://fonts.adobe.com/) - Adobe Fonts was used to import 'NeonStream' font which was the accent font in this project and cannot be found on Google Fonts website.
-- [Git](https://git-scm.com/) - Git was used to allow for tracking of any changes in the code and for the version control.
-- [GitPod](https://www.gitpod.io/) - GitPod, connected to GitHub, hosted the coding space and allowed the projected to be committed to the Github repository.
-- [Github](https://github.com/) - GitHub is used to host the project files and publish the live website by using Git Pages.
-- [Lightroom](https://www.adobe.com/ie/products/photoshop-lightroom.html?gclid=CjwKCAjwwYP2BRBGEiwAkoBpAqomS77OrQwQggC9QPnPACrkLBs-2AcrW9ZUvxbUJnFOgbRGKNeNEhoC95IQAvD_BwE&sdid=88X75SKS&mv=search&ef_id=CjwKCAjwwYP2BRBGEiwAkoBpAqomS77OrQwQggC9QPnPACrkLBs-2AcrW9ZUvxbUJnFOgbRGKNeNEhoC95IQAvD_BwE:G:s&s_kwcid=AL!3085!3!394412108599!e!!g!!lightroom) - Lightroom was used to edit and resize all images.
-- [Photoshop](https://www.adobe.com/ie/products/photoshop.html?gclid=CjwKCAjwwYP2BRBGEiwAkoBpAuYIg7JHUAFtnRQB28LDaU5gvFxhLX_56PYV2xbl6bTKvYSjK5yoLhoCkjQQAvD_BwE&sdid=88X75SKS&mv=search&ef_id=CjwKCAjwwYP2BRBGEiwAkoBpAuYIg7JHUAFtnRQB28LDaU5gvFxhLX_56PYV2xbl6bTKvYSjK5yoLhoCkjQQAvD_BwE:G:s&s_kwcid=AL!3085!3!340674288378!e!!g!!photoshop) - Photoshop was used to create the background graphic for the Landing page as well as the favicon.
-- [Adobe Xd](https://www.adobe.com/ie/products/xd.html) - Adobe Xd was used to create wireframes and mockups.
-  - [UnDraw](https://xd.undraw.co/) - UnDraw plugin was used to obtain royalty-free graphics used in the 'Home' and 'Active' pages.
-  - [ToolKit](https://manoharmanu.online/toolkit_plugin) - ToolKit plugin was used to obtain Royalty free images from UnSplash.
-  - [Icons 4 Design](http://emsoftware.com/xdplugins/icons-4-design/) - Icons 4 Design was used to add some icons across the page such as the alert sign on the 'Informed' page.
+
+- [Waypoint](http://imakewebthings.com/waypoints/) - Used ad infinite scrolling function to posts
 
 ## Testing
 
