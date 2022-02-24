@@ -49,7 +49,70 @@ This section is also where you would share links to any wireframes, mockups, dia
 
 ### Design
 
+All wireframes, mockups and prototypes were created using [Figma](https://www.figma.com) and were inspired from
+The website design was inspired by the online stores [ASOS](https://www.asos.com/women/), [The Perfume Shop](https://www.theperfumeshop.com) and [The Fragrance Shop](https://www.thefragranceshop.co.uk)
+
 #### Wireframes
+
+Each device will have a total of 8 distinct pages. All other components will be created from existing components in the pages. The wireframes follow the mobile first design and also follow the essential user stories.
+
+##### _Homepage_
+
+The homepage of each device be mostly identical. The exceptions will the image and name cards that are arranged into two rows for the mobile wireframe and one row for tablet and desktop wireframes. The search bar will be in its own section in the mobile and tablet wireframes. The search bar in the desktop version will on the header. The header will have the user icons The grey bar is the promotion banner.
+
+<img src="README/wireframes/mobile/img/home-mobile.png" height="300" /> <img src="README/wireframes/tablet/img/home-tablet.png" height="300" /> <img src="README/wireframes/desktop/img/home-desktop.png" height="300" />
+
+##### _Product page_
+
+The product page for each device mostly identical with the exception of the location of the search bar. The products list will vary in size in relation to the space available on the screen. The purple bar below the promotion banner will contain the category title
+
+<img src="README/wireframes/mobile/img/products-mobile.png" height="300" /> <img src="README/wireframes/tablet/img/products-tablet.png" height="300" /> <img src="README/wireframes/desktop/img/products-desktop.png" height="300" />
+
+##### _Product Detail_
+
+The product pages for each device will again be mostly identical. The mobile view will display each element in a list. The order will be the product title, product image, buttons, product content and lastly, product details. The tablet and desktop will follow the same order however the product image will be large and floated on the left and the product title, buttons and product content will be floated right. the product details will be placed below the two sections.
+
+<img src="README/wireframes/mobile/img/product-detail-mobile.png" height="300" /> <img src="README/wireframes/tablet/img/product-detail-tablet.png" height="300" /> <img src="README/wireframes/desktop/img/product-detail-desktop.png" height="300" />
+
+##### _Basket_
+
+The shopping basket page will again be very similar and follow the same format and style. The product image will be floated on the left and the product details on the page. The user also has the option to remove, and just the quantity of the product on this page before going to the checkout page.
+
+<img src="README/wireframes/mobile/img/basket-mobile.png" height="300" /> <img src="README/wireframes/tablet/img/basket-tablet.png" height="300" /> <img src="README/wireframes/desktop/img/basket-desktop.png" height="300" />
+
+##### _Checkout_
+
+The checkout page will have a progress meter so user know what and how many forms they will need to complete on all displays. The mobile and tablet views of the checkout page will show the basket via a prompt with a button. On the desktop version the basket will be shown on the right side as a result of more space. Redirection to edit the basket will be on this page.
+
+<img src="README/wireframes/mobile/img/checkout-steps-mobile.png" height="300" /> <img src="README/wireframes/tablet/img/checkout-steps-tablet.png" height="300" /> <img src="README/wireframes/desktop/img/checkout-steps-desktop.png" height="300" />
+
+#### _Registration_
+
+The user registration pages will be identical across all devices and will require the user's first name, last name, email address, password, and password confirmation
+
+<img src="README/wireframes/mobile/img/sign-up-mobile.png" height="300" /> <img src="README/wireframes/tablet/img/sign-up-tablet.png" height="300" /> <img src="README/wireframes/desktop/img/sign-up-desktop.png" height="300" />
+
+#### _Login_
+
+The user login page will again be identical across all devices and will require the user's email and password to login.
+
+<img src="README/wireframes/mobile/img/sign-in-mobile.png" height="300" /> <img src="README/wireframes/tablet/img/sign-in-tablet.png" height="300" /> <img src="README/wireframes/desktop/img/sign-in-desktop.png" height="300" />
+
+#### _User dashboard_
+
+When the user has logged in they will access to the user dashboard, where they are able to access and view all they previous orders, change their address and personal details and also log out. The user dashboard will be displayed on multiple pages for the mobile view, where one page will display the buttons and the other will show the details related to that button. The tablet and desktop details and buttons will be displayed on the same page.
+
+<img src="README/wireframes/mobile/img/user-profile-mobile.png" height="300" /> <img src="README/wireframes/mobile/img/user-profile-detail-mobile.png" height="300" />
+
+<img src="README/wireframes/tablet/img/user-profile-detail-tablet.png" height="300" /> <img src="README/wireframes/desktop/img/user-profile-detail-desktop.png" height="300" />
+
+To view wireframes in another format follow the links below.
+
+- [mobile wireframes](https://www.figma.com/file/7uNEWYjJwmXwA1KFI5E2YD/eau-royal-wireframes?node-id=3732%3A28) :point_left:
+
+- [tablet wireframes](https://www.figma.com/file/7uNEWYjJwmXwA1KFI5E2YD/eau-royal-wireframes?node-id=3740%3A830) :point_left:
+
+- [desktop wireframes](https://www.figma.com/file/7uNEWYjJwmXwA1KFI5E2YD/eau-royal-wireframes?node-id=3742%3A51) :point_left:
 
 #### Colour Scheme
 
@@ -57,9 +120,9 @@ This section is also where you would share links to any wireframes, mockups, dia
 
 #### Imagery
 
-### Existing Features
+#### Mockups
 
-#### Mockups and Prototype
+#### Prototype
 
 ### Database
 
@@ -68,6 +131,8 @@ This section is also where you would share links to any wireframes, mockups, dia
 #### Physical ERD
 
 For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
+
+### Existing Features
 
 In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
 
@@ -244,8 +309,6 @@ From line 345, column 63; to line 345, column 118
 `="button"><a href="https://www.evisa.gov.zw/home" target="_blank">Apply`
 
 <!-- markdownlint-disable-next-line MD029 -->
-
-2. Error: The element a must not appear as a descendant of the button element.
 
 From line 376, column 38; to line 376, column 89
 
