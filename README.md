@@ -52,6 +52,15 @@ This section is also where you would share links to any wireframes, mockups, dia
 All wireframes, mockups and prototypes were created using [Figma](https://www.figma.com) and were inspired from
 The website design was inspired by the online stores [ASOS](https://www.asos.com/women/), [The Perfume Shop](https://www.theperfumeshop.com) and [The Fragrance Shop](https://www.thefragranceshop.co.uk)
 
+#### Colour Scheme
+
+The colour scheme used throughout the project was generated using [Coloors](https://coolors.co/ffffff-beb9df-1b112d). It was based on my favourite colour purple and the rest of the colours were randomly generated. The main colours are _White_ (#FFFFFF), _Lavender Blue_ (#BEB9DF), and _Dark Purple_ (1B112D).
+
+![color palette](/README/components/palette.png)
+
+When designing the wireframes and mockups the colours were expanded further based on the three main colours. The major difference is the varying level of transparency with a variation of 20%, and an introduction of 3 new accent colours, _Ghost white_ (#F2F1F9), _Lavender Web_ (#E5E2F3), _Languid Lavender_ (#CBC7E5). _Lavender Web_ and _Languid Lavender_ remain unused in the mockups
+![mockup colours](/README/components/colors.png)
+
 #### Wireframes
 
 Each device will have a total of 8 distinct pages. All other components will be created from existing components in the pages. The wireframes follow the mobile first design and also follow the essential user stories.
@@ -113,8 +122,6 @@ To view wireframes in another format follow the links below.
 - [tablet wireframes](https://www.figma.com/file/7uNEWYjJwmXwA1KFI5E2YD/eau-royal-wireframes?node-id=3740%3A830) :point_left:
 
 - [desktop wireframes](https://www.figma.com/file/7uNEWYjJwmXwA1KFI5E2YD/eau-royal-wireframes?node-id=3742%3A51) :point_left:
-
-#### Colour Scheme
 
 #### Typography
 
