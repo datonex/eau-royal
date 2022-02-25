@@ -125,6 +125,10 @@ To view wireframes in another format follow the links below.
 
 #### Typography
 
+The font style used at mockup stage was _Lato_ from [google fonts](https://fonts.google.com/). I picked this font because the rounded character make the font easy to read. The image below illustrates the font in all weights and styles, bold, italic and regular. The actual sizes used were determined during the mockup stage.
+
+![Lato font](/README/components/typography.png)
+
 #### Imagery
 
 #### Mockups
