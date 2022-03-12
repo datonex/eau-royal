@@ -15,9 +15,9 @@ one paragraph, or two describing what your website does
 one paragraph describing how the4 website works
 This website uses AngularJS to route viewers through the site and control which Javascript is executed. The site is styled with Bootstrap. The quiz has been created using Javascript and modal for enlarging images is displayed using some JQuery code. Bower has been used to manage package dependencies for deployment of site on github pages. The site can be viewed HERE
 
-[Live Website]()
+[Live Website](https://eau-royal.herokuapp.com/)
 
-[GitHub Repository]()
+[GitHub Repository](https://github.com/datonex/eau-royal)
 
 ## UX
 
