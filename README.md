@@ -4,7 +4,7 @@
 
 ### What is this website for?
 
-one paragraph about what your website does
+Eau Royal is a e-commerce website that sells perfumes for all genders, room sprays and candles and to the consumer. It has two payment types, a one off payment and a subscription based payment for perfumes only.
 
 ### What does it do?
 
@@ -133,7 +133,25 @@ The font style used at mockup stage was _Lato_ from [google fonts](https://fonts
 
 #### Mockups
 
-#### Prototype
+- [Mobile Mockups](https://www.figma.com/file/utQzkN4QQ8UCXyWlwgoXde/eau-royal-mockup?node-id=2710%3A9005) :point_left:
+
+- [Tablet Mockups](https://www.figma.com/file/utQzkN4QQ8UCXyWlwgoXde/eau-royal-mockup?node-id=2710%3A9006) :point_left:
+
+- [Desktop Mockups](https://www.figma.com/file/utQzkN4QQ8UCXyWlwgoXde/eau-royal-mockup?node-id=2828%3A14368) :point_left:
+
+#### Prototypes
+
+The prototypes below demonstrate the intended flow of the website pages.
+
+To view the prototypes for each device, click on the image of that device. Then interact with prototype as you would a regular online shop.
+
+A few things to note:
+
+- When you encounter any forms on the prototype view, assume that you have entered the correct data and click on the corresponding buttons to move on to the next page.
+
+- All the footer links don't redirect anywhere, except for the website logo.
+
+<a href="https://www.figma.com/proto/utQzkN4QQ8UCXyWlwgoXde/eau-royal-mockup?page-id=2710%3A9005&node-id=2733%3A10748&viewport=289%2C48%2C0.22&scaling=scale-down&starting-point-node-id=2733%3A10748"><img src="README/prototype-img/mobile-prototype.png" alt="mobile prototype image" height="300"/></a><a href="https://www.figma.com/proto/utQzkN4QQ8UCXyWlwgoXde/eau-royal-mockup?page-id=2710%3A9006&node-id=2812%3A17405&viewport=289%2C48%2C0.07&scaling=scale-down&starting-point-node-id=2812%3A17405"><img src="README/prototype-img/tablet-prototype.png" alt="tablet prototype image" height="300"/></a><a href="https://www.figma.com/proto/utQzkN4QQ8UCXyWlwgoXde/eau-royal-mockup?page-id=2828%3A14368&node-id=2828%3A14560&viewport=289%2C48%2C0.34&scaling=scale-down&starting-point-node-id=2828%3A14560"><img src="README/prototype-img/desktop-prototype.png" alt="desktop prototype image" height="300"/></a>
 
 ### Database
 
