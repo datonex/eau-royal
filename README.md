@@ -391,6 +391,10 @@ This website was published using [GitHub Pages](https://pages.github.com/).
 
 ## Credits
 
+### Dependencies
+
+Landing page template - [startbootstrap](https://github.com/startbootstrap/startbootstrap-scrolling-nav)
+
 ### Content
 
 Each bit of content must have its own link and displayed as a list

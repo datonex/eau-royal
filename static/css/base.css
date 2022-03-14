@@ -1,0 +1,56 @@
+:root {
+  --white: #fff;
+  --white-v2: #f2f1f9;
+  --lavender-v2: #cbc7e5;
+  --lavender-v3: #e5e2f3;
+  --transparent: rgba(0, 0, 0, 0);
+
+  --lavender: #beb9df;
+  --lavender-80: rgba(190, 185, 223, 0.8);
+  --lavender-60: rgba(190, 185, 223, 0.6);
+  --lavender-40: rgba(190, 185, 223, 0.4);
+  --lavender-20: rgba(190, 185, 223, 0.2);
+
+  --dark-purple: #1b112d;
+  --dark-purple-80: rgba(27, 17, 45, 0.8);
+  --dark-purple-60: rgba(27, 17, 45, 0.6);
+  --dark-purple-40: rgba(27, 17, 45, 0.4);
+  --dark-purple-20: rgba(27, 17, 45, 0.2);
+}
+
+/* ------------- general styles ------------- */
+
+.dp-bg {
+  background-color: var(--dark-purple);
+}
+
+.transparent-bg {
+  background-color: var(--transparent);
+}
+
+.dp-text {
+  color: var(--dark-purple);
+}
+
+.lv-text {
+  color: var(--lavender);
+}
+
+/* ------------- Navigation ------------- */
+
+.logo-text {
+  font-family: "Petit Formal Script", cursive;
+}
+
+search-btn {
+  color: var(--transparent) !important;
+  border-color: var(--transparent) !important;
+}
+
+.icon {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  height: 2rem;
+  width: 2rem;
+}
