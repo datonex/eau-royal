@@ -20,7 +20,7 @@
 
 /* ------------- general styles ------------- */
 
-.dp-bg {
+.bg-dpurple {
   background-color: var(--dark-purple);
 }
 
@@ -36,13 +36,13 @@
   color: var(--lavender);
 }
 
-/* ------------- Navigation ------------- */
+/* ---------------- Navigation ---------------- */
 
 .logo-text {
   font-family: "Petit Formal Script", cursive;
 }
 
-search-btn {
+.search-btn {
   color: var(--transparent) !important;
   border-color: var(--transparent) !important;
 }
@@ -53,4 +53,19 @@ search-btn {
   justify-content: center;
   height: 2rem;
   width: 2rem;
+}
+/* ------------------------------- BS navigation */
+.navbar-toggler {
+  border-color: var(--lavender) !important;
+}
+
+.dropdown-item:active {
+  background-color: var(--lavender-60) !important;
+}
+
+@media only screen and (max-width: 576px) {
+  .icon {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
 }

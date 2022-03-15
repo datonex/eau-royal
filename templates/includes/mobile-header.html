@@ -1,0 +1,36 @@
+<li class="list-inline-item dropdown d-none d-md-block d-lg-none">
+  <a class="nav-link" href="#" id="user-options" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="user account">
+    <span class="icon lv-text">
+      <i class="fa-solid fa-user icon"></i>
+    </span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="user-options">
+    {% if request.user.is_authenticated %}
+      {% if request.user.is_superuser %}
+        <li>
+          <a class="dropdown-item" href="#">Product Management</a>
+        </li>
+      {% endif %}
+      <li>
+        <a class="dropdown-item" href="#">My Profile</a>
+      </li>
+      <li>
+        <a class="dropdown-item" href="#">Logout</a>
+      </li>
+    {% else %}
+      <li>
+        <a class="dropdown-item" href="#">Register</a>
+      </li>
+      <li>
+        <a class="dropdown-item" href="">Login</a>
+      </li>
+    {% endif %}
+  </ul>
+</li>
+<li class="list-inline-item d-block d-lg-none">
+  <a href="" class="nav-link " aria-label="link to shopping bag">
+    <span class="icon lv-text">
+      <i class="fa-solid fa-bag-shopping icon"></i>
+    </span>
+  </a>
+</li>
