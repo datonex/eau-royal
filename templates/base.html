@@ -35,7 +35,7 @@
   </head>
 
   <body>
-    <header class="container-fluid fixed-top " id="main-nav">
+    <nav class="container-fluid fixed-top " id="main-nav">
       <div class="row pt-lg-2 d-none d-lg-flex bg-dp">
         <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
           <a href="{% url 'home' %}" class="nav-link">
@@ -48,7 +48,7 @@
           <form method="GET" action="">
             <div class="input-group w-100">
               <div class="input-group">
-                <input class="form-control bg-white dp-font" type="search" placeholder="Search Eau Royal" aria-label="Search Eau Royal">
+                <input class="form-control bg-white" type="search" placeholder="Search Eau Royal" aria-label="Search Eau Royal">
                 <button class="btn search-btn bg-white" type="submit" aria-label="search">
                   <span class="icon text-dp">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -115,7 +115,26 @@
           </div>
         </div>
       </div>
-    </header>
+      <div id="search-container" class="bg-white row d-block d-lg-none my-2">
+        <form method="GET" action="">
+          <div class="input-group w-100">
+            <div class="input-group">
+              <input class="form-control bg-white" type="search" placeholder="Search Eau Royal" aria-label="Search Eau Royal">
+              <button class="btn search-btn bg-white" type="submit" aria-label="search">
+                <span class="icon text-dp">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div id="offer-banner" class="row text-center bg-white">
+        <div class="col bg-lv-20">
+          <h4 class="text-dp my-1">Free delivery on orders over £60!</h4>
+        </div>
+      </div>
+    </nav>
 
     {% if messages %}
       <div class="message-container"></div>

@@ -18,14 +18,34 @@
   --dark-purple-20: rgba(27, 17, 45, 0.2);
 }
 
-/* ------------- general styles ------------- */
+/* ------------- General Styles ------------- */
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.bg-transparent {
+  background-color: var(--transparent);
+}
 
 .bg-dp {
   background-color: var(--dark-purple);
 }
 
-.bg-transparent {
-  background-color: var(--transparent);
+.bg-lv-80 {
+  background-color: var(--lavender-80) !important;
+}
+
+.bg-lv-60 {
+  background-color: var(--lavender-60) !important;
+}
+
+.bg-lv-40 {
+  background-color: var(--lavender-40) !important;
+}
+
+.bg-lv-20 {
+  background-color: var(--lavender-20) !important;
 }
 
 .text-dp {
@@ -37,7 +57,7 @@
 }
 
 .header-displace {
-  height: 72px;
+  height: 106px;
 }
 
 /* ---------------- Navigation ---------------- */
@@ -58,13 +78,25 @@
   height: 2rem;
   width: 2rem;
 }
-/* ------------------------------- BS navigation */
+
+/* ------------------------------- BS Navigation */
+
 .navbar-toggler {
   border-color: var(--lavender) !important;
 }
 
 .dropdown-item:active {
   background-color: var(--lavender-60) !important;
+}
+
+#search-container .form-control {
+  border: 0;
+}
+
+@media only screen and (max-width: 992px) {
+  .header-displace {
+    height: 167px;
+  }
 }
 
 @media only screen and (max-width: 576px) {
