@@ -20,19 +20,19 @@
 
 /* ------------- general styles ------------- */
 
-.bg-dpurple {
+.bg-dp {
   background-color: var(--dark-purple);
 }
 
-.transparent-bg {
+.bg-transparent {
   background-color: var(--transparent);
 }
 
-.dp-text {
+.text-dp {
   color: var(--dark-purple);
 }
 
-.lv-text {
+.text-lv {
   color: var(--lavender);
 }
 
