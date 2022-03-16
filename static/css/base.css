@@ -57,7 +57,7 @@ body {
 }
 
 .header-displace {
-  height: 106px;
+  height: 68px;
 }
 
 /* ---------------- Navigation ---------------- */
@@ -93,9 +93,64 @@ body {
   border: 0;
 }
 
+/* ---------------- Hero ---------------- */
+
+section.masthead {
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 4.5rem);
+  background: linear-gradient(
+      to bottom,
+      rgba(92, 77, 66, 0.8) 0%,
+      rgba(92, 77, 66, 0.8) 100%
+    ),
+    url("/static/img/hero.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+section.masthead h1,
+section .masthead .h1 {
+  font-size: 2.25rem;
+}
+
+/* ---------------- Footer ---------------- */
+
+.footer-heading {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: none;
+}
+
+a.footer-heading:hover {
+  color: var(--lavender);
+}
+
+.default-hr {
+  width: 66vw;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid var(--lavender);
+}
+
 @media only screen and (max-width: 992px) {
-  .header-displace {
-    height: 167px;
+  section.masthead {
+    height: 100vh;
+    min-height: 40rem;
+    padding-top: 4.5rem;
+    padding-bottom: 0;
+  }
+
+  section.masthead p {
+    font-size: 1.15rem;
+  }
+
+  section.masthead h1,
+  section.masthead .h1 {
+    font-size: 3rem;
   }
 }
 
