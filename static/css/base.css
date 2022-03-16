@@ -57,7 +57,7 @@ body {
 }
 
 .header-displace {
-  height: 68px;
+  height: 72px;
 }
 
 /* ---------------- Navigation ---------------- */
@@ -79,6 +79,14 @@ body {
   width: 2rem;
 }
 
+#main-nav .container-fluid {
+  padding-right: 0 !important;
+}
+
+#offer-banner h4 {
+  margin-bottom: 0 !important;
+}
+
 /* ------------------------------- BS Navigation */
 
 .navbar-toggler {
@@ -95,25 +103,18 @@ body {
 
 /* ---------------- Hero ---------------- */
 
-/* section.masthead {
-  padding-top: 10rem;
-  padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(
-      to bottom,
-      rgba(92, 77, 66, 0.8) 0%,
-      rgba(92, 77, 66, 0.8) 100%
-    ),
-    url("/static/img/hero.jpg");
-  background-position: center;
+section.hero {
+  height: 49vw;
+  background: var(--dark-purple-20) url("/static/img/hero.jpg");
+  background-position: left;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
 }
 
-section.masthead h1,
-section .masthead .h1 {
-  font-size: 2.25rem;
-} */
+.hero .btn-primary {
+  border: 2px var(--lavender);
+}
 
 /* ---------------- Footer ---------------- */
 
@@ -154,27 +155,15 @@ a.footer-heading:hover {
   margin-bottom: 0 !important;
 }
 
-/* @media only screen and (max-width: 992px) { 
-  section.masthead {
-    height: 100vh;
-    min-height: 40rem;
-    padding-top: 4.5rem;
-    padding-bottom: 0;
-  }
-
-  section.masthead p {
-    font-size: 1.15rem;
-  }
-
-  section.masthead h1,
-  section.masthead .h1 {
-    font-size: 3rem;
-  }
-} */
-
 @media only screen and (max-width: 576px) {
   .icon {
     height: 1.5rem;
     width: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .header-displace {
+    height: 66px;
   }
 }
