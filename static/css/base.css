@@ -95,7 +95,7 @@ body {
 
 /* ---------------- Hero ---------------- */
 
-section.masthead {
+/* section.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
   background: linear-gradient(
@@ -113,7 +113,7 @@ section.masthead {
 section.masthead h1,
 section .masthead .h1 {
   font-size: 2.25rem;
-}
+} */
 
 /* ---------------- Footer ---------------- */
 
@@ -136,7 +136,25 @@ a.footer-heading:hover {
   border-top: 1px solid var(--lavender);
 }
 
-@media only screen and (max-width: 992px) {
+.btn-transparent {
+  width: 66vw;
+}
+
+.btn-transparent .btn-check:focus + .btn,
+.btn:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem var(--lavender-40);
+}
+
+.btn-transparent:hover {
+  color: var(--lavender) !important;
+}
+
+.btn-transparent h4 {
+  margin-bottom: 0 !important;
+}
+
+/* @media only screen and (max-width: 992px) { 
   section.masthead {
     height: 100vh;
     min-height: 40rem;
@@ -152,7 +170,7 @@ a.footer-heading:hover {
   section.masthead .h1 {
     font-size: 3rem;
   }
-}
+} */
 
 @media only screen and (max-width: 576px) {
   .icon {

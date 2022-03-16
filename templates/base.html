@@ -35,7 +35,7 @@
   </head>
 
   <body>
-    <nav class="container-fluid fixed-top " id="main-nav">
+    <nav class="container-fluid fixed-top" id="main-nav">
       <div class="row pt-lg-2 d-none d-lg-flex bg-dp">
         <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
           <a href="{% url 'home' %}" class="nav-link">
@@ -143,8 +143,8 @@
     </div>
     {% block page_header %}{% endblock %}
     {% block content %}{% endblock %}
-    <footer class="py-3 bg-dp">
-      <div class="container-fluid flex-column">
+    <footer class="py-3 bg-dp container-fluid">
+      <div class=" flex-column">
         <div class="footer-logo text-center my-1">
           <a href="{% url 'home' %}" class="nav-link">
             <h1 class="logo-text my-0 text-lv">
@@ -206,101 +206,106 @@
             </svg>
           </a>
         </div>
-        <div class="footer-content my-1 d-md-flex justify-content-md-evenly">
-          <div>
-            <ul class="list-inline list-unstyled">
-              <li>
-                <a href="#" class="footer-heading text-lv">
-                  <h4>Help</h4>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-lv">FAQ's</a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-lv">Order Tracking</a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-lv">Contact Us</a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-lv">Delivery Information</a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-lv">Customer Care</a>
-              </li>
+        <div class="footer-content-lg my-1 d-none d-sm-block">
+          <div class="my-1 d-md-flex justify-content-md-evenly">
+            <div>
+              <ul class="list-inline list-unstyled">
+                <li>
+                  <a href="#" class="footer-heading text-lv">
+                    <h4>Help</h4>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link text-lv">FAQ's</a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link text-lv">Order Tracking</a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link text-lv">Contact Us</a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link text-lv">Delivery Information</a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link text-lv">Customer Care</a>
+                </li>
 
-            </ul>
+              </ul>
+            </div>
+            <div>
+              <ul class="list-inline list-unstyled">
+                <li>
+                  <a href="#" class="footer-heading text-lv">
+                    <h4>Our Company</h4>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link text-lv">About Us</a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link text-lv">Our History</a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link text-lv">Our Staff</a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link text-lv">Employment</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <ul class="list-inline list-unstyled">
+                <li>
+                  <a href="#" class="footer-heading text-lv">
+                    <h4>Our Stores</h4>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link text-lv">United Kingdom</a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link text-lv">USA</a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link text-lv">Europe</a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link text-lv">Canada</a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link text-lv">Japan</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <ul class="list-inline list-unstyled">
+                <li>
+                  <a href="#" class="footer-heading text-lv">
+                    <h4>Legal</h4>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link text-lv">Privacy Policy</a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link text-lv">Terms of Service</a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link text-lv">Cookie Policy</a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link text-lv">Disclaimer</a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link text-lv">Media Policy</a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div>
-            <ul class="list-inline list-unstyled">
-              <li>
-                <a href="#" class="footer-heading text-lv">
-                  <h4>Our Company</h4>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-lv">About Us</a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-lv">Our History</a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-lv">Our Staff</a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-lv">Employment</a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <ul class="list-inline list-unstyled">
-              <li>
-                <a href="#" class="footer-heading text-lv">
-                  <h4>Our Stores</h4>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-lv">United Kingdom</a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-lv">USA</a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-lv">Europe</a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-lv">Canada</a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-lv">Japan</a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <ul class="list-inline list-unstyled">
-              <li>
-                <a href="#" class="footer-heading text-lv">
-                  <h4>Legal</h4>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-lv">Privacy Policy</a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-lv">Terms of Service</a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-lv">Cookie Policy</a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-lv">Disclaimer</a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-lv">Media Policy</a>
-              </li>
-            </ul>
-          </div>
+        </div>
+        <div class="footer-content-sm mx-5 my-1 container d-block d-sm-none">
+          {% include 'includes/mobile-footer.html' %}
         </div>
         <hr class="default-hr mx-auto">
         <div class="my-5 d-flex justify-content-evenly">
