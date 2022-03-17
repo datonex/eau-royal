@@ -7,13 +7,12 @@
 {% endblock %}
 
 {% block content %}
-  
-
   <section class="my-5 d-flex justify-content-center">
     <div class="col-10 col-lg-3 d-flex justify-content-center flex-column">
       <h1 class="text-center mb-5">
         {% trans "Sign In" %}
       </h1>
+      
       {% get_providers as socialaccount_providers %}
 
       {% if socialaccount_providers %}
@@ -24,14 +23,11 @@
           account and sign in below:{% endblocktrans %}</p>
 
         <div class="socialaccount_ballot">
-
           <ul class="socialaccount_providers">
             {% comment %} prettier-ignore {% endcomment %}
             {% include "socialaccount/snippets/provider_list.html" with process="login" %}
           </ul>
-
           <div class="login-or">{% trans 'or' %}</div>
-
         </div>
 
         {% include "socialaccount/snippets/login_extra.html" %}
