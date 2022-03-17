@@ -29,7 +29,7 @@ body {
 }
 
 .bg-dp {
-  background-color: var(--dark-purple);
+  background-color: var(--dark-purple) !important;
 }
 
 .bg-lv-80 {
