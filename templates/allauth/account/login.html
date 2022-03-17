@@ -42,7 +42,7 @@
             <div class="d-flex justify-content-center flex-column">
               {% if form.non_field_errors %}
                 <div class="alert alert-warning">
-                  <ul class="alert-message">
+                  <ul class="alert-message list-inline list-unstyled">
                     {% for error in form.non_field_errors %}
                       <li>{{ error }}</li>
                     {% endfor %}

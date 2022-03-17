@@ -2,20 +2,88 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block head_title %}{% trans "Signup" %}
+{% endblock %}
 
 {% block content %}
-<h1>{% trans "Sign Up" %}</h1>
-
-<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
-
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
-</form>
-
+  <section class="my-5 d-flex justify-content-center">
+    <div class="col-10 col-lg-3 d-flex justify-content-center flex-column">
+      <h1 class="text-center mb-5">
+        {% trans "Sign Up" %}
+      </h1>
+      <div class="d-flex justify-content-center bg-lv-60 p-4">
+        <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+          {% csrf_token %}
+          <div class="row">
+            <div class="d-flex justify-content-center flex-column">
+              {% if form.non_field_errors %}
+                <div class="alert alert-warning">
+                  <ul class="alert-message list-inline list-unstyled">
+                    {% for error in form.non_field_errors %}
+                      <li>{{ error }}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+              <div class="my-2">
+                <label class="form-label" for="{{ form.username.id_for_label }}">Username</label>
+                <input class="form-control" autofocus="autofocus" name="username" type="text" id="{{ form.username.id_for_label }}" placeholder="Username" autocomplete="username" required="required">
+                {% for error in form.username.errors %}
+                  <ul class="list-inline list-unstyled text-danger my-3">
+                    <li>{{ error }}</li>
+                  </ul>
+                {% endfor %}
+              </div>
+              <div class="my-2">
+                <label class="form-label" for="{{ form.email.id_for_label }}">Email Address</label>
+                <input class="form-control" name="email" type="email" id="{{ form.email.id_for_label }}" placeholder="example@email.com" autocomplete="email" required="required">
+                {% for error in form.email.errors %}
+                  <ul class="list-inline list-unstyled text-danger my-3">
+                    <li>{{ error }}</li>
+                  </ul>
+                {% endfor %}
+              </div>
+              <div class="my-2">
+                <label class="form-label" for="{{ form.password1.id_for_label }}">Password</label>
+                <input class="form-control" name="password1" type="password" id="{{ form.password1.id_for_label }}" placeholder="•••••••••" autocomplete="new-passowrd" required="required">
+                {% for error in form.password1.errors %}
+                  <ul class="list-inline list-unstyled text-danger my-3">
+                    <li>{{ error }}</li>
+                  </ul>
+                {% endfor %}
+              </div>
+              <div class="my-2">
+                <label class="form-label" for="{{ form.password2.id_for_label }}">Re-enter Password</label>
+                <input class="form-control" name="password2" type="password" id="{{ form.password2.id_for_label }}" placeholder="•••••••••" autocomplete="new-password" required="required">
+                {% for error in form.password2.errors %}
+                  <ul class="list-inline list-unstyled text-danger my-3">
+                    <li>{{ error }}</li>
+                  </ul>
+                {% endfor %}
+              </div>
+              <div class="my-2">
+                {% if redirect_field_value %}
+                  <input class="form-control" type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                {% endif %}
+              </div>
+              <div class="my-2">
+                <a href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+              </div>
+              <div class="my-2">
+                <p>
+                  {% blocktrans %}
+                  Already have an account? Then please
+                  <a href="{{ login_url }}">sign in</a>.
+                  {% endblocktrans %}
+                </p>
+              </div>
+              <div class="my-2 mx-auto">
+                <button class="btn btn-xl btn-dark bg-dp text-lv" type="submit">{% trans "Sign Up" %}</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
 {% endblock %}
