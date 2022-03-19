@@ -102,9 +102,12 @@
       </div>
       <div class="row bg-dp">
         <div class="navbar navbar-expand-lg navbar-light w-100 d-block d-lg-none d-flex">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-label="open menu" aria-controls="offcanvasNavbar">
             <i class="fa-solid fa-bars icon text-lv"></i>
           </button>
+          <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            {% include 'includes/menu-content.html' %}
+          </div>
           <a href="{% url 'home' %}" class="nav-link">
             <h1 class="logo-text my-0 text-lv">
               <strong>Eau Royal</strong>

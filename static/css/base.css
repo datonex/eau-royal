@@ -36,6 +36,10 @@ body {
   background-color: var(--dark-purple) !important;
 }
 
+.bg-dp-60 {
+  background-color: var(--dark-purple-60) !important;
+}
+
 .bg-lv-80 {
   background-color: var(--lavender-80) !important;
 }
@@ -53,11 +57,15 @@ body {
 }
 
 .text-dp {
-  color: var(--dark-purple);
+  color: var(--dark-purple) !important;
 }
 
 .text-lv {
-  color: var(--lavender);
+  color: var(--lavender) !important;
+}
+
+.text-transparent {
+  color: var(--transparent) !important;
 }
 
 .header-displace {
@@ -89,6 +97,22 @@ body {
 
 #offer-banner h4 {
   margin-bottom: 0 !important;
+}
+
+.canvas-hr {
+  height: 2px !important;
+}
+
+#user-overlay {
+  width: 400px;
+  margin-bottom: 16px;
+  margin-left: -16px;
+  z-index: 1046;
+}
+
+#user-overlay > li {
+  padding-right: 16px;
+  padding-left: 16px;
 }
 
 /* ------------------------------- BS Navigation */
@@ -169,5 +193,9 @@ a.footer-heading:hover {
 @media only screen and (max-width: 426px) {
   .header-displace {
     height: 66px;
+  }
+
+  #user-overlay {
+    width: 100vw;
   }
 }

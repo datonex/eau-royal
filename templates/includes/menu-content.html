@@ -1,0 +1,144 @@
+<div class="offcanvas-header bg-dp">
+  <button type="button" class="btn bg-dp text-lv" data-bs-dismiss="offcanvas" aria-label="Close">
+    <i class="fa-solid fa-chevron-left icon"></i>
+  </button>
+  <h5 class="offcanvas-title text-lv" id="offcanvasNavbarLabel">Menu</h5>
+  <button type="button" class="btn bg-dp text-lv" data-bs-dismiss="offcanvas" aria-label="Close">
+    <i class="fa-solid fa-xmark icon"></i>
+  </button>
+</div>
+<div class="offcanvas-body" id="menu-offcanvas-body">
+  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 text-dp">
+    <li class="nav-item">
+      <a class="nav-link" aria-label="subscription card" href="#">
+        Subscription card
+      </a>
+    </li>
+    <li class="nav-item">
+      <hr class="text-lv canvas-hr">
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link d-flex align-items-center justify-content-between text-dp" href="#">
+        Category name
+        <i class="fa-solid fa-chevron-right icon"></i>
+      </a>
+    </li>
+    <li class="nav-item">
+      <hr class="text-lv canvas-hr">
+    </li>
+  </ul>
+</div>
+<div class="offcanvas-header bg-dp">
+  <div class="btn-group dropup">
+    <button type="button" id="user-menu-dropdown" class="btn bg-dp text-lv" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa-solid fa-user icon"></i>
+    </button>
+    <ul class="dropdown-menu text-dp" id="user-overlay">
+      <li class="d-flex align-items-center justify-content-between py-2">
+        <button type="button" class="btn text-transparent" data-bs-dismiss="dropdown" aria-label="Close">
+          <i class="fa-solid fa-chevron-left icon"></i>
+        </button>
+        {% if request.user.is_authenticated %}
+          <h5 class="offcanvas-title text-dp text-uppercase">hi,
+            {{request.user.username}}</h5>
+          <button type="button" class="btn text-dp" data-bs-dismiss="dropdown" aria-label="Close">
+            <i class="fa-solid fa-xmark icon"></i>
+          </button>
+        </li>
+        <li>
+          <hr class="text-lv canvas-hr my-0">
+        </li>
+        {% if request.user.is_superuser %}
+          <li class="py-2 text-center fs-6">
+            <a class="dropdown-item py-3" href="#">Product Management</a>
+          </li>
+          <li>
+            <hr class="text-lv canvas-hr my-0">
+          </li>
+        {% endif %}
+        <li class="py-2 text-center fs-6">
+          <a class="dropdown-item py-3" href="#">My Profile</a>
+        </li>
+        <li>
+          <hr class="text-lv canvas-hr my-0">
+        </li>
+        <li class="py-2 text-center fs-6">
+          <a class="dropdown-item py-3" href="{% url 'account_logout' %}">Logout</a>
+        </li>
+        <li>
+          <hr class="text-lv canvas-hr my-0">
+        </li>
+      {% else %}
+        <h5 class="offcanvas-title text-dp text-uppercase">MY ACCOUNT</h5>
+        <button type="button" class="btn text-dp" data-bs-dismiss="dropdown" aria-label="Close">
+          <i class="fa-solid fa-xmark icon"></i>
+        </button>
+      </li>
+      <li>
+        <hr class="text-lv canvas-hr my-0">
+      </li>
+      <li class="py-2 text-center fs-6">
+        <a class="dropdown-item py-3" href="{% url 'account_signup' %}">Register</a>
+      </li>
+      <li>
+        <hr class="text-lv canvas-hr my-0">
+      </li>
+      <li class="py-2 text-center fs-6">
+        <a class="dropdown-item py-3" href="{% url 'account_login' %}">Login</a>
+      </li>
+      <li>
+        <hr class="text-lv canvas-hr my-0">
+      </li>
+    {% endif %}
+  </ul>
+</div>
+<a href="{% url 'home' %}" class="nav-link">
+  <h1 class="logo-text my-0 text-lv">
+    <strong>Eau Royal</strong>
+  </h1>
+</a>
+<span class="icon text-lv">
+  <i class="fa-solid fa-bag-shopping icon"></i>
+</span>
+</div>
+
+{% block postloadjs %}
+<script>
+  $(function () {
+    // remove fixed footer when bs canvas show is fired
+    $("#offcanvasNavbar").on('show.bs.offcanvas', function () {
+      if ($("#footer").hasClass("fixed-bottom")) {
+        $("#footer").removeClass("fixed-bottom");
+      }
+
+      $("#user-menu-dropdown").on('show.bs.dropdown', function () {
+        $("#menu-offcanvas-body").addClass("bg-dp-60");
+
+        $("#user-menu-dropdown").on('hide.bs.dropdown', function () {
+          $("#menu-offcanvas-body").removeClass("bg-dp-60");
+        })
+      })
+    })
+
+    // add fixed footer when bs canvas hide is fired
+    $("#offcanvasNavbar").on('hide.bs.offcanvas', function () {
+      if ($("#footer").not(".fixed-bottom")) {
+        $("#footer").addClass("fixed-bottom");
+      }
+
+      // remove fixed footer on small devices
+      var fixedFooter = function (screenSize) {
+
+        if (screenSize.matches) {
+          $("#footer").removeClass("fixed-bottom");
+        } else {
+          $("#footer").addClass("fixed-bottom");
+        }
+      }
+      var smallScreen = window.matchMedia("(max-width: 450px)");
+      fixedFooter(smallScreen);
+      smallScreen.addListener(fixedFooter);
+    })
+  })
+</script>
+{% endblock %}
