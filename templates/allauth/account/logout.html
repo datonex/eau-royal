@@ -2,7 +2,8 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Sign Out" %}
+{% block head_title %}
+  {% trans "Sign Out" %}
 {% endblock %}
 
 {% block content %}
@@ -27,4 +28,12 @@
     </div>
   </section>
 
+{% endblock %}
+
+{% block page_footer %}{% endblock %}
+
+{% block postloadjs %}
+  <script>
+    $("#footer").addClass("fixed-bottom")
+  </script>
 {% endblock %}
