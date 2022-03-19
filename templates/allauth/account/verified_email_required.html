@@ -2,22 +2,57 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
+{% block head_title %}{% trans "Verify Your E-mail Address" %}
+{% endblock %}
 
 {% block content %}
-<h1>{% trans "Verify Your E-mail Address" %}</h1>
+  <section class="my-5 d-flex justify-content-center">
+    <div class="col-10 col-lg-4 d-flex justify-content-center flex-column ">
+      <h1 class="text-center mb-5">
+        {% trans "Verify Your E-mail Address" %}
+      </h1>
+      <div class="d-flex justify-content-center bg-lv-60 p-4 text-center">
+        {% url 'account_email' as email_url %}
 
-{% url 'account_email' as email_url %}
+        <p class="fs-5 text-center">
+          {% blocktrans %}
+          This part of the site requires us to verify that you are who you claim to be. For this purpose, we require that you verify ownership of your e-mail address.
+          {% endblocktrans %}
+        </p>
+        <p class="fs-5 text-center">
+          {% blocktrans %}
+          We have sent an e-mail to you for verification. Please click on the link inside this e-mail. Please contact us if you do not receive it within a few minutes.
+          {% endblocktrans %}
+        </p>
+        <p class="fs-5 text-center">
+          {% blocktrans %}
+          <strong>Note:</strong>
+          you can still
+          <a href="{{ email_url }}">change your e-mail address</a>.
+          {% endblocktrans %}
+        </p>
+      </div>
+    </div>
+  </section>
+{% endblock %}
 
-<p>{% blocktrans %}This part of the site requires us to verify that
-you are who you claim to be. For this purpose, we require that you
-verify ownership of your e-mail address. {% endblocktrans %}</p>
+{% block page_footer %}{% endblock %}
 
-<p>{% blocktrans %}We have sent an e-mail to you for
-verification. Please click on the link inside this e-mail. Please
-contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
+{% block postloadjs %}
+  <script>
+    $(function () {
+      var fixedFooter = function (screenSize) {
+        if (screenSize.matches) {
+          $("#footer").removeClass("fixed-bottom");
+        } else {
+          $("#footer").addClass("fixed-bottom");
+        }
+      }
+      var smallScreen = window.matchMedia("(max-width: 450px)");
 
-<p>{% blocktrans %}<strong>Note:</strong> you can still <a href="{{ email_url }}">change your e-mail address</a>.{% endblocktrans %}</p>
+      fixedFooter(smallScreen);
 
-
+      smallScreen.addListener(fixedFooter);
+    });
+  </script>
 {% endblock %}

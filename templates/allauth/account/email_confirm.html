@@ -3,29 +3,70 @@
 {% load i18n %}
 {% load account %}
 
-{% block head_title %}{% trans "Confirm E-mail Address" %}{% endblock %}
-
+{% block head_title %}{% trans "Confirm E-mail Address" %}
+{% endblock %}
 
 {% block content %}
-<h1>{% trans "Confirm E-mail Address" %}</h1>
+  <section class="my-5 d-flex justify-content-center">
+    <div class="col-10 col-lg-3 d-flex justify-content-center flex-column">
+      <h1 class="text-center mb-5">
+        {% trans "Confirm E-mail Address" %}
+      </h1>
+      <div class="d-flex justify-content-center flex-column bg-lv-60 p-4">
+        {% if confirmation %}
 
-{% if confirmation %}
+          {% user_display confirmation.email_address.user as user_display %}
 
-{% user_display confirmation.email_address.user as user_display %}
+          <p class="fs-5">
+            {% blocktrans with confirmation.email_address.email as email %}
+            Please confirm that
+            <a href="mailto:{{ email }}">{{ email }}</a>
+            is an e-mail address for user
+            {{ user_display }}.
+            {% endblocktrans %}
+          </p>
 
-<p>{% blocktrans with confirmation.email_address.email as email %}Please confirm that <a href="mailto:{{ email }}">{{ email }}</a> is an e-mail address for user {{ user_display }}.{% endblocktrans %}</p>
+          <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+            {% csrf_token %}
+            <div class="my-2 mx-auto">
+              <button class="btn btn-xl btn-dark bg-dp text-lv" type="submit">{% trans 'Confirm' %}</button>
+            </div>
+          </form>
 
-<form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
-{% csrf_token %}
-    <button type="submit">{% trans 'Confirm' %}</button>
-</form>
+        {% else %}
 
-{% else %}
+          {% url 'account_email' as email_url %}
 
-{% url 'account_email' as email_url %}
+          <p class="fs-5">
+            {% blocktrans %}
+            This e-mail confirmation link expired or is invalid. Please
+            <a href="{{ email_url }}">issue a new e-mail confirmation request</a>.
+            {% endblocktrans %}
+          </p>
 
-<p>{% blocktrans %}This e-mail confirmation link expired or is invalid. Please <a href="{{ email_url }}">issue a new e-mail confirmation request</a>.{% endblocktrans %}</p>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endblock %}
 
-{% endif %}
+{% block page_footer %}{% endblock %}
 
+{% block postloadjs %}
+  <script>
+    $(function () {
+      var fixedFooter = function (screenSize) {
+        if (screenSize.matches) {
+          $("#footer").removeClass("fixed-bottom");
+        } else {
+          $("#footer").addClass("fixed-bottom");
+        }
+      }
+      var smallScreen = window.matchMedia("(max-width: 450px)");
+
+      fixedFooter(smallScreen);
+
+      smallScreen.addListener(fixedFooter);
+    });
+  </script>
 {% endblock %}

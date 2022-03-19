@@ -2,11 +2,43 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
+{% block head_title %}{% trans "Verify Your E-mail Address" %}
+{% endblock %}
 
 {% block content %}
-    <h1>{% trans "Verify Your E-mail Address" %}</h1>
+  <section class="my-5 d-flex justify-content-center">
+    <div class="col-10 col-lg-4 d-flex justify-content-center flex-column ">
+      <h1 class="text-center mb-5">
+        {% trans "Verify Your E-mail Address" %}
+      </h1>
+      <div class="d-flex justify-content-center bg-lv-60 p-4">
+        <p class="fs-5 text-center">
+          {% blocktrans %}
+          We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.
+          {% endblocktrans %}
+        </p>
+      </div>
+    </div>
+  </section>
+{% endblock %}
 
-    <p>{% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
+{% block page_footer %}{% endblock %}
 
+{% block postloadjs %}
+  <script>
+    $(function () {
+      var fixedFooter = function (screenSize) {
+        if (screenSize.matches) {
+          $("#footer").removeClass("fixed-bottom");
+        } else {
+          $("#footer").addClass("fixed-bottom");
+        }
+      }
+      var smallScreen = window.matchMedia("(max-width: 450px)");
+
+      fixedFooter(smallScreen);
+
+      smallScreen.addListener(fixedFooter);
+    });
+  </script>
 {% endblock %}
