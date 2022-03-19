@@ -19,6 +19,10 @@
 }
 
 /* ------------- General Styles ------------- */
+html,
+body {
+  overflow-x: hidden !important;
+}
 
 body {
   font-family: "Lato", sans-serif;
