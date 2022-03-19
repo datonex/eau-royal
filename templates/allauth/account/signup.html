@@ -87,3 +87,24 @@
     </div>
   </section>
 {% endblock %}
+
+{% block page_footer %}{% endblock %}
+
+{% block postloadjs %}
+  <script>
+    $(function () {
+      var fixedFooter = function (screenSize) {
+        if (screenSize.matches) {
+          $("#footer").removeClass("fixed-bottom");
+        } else {
+          $("#footer").addClass("fixed-bottom");
+        }
+      }
+      var smallScreen = window.matchMedia("(max-width: 450px)");
+
+      fixedFooter(smallScreen);
+
+      smallScreen.addListener(fixedFooter);
+    });
+  </script>
+{% endblock %}
