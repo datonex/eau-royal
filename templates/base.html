@@ -145,16 +145,16 @@
 
     {% block content %}{% endblock %}
 
-    <footer class="py-3 bg-dp container-fluid">
+    <footer class="py-3 bg-dp container-fluid" id="footer">
       <div class=" flex-column">
-        <div class="footer-logo text-center my-1">
-          <a href="{% url 'home' %}" class="nav-link">
-            <h1 class="logo-text my-0 text-lv">
-              <strong>Eau Royal</strong>
-            </h1>
-          </a>
-        </div>
         {% block page_footer %}
+          <div class="footer-logo text-center my-1">
+            <a href="{% url 'home' %}" class="nav-link">
+              <h1 class="logo-text my-0 text-lv">
+                <strong>Eau Royal</strong>
+              </h1>
+            </a>
+          </div>
           <div class="device-store my-1 text-center">
             <a href="https://www.apple.com/uk/app-store/" class="store-btn mx-2 text-decoration-none" aria-label="got to appstore" target="_blank">
               <svg width="196" height="70" viewbox="0 0 196 70" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -347,7 +347,6 @@
         <div class="my-1 small text-center text-lv">Copyright &copy; 2022 - Eau Royal</div>
       </div>
     </footer>
-
     {% block postloadjs %}{% endblock %}
   </body>
 
