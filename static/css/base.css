@@ -103,6 +103,11 @@ body {
   height: 2px !important;
 }
 
+#user-options {
+  width: 250px;
+  left: -100px;
+}
+
 #user-overlay {
   width: 400px;
   margin-bottom: 16px;

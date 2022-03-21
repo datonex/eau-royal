@@ -1,36 +1,63 @@
 <li class="list-inline-item dropdown d-none d-md-block d-lg-none">
-  <a class="nav-link" href="#" id="user-options" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="user account">
+  <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="user account">
     <span class="icon text-lv">
       <i class="fa-solid fa-user icon"></i>
     </span>
   </a>
-  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="user-options">
+  <ul class="dropdown-menu text-dp" id="user-options">
+  <li>
     {% if request.user.is_authenticated %}
-      {% if request.user.is_superuser %}
-        <li>
-          <a class="dropdown-item" href="#">Product Management</a>
-        </li>
-      {% endif %}
-      <li>
-        <a class="dropdown-item" href="#">My Profile</a>
+      <h5 class="text-dp text-uppercase ">hi,
+        {{request.user.username}}</h5>
+    </li>
+    <li>
+      <hr class="text-lv canvas-hr my-0">
+    </li>
+    {% if request.user.is_superuser %}
+      <li class="py-2 text-center fs-6">
+        <a class="dropdown-item py-3" href="#">Product Management</a>
       </li>
       <li>
-        <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
-      </li>
-    {% else %}
-      <li>
-        <a class="dropdown-item" href="{% url 'account_signup' %}">Register</a>
-      </li>
-      <li>
-        <a class="dropdown-item" href="{% url 'account_login' %}">Login</a>
+        <hr class="text-lv canvas-hr my-0">
       </li>
     {% endif %}
-  </ul>
+    <li class="py-2 text-center fs-6">
+      <a class="dropdown-item py-3" href="#">My Profile</a>
+    </li>
+    <li>
+      <hr class="text-lv canvas-hr my-0">
+    </li>
+    <li class="py-2 text-center fs-6">
+      <a class="dropdown-item py-3" href="{% url 'account_logout' %}">Logout</a>
+    </li>
+    <li>
+      <hr class="text-lv canvas-hr my-0">
+    </li>
+  {% else %}
+    <p class=" text-dp text-uppercase text-center">MY ACCOUNT</p>
+  </li>
+  <li>
+    <hr class="text-lv canvas-hr my-0">
+  </li>
+  <li class="py-2 text-center fs-6">
+    <a class="dropdown-item py-3" href="{% url 'account_signup' %}">Register</a>
+  </li>
+  <li>
+    <hr class="text-lv canvas-hr my-0">
+  </li>
+  <li class="py-2 text-center fs-6">
+    <a class="dropdown-item py-3" href="{% url 'account_login' %}">Login</a>
+  </li>
+  <li>
+    <hr class="text-lv canvas-hr my-0">
+  </li>
+{% endif %}
+</ul>
 </li>
 <li class="list-inline-item d-block d-lg-none">
-  <a href="" class="nav-link " aria-label="link to shopping bag">
-    <span class="icon text-lv">
-      <i class="fa-solid fa-bag-shopping icon"></i>
-    </span>
-  </a>
+<a href="" class="nav-link " aria-label="link to shopping bag">
+<span class="icon text-lv">
+  <i class="fa-solid fa-bag-shopping icon"></i>
+</span>
+</a>
 </li>
