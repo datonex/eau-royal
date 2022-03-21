@@ -1,0 +1,157 @@
+[
+  {
+    "pk": 1,
+    "model": "products.brand",
+    "fields": { "name": "Adidas", "db_name": "adidas" }
+  },
+  {
+    "pk": 2,
+    "model": "products.brand",
+    "fields": { "name": "Burberry", "db_name": "burberry" }
+  },
+  {
+    "pk": 3,
+    "model": "products.brand",
+    "fields": { "name": "Bvlgari", "db_name": "bvlgari" }
+  },
+  {
+    "pk": 4,
+    "model": "products.brand",
+    "fields": { "name": "Calvin Klein", "db_name": "calvin_klein" }
+  },
+  {
+    "pk": 5,
+    "model": "products.brand",
+    "fields": { "name": "Carolina Herrera", "db_name": "carolina_herrera" }
+  },
+  {
+    "pk": 6,
+    "model": "products.brand",
+    "fields": { "name": "Cartier", "db_name": "cartier" }
+  },
+  {
+    "pk": 7,
+    "model": "products.brand",
+    "fields": { "name": "Chanel", "db_name": "chanel" }
+  },
+  {
+    "pk": 8,
+    "model": "products.brand",
+    "fields": { "name": "Diesel", "db_name": "diesel" }
+  },
+  {
+    "pk": 9,
+    "model": "products.brand",
+    "fields": { "name": "Dior", "db_name": "dior" }
+  },
+  {
+    "pk": 10,
+    "model": "products.brand",
+    "fields": { "name": "Dkny", "db_name": "dkny" }
+  },
+  {
+    "pk": 11,
+    "model": "products.brand",
+    "fields": { "name": "Dolce & Gabbana", "db_name": "dolce_and_gabbana" }
+  },
+  {
+    "pk": 12,
+    "model": "products.brand",
+    "fields": { "name": "Emporio Armani", "db_name": "emporio_armani" }
+  },
+  {
+    "pk": 13,
+    "model": "products.brand",
+    "fields": { "name": "Estee Lauder", "db_name": "estee_lauder" }
+  },
+  {
+    "pk": 14,
+    "model": "products.brand",
+    "fields": { "name": "Giorgio Armani", "db_name": "giorgio_armani" }
+  },
+  {
+    "pk": 15,
+    "model": "products.brand",
+    "fields": { "name": "Givenchy", "db_name": "givenchy" }
+  },
+  {
+    "pk": 16,
+    "model": "products.brand",
+    "fields": { "name": "Gucci", "db_name": "gucci" }
+  },
+  {
+    "pk": 17,
+    "model": "products.brand",
+    "fields": { "name": "Guerlain", "db_name": "guerlain" }
+  },
+  {
+    "pk": 18,
+    "model": "products.brand",
+    "fields": { "name": "Guess", "db_name": "guess" }
+  },
+  {
+    "pk": 19,
+    "model": "products.brand",
+    "fields": { "name": "Hugo Boss", "db_name": "hugo_boss" }
+  },
+  {
+    "pk": 20,
+    "model": "products.brand",
+    "fields": { "name": "Jaguar", "db_name": "jaguar" }
+  },
+  {
+    "pk": 21,
+    "model": "products.brand",
+    "fields": { "name": "Jean Paul Gaultier", "db_name": "jean_paul_gaultier" }
+  },
+  {
+    "pk": 22,
+    "model": "products.brand",
+    "fields": { "name": "Lacoste", "db_name": "lacoste" }
+  },
+  {
+    "pk": 23,
+    "model": "products.brand",
+    "fields": { "name": "Lancome", "db_name": "lancome" }
+  },
+  {
+    "pk": 24,
+    "model": "products.brand",
+    "fields": { "name": "Montblanc", "db_name": "montblanc" }
+  },
+  {
+    "pk": 25,
+    "model": "products.brand",
+    "fields": { "name": "Paco Rabanne", "db_name": "paco_rabanne" }
+  },
+  {
+    "pk": 26,
+    "model": "products.brand",
+    "fields": { "name": "Roberto Cavalli", "db_name": "roberto_cavalli" }
+  },
+  {
+    "pk": 27,
+    "model": "products.brand",
+    "fields": { "name": "Tom Ford", "db_name": "tom_ford" }
+  },
+  {
+    "pk": 28,
+    "model": "products.brand",
+    "fields": { "name": "Tommy Hilfiger", "db_name": "tommy_hilfiger" }
+  },
+  {
+    "pk": 29,
+    "model": "products.brand",
+    "fields": { "name": "Versace", "db_name": "versace" }
+  },
+  {
+    "pk": 30,
+    "model": "products.brand",
+    "fields": { "name": "Yves Saint Laurent", "db_name": "yves_saint_laurent" }
+  },
+  {
+    "pk": 31,
+    "model": "products.brand",
+    "fields": { "name": "Eau Royal Candle", "db_name": "eau_royal_candle" }
+  }
+]

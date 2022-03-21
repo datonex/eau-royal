@@ -1,0 +1,12 @@
+[
+  {
+    "pk": 1,
+    "model": "products.category",
+    "fields": { "name": "Perfume", "db_name": "perfume" }
+  },
+  {
+    "pk": 2,
+    "model": "products.category",
+    "fields": { "name": "Candles", "db_name": "candles" }
+  }
+]
