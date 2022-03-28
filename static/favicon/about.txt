@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Petit Formal Script
+- Font Author: Copyright (c) 2011, Pablo Impallari (www.impallari.com|impallari@gmail.com), Copyright (c) 2011, Brenda Gallo. (gbrenda1987@gmail.com), Copyright (c) 2011, Rodrigo Fuenzalida (www.rfuenzalida.com|hello@rfuenzalida.com),   with Reserved Font Name Petit Formal Script.
+- Font Source: http://fonts.gstatic.com/s/petitformalscript/v11/B50TF6xQr2TXJBnGOFME6u5OR83oRP5qoHnqP4gZSiE.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
