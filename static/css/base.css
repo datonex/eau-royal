@@ -68,6 +68,10 @@ body {
   color: var(--transparent) !important;
 }
 
+.border-dp {
+  border-color: var(--dark-purple) !important;
+}
+
 .header-displace {
   height: 72px;
 }

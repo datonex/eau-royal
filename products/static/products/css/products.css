@@ -1,0 +1,23 @@
+#product-list-section img {
+  height: 280px;
+  width: 160px;
+  object-fit: contain;
+}
+
+.product-body {
+  height: 12vh;
+}
+
+@media only screen and (max-width: 415px) {
+  .product-body {
+    height: inherit;
+  }
+}
+
+@media only screen and (max-width: 374px) {
+  #product-list-section img {
+    height: 220px;
+    width: 125px;
+    object-fit: contain;
+  }
+}

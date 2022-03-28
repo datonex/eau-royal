@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'products/css/products.css' %}">
+{% endblock %}
+
+{% block content %}
+  <section class="container-fluid">
+    <div class="row text-center bg-dp">
+      <div class="col py-2">
+        <h4 class="text-lv text-uppercase mt-2">All Products</h4>
+      </div>
+    </div>
+    <div class="row text-center pb-2 mb-2 d-flex d-md-none">
+      <div class="col-6 py-2 border border-dp d-flex justify-content-center align-items-center">
+        <p class="mb-0 me-3">Sort</p>
+        <i class="fa-solid fa-chevron-right"></i>
+      </div>
+      <div class="col-6 py-2 border border-dp d-flex justify-content-center align-items-center">
+        <p class="mb-0 me-3">Filter</p>
+      </div>
+    </div>
+  </section>
+  <section id="product-list-section" class="pb-5 text-dp">
+    <div class="container px-4 px-lg-5">
+      <div class="row text-center pb-2 mb-2 d-none d-md-flex">
+        <div class="col-3 py-2 border border-dp d-flex justify-content-center align-items-center">
+          <p class="mb-0 me-3">Sort</p>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <div class="col-3 py-2 border border-dp d-flex justify-content-center align-items-center">
+          <p class="mb-0 me-3">Category</p>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <div class="col-3 py-2 border border-dp d-flex justify-content-center align-items-center">
+          <p class="mb-0 me-3">Brand</p>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <div class="col-3 py-2 border border-dp d-flex justify-content-center align-items-center">
+          <p class="mb-0 me-3">Price range</p>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+      </div>
+      <div class="row gx-2 gx-lg-5 row-cols-2 row-cols-md-4 row-cols-xl-5 justify-content-center">
+        {% for product in products %}
+          <div class="col">
+            <div class="card h-100 border-white">
+              <a href="#queryurl" class="btn  p-0">
+                {% if product.image %}
+                  <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}"/>
+                {% else %}
+                  <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}"/>
+                {% endif %}
+                <div class="card-body text-center product-body">
+                  <div class="d-flex flex-column justify-content-between">
+                    <p class="mb-1">{{ product.brand.name }}</p>
+                    <h6 class="fw-bold" href="#">{{ product.name }}</h6>
+                  </div>
+                </div>
+                <div class="card-body p-0 text-center">
+                  <p class="mb-1">£{{ product.price }}</p>
+                </div>
+              </a>
+              <div class="card-footer">
+                {% if request.user.is_superuser %}
+                  <small class="ml-3 d-flex justify-content-around">
+                    <a href="#">Edit</a>
+                    |
+                    <a class="text-danger" href="#">Delete</a>
+                  </small>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="row mt-5 d-none d-md-block">
+        <nav aria-label="pagination">
+          {% if products.has_other_pages %}
+            <ul class="pagination pagination-lg justify-content-center">
+              {% if products.has_previous %}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{ products.previous_page_number }}">&laquo;</a>
+                </li>
+              {% else %}
+                <li class="page-item disabled">
+                  <span class="page-link">&laquo;</span></li>
+              {% endif %}
+              {% for i in products.paginator.page_range %}
+                {% if products.number == i %}
+                  <li class="page-item active" aria-current="{{ i }}">
+                    <span class="page-link">{{ i }}
+                      <span class="sr-only">(current)</span>
+                    </span>
+                  </li>
+                {% else %}
+                  <li class="page-item">
+                    <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+              {% if products.has_next %}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{ products.next_page_number }}">&raquo;</a>
+                </li>
+              {% else %}
+                <li class="page-item disabled">
+                  <span class="page-link">&raquo;</span></li>
+              {% endif %}
+            </ul>
+          {% endif %}
+        </nav>
+      </div>
+      <div class="row mt-5 d-block d-md-none">
+        <nav aria-label="pagination">
+          {% if products.has_other_pages %}
+            <ul class="pagination pagination-sm justify-content-center">
+              {% if products.has_previous %}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{ products.previous_page_number }}">&laquo;</a>
+                </li>
+              {% else %}
+                <li class="page-item disabled">
+                  <span class="page-link">&laquo;</span></li>
+              {% endif %}
+              {% for i in products.paginator.page_range %}
+                {% if products.number == i %}
+                  <li class="page-item active" aria-current="{{ i }}">
+                    <span class="page-link">{{ i }}
+                      <span class="sr-only">(current)</span>
+                    </span>
+                  </li>
+                {% else %}
+                  <li class="page-item">
+                    <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+              {% if products.has_next %}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{ products.next_page_number }}">&raquo;</a>
+                </li>
+              {% else %}
+                <li class="page-item disabled">
+                  <span class="page-link">&raquo;</span></li>
+              {% endif %}
+            </ul>
+          {% endif %}
+        </nav>
+      </div>
+
+    </div>
+  </section>
+{% endblock %}
