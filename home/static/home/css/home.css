@@ -1,0 +1,14 @@
+/* ---------------- Hero ---------------- */
+
+section.hero {
+  height: 49vw;
+  background: var(--dark-purple-20) url("/static/img/hero.jpg");
+  background-position: left;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+.hero .btn-primary {
+  border: 2px var(--lavender);
+}
