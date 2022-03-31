@@ -175,6 +175,8 @@ a.footer-heading:hover {
   margin-bottom: 0 !important;
 }
 
+/* ---------------- Media Queries ---------------- */
+
 @media only screen and (max-width: 576px) {
   .icon {
     height: 1.5rem;
