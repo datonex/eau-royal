@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'products/css/products.css' %}">
+{% endblock %}
+
+{% block content %}
+  <section class="container-fluid">
+    <div class="row text-center bg-dp">
+      <div class="col py-2">
+        <h4 class="text-lv text-uppercase mt-2">{{ product.brand.name }}</h4>
+      </div>
+    </div>
+  </section>
+  <section id="product-detail-section" class="pb-5 text-dp text-center text-md-start">
+    <div class="container px-4 px-lg-5 my-5">
+      <div class="row gx-4 gx-lg-5 align-items-center">
+        <div class="col-md-7 col-12 mb-4 mb-md-0">
+          {% if product.image %}
+            <a href="{{ product.image.url }}" target="_blank">
+              <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}"/>
+            </a>
+          {% else %}
+            <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}"/>
+          {% endif %}
+        </div>
+        <div class="col-md-5 col-12 mt-5 mt-md-0 mb-4 mb-md-0">
+          <h2 class="display-5 fw-bolder mb-3">{{ product.brand.name }}</h2>
+          <h4 class="mb-3">{{ product.name }}</h4>
+          {% if product.category.name == "Perfume" %}
+            {% if product.gender == "Men" %}
+              <h6 class="mb-3">Eau de toilette for
+                <strong class="text-capitalize">him</strong>
+              </h6>
+            {% elif product.gender == "Women" %}
+              <h6 class="mb-3">Eau de toilette for
+                <strong class="text-capitalize">her</strong>
+              </h6>
+            {% else %}
+              <h6 class="mb-3">Eau de toilette for
+                <strong class="text-capitalize">all</strong>
+              </h6>
+            {% endif %}
+          {% else %}
+            <h6 class="mb-3">{{ product.category.name }}</h6>
+          {% endif %}
+          <div class="fs-5 mb-3">
+            <span class="text-muted">
+              30 ML -
+            </span>
+            £{{ product.price }}
+          </div>
+          <!-- Rating -->
+          <div></div>
+          <!-- End Rating -->
+          {% if product.has_sizes == True %}
+            <div class="btn-toolbar justify-content-center justify-content-md-start mb-5 mb-md-3" role="buttons" aria-label="Toolbar with button groups">
+              <div class="btn-group me-3" role="group" aria-label="30 milliter bottle">
+                <input type="radio" class="btn-check" name="options" id="30-bottle" autocomplete="off" checked="checked">
+                <label class="btn btn-outline-lv btn-md-lg py-4" for="30-bottle">30 ML</label>
+              </div>
+              <div class="btn-group me-3" role="group" aria-label="50 milliter bottle">
+                <input type="radio" class="btn-check" name="options" id="50-bottle" autocomplete="off">
+                <label class="btn btn-outline-lv btn-md-lg py-4" for="50-bottle">50 ML</label>
+              </div>
+              <div class="btn-group" role="group" aria-label="100 milliter bottle">
+                <input type="radio" class="btn-check" name="options" id="100-bottle" autocomplete="off">
+                <label class="btn btn-outline-lv btn-md-lg py-4" for="100-bottle">100 ML</label>
+              </div>
+            </div>
+          {% else %}
+            <div class="mb-3">
+              One size
+            </div>
+          {% endif %}
+          <div class="mb-4 mb-md-3 d-grid gap-2 col-12 col-md-9">
+            <div class="d-flex justify-content-between">
+              <div class="w-auto input-group input-group-{{ product.id }}">
+                <div class="input-group-prepend">
+                  <button class="decrement-qty btn btn-outline-lv rounded-0 decrement-qty_{{ product.id }}" data-item_id="{{ product.id }}">
+                    <i class="fa-solid fa-minus fa-lg"></i>
+                  </button>
+                </div>
+                <input class="form-control border-transparent qty_input id_qty_{{ product.id }}" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}">
+                <div class="input-group-append">
+                  <button class="increment-qty btn btn-outline-lv rounded-0 increment-qty_{{ product.id }}" data-item_id="{{ product.id }}">
+                    <i class="fa-solid fa-plus fa-lg"></i>
+                  </button>
+                </div>
+              </div>
+              <div>
+                <i class="fa-regular fa-heart icon text-lv"></i>
+              </div>
+            </div>
+          </div>
+          <div class="mb-4 mb-md-3 d-grid gap-2 col-12 col-md-9">
+            <button class="btn btn-dp btn-lg" type="button">
+              Add to basket
+            </button>
+          </div>
+          <div class="small mb-1">
+            SKU:
+            {{ product.sku }}
+          </div>
+        </div>
+        <div class="col-12 mt-md-5 pt-md-5">
+          <h4 class="mb-3">Product Description</h4>
+          <p class="lead">
+            {{ product.description }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

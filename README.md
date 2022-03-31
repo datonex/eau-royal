@@ -396,6 +396,7 @@ This website was published using [GitHub Pages](https://pages.github.com/).
 Landing page template - [startbootstrap](https://github.com/startbootstrap/startbootstrap-scrolling-nav)
 Javascript media queries - [w3schools](https://www.w3schools.com/howto/howto_js_media_queries.asp)
 Autocomplete form attributes - [htmlspec](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofilling-form-controls%3A-the-autocomplete-attribute)
+Hide input spinners - [w3schools](https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp)
 
 ### Content
 

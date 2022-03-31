@@ -46,7 +46,7 @@
         {% for product in products %}
           <div class="col">
             <div class="card h-100 border-white">
-              <a href="#queryurl" class="btn  p-0">
+              <a href="{% url 'product_detail' product.id %}" class="btn  p-0">
                 {% if product.image %}
                   <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}"/>
                 {% else %}
@@ -55,7 +55,7 @@
                 <div class="card-body text-center product-body">
                   <div class="d-flex flex-column justify-content-between">
                     <p class="mb-1">{{ product.brand.name }}</p>
-                    <h6 class="fw-bold" href="#">{{ product.name }}</h6>
+                    <h6 class="fw-bold">{{ product.name }}</h6>
                   </div>
                 </div>
                 <div class="card-body p-0 text-center">

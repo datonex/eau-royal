@@ -8,6 +8,26 @@
   height: 12vh;
 }
 
+#product-detail-section img {
+  object-fit: contain;
+}
+
+input {
+  text-align: center;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 /* ---------------- Media Queries ---------------- */
 
 @media only screen and (max-width: 415px) {
