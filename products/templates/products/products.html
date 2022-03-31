@@ -42,11 +42,11 @@
           <i class="fa-solid fa-chevron-right"></i>
         </div>
       </div>
-      <div class="row gx-2 gx-lg-5 row-cols-2 row-cols-md-4 row-cols-xl-5 justify-content-center">
+      <div id="product-detail-container" class="row gx-2 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 justify-content-center">
         {% for product in products %}
           <div class="col">
             <div class="card h-100 border-white">
-              <a href="{% url 'product_detail' product.id %}" class="btn  p-0">
+              <a href="{% url 'product_detail' product.id %}" class="btn p-0">
                 {% if product.image %}
                   <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}"/>
                 {% else %}
@@ -62,15 +62,15 @@
                   <p class="mb-1">£{{ product.price }}</p>
                 </div>
               </a>
-              <div class="card-footer">
-                {% if request.user.is_superuser %}
+              {% if request.user.is_superuser %}
+                <div class="card-footer">
                   <small class="ml-3 d-flex justify-content-around">
                     <a href="#">Edit</a>
                     |
                     <a class="text-danger" href="#">Delete</a>
                   </small>
-                {% endif %}
-              </div>
+                </div>
+              {% endif %}
             </div>
           </div>
         {% endfor %}
@@ -149,7 +149,27 @@
           {% endif %}
         </nav>
       </div>
-
     </div>
   </section>
+{% endblock %}
+
+{% block postloadjs %}
+  <script>
+    $(function () {
+      /** Add a single column very small screens */
+      var singleColumn = function (screenSize) {
+
+        if (screenSize.matches) {
+          $("#product-detail-container")
+            .removeClass("row-cols-2")
+            .addClass("row-cols-1");
+        }
+      }
+      var smallScreen = window.matchMedia("(max-width: 370px)");
+
+      singleColumn(smallScreen);
+
+      smallScreen.addListener(singleColumn);
+    });
+  </script>
 {% endblock %}
