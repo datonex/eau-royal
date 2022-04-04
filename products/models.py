@@ -51,7 +51,9 @@ class Product(models.Model):
     has_sizes = models.BooleanField(default=False, null=True, blank=True)
     has_discount = models.BooleanField(default=False, null=True, blank=True)
     has_subscription = models.BooleanField(default=False, null=True, blank=True)
-    rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
+    rating = models.DecimalField(
+        max_digits=6, decimal_places=2, null=True, blank=True, default=0
+    )
     price = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     scent = models.CharField(max_length=50, null=True, blank=True)
     description = models.TextField()

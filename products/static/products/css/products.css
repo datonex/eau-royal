@@ -9,6 +9,7 @@
 }
 
 #product-detail-section img {
+  max-height: 600px;
   object-fit: contain;
 }
 
