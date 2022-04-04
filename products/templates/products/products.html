@@ -5,6 +5,11 @@
   <link rel="stylesheet" href="{% static 'products/css/products.css' %}">
 {% endblock %}
 
+{% block extrajs %}
+  <script src="{% static 'products/js/lib/Waypoints/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'products/js/lib/Waypoints/infinite.min.js' %}"></script>
+{% endblock %}
+
 {% block content %}
   <section class="container-fluid">
     <div class="row text-center bg-dp">
@@ -42,9 +47,9 @@
           <i class="fa-solid fa-chevron-right"></i>
         </div>
       </div>
-      <div id="product-detail-container" class="row gx-2 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 justify-content-center">
+      <div id="product-detail-container" class="infinite-container row gx-2 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 justify-content-center">
         {% for product in products %}
-          <div class="col shadow mb-2">
+          <div class="infinite-item col shadow mb-2">
             <div class="card h-100 border-white">
               <a href="{% url 'product_detail' product.id %}" class="btn p-0">
                 {% if product.image %}
@@ -75,79 +80,17 @@
           </div>
         {% endfor %}
       </div>
-      <div class="row mt-5 d-none d-md-block">
-        <nav aria-label="pagination">
-          {% if products.has_other_pages %}
-            <ul class="pagination pagination-lg justify-content-center">
-              {% if products.has_previous %}
-                <li class="page-item">
-                  <a class="page-link" href="?page={{ products.previous_page_number }}">&laquo;</a>
-                </li>
-              {% else %}
-                <li class="page-item disabled">
-                  <span class="page-link">&laquo;</span></li>
-              {% endif %}
-              {% for i in products.paginator.page_range %}
-                {% if products.number == i %}
-                  <li class="page-item active" aria-current="{{ i }}">
-                    <span class="page-link">{{ i }}
-                      <span class="sr-only">(current)</span>
-                    </span>
-                  </li>
-                {% else %}
-                  <li class="page-item">
-                    <a class="page-link" href="?page={{ i }}">{{ i }}</a>
-                  </li>
-                {% endif %}
-              {% endfor %}
-              {% if products.has_next %}
-                <li class="page-item">
-                  <a class="page-link" href="?page={{ products.next_page_number }}">&raquo;</a>
-                </li>
-              {% else %}
-                <li class="page-item disabled">
-                  <span class="page-link">&raquo;</span></li>
-              {% endif %}
-            </ul>
+      <div class="row mt-5">
+        <div class=" mb-4 mb-md-3 d-grid gap-2 col-8 col-md-3 mx-auto">
+          <div id="loading" class="spinner-border text-dp mx-auto" role="status" style="display: none;">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          {% if products.has_next %}
+            <a class="infinite-more-link btn btn-dp" href="?page={{ products.next_page_number }}" type="button">
+              Loading ...
+            </a>
           {% endif %}
-        </nav>
-      </div>
-      <div class="row mt-5 d-block d-md-none">
-        <nav aria-label="pagination">
-          {% if products.has_other_pages %}
-            <ul class="pagination pagination-sm justify-content-center">
-              {% if products.has_previous %}
-                <li class="page-item">
-                  <a class="page-link" href="?page={{ products.previous_page_number }}">&laquo;</a>
-                </li>
-              {% else %}
-                <li class="page-item disabled">
-                  <span class="page-link">&laquo;</span></li>
-              {% endif %}
-              {% for i in products.paginator.page_range %}
-                {% if products.number == i %}
-                  <li class="page-item active" aria-current="{{ i }}">
-                    <span class="page-link">{{ i }}
-                      <span class="sr-only">(current)</span>
-                    </span>
-                  </li>
-                {% else %}
-                  <li class="page-item">
-                    <a class="page-link" href="?page={{ i }}">{{ i }}</a>
-                  </li>
-                {% endif %}
-              {% endfor %}
-              {% if products.has_next %}
-                <li class="page-item">
-                  <a class="page-link" href="?page={{ products.next_page_number }}">&raquo;</a>
-                </li>
-              {% else %}
-                <li class="page-item disabled">
-                  <span class="page-link">&raquo;</span></li>
-              {% endif %}
-            </ul>
-          {% endif %}
-        </nav>
+        </div>
       </div>
     </div>
   </section>
@@ -170,6 +113,16 @@
       singleColumn(smallScreen);
 
       smallScreen.addListener(singleColumn);
+
+      var infinite = new Waypoint.Infinite({
+        element: $('.infinite-container')[0],
+        onBeforePageLoad: function () {
+          $('#loading').show();
+        },
+        onAfterPageLoad: function ($items) {
+          $('#loading').hide();
+        }
+      });
     });
   </script>
 {% endblock %}

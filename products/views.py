@@ -11,16 +11,8 @@ def all_products(request):
     template = "products/products.html"
 
     products = Product.objects.all()
-    query = None
-    # paginator = Paginator(products, 60)
-    # page_number = request.GET.get("page")
 
-    # try:
-    #     products = paginator.page(page_number)
-    # except PageNotAnInteger:
-    #     products = paginator.page(1)
-    # except EmptyPage:
-    #     products = paginator.page(paginator.num_pages)
+    query = None
 
     if request.GET:
         if "q" in request.GET:
@@ -36,6 +28,16 @@ def all_products(request):
                 | Q(category__name__icontains=query)
             )
             products = products.filter(queries)
+
+    page_number = request.GET.get("page", 1)
+    paginator = Paginator(products, 60)
+
+    try:
+        products = paginator.page(page_number)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
 
     context = {
         "products": products,
