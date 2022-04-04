@@ -5,7 +5,7 @@
 }
 
 .product-body {
-  height: 12vh;
+  height: 20vh;
 }
 
 #product-detail-section img {
@@ -30,6 +30,12 @@ input[type="number"] {
 }
 
 /* ---------------- Media Queries ---------------- */
+
+@media only screen and (max-width: 768px) {
+  .product-body {
+    height: 18vh;
+  }
+}
 
 @media only screen and (max-width: 415px) {
   .product-body {
