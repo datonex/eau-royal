@@ -1,4 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib import messages
+from django.db.models import Q
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import Product
 
@@ -8,19 +10,36 @@ def all_products(request):
 
     template = "products/products.html"
 
-    products_list = Product.objects.all()
-    paginator = Paginator(products_list, 60)
-    page_number = request.GET.get("page")
+    products = Product.objects.all()
+    query = None
+    # paginator = Paginator(products, 60)
+    # page_number = request.GET.get("page")
 
-    try:
-        products = paginator.page(page_number)
-    except PageNotAnInteger:
-        products = paginator.page(1)
-    except EmptyPage:
-        products = paginator.page(paginator.num_pages)
+    # try:
+    #     products = paginator.page(page_number)
+    # except PageNotAnInteger:
+    #     products = paginator.page(1)
+    # except EmptyPage:
+    #     products = paginator.page(paginator.num_pages)
+
+    if request.GET:
+        if "q" in request.GET:
+            query = request.GET["q"]
+            if not query:
+                messages.error(request, ("You didn't enter any search criteria!"))
+                return redirect(reverse("products"))
+
+            queries = (
+                Q(name__icontains=query)
+                | Q(description__icontains=query)
+                | Q(brand__name__icontains=query)
+                | Q(category__name__icontains=query)
+            )
+            products = products.filter(queries)
 
     context = {
         "products": products,
+        "search_term": query,
     }
 
     return render(request, template, context)

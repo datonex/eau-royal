@@ -49,11 +49,11 @@
             </h1>
           </a>
         </div>
-        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-          <form method="GET" action="">
+        <div id="search-container-lg" class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+          <form method="GET" action="{% url 'products' %}">
             <div class="input-group w-100">
               <div class="input-group">
-                <input class="form-control bg-white" type="search" placeholder="Search Eau Royal" aria-label="Search Eau Royal">
+                <input class="form-control bg-white text-start border-0" name="q" type="text" placeholder="Search Eau Royal" aria-label="Search Eau Royal">
                 <button class="btn search-btn bg-white" type="submit" aria-label="search">
                   <span class="icon text-dp">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -156,11 +156,11 @@
   {% endif %}
 
   <div class="header-displace w-100"></div>
-  <div id="search-container" class="bg-white d-block d-lg-none my-2">
-    <form method="GET" action="">
+  <div id="search-container-md" class="bg-white d-block d-lg-none my-2">
+    <form method="GET" action="{% url 'products' %}">
       <div class="input-group w-100">
         <div class="input-group">
-          <input class="form-control bg-white" type="search" placeholder="Search Eau Royal" aria-label="Search Eau Royal">
+          <input class="form-control bg-white text-start" name="q" type="text" placeholder="Search Eau Royal" aria-label="Search Eau Royal">
           <button class="btn search-btn bg-white" type="submit" aria-label="search">
             <span class="icon text-dp">
               <i class="fa-solid fa-magnifying-glass"></i>
