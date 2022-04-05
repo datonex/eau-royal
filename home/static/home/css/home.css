@@ -2,7 +2,7 @@
 
 section.hero {
   height: 49vw;
-  background: var(--dark-purple-20) url("/static/img/hero.jpg");
+  background: var(--dark-purple-20) url("../img/hero.jpg");
   background-position: left;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -11,4 +11,15 @@ section.hero {
 
 .hero .btn-primary {
   border: 2px var(--lavender);
+}
+
+.card img {
+  height: 260px !important;
+  object-fit: cover !important;
+}
+
+@media only screen and (max-width: 374px) {
+  .card img {
+    height: 220px !important;
+  }
 }
