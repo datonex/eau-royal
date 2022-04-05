@@ -20,11 +20,47 @@
         <!-- if statement here if needed -->
         <div class="col">
           <div class="card h-100">
-            <a href="#queryurl" class="btn btn-outline-light p-0">
-              <img class="card-img-top" src="{% static 'img/home-hers-category.jpg' %}" alt="..."/>
+            <a href="{% url 'products' %}?gender=F" class="btn btn-outline-light p-0">
+              <img class="card-img-top" src="{% static '/home/img/home-hers-category.jpg' %}" alt="Woman smelling perfume bottle"/>
               <div class="card-body p-4">
                 <div class="text-center">
-                  <h4 class="text-dp fw-bolder" href="#">Category</h4>
+                  <h4 class="text-dp fw-bolder" href="#">Hers</h4>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <a href="{% url 'products' %}?gender=M" class="btn btn-outline-light p-0">
+              <img class="card-img-top" src="{% static '/home/img/home-his-category.jpg' %}" alt="Man holding perfume bottle"/>
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <h4 class="text-dp fw-bolder" href="#">His</h4>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <a href="{% url 'products' %}?category=candles" class="btn btn-outline-light p-0">
+              <img class="card-img-top" src="{% static '/home/img/home-candles-category.jpg' %}" alt="three lit candles"/>
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <h4 class="text-dp fw-bolder" href="#">Candles</h4>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <a href="{% url 'products' %}?has_discount=True" class="btn btn-outline-light p-0">
+              <img class="card-img-top" src="{% static 'home/img/home-sale-category.jpg' %}" alt="male hand opening sale gift box"/>
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <h4 class="text-dp fw-bolder" href="#">Sale</h4>
                 </div>
               </div>
             </a>

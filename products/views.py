@@ -1,8 +1,10 @@
+from dis import dis
+from itertools import product
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
-from django.db.models import Q
+from django.db.models import Q, F
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from .models import Product
+from .models import Product, Category, Gender
 
 
 def all_products(request):
@@ -13,8 +15,20 @@ def all_products(request):
     products = Product.objects.all()
 
     query = None
+    categories = None
+    genders = None
 
     if request.GET:
+        if "category" in request.GET:
+            categories = request.GET["category"].split(",")
+            products = products.filter(category__name__in=categories)
+            categories = Category.objects.filter(name__in=categories)
+        if "gender" in request.GET:
+            genders = request.GET["gender"].split(",")
+            products = products.filter(gender__db_name__in=genders)
+            genders = Gender.objects.filter(db_name__in=genders)
+        if "has_discount" in request.GET:
+            products = products.filter(has_discount=True)
         if "q" in request.GET:
             query = request.GET["q"]
             if not query:
@@ -42,6 +56,7 @@ def all_products(request):
     context = {
         "products": products,
         "search_term": query,
+        "homepage_filters": categories,
     }
 
     return render(request, template, context)

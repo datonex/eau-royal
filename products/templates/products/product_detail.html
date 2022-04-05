@@ -28,12 +28,12 @@
         <div class="col-md-5 col-12 mt-5 mt-md-0 mb-4 mb-md-0">
           <h2 class="display-5 fw-bolder mb-3">{{ product.brand.name }}</h2>
           <h4 class="mb-3">{{ product.name }}</h4>
-          {% if product.category.name == "Perfume" %}
-            {% if product.gender == "Men" %}
+          {% if product.category.name == "perfume" %}
+            {% if product.gender.db_name == "M" %}
               <h6 class="mb-3">Eau de toilette for
                 <strong class="text-capitalize">him</strong>
               </h6>
-            {% elif product.gender == "Women" %}
+            {% elif product.gender.db_name == "F" %}
               <h6 class="mb-3">Eau de toilette for
                 <strong class="text-capitalize">her</strong>
               </h6>
