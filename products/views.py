@@ -1,3 +1,5 @@
+from logging import exception
+from django.forms import ValidationError
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
@@ -40,14 +42,32 @@ def all_products(request):
             categories = request.GET["category"].split(",")
             products = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
+            if not categories:
+                messages.error(request, ("Category does not exist in database"))
+                return redirect(reverse("products"))
+
         if "gender" in request.GET:
             genders = request.GET["gender"].split(",")
             products = products.filter(gender__db_name__in=genders)
             genders = Gender.objects.filter(db_name__in=genders)
+            if not genders:
+                messages.error(request, ("Gender does not exist in database"))
+                return redirect(reverse("products"))
+
         if "has_discount" in request.GET:
-            discounts = request.GET["has_discount"]
-            products = products.filter(has_discount=discounts)
-            discounts = Product.objects.filter(has_discount=discounts)
+            try:
+                discounts = request.GET["has_discount"]
+                products = products.filter(has_discount=discounts)
+                discounts = Product.objects.filter(has_discount=discounts)
+            except (ValidationError) as e:
+                if isinstance(e, ValidationError):
+                    messages.error(
+                        request,
+                        (
+                            f"'{discounts}' is not boolean value, please enter 'True' or 'False'"
+                        ),
+                    )
+                    return redirect(reverse("products"))
 
         if "q" in request.GET:
             query = request.GET["q"]
@@ -74,6 +94,8 @@ def all_products(request):
         products = paginator.page(1)
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
+
+    print(discounts)
 
     context = {
         "products": products,

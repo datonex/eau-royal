@@ -397,7 +397,8 @@ Landing page template - [startbootstrap](https://github.com/startbootstrap/start
 Javascript media queries - [w3schools](https://www.w3schools.com/howto/howto_js_media_queries.asp)
 Autocomplete form attributes - [htmlspec](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofilling-form-controls%3A-the-autocomplete-attribute)
 Hide input spinners - [w3schools](https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp)
-Waypoints infinite scroll [ImakeWebThings](http://imakewebthings.com/waypoints/)
+Waypoints infinite scroll - [ImakeWebThings](http://imakewebthings.com/waypoints/)
+Catch exception type - [Stack overflow](https://stackoverflow.com/questions/32394032/the-best-way-to-determine-exception-type)
 
 ### Content
 
