@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block content %}
-  <section class="container-fluid">
+  <section class="container-fluid products-dropdown">
     <div class="row text-center bg-dp">
       <div class="col py-2">
         <h4 class="text-lv text-uppercase mt-2">All Products</h4>
@@ -27,12 +27,46 @@
       </div>
     </div>
   </section>
-  <section id="product-list-section" class="pb-5 text-dp">
+  <section id="product-list-section" class="pb-5 text-dp products-dropdown">
     <div class="container px-4 px-lg-5">
       <div class="row text-center pb-2 mb-2 d-none d-md-flex">
-        <div class="col-3 py-2 border border-dp d-flex justify-content-center align-items-center">
-          <p class="mb-0 me-3">Sort</p>
-          <i class="fa-solid fa-chevron-right"></i>
+        <div class="dropdown bg-white px-0">
+          <a class="col-3 py-2 btn btn-outline-dp rounded-0 d-flex justify-content-center align-items-center" href="#" role="button" id="sort-md-link" data-bs-toggle="dropdown" aria-expanded="false">
+            <p class="mb-0 me-3">Sort</p>
+            <i class="fa-solid fa-chevron-down"></i>
+          </a>
+          <ul class="dropdown-menu col-3 bg-white py-0" aria-labelledby="sort-md-link">
+            <div class="bg-lv-60 pt-0 pb-2">
+              <li class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
+                <div>Sort by</div>
+                <button type="button" class="btn btn-outline-dp btn-sm">Clear</button>
+              </li>
+              <li class="mx-3">
+                <a class="dropdown-item bg-white py-2 active-custom" aria-current="true" href="{% url 'products' %}">Default</a>
+              </li>
+              <li class="mx-3">
+                <hr class="text-lv dropdown-hr my-0">
+              </li>
+              <li class="mx-3">
+                <a class="dropdown-item bg-white py-2" href="{% url 'products' %}?sort=price&direction=asc">Price Low to High</a>
+              </li>
+              <li class="mx-3">
+                <hr class="text-lv dropdown-hr my-0">
+              </li>
+              <li class="mx-3">
+                <a class="dropdown-item bg-white py-2" href="{% url 'products' %}?sort=price&direction=desc">Price High to Low</a>
+              </li>
+              <li class="mx-3">
+                <hr class="text-lv dropdown-hr my-0">
+              </li>
+              <li class="mx-3">
+                <a class="dropdown-item bg-white py-2" href="{% url 'products' %}?sort=rating&direction=desc">Rating</a>
+              </li>
+              <li class="mx-3">
+                <hr class="text-lv dropdown-hr my-0">
+              </li>
+            </div>
+          </ul>
         </div>
         <div class="col-3 py-2 border border-dp d-flex justify-content-center align-items-center">
           <p class="mb-0 me-3">Category</p>
@@ -114,6 +148,7 @@
 
       smallScreen.addListener(singleColumn);
 
+      /** Begin waypoint infinite scrolling */
       var infinite = new Waypoint.Infinite({
         element: $('.infinite-container')[0],
         onBeforePageLoad: function () {

@@ -138,6 +138,30 @@ body {
   height: 72px;
 }
 
+.dropdown-hr {
+  height: 0.3rem !important;
+}
+
+.dropdown-item.active-custom,
+.dropdown-item:active {
+  color: white;
+  text-decoration: none;
+  background-color: var(--dark-purple) !important;
+}
+
+.dropdown-header {
+  display: block;
+  width: 100%;
+  padding: 0.25rem 1rem;
+  clear: both;
+  font-weight: 400;
+  text-align: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+
 /* ---------------- Navigation ---------------- */
 
 .logo-text {
