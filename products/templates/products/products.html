@@ -14,7 +14,19 @@
   <section class="container-fluid products-dropdown">
     <div class="row text-center bg-dp">
       <div class="col py-2">
-        <h4 class="text-lv text-uppercase mt-2">All Products</h4>
+        {% if request.get_full_path == "/products/" %}
+          <h4 class="text-lv text-uppercase mt-2">All products</h4>
+        {% else %}
+          {% for c in current_categories %}
+            <h4 class="text-lv text-uppercase mt-2">{{ c.name }}</h4>
+          {% endfor %}
+          {% for g in current_genders %}
+            <h4 class="text-lv text-uppercase mt-2">{{ g.name }}</h4>
+          {% endfor %}
+          {% if 'has_discount' in request.GET %}
+            <h4 class="text-lv text-uppercase mt-2">Sale</h4>
+          {% endif %}
+        {% endif %}
       </div>
     </div>
     <div class="row text-center pb-2 mb-2 d-flex d-md-none">
