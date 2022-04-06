@@ -17,6 +17,7 @@ def all_products(request):
     query = None
     categories = None
     genders = None
+    discounts = None
     sort = None
     direction = None
 
@@ -44,7 +45,9 @@ def all_products(request):
             products = products.filter(gender__db_name__in=genders)
             genders = Gender.objects.filter(db_name__in=genders)
         if "has_discount" in request.GET:
-            products = products.filter(has_discount=True)
+            discounts = request.GET["has_discount"]
+            products = products.filter(has_discount=discounts)
+            discounts = Product.objects.filter(has_discount=discounts)
 
         if "q" in request.GET:
             query = request.GET["q"]
@@ -75,7 +78,9 @@ def all_products(request):
     context = {
         "products": products,
         "search_term": query,
-        "homepage_filters": categories,
+        "current_categories": categories,
+        "current_genders": genders,
+        "current_discounts": discounts,
         "current_sorting": current_sorting,
     }
 
