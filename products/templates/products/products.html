@@ -14,6 +14,7 @@
   <section class="container-fluid products-dropdown">
     <div class="row text-center bg-dp">
       <div class="col py-2">
+      {% if request.path == '/products/'%}
         {% if request.get_full_path == "/products/" %}
           <h4 class="text-lv text-uppercase mt-2">All products</h4>
         {% else %}
@@ -26,7 +27,11 @@
           {% if 'has_discount' in request.GET %}
             <h4 class="text-lv text-uppercase mt-2">Sale</h4>
           {% endif %}
+          {% if 'sort' or 'q' in request.GET %}
+            <h4 class="text-lv text-uppercase mt-2">All products</h4>
+          {% endif %}
         {% endif %}
+      {% endif %}
       </div>
     </div>
     <div class="row text-center pb-2 mb-2 d-flex d-md-none">
@@ -96,6 +101,33 @@
           <p class="mb-0 me-3">Price range</p>
           <i class="fa-solid fa-chevron-right"></i>
         </div>
+      </div>
+      <div class="row gx-2 gx-l-5">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            {% if request.get_full_path == "/products/" %}
+              <li class="breadcrumb-item active" aria-current="page">All products</li>
+            {% endif %}
+            {% if search_term or current_categories or current_genders or current_discounts or current_sorting != 'None_None' %}
+              <li class="breadcrumb-item"><a href="{% url 'products' %}">All products</a></li>
+              {% for c in current_categories %}
+                <li class="breadcrumb-item active" aria-current="page">{{ c.name }}</li>
+              {% endfor %}
+              {% for g in current_genders %}
+                <li class="breadcrumb-item"><a href="{% url 'products' %}/?category=perfumes">Perfumes</a></li>
+                <li class="breadcrumb-item text-capitalize active" aria-current="page">{{ g.name }}</li>
+              {% endfor %}
+              {% if 'has_discount' in request.GET %}
+                <li class="breadcrumb-item text-capitalize active" aria-current="page">Sale</li>
+              {% endif %}
+              {% else %}
+              
+            {% endif %}
+          </ol>
+        </nav>
+        <p class="text-muted text-center text-md-left">
+          {{ products|length }} products {% if search_term %} found for "{{ search_term }}" {% endif %} out of {{ total_products }} items
+        </p>
       </div>
       <div id="product-detail-container" class="infinite-container row gx-2 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 justify-content-center">
         {% for product in products %}
