@@ -15,6 +15,7 @@ def all_products(request):
     template = "products/products.html"
 
     products = Product.objects.all()
+    total_products = products.count()
 
     query = None
     categories = None
@@ -43,7 +44,9 @@ def all_products(request):
             products = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
             if not categories:
-                messages.error(request, ("Category does not exist in database"))
+                messages.error(
+                    request, (f"'{categories}' does not exist in Categories table")
+                )
                 return redirect(reverse("products"))
 
         if "gender" in request.GET:
@@ -51,7 +54,7 @@ def all_products(request):
             products = products.filter(gender__db_name__in=genders)
             genders = Gender.objects.filter(db_name__in=genders)
             if not genders:
-                messages.error(request, ("Gender does not exist in database"))
+                messages.error(request, (f"'{genders}' does not exist in Gender table"))
                 return redirect(reverse("products"))
 
         if "has_discount" in request.GET:
@@ -64,7 +67,7 @@ def all_products(request):
                     messages.error(
                         request,
                         (
-                            f"'{discounts}' is not boolean value, please enter 'True' or 'False'"
+                            f"'{discounts}' is not a boolean value, please enter 'True' or 'False'"
                         ),
                     )
                     return redirect(reverse("products"))
@@ -99,6 +102,7 @@ def all_products(request):
 
     context = {
         "products": products,
+        "total_products": total_products,
         "search_term": query,
         "current_categories": categories,
         "current_genders": genders,
