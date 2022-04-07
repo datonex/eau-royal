@@ -29,6 +29,11 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+.scroll .dropdown-menu {
+  max-height: 240px;
+  overflow-y: auto;
+}
+
 /* ---------------- Media Queries ---------------- */
 
 @media only screen and (max-width: 768px) {

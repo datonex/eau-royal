@@ -6,7 +6,7 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
-from .models import Product, Category, Gender
+from .models import Brand, Product, Category, Gender
 
 
 def all_products(request):
@@ -17,9 +17,12 @@ def all_products(request):
     products = Product.objects.all()
     total_products = products.count()
 
+    brand_list = Brand.objects.all()
+
     query = None
     categories = None
     genders = None
+    brands = None
     discounts = None
     sort = None
     direction = None
@@ -38,11 +41,13 @@ def all_products(request):
                 if direction == "desc":
                     sortkey = f"-{sortkey}"
             products = products.order_by(sortkey)
+            total_products = products.count()
 
         if "category" in request.GET:
             categories = request.GET["category"].split(",")
             products = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
+            total_products = products.count()
             if not categories:
                 messages.error(
                     request, (f"'{categories}' does not exist in Categories table")
@@ -53,8 +58,18 @@ def all_products(request):
             genders = request.GET["gender"].split(",")
             products = products.filter(gender__db_name__in=genders)
             genders = Gender.objects.filter(db_name__in=genders)
+            total_products = products.count()
             if not genders:
                 messages.error(request, (f"'{genders}' does not exist in Gender table"))
+                return redirect(reverse("products"))
+
+        if "brand" in request.GET:
+            brands = request.GET["brand"].split(",")
+            products = products.filter(brand__db_name__in=brands)
+            brands = Brand.objects.filter(db_name__in=brands)
+            total_products = products.count()
+            if not brands:
+                messages.error(request, (f"'{brands}' does not exist in Brand table"))
                 return redirect(reverse("products"))
 
         if "has_discount" in request.GET:
@@ -62,6 +77,7 @@ def all_products(request):
                 discounts = request.GET["has_discount"]
                 products = products.filter(has_discount=discounts)
                 discounts = Product.objects.filter(has_discount=discounts)
+                total_products = products.count()
             except (ValidationError) as e:
                 if isinstance(e, ValidationError):
                     messages.error(
@@ -85,6 +101,7 @@ def all_products(request):
                 | Q(category__name__icontains=query)
             )
             products = products.filter(queries)
+            total_products = products.count()
 
     current_sorting = f"{sort}_{direction}"
 
@@ -98,14 +115,14 @@ def all_products(request):
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
 
-    print(discounts)
-
     context = {
         "products": products,
+        "brands": brand_list,
         "total_products": total_products,
         "search_term": query,
         "current_categories": categories,
         "current_genders": genders,
+        "current_brands": brands,
         "current_discounts": discounts,
         "current_sorting": current_sorting,
     }

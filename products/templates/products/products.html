@@ -18,16 +18,22 @@
         {% if request.get_full_path == "/products/" %}
           <h4 class="text-lv text-uppercase mt-2">All products</h4>
         {% else %}
-          {% for c in current_categories %}
-            <h4 class="text-lv text-uppercase mt-2">{{ c.name }}</h4>
-          {% endfor %}
-          {% for g in current_genders %}
-            <h4 class="text-lv text-uppercase mt-2">{{ g.name }}</h4>
-          {% endfor %}
+          {% if 'category' in request.GET %}
+            {% for c in current_categories %}
+              <h4 class="text-lv text-uppercase mt-2">{{ c.name }}</h4>
+            {% endfor %}
+          {% endif %}
+          {% if 'gender' in request.GET %}
+            {% for g in current_genders %}
+              <h4 class="text-lv text-uppercase mt-2">{{ g.name }}</h4>
+            {% endfor %}
+          {% endif %}
           {% if 'has_discount' in request.GET %}
             <h4 class="text-lv text-uppercase mt-2">Sale</h4>
           {% endif %}
-          {% if 'sort' or 'q' in request.GET %}
+          {% if 'sort' or 'brand' in request.GET %}
+            <h4 class="text-lv text-uppercase mt-2">All products</h4>
+          {% elif '?q' in request.get_full_path %}
             <h4 class="text-lv text-uppercase mt-2">All products</h4>
           {% endif %}
         {% endif %}
@@ -47,16 +53,30 @@
   <section id="product-list-section" class="pb-5 text-dp products-dropdown">
     <div class="container-lg px-4 px-lg-5">
       <div class="row text-center pb-2 mb-2 d-none d-md-flex">
-        <div class="dropdown bg-white px-0">
-          <a class="col-3 py-2 btn btn-outline-dp rounded-0 d-flex justify-content-center align-items-center" href="#" role="button" id="sort-md-link" data-bs-toggle="dropdown" aria-expanded="false">
-            <p class="mb-0 me-3">Sort</p>
+        <div class="dropdown col-3 bg-white px-0 scroll">
+          <a class=" py-2 btn btn-outline-dp rounded-0 d-flex justify-content-between align-items-center" href="#" role="button" id="sort-md-link" data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="d-flex justify-content-between align-items-center">
+                <p class="mb-0 me-3">Sort</p>
+                {% if current_sorting == 'None_None' %} 
+                  <small class="text-muted fw-light">By default</small> 
+                {% endif %}
+                {% if current_sorting == 'price_asc' %} 
+                  <small class="text-muted fw-light">By price low to high</small> 
+                {% endif %}
+                {% if current_sorting == 'price_desc' %} 
+                  <small class="text-muted fw-light">By price high to low</small> 
+                {% endif %}
+                {% if current_sorting == 'rating_desc' %} 
+                  <small class="text-muted fw-light">Top rated</small> 
+                {% endif %}
+              </div>
             <i class="fa-solid fa-chevron-down"></i>
           </a>
-          <ul class="dropdown-menu col-3 bg-white py-0" aria-labelledby="sort-md-link">
+          <ul class="dropdown-menu col-12 bg-white py-0" aria-labelledby="sort-md-link">
             <div class="bg-lv-60 pt-0 pb-2">
               <li class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
                 <div>Sort by</div>
-                <button type="button" class="btn btn-outline-dp btn-sm">Clear</button>
+                <a type="button" class="btn btn-outline-dp btn-sm" href="{% url 'products' %}" role="button">Clear</a>
               </li>
               <li class="mx-3">
                 {% comment %} prettier-ignore {% endcomment %}
@@ -89,13 +109,94 @@
             </div>
           </ul>
         </div>
-        <div class="col-3 py-2 border border-dp d-flex justify-content-center align-items-center">
-          <p class="mb-0 me-3">Category</p>
-          <i class="fa-solid fa-chevron-right"></i>
+        <div class="dropdown col-3 bg-white px-0 scroll">
+          <a class=" py-2 btn btn-outline-dp rounded-0 d-flex justify-content-between align-items-center" href="#" role="button" id="category-md-link" data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="d-flex justify-content-between align-items-center">
+                <p class="mb-0 me-3">Category</p>
+                  {% if 'category' in request.GET %}
+                    {% for c in current_categories %}
+                      <small class="text-muted fw-light">{{ c.name }}</small> 
+                    {% endfor %}
+                  {% elif 'gender' in request.get_full_path %}
+                  <small class="text-muted fw-light">perfumes</small>
+                  {% else %}
+                    <small class="text-muted fw-light">All</small>
+                  {% endif %}
+              </div>
+            <i class="fa-solid fa-chevron-down"></i>
+          </a>
+          <ul class="dropdown-menu col-12 bg-white py-0" aria-labelledby="category-md-link">
+            <div class="bg-lv-60 pt-0 pb-2">
+              <li class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
+                <div>category</div>
+                <a type="button" class="btn btn-outline-dp btn-sm" href="{% url 'products' %}" role="button">Clear</a>
+              </li>
+              <li class="mx-3">
+                {% comment %} prettier-ignore {% endcomment %}
+                <a class="dropdown-item bg-white py-2 {% if request.get_full_path == "/products/" %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}">All</a>
+              </li>
+              <li class=" mx-3">
+                <hr class="text-lv dropdown-hr my-0">
+              </li>
+              <li class="mx-3">
+                {% comment %} prettier-ignore {% endcomment %}
+                <a class="dropdown-item bg-white py-2 {% if request.get_full_path == "/products/?category=candles" %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}?category=candles">Candles</a>
+              </li>
+              <li class="mx-3">
+                <hr class="text-lv dropdown-hr my-0">
+              </li>
+              <li class="mx-3">
+                {% comment %} prettier-ignore {% endcomment %}
+                <a class="dropdown-item bg-white py-2 {% if 'category' == "/products/?category=candles" or 'gender' in request.GET %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}?category=perfumes">Perfumes</a>
+              </li>
+              <li class="mx-3">
+                <hr class="text-lv dropdown-hr my-0">
+              </li>
+            </div>
+          </ul>
         </div>
-        <div class="col-3 py-2 border border-dp d-flex justify-content-center align-items-center">
-          <p class="mb-0 me-3">Brand</p>
-          <i class="fa-solid fa-chevron-right"></i>
+        <div class="dropdown col-3 bg-white px-0 scroll">
+          <a class=" py-2 btn btn-outline-dp rounded-0 d-flex justify-content-between align-items-center" href="#" role="button" id="brand-md-link" data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="d-flex justify-content-between align-items-center">
+                <p class="mb-0 me-3">Brand</p>
+                {% if 'brand' in request.GET %}
+                  {% for b in current_brands %}
+                  <small class="text-muted fw-light">{{ b.name }}</small>
+                  {% endfor %}
+                {% else %}
+                  <small class="text-muted fw-light">All</small>
+                {% endif %}
+              </div>
+            <i class="fa-solid fa-chevron-down"></i>
+          </a>
+          <ul class="dropdown-menu col-12 bg-white py-0" aria-labelledby="brand-md-link">
+            <div class="bg-lv-60 pt-0 pb-2">
+              <li class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
+                <div>Brand</div>
+                <a type="button" class="btn btn-outline-dp btn-sm" href="{% url 'products' %}" role="button">Clear</a>
+              </li>
+              <li class="mx-3">
+                {% comment %} prettier-ignore {% endcomment %}
+                <a class="dropdown-item bg-white py-2 {% if request.get_full_path == "/products/" %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}">
+                  All
+                </a>
+              </li>
+              <li class=" mx-3">
+                <hr class="text-lv dropdown-hr my-0">
+              </li>
+                {% for b in brands %}
+                  <li class="mx-3">
+                    {% comment %} prettier-ignore {% endcomment %}
+                    <a class="dropdown-item bg-white py-2 {% if  b.db_name in request.get_full_path %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}?brand={{ b.db_name }}">
+                      {{ b.name }}
+                    </a>
+                  </li>
+                  <li class=" mx-3">
+                    <hr class="text-lv dropdown-hr my-0">
+                  </li>
+                {% endfor %}
+            </div>
+          </ul>
         </div>
         <div class="col-3 py-2 border border-dp d-flex justify-content-center align-items-center">
           <p class="mb-0 me-3">Price range</p>
@@ -126,7 +227,7 @@
           </ol>
         </nav>
         <p class="text-muted text-center text-md-left">
-          {{ products|length }} products {% if search_term %} found for "{{ search_term }}" {% endif %} out of {{ total_products }} items
+          Showing {{ products|length }} products {% if search_term %} found for "{{ search_term }}" {% endif %} of {{ total_products }} items
         </p>
       </div>
       <div id="product-detail-container" class="infinite-container row gx-2 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 justify-content-center">
