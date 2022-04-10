@@ -1,8 +1,7 @@
-from logging import exception
 from django.forms import ValidationError
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
-from django.db.models import Q
+from django.db.models import Q, Max, Min
 from django.db.models.functions import Lower
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
@@ -12,12 +11,22 @@ from .models import Brand, Product, Category, Gender
 def all_products(request):
     """View function that returns all products, including search and sorting queries"""
 
+    def get_dict_value(dictionary):
+        """Function that returns a value given a dictionary key"""
+        for key, value in dictionary.items():
+            return value
+
     template = "products/products.html"
 
     products = Product.objects.all()
     total_products = products.count()
 
     brand_list = Brand.objects.all()
+
+    min_price_dict = Product.objects.aggregate(Min("price"))
+    max_price_dict = Product.objects.aggregate(Max("price"))
+    min_price = round(get_dict_value(min_price_dict))
+    max_price = round(get_dict_value(max_price_dict))
 
     query = None
     categories = None
@@ -26,8 +35,16 @@ def all_products(request):
     discounts = None
     sort = None
     direction = None
+    price_from = min_price
+    price_to = max_price
 
     if request.GET:
+        if "price_from" and "price_to" in request.GET:
+            price_from = request.GET.get("price_from")
+            price_to = request.GET.get("price_to")
+            products = products.filter(price__range=[price_from, price_to])
+            total_products = products.count()
+
         if "sort" in request.GET:
             sortkey = request.GET["sort"]
             sort = sortkey
@@ -125,6 +142,10 @@ def all_products(request):
         "current_brands": brands,
         "current_discounts": discounts,
         "current_sorting": current_sorting,
+        "min_price": min_price,
+        "max_price": max_price,
+        "price_from": price_from,
+        "price_to": price_to,
     }
 
     return render(request, template, context)

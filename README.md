@@ -391,7 +391,7 @@ This website was published using [GitHub Pages](https://pages.github.com/).
 
 ## Credits
 
-### Dependencies
+### Dependencies + code snippets
 
 Landing page template - [startbootstrap](https://github.com/startbootstrap/startbootstrap-scrolling-nav)
 Javascript media queries - [w3schools](https://www.w3schools.com/howto/howto_js_media_queries.asp)
@@ -399,6 +399,8 @@ Autocomplete form attributes - [htmlspec](https://html.spec.whatwg.org/multipage
 Hide input spinners - [w3schools](https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp)
 Waypoints infinite scroll - [ImakeWebThings](http://imakewebthings.com/waypoints/)
 Catch exception type - [Stack overflow](https://stackoverflow.com/questions/32394032/the-best-way-to-determine-exception-type)
+Get min and max value of a field [Stack overflow](https://stackoverflow.com/questions/844591/how-to-do-select-max-in-django)
+JS range slider [Ion range slider](http://ionden.com/a/plugins/ion.rangeSlider/index.html)
 
 ### Content
 
