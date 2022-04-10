@@ -93,7 +93,7 @@
         </li>
         <li class="mx-3">
           {% comment %} prettier-ignore {% endcomment %}
-          <a class="dropdown-item bg-white py-2 {% if 'category' == "/products/?category=candles" or 'gender' in request.GET %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}?category=perfumes">Perfumes</a>
+          <a class="dropdown-item bg-white py-2 {% if request.get_full_path == "/products/?category=perfumes" or 'gender' in request.GET %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}?category=perfumes">Perfumes</a>
         </li>
         <li class="mx-3">
           <hr class="text-lv dropdown-hr my-0">
@@ -145,9 +145,9 @@
     </ul>
   </div>
   <div class="dropdown col-3 bg-white px-0">
-    <a class=" py-2 btn btn-outline-dp rounded-0 d-flex justify-content-between align-items-center" href="#" role="button" id="price-md-link" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class=" py-2 btn btn-outline-dp rounded-0 d-flex justify-content-between align-items-center" href="#" role="button" id="price-md-link" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
         <div class="d-flex justify-content-between align-items-center">
-          <p class="mb-0 me-3">Price range</p>
+          <p class="mb-0 me-3">Price</p>
           {% if request.get_full_path == "/products/" %}
             <small class="text-muted fw-light">All</small>
           {% elif 'price_from' or 'price_to' in request.GET %}
@@ -164,15 +164,14 @@
         </li>
         <li class="mx-3 py-2 px-3 bg-white">
           <div class="dropdown-item">
-            <form method="get" action="{% url 'products' %}" class="d-flex flex-column align-items-center justify-content-between" id="range-form">
+            <form method="GET" action="{% url 'products' %}" class="d-flex flex-column align-items-center justify-content-between" id="range-form">
               <div class="range-container col-12 mb-2">
                 <div class="d-flex align-items-center justify-content-between">
-                  <input class="form-control w-25 d-none" type="number" id="input_from" name="price_from" min="{{ min_price }}" max="{{ max_price }}">
-                  <input class="form-control w-25 d-none" type="number" id="input_to" name="price_to" min="{{ min_price }}" max="{{ max_price }}">
+                  <input class="form-control w-25 d-none input-from" type="number" name="price_from" min="{{ min_price }}" max="{{ max_price }}">
+                  <input class="form-control w-25 d-none input-to" type="number" name="price_to" min="{{ min_price }}" max="{{ max_price }}">
                 </div>
-                <input type="text" id="range-slider" value="" />
+                <input type="text" class="range-slider" value="" />
               </div>
-              <button type="submit" class="btn btn-dp">Submit</button>
             </form>
           </div>
         </li>

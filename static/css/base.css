@@ -60,6 +60,10 @@ body {
   color: var(--dark-purple) !important;
 }
 
+.text-dp-80 {
+  color: var(--dark-purple-80) !important;
+}
+
 .text-lv {
   color: var(--lavender) !important;
 }
@@ -160,6 +164,13 @@ body {
   white-space: nowrap;
   background-color: transparent;
   border: 0;
+}
+
+.list-group-item.active-custom {
+  z-index: 2;
+  color: #fff !important;
+  background-color: var(--dark-purple) !important;
+  border-color: var(--dark-purple) !important;
 }
 
 /* ---------------- Navigation ---------------- */

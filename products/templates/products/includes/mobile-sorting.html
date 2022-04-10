@@ -1,0 +1,160 @@
+<div class="row text-center pb-2 mb-2 d-flex d-md-none" id="mobile-sorting">
+  <div class="dropdown col-6 bg-white px-0">
+    <a class="py-2 btn btn-outline-dp rounded-0 d-flex justify-content-evenly align-items-center" href="#" role="button" id="sort-md-link" data-bs-toggle="dropdown" aria-expanded="false">
+      <p class="mb-0 me-3">Sort</p>
+      <i class="fa-solid fa-chevron-down"></i>
+    </a>
+    <ul class="dropdown-menu col-12 bg-white py-0" aria-labelledby="sort-sm-link" >
+      <div class="bg-lv-60 pt-0 pb-2">
+        <li class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
+          <div>Sort by</div>
+          <a type="button" class="btn btn-outline-dp btn-sm" href="{% url 'products' %}" role="button">Clear</a>
+        </li>
+        <li class="mx-3">
+          {% comment %} prettier-ignore {% endcomment %}
+          <a class="dropdown-item bg-white py-2 {% if current_sorting == 'None_None' %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}">Default</a>
+        </li>
+        <li class=" mx-3">
+          <hr class="text-lv dropdown-hr my-0">
+        </li>
+        <li class="mx-3">
+          {% comment %} prettier-ignore {% endcomment %}
+          <a class="dropdown-item bg-white py-2 {% if current_sorting == 'price_asc' %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}?sort=price&direction=asc">Price Low to High</a>
+        </li>
+        <li class="mx-3">
+          <hr class="text-lv dropdown-hr my-0">
+        </li>
+        <li class="mx-3">
+          {% comment %} prettier-ignore {% endcomment %}
+          <a  class="dropdown-item bg-white py-2 {% if current_sorting == 'price_desc' %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}?sort=price&direction=desc">Price High to Low</a>
+        </li>
+        <li class="mx-3">
+          <hr class="text-lv dropdown-hr my-0">
+        </li>
+        <li class="mx-3">
+          {% comment %} prettier-ignore {% endcomment %}
+          <a  class="dropdown-item bg-white py-2 {% if current_sorting == 'rating_desc' %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}?sort=rating&direction=desc">Rating</a>
+        </li>
+        <li class="mx-3">
+          <hr class="text-lv dropdown-hr my-0">
+        </li>
+      </div>
+    </ul>
+  </div>
+  <div class="col-6 bg-white px-0">
+    <a class=" py-2 btn btn-outline-dp rounded-0 d-flex justify-content-center align-items-center" href="#offcanvasSort" role="button" id="filter-sm-link" data-bs-toggle="offcanvas" aria-label="Open sorting options" aria-controls="offcanvasSort">
+      <p class="mb-0 me-3">Filter</p>
+    </a>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasSort" aria-labelledby="offcanvasSortLabel">
+      <div class="offcanvas-header bg-white">
+        <button type="button" class="btn text-dp" data-bs-dismiss="offcanvas" aria-label="Close">
+          <i class="fa-solid fa-chevron-left icon"></i>
+        </button>
+        <h5 class="offcanvas-title text-dp">Filter</h5>
+        <a type="button" class="btn btn-outline-dp btn-sm" href="{% url 'products' %}" role="button">Clear</a>
+      </div>
+      <div class="offcanvas-body pt-0" id="mobile-filter-offcanvas-body">
+        <div class="accordion" id="accordionFilter">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="category-heading">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <div class="d-flex justify-content-between align-items-center align-content-center">
+                  <p class="mb-0 me-3">Category</p>
+                    {% if 'category' in request.GET %}
+                      {% for c in current_categories %}
+                        <small class="text-dp-80 fw-light mt-1">{{ c.name }}</small> 
+                      {% endfor %}
+                    {% elif 'gender' in request.get_full_path %}
+                    <small class="text-dp-80 fw-light mt-1">perfumes</small>
+                    {% else %}
+                      <small class="text-dp-80 fw-light mt-1">All</small>
+                    {% endif %}
+                </div>
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="category-heading" data-bs-parent="#accordionFilter">
+              <div class="accordion-body">
+                <div class="list-group">
+                    {% comment %} prettier-ignore {% endcomment %}
+                    <a class="list-group-item list-group-item-action bg-white py-2 {% if request.get_full_path == "/products/" %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}">All</a>
+                    <hr class="text-lv dropdown-hr my-0">
+                    {% comment %} prettier-ignore {% endcomment %}
+                    <a class="list-group-item list-group-item-action bg-white py-2 {% if request.get_full_path == "/products/?category=candles" %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}?category=candles">Candles</a>
+                    <hr class="text-lv dropdown-hr my-0">
+                    {% comment %} prettier-ignore {% endcomment %}
+                    <a class="list-group-item list-group-item-action bg-white py-2 {% if request.get_full_path == "/products/?category=perfumes" or 'gender' in request.GET %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}?category=perfumes">Perfumes</a>
+                    <hr class="text-lv dropdown-hr my-0">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="brand-heading">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <div class="d-flex justify-content-between align-items-center">
+                  <p class="mb-0 me-3">Brand</p>
+                  {% if 'brand' in request.GET %}
+                    {% for b in current_brands %}
+                    <small class="text-dp-80 fw-light mt-1">{{ b.name }}</small>
+                    {% endfor %}
+                  {% else %}
+                    <small class="text-dp-80 fw-light mt-1">All</small>
+                  {% endif %}
+                </div>
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="brand-heading" data-bs-parent="#accordionFilter">
+              <div class="accordion-body">
+                <div class="list-group">
+                    {% comment %} prettier-ignore {% endcomment %}
+                    <a class="list-group-item list-group-item-action bg-white py-2 {% if request.get_full_path == "/products/" %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}">
+                      All
+                    </a>
+                    <hr class="text-lv dropdown-hr my-0">
+                    {% for b in brands %}
+                        {% comment %} prettier-ignore {% endcomment %}
+                        <a class="list-group-item list-group-item-action bg-white py-2 {% if b.db_name in request.get_full_path %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}?brand={{ b.db_name }}">
+                          {{ b.name }}
+                        </a>
+                        <hr class="text-lv dropdown-hr my-0">
+                    {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="price-range-heading">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <div class="d-flex justify-content-between align-items-center">
+                  <p class="mb-0 me-3">Price</p>
+                  {% if request.get_full_path == "/products/" %}
+                    <small class="text-muted fw-light">All</small>
+                  {% elif 'price_from' or 'price_to' in request.GET %}
+                    <small class="text-muted fw-light">£{{ price_from }} - £{{ price_to }}</small>
+                  {% endif %}
+                </div>
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="price-range-heading" data-bs-parent="#accordionFilter">
+              <div class="accordion-body">
+                <div class="list-group mx-3 py-2 px-3 bg-white">
+                  <div class="list-group-item>
+                    <form method="GET" action="{% url 'products' %}" class="d-flex flex-column align-items-center justify-content-between" id="range-form-mobile">
+                      <div class="range-container col-12 mb-2">
+                        <div class="d-flex align-items-center justify-content-between">
+                          <input class="form-control w-25 d-none input-from" type="number" name="price_from" min="{{ min_price }}" max="{{ max_price }}">
+                          <input class="form-control w-25 d-none input-to" type="number" name="price_to" min="{{ min_price }}" max="{{ max_price }}">
+                        </div>
+                        <input type="text" class="range-slider" value="" />
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
