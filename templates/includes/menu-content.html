@@ -120,12 +120,6 @@
       })
     })
 
-    // add fixed footer when bs canvas hide is fired
-    $("#offcanvasNavbar").on('hide.bs.offcanvas', function () {
-      if ($("#footer").not(".fixed-bottom")) {
-        $("#footer").addClass("fixed-bottom");
-      }
-
       // remove fixed footer on small devices
       var fixedFooter = function (screenSize) {
 
@@ -139,6 +133,5 @@
       fixedFooter(smallScreen);
       smallScreen.addListener(fixedFooter);
     })
-  })
 </script>
 {% endblock %}
