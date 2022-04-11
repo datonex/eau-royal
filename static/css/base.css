@@ -97,6 +97,12 @@ body {
   border-color: var(--dark-purple) !important;
 }
 
+.btn-outline-dp:hover {
+  color: var(--dark-purple);
+  background-color: var(--lavender);
+  border-color: var(--lavender);
+}
+
 .btn-check:active + .btn-outline-dp,
 .btn-check:checked + .btn-outline-dp,
 .btn-outline-dp.active,
