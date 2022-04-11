@@ -15,7 +15,6 @@
   <section class="container-fluid products-dropdown">
     <div class="row text-center bg-dp">
       <div class="col py-2">
-        {% if request.path == '/products/'%}
           {% if request.get_full_path == "/products/" %}
             <h4 class="text-lv text-uppercase mt-2">All products</h4>
           {% else %}
@@ -23,22 +22,16 @@
               {% for c in current_categories %}
                 <h4 class="text-lv text-uppercase mt-2">{{ c.name }}</h4>
               {% endfor %}
-            {% endif %}
-            {% if 'gender' in request.GET %}
+            {% elif 'gender' in request.GET %}
               {% for g in current_genders %}
                 <h4 class="text-lv text-uppercase mt-2">{{ g.name }}</h4>
               {% endfor %}
-            {% endif %}
-            {% if 'has_discount' in request.GET %}
+            {% elif 'has_discount' in request.GET %}
               <h4 class="text-lv text-uppercase mt-2">Sale</h4>
-            {% endif %}
-            {% if 'sort' or 'brand' in request.GET %}
-              <h4 class="text-lv text-uppercase mt-2">All products</h4>
-            {% elif '?q' in request.get_full_path %}
+            {% else %}
               <h4 class="text-lv text-uppercase mt-2">All products</h4>
             {% endif %}
           {% endif %}
-        {% endif %}
       </div>
     </div>
 
