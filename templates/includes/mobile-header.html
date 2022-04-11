@@ -55,9 +55,17 @@
 </ul>
 </li>
 <li class="list-inline-item d-block d-lg-none">
-<a href="" class="nav-link " aria-label="link to shopping bag">
-<span class="icon text-lv">
-  <i class="fa-solid fa-bag-shopping icon"></i>
-</span>
-</a>
+  <a href="{% url 'view_bag' %}" class="nav-link " aria-label="view bag">
+    <span class="position-relative">
+      <i class="fa-solid fa-bag-shopping icon text-lv"></i>
+      {% if bag_items %}
+        <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-secondary">
+          {{ product_count }}
+          <span class="visually-hidden">items in shopping bag</span>
+        </span>
+      {% else %}
+
+      {% endif %}
+    </span>
+  </a>
 </li>

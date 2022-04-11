@@ -83,50 +83,60 @@
             <hr class="text-lv canvas-hr my-0">
           </li>
         {% endif %}
-        <li class="py-2 text-center fs-6">
-          <a class="dropdown-item py-3" href="#">My Profile</a>
-        </li>
-        <li>
-          <hr class="text-lv canvas-hr my-0">
-        </li>
-        <li class="py-2 text-center fs-6">
-          <a class="dropdown-item py-3" href="{% url 'account_logout' %}">Logout</a>
-        </li>
-        <li>
-          <hr class="text-lv canvas-hr my-0">
-        </li>
+          <li class="py-2 text-center fs-6">
+            <a class="dropdown-item py-3" href="#">My Profile</a>
+          </li>
+          <li>
+            <hr class="text-lv canvas-hr my-0">
+          </li>
+          <li class="py-2 text-center fs-6">
+            <a class="dropdown-item py-3" href="{% url 'account_logout' %}">Logout</a>
+          </li>
+          <li>
+            <hr class="text-lv canvas-hr my-0">
+          </li>
       {% else %}
-        <h5 class="offcanvas-title text-dp text-uppercase">MY ACCOUNT</h5>
-        <button type="button" class="btn text-dp" data-bs-dismiss="dropdown" aria-label="Close">
-          <i class="fa-solid fa-xmark icon"></i>
-        </button>
-      </li>
-      <li>
-        <hr class="text-lv canvas-hr my-0">
-      </li>
-      <li class="py-2 text-center fs-6">
-        <a class="dropdown-item py-3" href="{% url 'account_signup' %}">Register</a>
-      </li>
-      <li>
-        <hr class="text-lv canvas-hr my-0">
-      </li>
-      <li class="py-2 text-center fs-6">
-        <a class="dropdown-item py-3" href="{% url 'account_login' %}">Login</a>
-      </li>
-      <li>
-        <hr class="text-lv canvas-hr my-0">
-      </li>
-    {% endif %}
-  </ul>
-</div>
-<a href="{% url 'home' %}" class="nav-link">
-  <h1 class="logo-text my-0 text-lv">
-    <strong>Eau Royal</strong>
-  </h1>
-</a>
-<span class="icon text-lv">
-  <i class="fa-solid fa-bag-shopping icon"></i>
-</span>
+          <h5 class="offcanvas-title text-dp text-uppercase">MY ACCOUNT</h5>
+          <button type="button" class="btn text-dp" data-bs-dismiss="dropdown" aria-label="Close">
+            <i class="fa-solid fa-xmark icon"></i>
+          </button>
+        </li>
+        <li>
+          <hr class="text-lv canvas-hr my-0">
+        </li>
+        <li class="py-2 text-center fs-6">
+          <a class="dropdown-item py-3" href="{% url 'account_signup' %}">Register</a>
+        </li>
+        <li>
+          <hr class="text-lv canvas-hr my-0">
+        </li>
+        <li class="py-2 text-center fs-6">
+          <a class="dropdown-item py-3" href="{% url 'account_login' %}">Login</a>
+        </li>
+        <li>
+          <hr class="text-lv canvas-hr my-0">
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+  <a href="{% url 'home' %}" class="nav-link">
+    <h1 class="logo-text my-0 text-lv fs-3 text-center">
+      <strong>Eau Royal</strong>
+    </h1>
+  </a>
+  <a href="{% url 'view_bag' %}" class="nav-link" aria-label="view bag">
+    <span class="position-relative">
+      <i class="fa-solid fa-bag-shopping icon text-lv"></i>
+      {% if bag_items %}
+        <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-secondary">
+          {{ product_count }}
+          <span class="visually-hidden">items in shopping bag</span>
+        </span>
+      {% else %}
+
+      {% endif %}
+    </span>
+  </a>
 </div>
 
 {% block postloadjs %}
