@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-  <section class="my-5 d-flex justify-content-center">
+  <section class="my-5 d-flex justify-content-center fixed-footer">
     <div class="col-10 col-lg-4 d-flex justify-content-center flex-column ">
       <h1 class="text-center mb-5">
         {% trans "Account Inactive" %}
@@ -26,7 +26,7 @@
   <script>
     $(function () {
       var fixedFooter = function (screenSize) {
-        if (screenSize.matches) {
+        if (screenSize.matches && $("#footer")) {
           $("#footer").removeClass("fixed-bottom");
         } else {
           $("#footer").addClass("fixed-bottom");
