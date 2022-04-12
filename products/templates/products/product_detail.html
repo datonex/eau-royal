@@ -59,22 +59,25 @@
             {% if product.has_sizes == True %}
               <div class="btn-toolbar justify-content-center justify-content-md-start mb-5 mb-md-3" role="buttons" aria-label="Toolbar with button groups">
                 <div class="btn-group me-3" role="group" aria-label="30 milliter bottle">
-                  <input type="radio" class="btn-check" name="options" id="30-bottle" autocomplete="off" checked="checked">
-                  <label class="btn btn-outline-lv btn-md-lg py-4" for="30-bottle">30 ML</label>
+                  <input type="checkbox" class="btn-check chb" name="product_size" id="bottle-30" value="30 ML" autocomplete="off">
+                  <label class="btn btn-outline-lv btn-md-lg py-4" for="bottle-30">30 ML</label>
                 </div>
                 <div class="btn-group me-3" role="group" aria-label="50 milliter bottle">
-                  <input type="radio" class="btn-check" name="options" id="50-bottle" autocomplete="off">
-                  <label class="btn btn-outline-lv btn-md-lg py-4" for="50-bottle">50 ML</label>
+                  <input type="checkbox" class="btn-check chb" name="product_size" id="bottle-50" value="50 ML" autocomplete="off" checked="checked">
+                  <label class="btn btn-outline-lv btn-md-lg py-4" for="bottle-50">50 ML</label>
                 </div>
                 <div class="btn-group" role="group" aria-label="100 milliter bottle">
-                  <input type="radio" class="btn-check" name="options" id="100-bottle" autocomplete="off">
-                  <label class="btn btn-outline-lv btn-md-lg py-4" for="100-bottle">100 ML</label>
+                  <input type="checkbox" class="btn-check chb" name="product_size" id="bottle-100" value="100 ML" autocomplete="off">
+                  <label class="btn btn-outline-lv btn-md-lg py-4" for="bottle-100">100 ML</label>
                 </div>
               </div>
             {% else %}
-              <div class="mb-3">
-                One size
+            <div class="btn-toolbar justify-content-center justify-content-md-start mb-5 mb-md-3" role="buttons" aria-label="Toolbar with button groups">
+              <div class="btn-group" role="group" aria-label="100 milliter bottle">
+                <input type="checkbox" class="btn-check" name="product_size" id="one-size" value="One size"autocomplete="off" checked="checked">
+                <label class="btn btn-outline-lv btn-md-lg py-4" for="one-size">One size</label>
               </div>
+            </div>
             {% endif %}
             <div class="mb-4 mb-md-3 d-grid gap-2 col-12 col-md-9">
               <div class="d-flex justify-content-between">
@@ -125,4 +128,18 @@
       </div>
     </div>
   </section>
+{% endblock %}
+
+{% block postloadjs %}
+<script type="text/javascript">
+  $(function() {
+    $(".chb").change(function(e) {
+
+      var status = $(this).prop("checked");
+    
+      $(".chb").prop('checked', false);
+      $(this).prop('checked', true);
+    });
+  })
+</script>
 {% endblock %}
