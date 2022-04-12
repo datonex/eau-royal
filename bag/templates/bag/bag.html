@@ -88,7 +88,13 @@
                 <p>{{ item.product.name }}</p>
               </div>
               <div class="d-flex justify-content-between align-items-center">
-                <p class="text-muted">SIZE: 100 mL</p>
+                <p class="text-muted">SIZE: 
+                  {% if item.product.has_sizes %}
+                    {{ item.size }}
+                    {% else %}
+                    N/A
+                  {% endif %}
+                </p>
                 <p class="text-muted">&pound;{{ item.product.price }}</p>
               </div>
               <div class="d-flex justify-content-between align-items-center">
