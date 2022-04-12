@@ -1,111 +1,205 @@
-{% extends "base.html" %}
-{% load static %}
+{% extends "base.html" %} 
+
+{% load static %} 
 
 {% block extra_css %}
-  <link rel="stylesheet" href="{% static 'bag/css/bag.css' %}">
-{% endblock %}
+  <link rel="stylesheet" href="{% static 'bag/css/bag.css' %}" />
+{% endblock %} 
 
-{% block extra_title %}| Bag{% endblock %}
+{% block extra_title %}| Bag{% endblock %} 
 
 {% block content %}
-  <section class="container-fluid text-dp">
-    <div class="row text-center">
-      <div class="col py-2">
-        <h5 class="text-dp text-uppercase mt-2">Shopping bag</h5>
+<section class="container-fluid text-dp">
+  <div class="row text-center">
+    <div class="col py-2">
+      <h5 class="text-dp text-uppercase mt-2">Shopping bag</h5>
+    </div>
+  </div>
+  {% if bag_items %}
+  <div class="row bg-lv-40 d-flex flex-column">
+    <div class="col-12 col-sm-10 col-lg-6 mx-auto">
+      <div class="d-flex justify-content-between align-items-center">
+        <p class="fw-bold fs-5">Sub-total:</p>
+        <p>£{{ sub_total|floatformat:2 }}</p>
+      </div>
+      <div class="mb-2">
+        <h4 class="fw-bolder mb-0">Discounts:</h4>
+      </div>
+      {% if discount > 0 %}
+      <div class="d-flex justify-content-between align-items-center">
+        <p>{{ discount_percentage }}% OFF &pound;{{ discount_threshold }}</p>
+        <p class="text-danger">- £{{ discount|floatformat:2 }}</p>
+      </div>
+      {% else %}
+      <div>
+        <p class="text-center mb-0">
+          Spend £{{ discount_delta }} more to get {{ discount_percentage }}% OFF
+        </p>
+      </div>
+      {% endif %}
+      <div class="d-flex justify-content-between align-items-center">
+        <p class="fw-bold fs-5">Total</p>
+        <p class="text-start">£{{ total|floatformat:2 }}</p>
       </div>
     </div>
-    {% if bag_items %}
-      <div class="row bg-lv-40 d-flex flex-column">
-        <div class="col-12 col-sm-10 col-lg-6 mx-auto">
-          <div class="d-flex justify-content-between align-items-center">
-            <p class="fw-bold fs-5">Sub-total:</p>
-            <p>£{{ sub_total|floatformat:2 }}</p>
+    <div class="col-12 col-sm-10 col-lg-6 mx-auto mb-3">
+      <div class="d-grid gap-2 gap-lg-4 d-flex justify-content-center justify-content-md-around">
+        <a
+          class="btn btn-outline-dp d-flex justify-content-center align-items-center flex-fill"
+          href="{% url 'products' %}"
+          role="button">
+          <span class="icon">
+            <i class="fas fa-chevron-left"></i>
+          </span>
+          <span class="text-capitalize">Continue Shopping</span>
+        </a>
+        <a
+          class="btn btn-dp capitalize d-flex justify-content-center align-items-center flex-fill"
+          href="#"
+          role="button">
+          <span class="icon">
+            <i class="fa-solid fa-lock"></i>
+          </span>
+          <span class="text-capitalize">Begin Checkout</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="row d-flex flex-column justify-content-center align-items-center">
+    {% for item in bag_items %}
+    <div class="col-12 col-sm-10 col-lg-6">
+      <div class="card w-100 border-0">
+        <div class="row row-cols-1">
+          <div class="col-3 col-md-4 pe-0">
+            <img
+              src="{{ item.product.image.url }}"
+              class="card-img-top"
+              alt="{{ item.product.brand.name }} {{ item.product.name }}" />
           </div>
-          <div class="mb-2">
-            <h4 class="fw-bolder mb-0">Discounts:</h4>
-          </div>
-          {% if discount > 0 %}
-            <div class="d-flex justify-content-between align-items-center">
-              <p>{{ discount_percentage }}% OFF &pound;{{ discount_threshold }}</p>
-              <p class="text-danger">- £{{ discount|floatformat:2 }}</p>
+          <div class="col-9 col-md-8 ps-0">
+            <div class="card-body p-2 d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-center">
+                <p clas="fw-bold">{{ item.product.brand.name }}</p>
+                <span class="text-lv icon">
+                  <i class="fa-solid fa-trash-can"></i>
+                </span>
+              </div>
+              <div class="d-flex align-items-center">
+                <p>{{ item.product.name }}</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <p class="text-muted">SIZE: 100 mL</p>
+                <p class="text-muted">&pound;{{ item.product.price }}</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <p>QTY: {{ item.quantity }}</p>
+                <p>&pound; int</p>
+              </div>
             </div>
-          {% else %}
-            <div>
-              <p class="text-center mb-0">Spend £{{ discount_delta }} more to get {{ discount_percentage }}% OFF</p>
-            </div>
-          {% endif %}
-          <div class="d-flex justify-content-between align-items-center">
-            <p class="fw-bold fs-5">Total</p>
-            <p class="text-start">£{{ total|floatformat:2 }}</p>
           </div>
         </div>
-        <div class="col-12 col-sm-10 col-lg-6 mx-auto">
-          <div class="d-grid gap-2 gap-lg-4 d-flex justify-content-center justify-content-md-around">
-            <a class="btn btn-outline-dp d-flex justify-content-center align-items-center flex-fill" href="{% url 'products' %}" role="button">
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% if product_count > 4 %}
+    <div class="row bg-lv-40 d-flex flex-column">
+      <div class="col-12 col-sm-10 col-lg-6 mx-auto">
+        <div class="d-flex justify-content-between align-items-center">
+          <p class="fw-bold fs-5">Sub-total:</p>
+          <p>£{{ sub_total|floatformat:2 }}</p>
+        </div>
+        <div class="mb-2">
+          <h4 class="fw-bolder mb-0">Discounts:</h4>
+        </div>
+        {% if discount > 0 %}
+        <div class="d-flex justify-content-between align-items-center">
+          <p>{{ discount_percentage }}% OFF &pound;{{ discount_threshold }}</p>
+          <p class="text-danger">- £{{ discount|floatformat:2 }}</p>
+        </div>
+        {% else %}
+        <div>
+          <p class="text-center mb-0">
+            Spend £{{ discount_delta }} more to get {{ discount_percentage }}% OFF
+          </p>
+        </div>
+        {% endif %}
+        <div class="d-flex justify-content-between align-items-center">
+          <p class="fw-bold fs-5">Total</p>
+          <p class="text-start">£{{ total|floatformat:2 }}</p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-10 col-lg-6 mx-auto mb-3">
+        <div class="d-grid gap-2 gap-lg-4 d-flex justify-content-center justify-content-md-around">
+          <a
+            class="btn btn-outline-dp d-flex justify-content-center align-items-center flex-fill"
+            href="{% url 'products' %}"
+            role="button">
+            <span class="icon">
+              <i class="fas fa-chevron-left"></i>
+            </span>
+            <span class="text-capitalize">Continue Shopping</span>
+          </a>
+          <a
+            class="btn btn-dp capitalize d-flex justify-content-center align-items-center flex-fill"
+            href="#"
+            role="button">
+            <span class="icon">
+              <i class="fa-solid fa-lock"></i>
+            </span>
+            <span class="text-capitalize">Begin Checkout</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  {% endif %} 
+  {% else %}
+    <div class="row">
+      <div class="col">
+        <section class="fixed-footer">
+          <div class="d-flex flex-column justify-content-center align-items-center">
+            <h4 class="m-2 m-sm-3">Your bag is empty</h4>
+            <div class="m-2 m-sm-3">
+              <i class="fa-solid fa-bag-shopping fa-6x"></i>
+            </div>
+            <p class="m-2 m-sm-3">Get shopping!</p>
+            <a
+              class="btn btn-outline-dp d-flex justify-content-center align-items-center m-2 m-sm-3"
+              href="{% url 'products' %}"
+              role="button">
               <span class="icon">
                 <i class="fas fa-chevron-left"></i>
               </span>
-              <span class="text-capitalize">Continue Shopping</span>
+              <span class="text-capitalize">Products</span>
             </a>
-            <a class="btn btn-dp capitalize d-flex justify-content-center align-items-center flex-fill" href="#" role="button" aria-label="begin checkout"><span class="text-capitalize">Begin Checkout</span></a>
           </div>
-        </div>
+        </section>
       </div>
-      
-      <div class="row d-flex flex-column justify-content-center align-items-center">
-        <div class="col-12 col-sm-10 col-lg-6">
-          {{ bag_items }}
-        </div>
-      </div>
-      
-    {% else %}
-      <div class="row">
-        <div class="col">
-          <section class="fixed-footer">
-            <div class="d-flex flex-column justify-content-center align-items-center">
-              <h4 class="m-2 m-sm-3">Your bag is empty</h4>
-              <div class="m-2 m-sm-3">
-                <i class="fa-solid fa-bag-shopping fa-6x"></i>
-              </div>
-              <p class="m-2 m-sm-3">
-                Get shopping!
-              </p>
-              <a class="btn btn-outline-dp d-flex justify-content-center align-items-center m-2 m-sm-3" href="{% url 'products' %}" role="button">
-                <span class="icon">
-                  <i class="fas fa-chevron-left"></i>
-                </span>
-                <span class="text-capitalize">Products</span>
-              </a>
-            </div>
-          </section>
-        </div>
-      </div>
-    {% endif %}
-  </section>
-{% endblock %}
+    </div>
+  {% endif %}
+</section>
+{% endblock %} 
 
-{% block page_footer %}{% endblock %}
+{% block page_footer %}{% endblock %} 
 
 {% block postloadjs %}
-  <script>
-    $(function () {
+<script>
+  $(function () {
+    if ($("section").hasClass("fixed-footer")) {
+      $("#footer").addClass("fixed-bottom");
+    }
 
-      if ($('section').hasClass('fixed-footer')) {
-        $("#footer").addClass("fixed-bottom");
+    var fixedFooter = function (screenSize) {
+      if (screenSize.matches) {
+        $("#footer").removeClass("fixed-bottom");
       }
+    };
 
-      var fixedFooter = function (screenSize) {
-        if (screenSize.matches) {
-          $("#footer").removeClass("fixed-bottom");
-        } else {
-          $("#footer").addClass("fixed-bottom");
-        }
-      }
-      var smallScreen = window.matchMedia("(max-height: 520px)");
+    var smallScreen = window.matchMedia("(max-height: 520px)");
 
-      fixedFooter(smallScreen);
+    fixedFooter(smallScreen);
 
-      smallScreen.addListener(fixedFooter);
-    });
-  </script>
+    smallScreen.addListener(fixedFooter);
+  });
+</script>
 {% endblock %}

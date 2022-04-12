@@ -1,1 +1,46 @@
 @import "../../../../static/css/base.css";
+
+img {
+  /* max-height: 200px; */
+  object-fit: contain;
+  max-height: 200px;
+}
+
+input {
+  text-align: center;
+}
+
+/* ---------------- Chrome, Safari, Edge, Opera remove spin---------------- */
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ---------------- Firefox remove spin---------------- */
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .card-title {
+    font-size: 14px !important;
+  }
+
+  .card-text {
+    font-size: 12px !important;
+  }
+}
+
+@media only screen and (max-width: 475px) {
+  .card-title {
+    font-size: 12px !important;
+  }
+
+  .card-text {
+    font-size: 10px !important;
+  }
+}
