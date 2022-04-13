@@ -131,15 +131,15 @@
 {% endblock %}
 
 {% block postloadjs %}
-<script type="text/javascript">
-  $(function() {
-    $(".chb").change(function(e) {
+  <script type="text/javascript">
+    $(function() {
+      $(".chb").change(function(e) {
 
-      var status = $(this).prop("checked");
-    
-      $(".chb").prop('checked', false);
-      $(this).prop('checked', true);
+        var status = $(this).prop("checked");
+      
+        $(".chb").prop('checked', false);
+        $(this).prop('checked', true);
+      });
     });
-  })
-</script>
+  </script>
 {% endblock %}
