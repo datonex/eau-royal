@@ -38,7 +38,7 @@
           <h4 class="mb-3">{{ product.name }}</h4>
           {% if product.category.name == "perfumes" %}
             {% for g in product.gender.db_name %}
-              <h6 class="mb-3">Eau de toilette for
+              <h6 class="mb-3">Eau de toilette for {{ item.item_id }}
                 <strong class="text-capitalize">{{ product.gender.name }}</strong>
               </h6>
             {% endfor %}
@@ -56,6 +56,7 @@
           <!-- End Rating -->
           <form action="{% url 'add_to_bag' product.id %}" method="POST">
             {% csrf_token %}
+            
             {% if product.has_sizes == True %}
               <div class="btn-toolbar justify-content-center justify-content-md-start mb-5 mb-md-3" role="buttons" aria-label="Toolbar with button groups">
                 <div class="btn-group me-3" role="group" aria-label="30 milliter bottle">
@@ -87,7 +88,7 @@
                       <i class="fa-solid fa-minus fa-lg"></i>
                     </button>
                   </div>
-                  <input class="form-control border-0 qty_input id_qty_{{ product.id }}" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}">
+                  <input class="form-control border-0 qty_input id_qty_{{ product.id }}" type="number" name="quantity" value="1" min="1" max="6" data-item_id="{{ product.id }}">
                   <div class="input-group-append">
                     <button class="increment-qty btn btn-outline-lv rounded-0 increment-qty_{{ product.id }}" data-item_id="{{ product.id }}">
                       <i class="fa-solid fa-plus fa-lg"></i>
@@ -142,4 +143,5 @@
       });
     });
   </script>
+  <script type="text/javascript" src={% static 'products/js/quantity_input.js' %}></script>
 {% endblock %}
