@@ -25,7 +25,7 @@
       <div class="mb-2">
         <h4 class="fw-bolder mb-0">Discounts:</h4>
       </div>
-      {% if discount > 0 %}
+      {% if sub_total > discount_threshold  %}
       <div class="d-flex justify-content-between align-items-center">
         <p>{{ discount_percentage }}% OFF &pound;{{ discount_threshold }}</p>
         <p class="text-danger">- £{{ discount|floatformat:2 }}</p>
@@ -64,7 +64,7 @@
         </a>
       </div>
     </div>
-  </div>
+  </div> 
   <div class="row d-flex flex-column justify-content-center align-items-center mt-4">
     {% for item in bag_items %}
     <div class="col-12 col-sm-10 col-lg-6">
@@ -95,11 +95,11 @@
                     N/A
                   {% endif %}
                 </p>
-                <p class="text-muted">&pound;{{ item.product.price }}</p>
+                <p class="text-muted">&pound;{{ item.item_price|floatformat:2 }}</p>
               </div>
               <div class="d-flex justify-content-between align-items-center">
                 <p>QTY: {{ item.quantity }}</p>
-                <p>&pound; int</p>
+                <p>&pound; {{ item.item_total|floatformat:2 }}</p>
               </div>
             </div>
           </div>
@@ -119,7 +119,7 @@
         <div class="mb-2">
           <h4 class="fw-bolder mb-0">Discounts:</h4>
         </div>
-        {% if discount > 0 %}
+        {% if sub_total > discount_threshold  %}
         <div class="d-flex justify-content-between align-items-center">
           <p>{{ discount_percentage }}% OFF &pound;{{ discount_threshold }}</p>
           <p class="text-danger">- £{{ discount|floatformat:2 }}</p>
