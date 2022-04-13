@@ -45,11 +45,11 @@
           {% else %}
             <h6 class="mb-3">{{ product.category.name }}</h6>
           {% endif %}
-          <div class="fs-5 mb-3">
-            <span class="text-muted">
-              30 ML -
+          <div class="fs-5 mb-3 product-price">
+            <span class="text-muted product-size">
+              
             </span>
-            £{{ product.price }}
+            &pound;{{ product.price }}
           </div>
           <!-- Rating -->
           <div></div>
@@ -72,10 +72,32 @@
                   <label class="btn btn-outline-lv btn-md-lg py-4" for="bottle-100">100 ML</label>
                 </div>
               </div>
+              <div class="btn-toolbar justify-content-center justify-content-md-start mb-5 mb-md-3 d-none" role="buttons" aria-label="Toolbar with button groups">
+                <div class="btn-group" role="group" aria-label="100 milliter bottle">
+                  <input type="checkbox" class="btn-check" name="product_size" value="one size"autocomplete="off">
+                  <label class="btn btn-outline-lv btn-md-lg py-4" for="one-size">One size</label>
+                </div>
+              </div>
             {% else %}
+            <div class="d-none">
+              <div class="btn-toolbar justify-content-center justify-content-md-start mb-5 mb-md-3" role="buttons" aria-label="Toolbar with button groups">
+                <div class="btn-group me-3" role="group" aria-label="30 milliter bottle">
+                  <input type="checkbox" class="btn-check chb" name="product_size" value="30 ML" autocomplete="off">
+                  <label class="btn btn-outline-lv btn-md-lg py-4" for="bottle-30">30 ML</label>
+                </div>
+                <div class="btn-group me-3" role="group" aria-label="50 milliter bottle">
+                  <input type="checkbox" class="btn-check chb" name="product_size" value="50 ML" autocomplete="off">
+                  <label class="btn btn-outline-lv btn-md-lg py-4" for="bottle-50">50 ML</label>
+                </div>
+                <div class="btn-group" role="group" aria-label="100 milliter bottle">
+                  <input type="checkbox" class="btn-check chb" name="product_size" value="100 ML" autocomplete="off">
+                  <label class="btn btn-outline-lv btn-md-lg py-4" for="bottle-100">100 ML</label>
+                </div>
+              </div>
+            </div>
             <div class="btn-toolbar justify-content-center justify-content-md-start mb-5 mb-md-3" role="buttons" aria-label="Toolbar with button groups">
-              <div class="btn-group" role="group" aria-label="100 milliter bottle">
-                <input type="checkbox" class="btn-check" name="product_size" id="one-size" value="One size"autocomplete="off" checked="checked">
+              <div class="btn-group" role="group" aria-label="one size item">
+                <input type="radio" class="btn-check" name="product_size" id="one-size" value="one size"autocomplete="off" checked="checked">
                 <label class="btn btn-outline-lv btn-md-lg py-4" for="one-size">One size</label>
               </div>
             </div>
@@ -134,12 +156,30 @@
 {% block postloadjs %}
   <script type="text/javascript">
     $(function() {
+      // Make check boxes behave like radio buttons
       $(".chb").change(function(e) {
 
         var status = $(this).prop("checked");
-      
+
         $(".chb").prop('checked', false);
         $(this).prop('checked', true);
+      });
+
+      var priceByThree = {{ product.price }}/3
+      var priceByTwo = {{ product.price }}*2
+      var price = {{ product.price }}
+
+      $("#bottle-30").click(function(){
+        $(".product-size").text("30 ML -");
+        $(".product-price").text(`£ ${priceByThree.toFixed(2)}`);
+      });
+      $("#bottle-50").click(function(){
+        $(".product-size").text("50 ML -");
+        $(".product-price").text(`£${price.toFixed(2)}`);
+      });
+      $("#bottle-100").click(function(){
+        $(".product-size").text("100 ML -");
+        $(".product-price").text(`£${priceByTwo.toFixed(2)}`);
       });
     });
   </script>
