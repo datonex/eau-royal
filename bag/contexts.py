@@ -43,8 +43,7 @@ def bag_contents(request):
     else:
         discount = 0
         discount_delta = 0
-
-    total = discount + sub_total
+    total = sub_total - discount
 
     context = {
         "bag_items": bag_items,
