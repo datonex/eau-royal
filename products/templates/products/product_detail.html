@@ -47,7 +47,7 @@
           {% endif %}
           <div class="fs-5 mb-3 product-price">
             <span class="text-muted product-size">
-              
+              50 ML -
             </span>
             &pound;{{ product.price }}
           </div>
@@ -56,7 +56,6 @@
           <!-- End Rating -->
           <form action="{% url 'add_to_bag' product.id %}" method="POST">
             {% csrf_token %}
-            
             {% if product.has_sizes == True %}
               <div class="btn-toolbar justify-content-center justify-content-md-start mb-5 mb-md-3" role="buttons" aria-label="Toolbar with button groups">
                 <div class="btn-group me-3" role="group" aria-label="30 milliter bottle">
@@ -170,16 +169,13 @@
       var price = {{ product.price }}
 
       $("#bottle-30").click(function(){
-        $(".product-size").text("30 ML -");
-        $(".product-price").text(`£ ${priceByThree.toFixed(2)}`);
+        $(".product-price").html(`<span class="text-muted product-size">30 ML - </span>£${priceByThree.toFixed(2)}`);
       });
       $("#bottle-50").click(function(){
-        $(".product-size").text("50 ML -");
-        $(".product-price").text(`£${price.toFixed(2)}`);
+        $(".product-price").html(`<span class="text-muted product-size">50 ML - </span>£${price.toFixed(2)}`);
       });
       $("#bottle-100").click(function(){
-        $(".product-size").text("100 ML -");
-        $(".product-price").text(`£${priceByTwo.toFixed(2)}`);
+        $(".product-price").html(`<span class="text-muted product-size">100 ML - </span>£${priceByTwo.toFixed(2)}`);
       });
     });
   </script>
