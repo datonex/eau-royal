@@ -80,9 +80,20 @@
             <div class="card-body p-2 d-flex flex-column">
               <div class="d-flex justify-content-between align-items-center">
                 <p clas="fw-bold">{{ item.product.brand.name }}</p>
-                <span class="text-lv icon">
-                  <i class="fa-solid fa-trash-can"></i>
-                </span>
+                <div class="d-flex justify-content-between">
+                  <a href="" class="update-link me-5 text-decoration-none">
+                    <span class="text-dp icon d-flex flex-column">
+                      <i class="fa-solid fa-pencil text-lv"></i>
+                      <p class="mb-0">Update</p>
+                    </span>
+                  </a>
+                  <a href="" class="remove-item text-decoration-none" id="remove_{{ item.item_id }}" data-product_size="{{ item.size|cut:" " }}">
+                    <span class="text-dp icon d-flex flex-column">
+                      <i class="fa-solid fa-trash-can text-lv"></i>
+                      <p class="mb-0">Delete</p>
+                    </span>
+                  </a>
+                </div>
               </div>
               <div class="d-flex align-items-center">
                 <p>{{ item.product.name }}</p>
@@ -103,31 +114,29 @@
                   <div class="d-flex justify-content-between">
                     <div class="w-auto input-group input-group-{{ item.item_id }}">
                       <div class="input-group-prepend">
-                        <button class="decrement-qty btn btn-outline-lv rounded-0 decrement-qty_{{ item.item_id }} 
-                        {% if item.size %}decrement-size_{{ item.item_id }}_{{ item.size }}{% endif %}" 
+                        <button class="decrement-qty btn btn-outline-lv rounded-0 decrement-qty_{{ item.item_id }} {% if item.size %}decrement-size_{{ item.item_id }}_{{ item.size|cut:" " }}{% endif %}" 
                         data-item_id="{{ item.item_id }}" 
-                        data-size="{{ item.size }}">
-                          <i class="fa-solid fa-minus fa-lg"></i>
+                        data-size="{{ item.size|cut:" " }}">
+                          <i class="fa-solid fa-minus"></i>
                         </button>
                       </div>
-                      <input class="form-control border-0 qty_input id_qty_{{ item.item_id }}" 
+                      <input class="form-control border-0 qty_input id_qty_{{ item.item_id }} {% if item.size %}size_{{ item.item_id }}_{{ item.size|cut:" " }}{% endif %}" 
                         type="number" 
                         name="quantity" 
                         value="{{ item.quantity }}" 
                         min="1" 
                         max="6" 
                         data-item_id="{{ item.item_id }}" 
-                        data-size="{{ item.size }}">
+                        data-size="{{ item.size|cut:" " }}">
                       <div class="input-group-append">
-                        <button class="increment-qty btn btn-outline-lv rounded-0 increment-qty_{{item.item_id }}
-                          {% if item.size %}increment-size_{{ item.item_id }}_{{ item.size }}{% endif %}" 
+                        <button class="increment-qty btn btn-outline-lv rounded-0 increment-qty_{{item.item_id }} {% if item.size %}increment-size_{{ item.item_id }}_{{ item.size|cut:" " }}{% endif %}" 
                           data-item_id="{{ item.item_id }}" 
-                          data-size="{{ item.size }}">
-                            <i class="fa-solid fa-plus fa-lg"></i>
+                          data-size="{{ item.size|cut:" " }}">
+                            <i class="fa-solid fa-plus"></i>
                         </button>
                       </div>
                       {% if item.product.has_sizes %}
-                        <input type="hidden" name="product_size" value="{{ item.size }}">
+                        <input type="hidden" name="product_size" value="{{ item.size|cut:" " }}">
                       {% endif %}
                     </div>
                   </div>
@@ -223,7 +232,7 @@
 {% block page_footer %}{% endblock %} 
 
 {% block postloadjs %}
-<script>
+<script type="text/javascript">
   $(function () {
     // Add fixed-bottom at footer when user has no items in bag
     if ($("section").hasClass("fixed-footer")) {
@@ -244,5 +253,5 @@
     smallScreen.addListener(fixedFooter);
   });
 </script>
-<script type="text/javascript" src={% static 'products/js/quantity_input.js' %}></script>
+{% include 'products/includes/quantity_input_script.html' %}
 {% endblock %}

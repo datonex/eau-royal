@@ -10,6 +10,11 @@ input {
   text-align: center;
 }
 
+.update-link,
+.remove-item {
+  cursor: pointer;
+}
+
 /* ---------------- Chrome, Safari, Edge, Opera remove spin---------------- */
 
 input[type="number"]::-webkit-outer-spin-button,
