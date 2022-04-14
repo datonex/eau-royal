@@ -58,7 +58,7 @@
               {% endfor %}
               {% for g in current_genders %}
                 <li class="breadcrumb-item">
-                  <a href="{% url 'products' %}/?category=perfumes">Perfumes</a>
+                  <a href="{% url 'products' %}?category=perfumes">Perfumes</a>
                 </li>
                 <li class="breadcrumb-item text-capitalize active" aria-current="page">{{ g.name }}</li>
               {% endfor %}
