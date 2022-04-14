@@ -98,7 +98,40 @@
                 <p class="text-muted">&pound;{{ item.item_price|floatformat:2 }}</p>
               </div>
               <div class="d-flex justify-content-between align-items-center">
-                <p>QTY: {{ item.quantity }}</p>
+                <form class="form update-form" method="POST" action="">
+                  {% csrf_token %}
+                  <div class="d-flex justify-content-between">
+                    <div class="w-auto input-group input-group-{{ item.item_id }}">
+                      <div class="input-group-prepend">
+                        <button class="decrement-qty btn btn-outline-lv rounded-0 decrement-qty_{{ item.item_id }} 
+                        {% if item.size %}decrement-size_{{ item.item_id }}_{{ item.size }}{% endif %}" 
+                        data-item_id="{{ item.item_id }}" 
+                        data-size="{{ item.size }}">
+                          <i class="fa-solid fa-minus fa-lg"></i>
+                        </button>
+                      </div>
+                      <input class="form-control border-0 qty_input id_qty_{{ item.item_id }}" 
+                        type="number" 
+                        name="quantity" 
+                        value="{{ item.quantity }}" 
+                        min="1" 
+                        max="6" 
+                        data-item_id="{{ item.item_id }}" 
+                        data-size="{{ item.size }}">
+                      <div class="input-group-append">
+                        <button class="increment-qty btn btn-outline-lv rounded-0 increment-qty_{{item.item_id }}
+                          {% if item.size %}increment-size_{{ item.item_id }}_{{ item.size }}{% endif %}" 
+                          data-item_id="{{ item.item_id }}" 
+                          data-size="{{ item.size }}">
+                            <i class="fa-solid fa-plus fa-lg"></i>
+                        </button>
+                      </div>
+                      {% if item.product.has_sizes %}
+                        <input type="hidden" name="product_size" value="{{ item.size }}">
+                      {% endif %}
+                    </div>
+                  </div>
+                </form>
                 <p>&pound; {{ item.item_total|floatformat:2 }}</p>
               </div>
             </div>
@@ -192,10 +225,12 @@
 {% block postloadjs %}
 <script>
   $(function () {
+    // Add fixed-bottom at footer when user has no items in bag
     if ($("section").hasClass("fixed-footer")) {
       $("#footer").addClass("fixed-bottom");
     }
 
+    // Remove fixed-bottom class given screen size 
     var fixedFooter = function (screenSize) {
       if (screenSize.matches) {
         $("#footer").removeClass("fixed-bottom");
@@ -209,4 +244,5 @@
     smallScreen.addListener(fixedFooter);
   });
 </script>
+<script type="text/javascript" src={% static 'products/js/quantity_input.js' %}></script>
 {% endblock %}

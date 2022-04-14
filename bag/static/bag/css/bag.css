@@ -24,7 +24,6 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-
 @media only screen and (max-width: 768px) {
   .card-title {
     font-size: 14px !important;
