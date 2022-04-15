@@ -401,6 +401,7 @@ Waypoints infinite scroll - [ImakeWebThings](http://imakewebthings.com/waypoints
 Catch exception type - [Stack overflow](https://stackoverflow.com/questions/32394032/the-best-way-to-determine-exception-type)
 Get min and max value of a field [Stack overflow](https://stackoverflow.com/questions/844591/how-to-do-select-max-in-django)
 JS range slider [Ion range slider](http://ionden.com/a/plugins/ion.rangeSlider/index.html)
+checkboxes that behave like radio buttons [Stack overflow](https://stackoverflow.com/questions/5839884/make-checkbox-behave-like-radio-buttons-with-javascript)
 
 ### Content
 
