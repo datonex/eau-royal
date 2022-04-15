@@ -16,8 +16,6 @@
     </div>
   </div>
   {% if bag_items %}
-  {{ bag_items }}
-  <br><br>
   <div class="row bg-lv-40 d-flex flex-column">
     <div class="col-12 col-sm-10 col-lg-6 mx-auto">
       <div class="d-flex justify-content-between align-items-center">
@@ -263,12 +261,25 @@
       form = $(`.update-form-${itemId}-${size}`)
       form.submit()
     }
+
     $('.update-link').click(function() {
       var itemId = $(this).data('item_id');
       var size = $(this).data('size');
       submitForm(itemId, size)
     })
 
+    // Remove item and reload on click
+    $('.remove-item').click(function(e) {
+      var csrfToken = "{{ csrf_token }}";
+      var itemId = $(this).attr('id').split('remove_')[1];
+      var size = $(this).data('product_size');
+      var url = `/bag/remove/${itemId}/`;
+      var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
+
+      $.post(url, data).done(function() {
+        location.reload();
+      });
+    })
   });
 </script>
 {% include 'products/includes/quantity_input_script.html' %}
