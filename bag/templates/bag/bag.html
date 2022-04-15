@@ -16,6 +16,8 @@
     </div>
   </div>
   {% if bag_items %}
+  {{ bag_items }}
+  <br><br>
   <div class="row bg-lv-40 d-flex flex-column">
     <div class="col-12 col-sm-10 col-lg-6 mx-auto">
       <div class="d-flex justify-content-between align-items-center">
@@ -25,7 +27,7 @@
       <div class="mb-2">
         <h4 class="fw-bolder mb-0">Discounts:</h4>
       </div>
-      {% if sub_total > discount_threshold  %}
+      {% if sub_total >= discount_threshold  %}
       <div class="d-flex justify-content-between align-items-center">
         <p>{{ discount_percentage }}% OFF &pound;{{ discount_threshold }}</p>
         <p class="text-danger">- £{{ discount|floatformat:2 }}</p>
@@ -81,13 +83,13 @@
               <div class="d-flex justify-content-between align-items-center">
                 <p clas="fw-bold">{{ item.product.brand.name }}</p>
                 <div class="d-flex justify-content-between">
-                  <a href="" class="update-link me-5 text-decoration-none">
+                  <a class="update-link me-5 text-decoration-none" data-item_id="{{ item.item_id }}" data-size="{{ item.size }}">
                     <span class="text-dp icon d-flex flex-column">
                       <i class="fa-solid fa-pencil text-lv"></i>
                       <p class="mb-0">Update</p>
                     </span>
                   </a>
-                  <a href="" class="remove-item text-decoration-none" id="remove_{{ item.item_id }}" data-product_size="{{ item.size|cut:" " }}">
+                  <a class="remove-item text-decoration-none" id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}">
                     <span class="text-dp icon d-flex flex-column">
                       <i class="fa-solid fa-trash-can text-lv"></i>
                       <p class="mb-0">Delete</p>
@@ -109,34 +111,38 @@
                 <p class="text-muted">&pound;{{ item.item_price|floatformat:2 }}</p>
               </div>
               <div class="d-flex justify-content-between align-items-center">
-                <form class="form update-form" method="POST" action="">
+                <form class="form update-form-{{ item.item_id}}{% if item.size %}-{{ item.size }}{% endif %}" 
+                  data-item_id="{{ item.item_id }}" 
+                  data-size="{{ item.size }}" 
+                  method="POST" 
+                  action="{% url 'adjust_bag' item.item_id %}">
                   {% csrf_token %}
                   <div class="d-flex justify-content-between">
                     <div class="w-auto input-group input-group-{{ item.item_id }}">
                       <div class="input-group-prepend">
-                        <button class="decrement-qty btn btn-outline-lv rounded-0 decrement-qty_{{ item.item_id }} {% if item.size %}decrement-size_{{ item.item_id }}_{{ item.size|cut:" " }}{% endif %}" 
+                        <button class="decrement-qty btn btn-outline-lv rounded-0 decrement-qty_{{ item.item_id }} {% if item.size %}decrement-size_{{ item.item_id }}_{{ item.size }}{% endif %}" 
                         data-item_id="{{ item.item_id }}" 
-                        data-size="{{ item.size|cut:" " }}">
+                        data-size="{{ item.size }}">
                           <i class="fa-solid fa-minus"></i>
                         </button>
                       </div>
-                      <input class="form-control border-0 qty_input id_qty_{{ item.item_id }} {% if item.size %}size_{{ item.item_id }}_{{ item.size|cut:" " }}{% endif %}" 
+                      <input class="form-control border-0 qty_input id_qty_{{ item.item_id }} {% if item.size %}size_{{ item.item_id }}_{{ item.size }}{% endif %}" 
                         type="number" 
                         name="quantity" 
                         value="{{ item.quantity }}" 
                         min="1" 
                         max="6" 
                         data-item_id="{{ item.item_id }}" 
-                        data-size="{{ item.size|cut:" " }}">
+                        data-size="{{ item.size }}">
                       <div class="input-group-append">
-                        <button class="increment-qty btn btn-outline-lv rounded-0 increment-qty_{{item.item_id }} {% if item.size %}increment-size_{{ item.item_id }}_{{ item.size|cut:" " }}{% endif %}" 
+                        <button class="increment-qty btn btn-outline-lv rounded-0 increment-qty_{{item.item_id }} {% if item.size %}increment-size_{{ item.item_id }}_{{ item.size }}{% endif %}" 
                           data-item_id="{{ item.item_id }}" 
-                          data-size="{{ item.size|cut:" " }}">
+                          data-size="{{ item.size }}">
                             <i class="fa-solid fa-plus"></i>
                         </button>
                       </div>
                       {% if item.product.has_sizes %}
-                        <input type="hidden" name="product_size" value="{{ item.size|cut:" " }}">
+                        <input type="hidden" name="product_size" value="{{ item.size }}">
                       {% endif %}
                     </div>
                   </div>
@@ -161,7 +167,7 @@
         <div class="mb-2">
           <h4 class="fw-bolder mb-0">Discounts:</h4>
         </div>
-        {% if sub_total > discount_threshold  %}
+        {% if sub_total >= discount_threshold  %}
         <div class="d-flex justify-content-between align-items-center">
           <p>{{ discount_percentage }}% OFF &pound;{{ discount_threshold }}</p>
           <p class="text-danger">- £{{ discount|floatformat:2 }}</p>
@@ -251,6 +257,18 @@
     fixedFooter(smallScreen);
 
     smallScreen.addListener(fixedFooter);
+
+    // Update quantity on click
+    function submitForm(itemId, size) {
+      form = $(`.update-form-${itemId}-${size}`)
+      form.submit()
+    }
+    $('.update-link').click(function() {
+      var itemId = $(this).data('item_id');
+      var size = $(this).data('size');
+      submitForm(itemId, size)
+    })
+
   });
 </script>
 {% include 'products/includes/quantity_input_script.html' %}

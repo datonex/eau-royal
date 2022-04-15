@@ -6,10 +6,10 @@ from products.models import Product
 
 def get_price(product, key):
     price_dictionary = {
-        "30 ML": product.price / 3,
-        "50 ML": product.price,
-        "100 ML": product.price * 2,
-        "one size": product.price,
+        "30ML": product.price / 3,
+        "50ML": product.price,
+        "100ML": product.price * 2,
+        "onesize": product.price,
     }
     return price_dictionary[key]
 
@@ -23,7 +23,8 @@ def bag_contents(request):
     for item_id, item_data in bag.items():
         if isinstance(item_data, int):
             product = get_object_or_404(Product, pk=item_id)
-            price = get_price(product, item_data)
+            size = "onesize"
+            price = get_price(product, size)
             sub_total += item_data * price
             product_count += item_data
             bag_items.append(
@@ -32,7 +33,8 @@ def bag_contents(request):
                     "quantity": item_data,
                     "product": product,
                     "item_price": price,
-                    "item_total": price,
+                    "item_total": price * item_data,
+                    "size": size,
                 }
             )
         else:
@@ -52,7 +54,7 @@ def bag_contents(request):
                     }
                 )
 
-    if sub_total > settings.DISCOUNT_THRESHOLD:
+    if sub_total >= settings.DISCOUNT_THRESHOLD:
         discount = sub_total * Decimal(settings.DISCOUNT_PERCENTAGE / 100)
         discount_delta = settings.DISCOUNT_THRESHOLD - sub_total
     else:
