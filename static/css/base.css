@@ -239,6 +239,24 @@ body {
   border: 0;
 }
 
+/* ---------------- Toasts ---------------- */
+
+.message-container {
+  position: fixed;
+  top: 72px;
+  right: 15px;
+  z-index: 99999999;
+  /* margin-right: 80px; */
+}
+
+.custom-toast {
+  overflow: visible;
+}
+
+.toast-capper {
+  height: 2px;
+}
+
 /* ---------------- Footer ---------------- */
 
 .footer-heading {
@@ -294,5 +312,10 @@ a.footer-heading:hover {
 
   #user-overlay {
     width: 100vw;
+  }
+
+  .message-container {
+    right: -10px;
+    width: 99vw;
   }
 }

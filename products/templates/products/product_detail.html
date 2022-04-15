@@ -153,6 +153,7 @@
 {% endblock %}
 
 {% block postloadjs %}
+  {{ block.super }}
   <script type="text/javascript">
     $(function() {
       // Make check boxes behave like radio buttons

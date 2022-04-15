@@ -236,6 +236,7 @@
 {% block page_footer %}{% endblock %} 
 
 {% block postloadjs %}
+{{ block.super }}
 <script type="text/javascript">
   $(function () {
     // Add fixed-bottom at footer when user has no items in bag

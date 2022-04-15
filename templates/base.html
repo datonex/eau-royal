@@ -160,12 +160,16 @@
       </div>
     </div>
   </nav>
+  <div class="header-displace w-100"></div>
 
   {% if messages %}
-    <div class="message-container"></div>
+    <div class="message-container">
+      {% for message in messages %}
+        {% include 'includes/toasts/toast_success.html' %}
+      {% endfor %}
+    </div>
   {% endif %}
 
-  <div class="header-displace w-100"></div>
   <div id="search-container-md" class="bg-white d-block d-lg-none my-2">
     <form method="GET" action="{% url 'products' %}">
       <div class="input-group w-100">
@@ -277,7 +281,6 @@
                 <li>
                   <a href="#" class="nav-link text-lv">Customer Care</a>
                 </li>
-
               </ul>
             </div>
             <div>
@@ -391,7 +394,13 @@
       <div class="my-1 small text-center text-lv">Copyright &copy; 2022 - Eau Royal</div>
     </div>
   </footer>
-  {% block postloadjs %}{% endblock %}
+  {% block postloadjs %}
+    <script type="text/javascript">
+      $(function(){
+        $('.toast').toast('show');
+      });
+    </script>
+  {% endblock %}
 </body>
 
 </html>
