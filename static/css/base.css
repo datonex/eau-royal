@@ -113,6 +113,29 @@ body {
   border-color: var(--dark-purple) !important;
 }
 
+.btn-nav-dp {
+  color: var(--lavender) !important;
+  background-color: var(--dark-purple) !important;
+  border-color: var(--dark-purple) !important;
+}
+
+.btn-nav-dp:hover,
+.btn-nav-dp:active {
+  color: var(--lavender) !important;
+  background-color: var(--white) !important;
+  border-color: var(--white) !important;
+}
+
+.btn-check:active + .btn-nav-dp,
+.btn-check:checked + .btn-nav-dp,
+.btn-nav-dp.active,
+.btn-nav-dp.show,
+.btn-nav-dp:active {
+  color: var(--lavender) !important;
+  background-color: var(--white) !important;
+  border-color: var(--dark-purple) !important;
+}
+
 .btn-outline-lv {
   color: var(--dark-purple) !important;
   border-color: var(--lavender) !important;
