@@ -68,7 +68,7 @@
         <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
           <ul class="list-inline list-unstyled text-center text-lg-right my-0">
             <li class="list-inline-item dropdown">
-              <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="user account">
+              <a class="nav-link btn-dp" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="user account">
                 <span class="icon text-lv">
                   <i class="fa-solid fa-user icon"></i>
                 </span>
@@ -165,7 +165,17 @@
   {% if messages %}
     <div class="message-container">
       {% for message in messages %}
-        {% include 'includes/toasts/toast_success.html' %}
+        {% with message.level as level %}
+          {% if level == 40 %}
+            {% include 'includes/toasts/toast_error.html' %}
+          {% elif level == 30 %}
+            {% include 'includes/toasts/toast_warning.html' %}
+          {% elif level == 25 %}
+            {% include 'includes/toasts/toast_success.html' %}
+          {% else %}
+            {% include 'includes/toasts/toast_info.html' %}
+          {% endif %}
+        {% endwith %}
       {% endfor %}
     </div>
   {% endif %}
