@@ -31,7 +31,7 @@ def add_to_bag(request, item_id):
                     request,
                     (
                         f"Updated size {size} "
-                        f"{product.brand.name}, {product.name} quantity to "
+                        f"{product.brand.name}, {product.name} {product.category.name} quantity to "
                         f'{bag[item_id]["items_by_size"][size]}'
                     ),
                 )
@@ -41,7 +41,7 @@ def add_to_bag(request, item_id):
                     request,
                     (
                         f"Added size {size} "
-                        f"{product.brand.name}, {product.name} to your bag"
+                        f"{product.brand.name}, {product.name} {product.category.name} to your bag"
                     ),
                 )
         else:
@@ -50,7 +50,7 @@ def add_to_bag(request, item_id):
                 request,
                 (
                     f"Added size {size} "
-                    f"{product.brand.name}, {product.name} to your bag"
+                    f"{product.brand.name}, {product.name} {product.category.name} to your bag"
                 ),
             )
     else:
@@ -59,14 +59,15 @@ def add_to_bag(request, item_id):
             messages.success(
                 request,
                 (
-                    f"Updated {product.brand.name}, {product.name} "
+                    f"Updated {product.brand.name}, {product.name} {product.category.name} "
                     f"quantity to {bag[item_id]}"
                 ),
             )
         else:
             bag[item_id] = quantity
             messages.success(
-                request, f"Added {product.brand.name}, {product.name} to your bag"
+                request,
+                f"Added {product.brand.name}, {product.name} {product.category.name} to your bag",
             )
 
     request.session["bag"] = bag
@@ -91,7 +92,7 @@ def adjust_bag(request, item_id):
                 request,
                 (
                     f"Updated size {size} "
-                    f"{product.brand.name}, {product.name} quantity to "
+                    f"{product.brand.name}, {product.name} {product.category.name} quantity to "
                     f'{bag[item_id]["items_by_size"][size]}'
                 ),
             )
@@ -103,7 +104,7 @@ def adjust_bag(request, item_id):
                 request,
                 (
                     f"Removed size {size} "
-                    f"{product.brand.name}, {product.name} from your bag"
+                    f"{product.brand.name}, {product.name} {product.category.name} from your bag"
                 ),
             )
     else:
@@ -112,7 +113,7 @@ def adjust_bag(request, item_id):
             messages.success(
                 request,
                 (
-                    f"Updated {product.brand.name}, {product.name} "
+                    f"Updated {product.brand.name}, {product.name} {product.category.name} "
                     f"quantity to {bag[item_id]}"
                 ),
             )
@@ -120,7 +121,10 @@ def adjust_bag(request, item_id):
             bag.pop(item_id)
             messages.success(
                 request,
-                (f"Removed {product.brand.name}, {product.name} " f"from your bag"),
+                (
+                    f"Removed {product.brand.name}, {product.name} {product.category.name} "
+                    f"from your bag"
+                ),
             )
 
     request.session["bag"] = bag
@@ -144,13 +148,14 @@ def remove_from_bag(request, item_id):
                 request,
                 (
                     f"Removed size {size} "
-                    f"{product.brand.name}, {product.name} from your bag"
+                    f"{product.brand.name}, {product.name} {product.category.name} from your bag"
                 ),
             )
         else:
             bag.pop(item_id)
             messages.success(
-                request, f"Removed {product.brand.name}, {product.name} from your bag"
+                request,
+                f"Removed {product.brand.name}, {product.name} from your bag",
             )
 
         request.session["bag"] = bag

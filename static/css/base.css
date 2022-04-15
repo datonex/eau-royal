@@ -280,6 +280,12 @@ body {
   height: 2px;
 }
 
+.bag-toast-container {
+  max-height: 190px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 /* ---------------- Footer ---------------- */
 
 .footer-heading {
