@@ -28,7 +28,7 @@ development = os.environ.get("DEVELOPMENT")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if development == "True":
+if "DEVELOPMENT" in os.environ:
     DEBUG = True
 else:
     DEBUG = False
