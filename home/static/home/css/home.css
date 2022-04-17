@@ -2,7 +2,8 @@
 
 section.hero {
   height: 49vw;
-  background: var(--dark-purple-20) url("../img/hero.jpg");
+  background: var(--dark-purple-20)
+    url("https://res.cloudinary.com/datonex/image/upload/v1650202213/eau-royal/eau-royal-hompage/hero_y5snmb.jpg");
   background-position: left;
   background-repeat: no-repeat;
   background-attachment: scroll;
