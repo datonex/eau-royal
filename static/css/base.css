@@ -214,6 +214,7 @@ body {
 }
 
 .icon {
+  font-size: 2rem;
   align-items: center;
   display: inline-flex;
   justify-content: center;
