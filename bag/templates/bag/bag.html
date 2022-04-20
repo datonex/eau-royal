@@ -49,7 +49,7 @@
           href="{% url 'products' %}"
           role="button">
           <span class="icon">
-            <i class="fas fa-chevron-left"></i>
+            <i class="fas fa-chevron-left fs-4"></i>
           </span>
           <span class="text-capitalize">Continue Shopping</span>
         </a>
@@ -58,7 +58,7 @@
           href="#"
           role="button">
           <span class="icon">
-            <i class="fa-solid fa-lock"></i>
+            <i class="fa-solid fa-lock fs-4"></i>
           </span>
           <span class="text-capitalize">Begin Checkout</span>
         </a>
@@ -81,15 +81,15 @@
               <div class="d-flex justify-content-between align-items-center">
                 <p clas="fw-bold">{{ item.product.brand.name }}</p>
                 <div class="d-flex justify-content-between">
-                  <a class="update-link me-5 text-decoration-none" data-item_id="{{ item.item_id }}" data-size="{{ item.size }}">
-                    <span class="text-dp icon d-flex flex-column">
-                      <i class="fa-solid fa-pencil text-lv"></i>
+                  <a class="update-link me-2 me-sm-4 text-decoration-none" data-item_id="{{ item.item_id }}" data-size="{{ item.size }}">
+                    <span class="text-dp d-flex flex-column align-items-center">
+                      <i class="fa-solid fa-pencil fs-4 text-lv"></i>
                       <p class="mb-0">Update</p>
                     </span>
                   </a>
                   <a class="remove-item text-decoration-none" id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}">
-                    <span class="text-dp icon d-flex flex-column">
-                      <i class="fa-solid fa-trash-can text-lv"></i>
+                    <span class="text-dp d-flex flex-column align-items-center">
+                      <i class="fa-solid fa-trash-can fs-4 text-lv"></i>
                       <p class="mb-0">Delete</p>
                     </span>
                   </a>
@@ -188,8 +188,8 @@
             class="btn btn-outline-dp d-flex justify-content-center align-items-center flex-fill"
             href="{% url 'products' %}"
             role="button">
-            <span class="icon">
-              <i class="fas fa-chevron-left"></i>
+            <span>
+              <i class="fas fa-chevron-left fs-4"></i>
             </span>
             <span class="text-capitalize">Continue Shopping</span>
           </a>
@@ -197,8 +197,8 @@
             class="btn btn-dp capitalize d-flex justify-content-center align-items-center flex-fill"
             href="#"
             role="button">
-            <span class="icon">
-              <i class="fa-solid fa-lock"></i>
+            <span>
+              <i class="fa-solid fa-lock fs-4"></i>
             </span>
             <span class="text-capitalize">Begin Checkout</span>
           </a>
@@ -221,7 +221,7 @@
               href="{% url 'products' %}"
               role="button">
               <span class="icon">
-                <i class="fas fa-chevron-left"></i>
+                <i class="fas fa-chevron-left fs-4"></i>
               </span>
               <span class="text-capitalize">Products</span>
             </a>
