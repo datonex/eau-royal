@@ -15,5 +15,3 @@ planning
 .venv
 *.sqlite3
 *.pyc
-products/migrations/0004_product_cloudinary_image.py
-products/migrations/0005_auto_20220417_2000.py
