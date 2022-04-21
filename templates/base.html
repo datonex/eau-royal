@@ -68,7 +68,7 @@
         <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
           <ul class="list-inline list-unstyled text-center text-lg-right my-0">
             <li class="list-inline-item dropdown">
-              <a class="btn btn-nav-dp" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="user account">
+              <a class="btn btn-nav-dp" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="user account">
                 <span class="icon text-lv">
                   <i class="fa-solid fa-user icon"></i>
                 </span>
@@ -123,8 +123,8 @@
               {% endif %}
             </ul>
           </li>
-          <li class="list-inline-item">
-            <a href="{% url 'view_bag' %}" class="btn btn-nav-dp" aria-label="link to shopping bag">
+          <li class="list-inline-item dropdown">
+            <button class="btn btn-nav-dp" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="link to shopping bag" id="shopping-bag-button">
               <span class="position-relative">
                 <i class="fa-solid fa-bag-shopping icon text-lv"></i>
                 {% if bag_items %}
@@ -136,7 +136,12 @@
 
                 {% endif %}
               </span>
-            </a>
+            </button>
+            <div class="dropdown-menu px-3" id="bag-md" aria-labelledby="shopping-bag-button">
+              <div class"container-fluid">
+                {% include 'includes/bag_dropdown.html' %}
+              </div>
+            </div>
           </li>
         </ul>
       </div>

@@ -239,6 +239,28 @@ body {
   left: -100px;
 }
 
+#bag-lg,
+#bag-md,
+.bag-sm {
+  width: 420px;
+}
+
+.dropdown-menu[data-bs-popper].bag-sm {
+  top: 100%;
+  right: 0;
+  left: auto;
+  margin-top: 0.125rem;
+}
+
+.remove-item {
+  cursor: pointer;
+}
+
+.dropdown-bag-scroll {
+  height: 30vh;
+  overflow-y: auto;
+}
+
 #user-overlay {
   width: 400px;
   margin-bottom: 16px;
@@ -347,5 +369,16 @@ a.footer-heading:hover {
   .message-container {
     right: -10px;
     width: 99vw;
+  }
+
+  .dropdown-menu[data-bs-popper].bag-sm {
+    top: 100%;
+    right: -15px;
+    left: auto;
+    margin-top: 0.125rem;
+  }
+
+  .bag-sm {
+    width: 98vw;
   }
 }

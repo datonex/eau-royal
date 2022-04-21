@@ -1,11 +1,11 @@
 <li class="list-inline-item dropdown d-none d-md-block d-lg-none">
-  <a class="btn btn-nav-dp" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="user account">
+  <button class="btn btn-nav-dp" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="user account">
     <span class="icon text-lv">
       <i class="fa-solid fa-user icon"></i>
     </span>
-  </a>
+  </button>
   <ul class="dropdown-menu text-dp" id="user-options">
-  <li>
+  <li class="text-center">
     {% if request.user.is_authenticated %}
       <h5 class="text-dp text-uppercase ">hi,
         {{request.user.username}}</h5>
@@ -54,8 +54,8 @@
 {% endif %}
 </ul>
 </li>
-<li class="list-inline-item d-block d-lg-none">
-  <a href="{% url 'view_bag' %}" class="btn btn-nav-dp " aria-label="view bag">
+<li class="list-inline-item d-block d-lg-none dropdown">
+  <button class="btn btn-nav-dp" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="view shopping bag">
     <span class="position-relative">
       <i class="fa-solid fa-bag-shopping icon text-lv"></i>
       {% if bag_items %}
@@ -64,8 +64,13 @@
           <span class="visually-hidden">items in shopping bag</span>
         </span>
       {% else %}
-
+  
       {% endif %}
     </span>
-  </a>
+  </button>
+  <div class="dropdown-menu px-3 bag-sm" aria-labelledby="shopping-bag-button">
+    <div class"container-fluid">
+      {% include 'includes/bag_dropdown.html' %}
+    </div>
+  </div>
 </li>
