@@ -46,6 +46,9 @@
       <div class="row gx-2 gx-l-5">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
           <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="{% url 'home' %}">Home</a>
+            </li>
             {% if request.get_full_path == "/products/" %}
               <li class="breadcrumb-item active" aria-current="page">All products</li>
             {% endif %}

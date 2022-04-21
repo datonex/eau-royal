@@ -129,6 +129,12 @@
                 </span>
                 <span class="text-capitalize">Continue Shopping</span>
               </a>
+              <a class="btn btn-outline-dp d-flex justify-content-center align-items-center" href="{% url 'home' %}" role="button">
+                <span class="icon">
+                  <i class="fas fa-house fs-4"></i>
+                </span>
+                <span class="text-capitalize">Home</span>
+              </a>
             </div>
             <input type="hidden" name="redirect_url" value="{{ request.path }}" />
           </form>
