@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "home",
     "products",
     "bag",
+    "checkout",
     "storages",
 ]
 
@@ -193,3 +194,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 DISCOUNT_PERCENTAGE = 15
 DISCOUNT_THRESHOLD = 60
+FREE_DELIVERY_THRESHOLD = 100
