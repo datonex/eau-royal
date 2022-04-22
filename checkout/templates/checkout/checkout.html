@@ -1,0 +1,15 @@
+{% extends "base.html" %} 
+
+{% load static %} 
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}" />
+{% endblock %} 
+
+{% block extra_title %}| Checkout{% endblock %} 
+
+{% block content %}
+  <h1>Checkout page</h1>
+{% endblock %}
+
+{% block page_footer %}{% endblock %}
