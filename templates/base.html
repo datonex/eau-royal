@@ -42,6 +42,7 @@
   </head>
 
   <body>
+    {% block navigation %}
     <nav class="container-fluid fixed-top" id="main-nav">
       <div class="row pt-lg-2 d-none d-lg-flex bg-dp">
         <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
@@ -204,7 +205,7 @@
       <h4 class="text-dp fs-5">{{ discount_percentage }}% OFF orders worth &pound;{{ discount_threshold }}!</h4>
     </div>
   </div>
-  {% block page_header %}{% endblock %}
+  {% endblock %}
 
   {% block content %}{% endblock %}
 

@@ -1,1 +1,43 @@
 @import "../../../../static/css/base.css";
+
+.dot {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+}
+
+.dot h3 {
+  font-weight: 700 !important;
+}
+
+.progress-width {
+  width: 100%;
+}
+
+img {
+  /* max-height: 200px; */
+  object-fit: contain;
+  max-height: 160px;
+}
+
+/* ---------------- Media Queries ---------------- */
+
+@media only screen and (max-width: 426px) {
+  .dot {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  .dot h3 {
+    font-weight: 600 !important;
+    font-size: 16px;
+  }
+
+  .progress-width {
+    width: 90%;
+  }
+
+  p {
+    font-size: 12px;
+  }
+}
