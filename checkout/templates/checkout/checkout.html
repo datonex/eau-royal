@@ -274,3 +274,23 @@
 {% endblock %}
 
 {% block page_footer %}{% endblock %}
+
+{% block postloadjs %}
+  {{ block.super }}
+  <script type="text/javascript">
+    $(function () {
+      // Update progress bar
+      if ($("form").hasClass("delivery-progress")) {
+        $(".progress-bar").css("width","31%")
+        $(".delivery-dot").removeClass("bg-lv-80")
+        $(".delivery-dot").addClass("bg-dp")
+      }
+
+      if ($("form").hasClass("payment-progress")) {
+        $(".progress-bar").css("width","65%")
+        $(".delivery-dot, .payment-dot").removeClass("bg-lv-80")
+        $(".delivery-dot, .payment-dot").addClass("bg-dp")
+      }
+    });
+  </script>
+{% endblock %}
