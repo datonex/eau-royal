@@ -40,7 +40,7 @@
               <span class="dot bg-dp d-flex justify-content-center align-items-center mx-auto">
                 <h3 class="mb-0 text-white">1</h3>
               </span>
-              <p class="mb-0 fs-6">Details</p>
+              <p class="mb-0">Details</p>
             </div>
             <div clas="d-flex flex-column justify-content-center align-items-center">
               <span class="dot delivery-dot bg-lv-80 d-flex justify-content-center align-items-center mx-auto">
@@ -65,6 +65,114 @@
       </div>
     </div>
     <div class="row mx-auto justify-content-evenly">
+      <div class="d-block col-12 col-sm-8 d-md-none mb-4">
+        <div class="accordion" id="accordionPanelsStayOpenExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-order-items">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#bag-items-checkout" aria-expanded="true" aria-controls="bag-items-checkout">
+                <h6 class="text-dp text-uppercase">
+                  Your Order
+                  <br>
+                  <small>
+                    {{ product_count }} 
+                    {% if product_count < 2 %} item {% else %} items {% endif %}
+                  </small>
+                  <br>
+                  <p class="fw-bold mt-1">Total: £{{ total|floatformat:2 }}</p>
+                </h6>
+              </button>
+            </h2>
+            <div id="bag-items-checkout" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-order-items">
+              <div class="accordion-body">
+                  {% if bag_items %}
+                  <div class="my-2 d-flex justify-content-between align-items-center">
+                    <p class="text-uppercase fs-6 mb-0">
+                      {{ product_count }} 
+                      {% if product_count < 2 %} item {% else %} items {% endif %}
+                    </p>
+                    <a
+                      class="btn btn-dp d-flex justify-content-center align-items-center"
+                      href="{% url 'view_bag' %}"
+                      role="button">
+                      <span class="text-capitalize">Edit Bag</span>
+                    </a>
+                  </div>
+                  <div class="mt-2">
+                    <hr class="default-hr w-100 border-2 mx-auto mt-1">
+                    {% for item in bag_items %}
+                      <div class="card w-100 border-0">
+                        <div class="row g-0">
+                          <div class="col-3 col-md-4 pe-0">
+                            <img
+                              src="{{ item.product.image.url }}"
+                              class="card-img-top"
+                              alt="{{ item.product.brand.name }} {{ item.product.name }}" />
+                          </div>
+                          <div class="col-9 col-md-8 ps-0">
+                            <div class="card-body p-2 d-flex flex-column">
+                              <div class="d-flex justify-content-between align-items-center">
+                                <p clas="fw-bold">{{ item.product.brand.name }}</p>
+                                <div class="d-flex justify-content-between">
+                                </div>
+                              </div>
+                              <div class="d-flex align-items-center">
+                                <p>{{ item.product.name }}</p>
+                              </div>
+                              <div class="d-flex justify-content-between align-items-center">
+                                <p class="text-muted">SIZE: 
+                                  {% if item.product.has_sizes %}
+                                    {{ item.size }}
+                                    {% else %}
+                                    N/A
+                                  {% endif %}
+                                </p>
+                                <p class="text-muted">&pound;{{ item.item_price|floatformat:2 }}</p>
+                              </div>
+                              <div class="d-flex justify-content-between align-items-center">
+                                <p class="text-muted mb-0"> QTY: {{ item.quantity }}</p>
+                                <p class="mb-0">&pound; {{ item.item_total|floatformat:2 }}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <hr class="default-hr w-100 border-2 mx-auto mt-1">
+                    {% endfor %}
+                  </div>
+                  <div class="col-12 mx-auto mb-3 d-grid gap-2">
+                    <div class="text-center bg-lv-40 p-2">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <p class="fw-bold">Sub-total:</p>
+                        <p>£{{ sub_total|floatformat:2 }}</p>
+                      </div>
+                      <div class="mb-2 text-start">
+                        <h6 class="fw-bolder mb-0">Discounts:</h6>
+                      </div>
+                      {% if sub_total >= discount_threshold  %}
+                      <div class="d-flex justify-content-between align-items-center">
+                        <p>{{ discount_percentage }}% OFF &pound;{{ discount_threshold }}</p>
+                        <p class="text-danger">- £{{ discount|floatformat:2 }}</p>
+                      </div>
+                      {% else %}
+                      <div>
+                        <p class="text-center mb-0">
+                          Spend £{{ discount_delta }} more to get {{ discount_percentage }}% OFF
+                        </p>
+                      </div>
+                      {% endif %}
+                      <div class="d-flex justify-content-between align-items-center">
+                        <p class="fw-bold">Total:</p>
+                        <p class="text-start">£{{ total|floatformat:2 }}</p>
+                      </div>
+                    </div>      
+                  </div>
+                {% else %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="col-12 col-sm-8 col-md-6 col-lg-5 bg-white form-content-container">
         {% if details|length <= 0 %}
           <form action="{% url 'checkout' %}" method="POST" class="mb-4">
@@ -180,7 +288,7 @@
         {% endif %}
       </div>
 
-      <div class="col-12 col-md-5 sidebar-bag">
+      <div class="d-none d-md-block col-md-5 sidebar-bag">
         <div class="text-center my-2">
           <h6 class="text-dp text-uppercase">Your Order</h6>
         </div>
@@ -266,8 +374,9 @@
             </div>
           </div>      
         </div>
-      {% else %}
-      {% endif %}
+        {% else %}
+
+        {% endif %}
       </div>
     </div>
   </section>

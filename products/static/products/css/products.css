@@ -1,4 +1,4 @@
-@import '../../../../static/css/base.css';
+@import "../../../../static/css/base.css";
 
 #product-list-section img {
   height: 280px;
@@ -46,10 +46,8 @@ input[type="number"] {
 
 .irs--round .irs-line {
   background-color: var(--lavender-20) !important;
-
 }
 .irs--round .irs-bar {
-
   background-color: var(--lavender) !important;
 }
 
@@ -66,21 +64,6 @@ input[type="number"] {
 .irs--round .irs-to:before,
 .irs--round .irs-single:before {
   border-top-color: var(--lavender) !important;
-}
-
-/* ---------------- Accordion override ---------------- */
-
-.accordion-button:not(.collapsed) {
-  color: var(--dark-purple) !important;
-  background-color: var(--lavender) !important;
-  box-shadow: inset 0 -1px 0 var(--lavender-60) !important;
-}
-
-.accordion-button:focus {
-  z-index: 3;
-  border-color: var(--lavender) !important;
-  outline: 0;
-  box-shadow: 0 0 0 0.25rem var(--lavender-20) !important;
 }
 
 /* ---------------- Media Queries ---------------- */

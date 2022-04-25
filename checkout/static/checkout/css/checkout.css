@@ -27,6 +27,12 @@ img {
 
 /* ---------------- Media Queries ---------------- */
 
+@media only screen and (max-width: 767px) {
+  .progress-width {
+    width: 95%;
+  }
+}
+
 @media only screen and (max-width: 426px) {
   .dot {
     height: 2rem;
@@ -36,10 +42,6 @@ img {
   .dot h3 {
     font-weight: 600 !important;
     font-size: 16px;
-  }
-
-  .progress-width {
-    width: 90%;
   }
 
   p {

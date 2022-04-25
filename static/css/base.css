@@ -202,6 +202,21 @@ body {
   border-color: var(--dark-purple) !important;
 }
 
+/* ---------------- Accordion override ---------------- */
+
+.accordion-button:not(.collapsed) {
+  color: var(--dark-purple) !important;
+  background-color: var(--lavender-40) !important;
+  box-shadow: inset 0 -1px 0 var(--lavender-60) !important;
+}
+
+.accordion-button:focus {
+  z-index: 3;
+  border-color: var(--lavender) !important;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem var(--lavender-20) !important;
+}
+
 /* ---------------- Navigation ---------------- */
 
 .logo-text {
