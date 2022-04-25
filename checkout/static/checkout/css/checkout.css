@@ -20,6 +20,11 @@ img {
   max-height: 160px;
 }
 
+.scroll-checkout {
+  max-height: 50vh;
+  overflow-y: scroll;
+}
+
 /* ---------------- Media Queries ---------------- */
 
 @media only screen and (max-width: 426px) {
