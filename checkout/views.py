@@ -1,19 +1,21 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
-from django.views.decorators.csrf import csrf_protect
+from django.conf import settings
 
 from .forms import OrderForm
 
 
 def checkout(request):
+    """
+    View to return user input when fillinf forms and handle stripe
+    payments
+    """
+
     template = "checkout/checkout.html"
     order_form = OrderForm()
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
     bag = request.session.get("bag", {})
-
-    if not bag:
-        messages.error(request, "There's nothing in your bag at the moment")
-        return redirect(reverse("products"))
-
     details = request.session.get("details", {})
     delivery = request.session.get("delivery", {})
     first_name = None
@@ -26,6 +28,10 @@ def checkout(request):
     county = None
     postcode = None
     country = None
+
+    if not bag:
+        messages.error(request, "There's nothing in your bag at the moment")
+        return redirect(reverse("products"))
 
     if "first_name" in request.POST:
         first_name = request.POST["first_name"]
@@ -78,6 +84,8 @@ def checkout(request):
         "order_form": order_form,
         "details": details,
         "delivery": delivery,
+        "stripe_public_key": stripe_public_key,
+        "client_secret": "client secret",
     }
 
     return render(request, template, context)

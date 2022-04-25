@@ -83,7 +83,7 @@
               </button>
             </h2>
             <div id="bag-items-checkout" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-order-items">
-              <div class="accordion-body">
+              <div class="accordion-body p-2">
                   {% if bag_items %}
                   <div class="my-2 d-flex justify-content-between align-items-center">
                     <p class="text-uppercase fs-6 mb-0">
@@ -263,26 +263,28 @@
                 </div>
               </div>
             </div>
-            <form action="POST" action="" class="payment-progress">
+            <form action="POST" action="{% url 'checkout' %}" class="payment-progress mb-5">
+              {% csrf_token %}
               <fieldset class="shadow bg-lv-20 p-3">
-              <legend class="text-center mt-2">Payment</legend>
-              <!-- A Stripe card element will go here -->
-              <div class="mb-3" id="card-element"></div>
-              <!-- Used to display form errors -->
-              <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
-              <!-- Pass the client secret to the view so we can get the payment intent id -->
-              <input type="hidden" value="" name="client_secret">
-              <div class="submit-button text-right mt-5 mb-2 mx-auto">                    
-                <p class="small text-danger my-0 d-flex align-items-center">
-                  <span class="icon me-2">
-                    <i class="fas fa-exclamation-circle"></i>
-                  </span>
-                  <span>Your card will be charged <strong>£{{ total|floatformat:2 }}</strong></span>
-                </p>
-                <div class="d-grid">
-                  <button type="submit" class="btn btn-dp">Place Order</button>
+                <legend class="text-center mt-2">Payment</legend>
+                <!-- A Stripe card element will go here -->
+                <div class="mb-3" id="card-element"></div>
+                <!-- Used to display form errors -->
+                <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                <!-- Pass the client secret to the view so we can get the payment intent id -->
+                <input type="hidden" value="{{ client_secret }}" name="client_secret">
+                <div class="submit-button text-right mt-5 mb-2 mx-auto">                    
+                  <p class="small text-danger my-0 d-flex align-items-center">
+                    <span class="icon me-2">
+                      <i class="fas fa-exclamation-circle"></i>
+                    </span>
+                    <span>Your card will be charged <strong>£{{ total|floatformat:2 }}</strong></span>
+                  </p>
+                  <div class="d-grid mt-3">
+                    <button type="submit" class="btn btn-dp">Place Order</button>
+                  </div>
                 </div>
-              </div>
+              </fieldset>
             </form>
           {% endif %}
         {% endif %}
@@ -388,13 +390,13 @@
   {{ block.super }}
   <script type="text/javascript">
     $(function () {
-      // Update progress bar
+      // Update progress bar if form field is comleted
       if ($("form").hasClass("delivery-progress")) {
         $(".progress-bar").css("width","31%")
         $(".delivery-dot").removeClass("bg-lv-80")
         $(".delivery-dot").addClass("bg-dp")
       }
-
+      
       if ($("form").hasClass("payment-progress")) {
         $(".progress-bar").css("width","65%")
         $(".delivery-dot, .payment-dot").removeClass("bg-lv-80")
@@ -402,4 +404,7 @@
       }
     });
   </script>
+  {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+  {{ client_secret|json_script:"id_stripe_public_key" }}
+  <script type="text/javascript" src="{% static '/checkout/js/stripe_element.js' %}"></script>
 {% endblock %}

@@ -25,6 +25,38 @@ img {
   overflow-y: scroll;
 }
 
+.StripeElement,
+.stripe-style-input {
+  box-sizing: border-box;
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background-color: white;
+  box-shadow: 0 1px 3px 0 var(--lavender-20);
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus,
+.stripe-style-input:focus,
+.stripe-style-input:active {
+  box-shadow: 0 1px 3px 0 var(--lavender-20);
+}
+
+.StripeElement--webkit-autofill {
+  background-color: var(--lavender-20) !important;
+}
+
+.stripe-style-input::placeholder {
+  color: var(--dark-purple-60);
+}
+
+.fieldset-label {
+  position: relative;
+  right: 0.5rem;
+}
+
 /* ---------------- Media Queries ---------------- */
 
 @media only screen and (max-width: 767px) {
