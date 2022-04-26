@@ -1,16 +1,42 @@
-from django.http import HttpRequest
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.views.decorators.http import require_POST
 from django.conf import settings
 from django.contrib import messages
 
 
 from .forms import OrderForm
 from .models import Order, CartItem
-
 from bag.contexts import bag_contents
 from products.models import Product
 
 import stripe
+import json
+
+
+@require_POST
+def cache_checkout_data(request):
+    try:
+        pid = request.POST.get("client_secret").split("_secret")[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(
+            pid,
+            metadata={
+                "bag": json.dumps(request.session.get("bag", {})),
+                "save_info": request.POST.get("save_info"),
+                "username": request.user,
+            },
+        )
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(
+            request,
+            (
+                "Sorry, your payment cannot be "
+                "processed right now. Please try "
+                "again later."
+            ),
+        )
+        return HttpResponse(content=e, status=400)
 
 
 def checkout(request):
@@ -36,15 +62,6 @@ def checkout(request):
             "postcode": request.POST["postcode"],
             "country": request.POST["country"],
         }
-
-        current_bag = bag_contents(request)
-        total = current_bag["total"]
-        stripe_total = round(total * 100)
-        stripe.api_key = stripe_secret_key
-        intent = stripe.PaymentIntent.create(
-            amount=stripe_total,
-            currency=settings.STRIPE_CURRENCY,
-        )
 
         order_form = OrderForm(form_data)
         if order_form.is_valid():
@@ -100,6 +117,7 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
         )
         order_form = OrderForm()
+        print(f"GET  {intent}")
 
     if not stripe_public_key:
         messages.warning(
