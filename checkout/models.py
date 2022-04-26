@@ -41,7 +41,7 @@ class Order(models.Model):
         delivery costs
         """
         self.order_total = (
-            self.lineitems.aggregate(Sum("cartitem_total"))["cartitem_total__sum"] or 0
+            self.cartitems.aggregate(Sum("cartitem_total"))["cartitem_total__sum"] or 0
         )
         if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
             self.delivery_cost = Decimal(5.99)

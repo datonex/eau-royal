@@ -1,140 +1,136 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
 
 from .forms import OrderForm
+from .models import Order, CartItem
+
 from bag.contexts import bag_contents
+from products.models import Product
 
 import stripe
 
 
 def checkout(request):
     """
-    View to return user input when fillinf forms and handle stripe
+    View to return user input when filling forms and handle stripe
     payments
     """
 
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
-    bag = request.session.get("bag", {})
-    if not bag:
-        messages.error(request, "There's nothing in your bag at the moment")
-        return redirect(reverse("products"))
+    if request.method == "POST":
+        bag = request.session.get("bag", {})
+        form_data = {
+            "first_name": request.POST["first_name"],
+            "last_name": request.POST["last_name"],
+            "email": request.POST["email"],
+            "phone_number": request.POST["phone_number"],
+            "street_address1": request.POST["street_address1"],
+            "street_address2": request.POST["street_address2"],
+            "town_or_city": request.POST["town_or_city"],
+            "county": request.POST["county"],
+            "postcode": request.POST["postcode"],
+            "country": request.POST["country"],
+        }
 
-    # details = request.session.get("details", {})
-    # delivery = request.session.get("delivery", {})
-    # first_name = None
-    # last_name = None
-    # email = None
-    # phone_number = None
-    # street_address1 = None
-    # street_address2 = None
-    # town_or_city = None
-    # county = None
-    # postcode = None
-    # country = None
+        order_form = OrderForm(form_data)
+        if order_form.is_valid():
+            order = order_form.save()
+            for item_id, item_data in bag.items():
+                try:
+                    product = Product.objects.get(id=item_id)
+                    if isinstance(item_data, int):
+                        order_cart_item = CartItem(
+                            order=order,
+                            product=product,
+                            quantity=item_data,
+                            product_size=size,
+                        )
+                        order_cart_item.save()
+                    else:
+                        for size, quantity in item_data["items_by_size"].items():
+                            order_cart_item = CartItem(
+                                order=order,
+                                product=product,
+                                quantity=quantity,
+                                product_size=size,
+                            )
+                            order_cart_item.save()
+                except Product.DoesNotExist:
+                    messages.error(
+                        request,
+                        (
+                            "One of the products in your bag wasn't "
+                            "found in our database. "
+                            "Please call us for assistance!"
+                        ),
+                    )
+                    order.delete()
+                    return redirect(reverse("view_bag"))
 
-    current_bag = bag_contents(request)
-    total = current_bag["total"]
-    stripe_total = round(total * 100)
-    stripe.api_key = stripe_secret_key
-    intent = stripe.PaymentIntent.create(
-        amount=stripe_total,
-        currency=settings.STRIPE_CURRENCY,
-    )
+            request.session["save_info"] = "save-info" in request.POST
+            return redirect(reverse("checkout_success", args=[order.order_number]))
+        else:
+            messages.error(request, "There was an error with form")
+    else:
+        bag = request.session.get("bag", {})
+        if not bag:
+            messages.error(request, "There's nothing in your bag at the moment")
+            return redirect(reverse("products"))
+
+        current_bag = bag_contents(request)
+        total = current_bag["total"]
+        stripe_total = round(total * 100)
+        stripe.api_key = stripe_secret_key
+        intent = stripe.PaymentIntent.create(
+            amount=stripe_total,
+            currency=settings.STRIPE_CURRENCY,
+        )
+        order_form = OrderForm()
+
+    if not stripe_public_key:
+        messages.warning(
+            request,
+            (
+                "Stripe public key is missing. "
+                "Did you forget to set it in "
+                "your environment?"
+            ),
+        )
 
     template = "checkout/checkout.html"
-    order_form = OrderForm()
-
-    # if request.POST:
-    #     # Personal details
-    #     first_name = request.POST["first_name"]
-    #     print(first_name)
-    #     details["first_name"] = first_name
-    #     last_name = request.POST["last_name"]
-    #     print(last_name)
-    #     details["last_name"] = last_name
-    #     email = request.POST["email"]
-    #     print(email)
-    #     details["email"] = email
-    #     phone_number = request.POST["phone_number"]
-    #     print(phone_number)
-    #     details["phone_number"] = phone_number
-
-    #     # Delivery details
-    #     street_address1 = request.POST["street_address1"]
-    #     print(street_address1)
-    #     delivery["street_address1"] = street_address1
-    #     street_address2 = request.POST["street_address2"]
-    #     print(street_address2)
-    #     delivery["street_address2"] = street_address1
-    #     town_or_city = request.POST["town_or_city"]
-    #     print(town_or_city)
-    #     delivery["town_or_city"] = town_or_city
-    #     county = request.POST["county"]
-    #     print(county)
-    #     delivery["county"] = county
-    #     postcode = request.POST["postcode"]
-    #     print(postcode)
-    #     delivery["postcode"] = postcode
-    #     country = request.POST["country"]
-    #     print(country)
-    #     delivery["country"] = country
-
-    # # if "first_name" in request.POST:
-    # #     first_name = request.POST["first_name"]
-    # #     print(first_name)
-    # #     details["first_name"] = first_name
-    # # if "last_name" in request.POST:
-    # #     last_name = request.POST["last_name"]
-    # #     print(last_name)
-    # #     details["last_name"] = last_name
-    # # if "email" in request.POST:
-    # #     email = request.POST["email"]
-    # #     print(email)
-    # #     details["email"] = email
-    # # if "phone_number" in request.POST:
-    # #     phone_number = request.POST["phone_number"]
-    # #     print(phone_number)
-    # #     details["phone_number"] = phone_number
-    # # if "street_address1" in request.POST:
-    # #     street_address1 = request.POST["street_address1"]
-    # #     print(street_address1)
-    # #     delivery["street_address1"] = street_address1
-    # # if "street_address2" in request.POST:
-    # #     street_address2 = request.POST["street_address2"]
-    # #     print(street_address2)
-    # #     delivery["street_address2"] = street_address1
-    # # if "town_or_city" in request.POST:
-    # #     town_or_city = request.POST["town_or_city"]
-    # #     print(town_or_city)
-    # #     delivery["town_or_city"] = town_or_city
-    # # if "county" in request.POST:
-    # #     county = request.POST["county"]
-    # #     print(county)
-    # #     delivery["county"] = county
-    # # if "postcode" in request.POST:
-    # #     postcode = request.POST["postcode"]
-    # #     print(postcode)
-    # #     delivery["postcode"] = postcode
-    # # if "country" in request.POST:
-    # #     country = request.POST["country"]
-    # #     print(country)
-    # #     delivery["country"] = country
-
-    # print(f"details dictionary: {details}")
-    # print(f"delivery dictionary: {delivery}")
-
-    # request.session["details"] = details
-    # request.session["delivery"] = delivery
 
     context = {
         "order_form": order_form,
-        # "details": details,
-        # "delivery": delivery,
         "stripe_public_key": stripe_public_key,
         "client_secret": intent.client_secret,
+    }
+
+    return render(request, template, context)
+
+
+def checkout_success(request, order_number):
+    """
+    Handle successful checkouts
+    """
+    save_info = request.session.get("save_info")
+    order = get_object_or_404(Order, order_number=order_number)
+
+    messages.success(
+        request,
+        f"Order successfully processed! \
+        Your order number is {order_number}. A confirmation \
+        email will be sent to {order.email}.",
+    )
+
+    if "bag" in request.session:
+        del request.session["bag"]
+
+    template = "checkout/checkout_success.html"
+    context = {
+        "order": order,
     }
 
     return render(request, template, context)
