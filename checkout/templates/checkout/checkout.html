@@ -174,122 +174,75 @@
         </div>
       </div>
       <div class="col-12 col-sm-8 col-md-6 col-lg-5 bg-white form-content-container">
-        {% if details|length <= 0 %}
-          <form action="{% url 'checkout' %}" method="POST" class="mb-4">
-            {% csrf_token %}
-            <fieldset class="shadow bg-lv-20 p-3">
-              <legend class="text-center mt-2">Details</legend>
-              <div class="row g-2 align-items-center">
-                <div class="col-12 col-lg-6">
-                  {{ order_form.first_name | as_crispy_field }}
-                </div>
-                <div class="col-12 col-lg-6">
-                  {{ order_form.last_name | as_crispy_field }}
-                </div>
+        <form action="POST" action="{% url 'checkout' %}" class="mb-5" id="payment-form">
+          {% csrf_token %}
+          <fieldset class="shadow bg-lv-20 p-3 mb-3" id="details-field">
+            <legend class="text-center mt-2">Details</legend>
+            <div class="row g-2 align-items-center">
+              <div class="col-12 col-lg-6">
+                {{ order_form.first_name | as_crispy_field }}
               </div>
-              <div>
-                {{ order_form.email | as_crispy_field }}
+              <div class="col-12 col-lg-6">
+                {{ order_form.last_name | as_crispy_field }}
               </div>
-              <div>
-                {{ order_form.phone_number | as_crispy_field }}
-              </div>
-              <div class="d-grid">
-                <button type="sumbit" class="btn btn-dp">Save & Continue</button>
-              </div>
-            </fieldset>
-          </form>
-        {% else %}
-          <div class="shadow bg-lv-20 p-3 mb-4">
-            <h4 class="text-center mt-2"> Details </h4>
-            <div class="d-flex justify-content-between justify-content-md-around align-items-center">
-              <div>
-                <p class="mb-2">{{ details.first_name }}</p>
-                <p class="mb-2">{{ details.last_name }}</p>
-                <p class="mb-2">{{ details.email }}</p>
-                <p class="mb-2">{{ details.phone_number }}</p>
-              </div>
-              <div>
-                <span class="icon">
-                  <i class="fa-solid fa-circle-check text-success"></i>
+            </div>
+            <div>
+              {{ order_form.email | as_crispy_field }}
+            </div>
+            <div>
+              {{ order_form.phone_number | as_crispy_field }}
+            </div>
+            <div class="d-grid mt-3">
+              <button type="button" class="btn btn-dp save-details">Save & Continue</button>
+              <button type="button" class="btn btn-dp edit-details d-none">Edit</button>
+            </div>
+          </fieldset>
+          <fieldset class="shadow bg-lv-20 p-3 mb-3 delivery-progress d-none" id="delivery-field">
+            <legend class="text-center mt-2">Delivery</legend>
+            {{ order_form.street_address1 | as_crispy_field }}
+            {{ order_form.street_address2 | as_crispy_field }}
+            {{ order_form.town_or_city | as_crispy_field }}
+            {{ order_form.county | as_crispy_field }}
+            {{ order_form.postcode | as_crispy_field }}
+            {{ order_form.country | as_crispy_field }}
+            <div>
+              {% if user.is_authenticated %}
+                <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
+                <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
+              {% else %}
+                <label class="form-check-label" for="id-save-info">
+                  <a class="text-primary fw-bold" href="{% url 'account_signup' %}">Create an account</a> or 
+                  <a class="text-primary fw-bold" href="{% url 'account_login' %}">login</a> to save this information
+                </label>
+              {% endif %}
+            </div>
+            <div class="d-grid mt-3">
+              <button type="button" class="btn btn-dp save-delivery">Save & Continue</button>
+              <button type="button" class="btn btn-dp edit-delivery d-none">Edit</button>
+            </div>
+          </fieldset>
+          <fieldset class="shadow bg-lv-20 p-3 payment-progress d-none" id="payment-field">
+            <legend class="text-center mt-2">Payment</legend>
+            <!-- A Stripe card element will go here -->
+            <div class="mb-3" id="card-element"></div>
+            <!-- Used to display form errors -->
+            <div class="mb-3 text-danger d-flex align-items-center" id="card-errors" role="alert"></div>
+            <!-- Pass the client secret to the view so we can get the payment intent id -->
+            <input type="hidden" value="{{ client_secret }}" name="client_secret">
+            <div class="submit-button text-right mt-5 mb-2 mx-auto">                    
+              <p class="small text-danger my-0 d-flex align-items-center">
+                <span class="icon me-2">
+                  <i class="fas fa-exclamation-circle"></i>
                 </span>
-                <p>Complete</p>
+                <span>Your card will be charged <strong>£{{ total|floatformat:2 }}</strong></span>
+              </p>
+              <div class="d-grid mt-3">
+                <button type="submit" class="btn btn-dp" id="submit-button">Place Order</button>
               </div>
             </div>
-          </div>
-          {% if delivery|length <= 0 %}
-            <form action="{% url 'checkout' %}" method="POST" class="mb-4 delivery-progress">
-              {% csrf_token %}
-              <fieldset class="shadow bg-lv-20 p-3">
-                <legend class="text-center mt-2">Delivery</legend>
-                {{ order_form.street_address1 | as_crispy_field }}
-                {{ order_form.street_address2 | as_crispy_field }}
-                {{ order_form.town_or_city | as_crispy_field }}
-                {{ order_form.county | as_crispy_field }}
-                {{ order_form.postcode | as_crispy_field }}
-                {{ order_form.country | as_crispy_field }}
-                <div class="d-grid">
-                  <button type="submit" class="btn btn-dp">Save & Continue</button>
-                </div>
-                <div>
-                  {% if user.is_authenticated %}
-                    <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
-                    <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
-                  {% else %}
-                    <label class="form-check-label" for="id-save-info">
-                      <a class="text-primary fw-bold" href="{% url 'account_signup' %}">Create an account</a> or 
-                      <a class="text-primary fw-bold" href="{% url 'account_login' %}">login</a> to save this information
-                    </label>
-                  {% endif %}
-                </div>
-              </fieldset>
-            </form>
-          {% else%}
-            <div class="shadow bg-lv-20 p-3 mb-4">
-              <h4 class="text-center mt-2"> Delivery </h4>
-              <div class="d-flex justify-content-between justify-content-md-around align-items-center">
-                <div>
-                  <p class="mb-2">{{ delivery.street_address1 }}</p>
-                  <p class="mb-2">{{ delivery.street_address2 }}</p>
-                  <p class="mb-2">{{ delivery.town_or_city }}</p>
-                  <p class="mb-2">{{ delivery.county }}</p>
-                  <p class="mb-2">{{ delivery.postcode }}</p>
-                  <p class="mb-2">{{ delivery.country }}</p>
-                </div>
-                <div>
-                  <span class="icon">
-                    <i class="fa-solid fa-circle-check text-success"></i>
-                  </span>
-                  <p>Complete</p>
-                </div>
-              </div>
-            </div>
-            <form action="POST" action="{% url 'checkout' %}" class="payment-progress mb-5">
-              {% csrf_token %}
-              <fieldset class="shadow bg-lv-20 p-3">
-                <legend class="text-center mt-2">Payment</legend>
-                <!-- A Stripe card element will go here -->
-                <div class="mb-3" id="card-element"></div>
-                <!-- Used to display form errors -->
-                <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
-                <!-- Pass the client secret to the view so we can get the payment intent id -->
-                <input type="hidden" value="{{ client_secret }}" name="client_secret">
-                <div class="submit-button text-right mt-5 mb-2 mx-auto">                    
-                  <p class="small text-danger my-0 d-flex align-items-center">
-                    <span class="icon me-2">
-                      <i class="fas fa-exclamation-circle"></i>
-                    </span>
-                    <span>Your card will be charged <strong>£{{ total|floatformat:2 }}</strong></span>
-                  </p>
-                  <div class="d-grid mt-3">
-                    <button type="submit" class="btn btn-dp">Place Order</button>
-                  </div>
-                </div>
-              </fieldset>
-            </form>
-          {% endif %}
-        {% endif %}
+          </fieldset>
+        </form>
       </div>
-
       <div class="d-none d-md-block col-md-5 sidebar-bag">
         <div class="text-center my-2">
           <h6 class="text-dp text-uppercase">Your Order</h6>
@@ -307,7 +260,7 @@
             <span class="text-capitalize">Edit Bag</span>
           </a>
         </div>
-        <div class="mt-2 scroll-checkout">
+        <div class="mt-2">
           <hr class="default-hr w-100 border-2 mx-auto mt-1">
           {% for item in bag_items %}
             <div class="card w-100 border-0">
@@ -390,21 +343,73 @@
   {{ block.super }}
   <script type="text/javascript">
     $(function () {
-      // Update progress bar if form field is comleted
-      if ($("form").hasClass("delivery-progress")) {
-        $(".progress-bar").css("width","31%")
-        $(".delivery-dot").removeClass("bg-lv-80")
-        $(".delivery-dot").addClass("bg-dp")
-      }
-      
-      if ($("form").hasClass("payment-progress")) {
-        $(".progress-bar").css("width","65%")
-        $(".delivery-dot, .payment-dot").removeClass("bg-lv-80")
-        $(".delivery-dot, .payment-dot").addClass("bg-dp")
-      }
+      // Update progress bar if details form field is completed
+      $(".save-details").click(function () {
+        if ($("fieldset").hasClass("delivery-progress")) {
+          $(".delivery-progress").removeClass("d-none")
+          $(".progress-bar").css("width","31%")
+          $(".delivery-dot").removeClass("bg-lv-80")
+          $(".delivery-dot").addClass("bg-dp")
+          $(".save-details").toggleClass("d-none")
+          $(".edit-details").removeClass("d-none")
+          $('#details-field').find("input").each(function() {
+            $(this).prop("readonly", true);
+          });
+        }
+      });
+      $(".edit-details").click(function () {
+        if ($("fieldset").hasClass("delivery-progress")) {
+          $(".delivery-progress").addClass("d-none")
+          $(".progress-bar").css("width","0")
+          $(".delivery-dot").addClass("bg-lv-80")
+          $(".delivery-dot").removeClass("bg-dp")
+          $(".save-details").toggleClass("d-none")
+          $(".edit-details").addClass("d-none")
+          $('#details-field').find("input").each(function() {
+            $(this).prop("readonly", false);
+          });
+        }
+      });
+
+      $(".save-delivery").click(function () {
+        if ($("fieldset").hasClass("payment-progress")) {
+          $(".payment-progress").removeClass("d-none")
+          $(".progress-bar").css("width","65%")
+          $(".delivery-dot, .payment-dot").removeClass("bg-lv-80")
+          $(".delivery-dot, .payment-dot").addClass("bg-dp")
+          $(".save-delivery").toggleClass("d-none")
+          $(".edit-delivery").removeClass("d-none")
+          $('#delivery-field').find("input").each(function() {
+            $(this).prop("readonly", true);
+          });
+        }
+      });
+      $(".edit-delivery").click(function () {
+        if ($("fieldset").hasClass("payment-progress")) {
+          $(".payment-progress").addClass("d-none")
+          $(".progress-bar").css("width","31%")
+          $(".delivery-dot, .payment-dot").addClass("bg-lv-80")
+          $(".delivery-dot, .payment-dot").removeClass("bg-dp")
+          $(".save-delivery").toggleClass("d-none")
+          $(".edit-delivery").addClass("d-none")
+          $('#delivery-field').find("input").each(function() {
+            $(this).prop("readonly", false);
+          });
+        }
+      });
     });
   </script>
   {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-  {{ client_secret|json_script:"id_stripe_public_key" }}
+  {{ client_secret|json_script:"id_client_secret" }}
+  {{ details.first_name|json_script:"id_details_first_name" }}
+  {{ details.last_name|json_script:"id_details_last_name" }}
+  {{ details.email|json_script:"id_details_email" }}
+  {{ details.phone_number|json_script:"id_details_phone_number" }}
+  {{ delivery.street_address1|json_script:"id_delivery_street_address1" }}
+  {{ delivery.street_address2|json_script:"id_delivery_street_address2" }}
+  {{ delivery.town_or_city|json_script:"id_delivery_town_or_city" }}
+  {{ delivery.county|json_script:"id_county" }}
+  {{ delivery.postcode|json_script:"id_postcode" }}
+  {{ delivery.country|json_script:"id_country" }}
   <script type="text/javascript" src="{% static '/checkout/js/stripe_element.js' %}"></script>
 {% endblock %}
