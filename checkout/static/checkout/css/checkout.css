@@ -57,6 +57,14 @@ img {
   right: 0.5rem;
 }
 
+#checkout-items {
+  max-height: 593px;
+}
+
+#checkout-items .scroll {
+  max-height: 400px;
+  overflow-y: scroll;
+}
 /* ---------------- Media Queries ---------------- */
 
 @media only screen and (max-width: 767px) {

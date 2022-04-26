@@ -78,6 +78,14 @@ class CartItem(models.Model):
         max_length=7, null=True, blank=True
     )  # 30ML, 50ML, 100ML, onesize
     quantity = models.IntegerField(null=False, blank=False, default=0)
+    cartitem_price = cartitem_total = models.DecimalField(
+        max_digits=6,
+        decimal_places=2,
+        null=False,
+        blank=False,
+        editable=False,
+        default=0,
+    )
     cartitem_total = models.DecimalField(
         max_digits=6, decimal_places=2, null=False, blank=False, editable=False
     )
@@ -87,7 +95,22 @@ class CartItem(models.Model):
         Override the original save method to set the cartitem total
         and update the order total.
         """
-        self.cartitem_total = self.product.price * self.quantity
+
+        def get_price(price, key):
+            price_dictionary = {
+                "30ML": price / 3,
+                "50ML": price,
+                "100ML": price * 2,
+                "onesize": price,
+            }
+            if key == "":
+                key = "onesize"
+            return price_dictionary[key]
+
+        self.cartitem_total = (
+            get_price(self.product.price, self.product_size) * self.quantity
+        )
+        self.cartitem_price = get_price(self.product.price, self.product_size)
         super().save(*args, **kwargs)
 
     def __str__(self):

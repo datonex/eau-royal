@@ -4,7 +4,10 @@ from .models import Order, CartItem
 
 class CartItemAdminInline(admin.TabularInline):
     model = CartItem
-    readonly_fields = ("cartitem_total",)
+    readonly_fields = (
+        "cartitem_price",
+        "cartitem_total",
+    )
 
 
 @admin.register(Order)

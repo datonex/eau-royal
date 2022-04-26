@@ -1,6 +1,10 @@
+from django.http import HttpRequest
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.contrib import messages
 from django.conf import settings
+from django.contrib import messages
+from django.core.signals import request_finished
+from django.dispatch import receiver
+
 
 from .forms import OrderForm
 from .models import Order, CartItem
