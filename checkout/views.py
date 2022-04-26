@@ -2,8 +2,6 @@ from django.http import HttpRequest
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.conf import settings
 from django.contrib import messages
-from django.core.signals import request_finished
-from django.dispatch import receiver
 
 
 from .forms import OrderForm
@@ -38,6 +36,15 @@ def checkout(request):
             "postcode": request.POST["postcode"],
             "country": request.POST["country"],
         }
+
+        current_bag = bag_contents(request)
+        total = current_bag["total"]
+        stripe_total = round(total * 100)
+        stripe.api_key = stripe_secret_key
+        intent = stripe.PaymentIntent.create(
+            amount=stripe_total,
+            currency=settings.STRIPE_CURRENCY,
+        )
 
         order_form = OrderForm(form_data)
         if order_form.is_valid():
