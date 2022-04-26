@@ -180,10 +180,7 @@
             <legend class="text-center mt-2">Details</legend>
             <div class="row g-2 align-items-center">
               <div class="col-12 col-lg-6">
-                {{ order_form.first_name | as_crispy_field }}
-              </div>
-              <div class="col-12 col-lg-6">
-                {{ order_form.last_name | as_crispy_field }}
+                {{ order_form.full_name | as_crispy_field }}
               </div>
             </div>
             <div>

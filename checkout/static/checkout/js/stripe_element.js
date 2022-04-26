@@ -73,7 +73,7 @@ form.addEventListener('submit', function (event) {
           payment_method: {
             card: card,
             billing_details: {
-              name: $.trim(form.first_name.value).concat(' ', $.trim(form.last_name.value)),
+              name: $.trim(form.full_name.value),
               phone: $.trim(form.phone_number.value),
               email: $.trim(form.email.value),
               address: {
@@ -86,7 +86,7 @@ form.addEventListener('submit', function (event) {
             },
           },
           shipping: {
-            name: $.trim(form.first_name.value).concat(' ', $.trim(form.last_name.value)),
+            name: $.trim(form.full_name.value),
             phone: $.trim(form.phone_number.value),
             address: {
               line1: $.trim(form.street_address1.value),
