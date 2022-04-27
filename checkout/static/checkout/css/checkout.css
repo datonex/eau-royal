@@ -57,6 +57,15 @@ img {
   right: 0.5rem;
 }
 
+select,
+select option {
+  color: var(--dark-purple-);
+}
+
+select:invalid {
+  color: var(--dark-purple-60);
+}
+
 #checkout-items {
   max-height: 593px;
 }
