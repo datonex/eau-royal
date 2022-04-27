@@ -86,7 +86,7 @@
                   </li>
                   {% if request.user.is_superuser %}
                     <li class="py-2 text-center fs-6">
-                      <a class="dropdown-item py-3" href="#">Product Management</a>
+                      <a class="dropdown-item py-3" href="{% url 'add_product' %}">Product Management</a>
                     </li>
                     <li>
                       <hr class="text-lv canvas-hr my-0">

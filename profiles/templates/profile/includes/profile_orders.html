@@ -16,10 +16,17 @@
             <div class="row g-0 justify-content-between align-items-center">
               {% for item in order.cartitems.all|slice:"0:3" %}
                 <div class="col-2 pe-0 d-flex justify-content-center align-items-center">
-                  <img
-                    src="{{ item.product.image.url }}"
-                    class="card-img-fluid"
-                    alt="{{ item.product.brand.name }} {{ item.product.name }}" />
+                  {% if item.product.image %}
+                        <img
+                          src="{{ item.product.image.url }}"
+                          class="card-img-top"
+                          alt="{{ item.product.brand.name }} {{ item.product.name }}" />
+                      {% else %}
+                        <img
+                          src="{{ MEDIA_URL }}noimage.png"
+                          class="card-img-top"
+                          alt="{{ item.product.brand.name }} {{ item.product.name }}" />
+                      {% endif %}
                 </div>
               {% endfor %}
               <div class="col-4 pe-0 d-flex flex-column align-items-center">

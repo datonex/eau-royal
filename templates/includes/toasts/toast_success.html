@@ -27,10 +27,17 @@
               <div class="card w-100 border-0">
                 <div class="row row-cols-1">
                   <div class="col-3 col-md-4 pe-0">
+                    {% if item.product.image %}
+                      <img
+                        src="{{ item.product.image.url }}"
+                        class="card-img-top"
+                        alt="{{ item.product.brand.name }} {{ item.product.name }}" />
+                    {% else %}
                     <img
-                      src="{{ item.product.image.url }}"
-                      class="card-img-top"
-                      alt="{{ item.product.brand.name }} {{ item.product.name }}" />
+                    src="{{ MEDIA_URL }}noimage.png"
+                    class="card-img-top"
+                    alt="{{ item.product.brand.name }} {{ item.product.name }}" />
+                    {% endif %}
                   </div>
                   <div class="col-9 col-md-8 ps-0">
                     <div class="card-body p-2 d-flex flex-column">
