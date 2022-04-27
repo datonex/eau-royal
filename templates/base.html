@@ -93,7 +93,7 @@
                     </li>
                   {% endif %}
                   <li class="py-2 text-center fs-6">
-                    <a class="dropdown-item py-3" href="#">My Profile</a>
+                    <a class="dropdown-item py-3" href="{% url 'profile' %}">My Profile</a>
                   </li>
                   <li>
                     <hr class="text-lv canvas-hr my-0">
@@ -186,26 +186,27 @@
       {% endfor %}
     </div>
   {% endif %}
-
-  <div id="search-container-md" class="bg-white d-block d-lg-none my-2">
-    <form method="GET" action="{% url 'products' %}">
-      <div class="input-group w-100">
-        <div class="input-group">
-          <input class="form-control bg-white text-start border-0" name="q" type="text" placeholder="Search Eau Royal" aria-label="Search Eau Royal">
-          <button class="btn search-btn bg-white" type="submit" aria-label="search">
-            <span class="text-dp">
-              <i class="fa-solid fa-magnifying-glass fs-4"></i>
-            </span>
-          </button>
+    {% block search_banner %}
+      <div id="search-container-md" class="bg-white d-block d-lg-none my-2">
+        <form method="GET" action="{% url 'products' %}">
+          <div class="input-group w-100">
+            <div class="input-group">
+              <input class="form-control bg-white text-start border-0" name="q" type="text" placeholder="Search Eau Royal" aria-label="Search Eau Royal">
+              <button class="btn search-btn bg-white" type="submit" aria-label="search">
+                <span class="text-dp">
+                  <i class="fa-solid fa-magnifying-glass fs-4"></i>
+                </span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div id="offer-banner" class="text-center bg-lv-20 ">
+        <div class="col py-2">
+          <h4 class="text-dp fs-5">{{ discount_percentage }}% OFF orders worth &pound;{{ discount_threshold }}!</h4>
         </div>
       </div>
-    </form>
-  </div>
-  <div id="offer-banner" class="text-center bg-lv-20 ">
-    <div class="col py-2">
-      <h4 class="text-dp fs-5">{{ discount_percentage }}% OFF orders worth &pound;{{ discount_threshold }}!</h4>
-    </div>
-  </div>
+    {% endblock%}
   {% endblock %}
 
   {% block content %}{% endblock %}

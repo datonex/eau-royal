@@ -1,0 +1,23 @@
+{% extends "base.html" %} 
+
+{% load static %} 
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'profile/css/profile.css' %}" />
+{% endblock %} 
+
+{% block extra_title %}| Profile{% endblock %}
+{% block search_banner %}{% endblock%}
+
+{% block content %}
+<section class="container-lg text-dp">
+  <div class="row text-center">
+    <div class="col py-2">
+      <h5 class="text-dp text-uppercase mt-2">My Account</h5>
+    </div>
+  </div>
+</section>
+{% endblock %} 
+
+
+{% block postloadjs %}{% endblock %}
