@@ -106,11 +106,11 @@
                 </div>
               </a>
               {% if request.user.is_superuser %}
-                <div class="card-footer">
+                <div class="card-footer bg-white">
                   <small class="ml-3 d-flex justify-content-around">
-                    <a href="#">Edit</a>
-                    |
-                    <a class="text-danger" href="#">Delete</a>
+                    <a class="btn btn-dp" href="{% url 'edit_product' product.id %}">Edit</a>
+                    
+                    <a class="btn btn-outline-danger" href="{% url 'delete_product' product.id %}">Delete</a>
                   </small>
                 </div>
               {% endif %}

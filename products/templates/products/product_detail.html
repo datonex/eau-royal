@@ -45,12 +45,21 @@
           {% else %}
             <h6 class="mb-3">{{ product.category.name }}</h6>
           {% endif %}
+          {% if product.has_sizes == True %}
           <div class="fs-5 mb-3 product-price">
             <span class="text-muted product-size">
               50 ML -
             </span>
             &pound;{{ product.price }}
           </div>
+          {% else %}
+          <div class="fs-5 mb-3 product-price">
+            <span class="text-muted product-size">
+              One size -
+            </span>
+            &pound;{{ product.price }}
+          </div>
+          {% endif %}
           <div class="d-flex justify-content-center justify-content-md-start align-items-center mb-3">
             {% if product.rating %}
             <i class="fas fa-star fa-2x text-lv"></i>
@@ -130,6 +139,10 @@
             </div>
             <div class="mb-4 mb-md-3 d-grid gap-2 col-12 col-md-9">
               <input class="btn btn-dp btn-lg" type="submit" value="Add to Bag" />
+              {% if request.user.is_superuser %}
+                <a class="btn btn-outline-dp" href="{% url 'edit_product' product.id %}">Edit</a>
+                <a class="btn btn-outline-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+              {% endif %}
             </div>
             <input type="hidden" name="redirect_url" value="{{ request.path }}" />
           </form>
