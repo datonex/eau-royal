@@ -12,10 +12,14 @@
         <h6 class="text-dp text-capitalize mt-2">Saved details</h6>
       </div>
       <div>
-        <p>First Name: {{ user.first_name }}</p>
-        <p>Last Name: {{ user.last_name }}</p>
-        <p>Email: {{ profile.user.email }}</p>
-        <p>Phone number: {{ profile.default_phone_number }}</p>
+        {% if user.first_name %}
+          <p>First Name: {{ user.first_name }}</p>
+          <p>Last Name: {{ user.last_name }}</p>
+          <p>Email: {{ profile.user.email }}</p>
+          <p>Phone number: {{ profile.default_phone_number }}</p>
+        {% else %}
+          You haven't made any orders yet
+        {% endif %}
       </div>
       <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
         <div class="btn-group me-2" role="group" aria-label="First group">
