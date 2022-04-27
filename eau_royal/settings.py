@@ -125,7 +125,7 @@ WSGI_APPLICATION = "eau_royal.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# # Postgres database on Heroku
+# Postgres database on Heroku
 if "DATABASE_URL" in os.environ:
     DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 else:
