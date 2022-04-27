@@ -51,9 +51,16 @@
             </span>
             &pound;{{ product.price }}
           </div>
-          <!-- Rating -->
-          <div></div>
-          <!-- End Rating -->
+          <div class="d-flex align-items-center mb-3">
+            {% if product.rating %}
+            <i class="fas fa-star fa-2x text-lv"></i>
+              <small class="text-muted ms-2">
+                {{ product.rating }} / 5
+              </small>
+            {% else %}
+              <small class="text-muted">No Rating</small>
+            {% endif %}
+          </div>
           <form action="{% url 'add_to_bag' product.id %}" method="POST">
             {% csrf_token %}
             {% if product.has_sizes == True %}
@@ -123,18 +130,6 @@
             </div>
             <div class="mb-4 mb-md-3 d-grid gap-2 col-12 col-md-9">
               <input class="btn btn-dp btn-lg" type="submit" value="Add to Bag" />
-              <a class="btn btn-outline-dp d-flex justify-content-center align-items-center" href="{% url 'products' %}" role="button">
-                <span class="icon">
-                  <i class="fas fa-chevron-left fs-4"></i>
-                </span>
-                <span class="text-capitalize">Continue Shopping</span>
-              </a>
-              <a class="btn btn-outline-dp d-flex justify-content-center align-items-center" href="{% url 'home' %}" role="button">
-                <span class="icon">
-                  <i class="fas fa-house fs-4"></i>
-                </span>
-                <span class="text-capitalize">Home</span>
-              </a>
             </div>
             <input type="hidden" name="redirect_url" value="{{ request.path }}" />
           </form>
