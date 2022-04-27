@@ -178,7 +178,20 @@
           </div>
         </div>
         <div class="d-grid my-5">
-          <a href="{% url 'home' %}" role="button" class="btn btn-dp save-delivery">Back to Home</a>
+          {% if from_profile %}
+          <a class="btn btn-outline-dp d-flex justify-content-center align-items-center mb-2" href="{% url 'profile' %}" role="button">
+            <span class="icon">
+              <i class="fas fa-chevron-left fs-4"></i>
+            </span>
+            <span class="text-capitalize">Back to Profile</span>
+          </a>
+          {% endif %}
+          <a class="btn btn-dp d-flex justify-content-center align-items-center" href="{% url 'home' %}" role="button">
+            <span class="icon">
+              <i class="fas fa-house text-lv fs-4"></i>
+            </span>
+            <span class="text-capitalize">Home</span>
+          </a>
         </div>
       </div>
       <div class="d-none d-md-block col-md-5" id="checkout-items">
