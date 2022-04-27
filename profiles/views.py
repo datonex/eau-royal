@@ -32,6 +32,7 @@ def profile(request):
     context = {
         "form": form,
         "orders": orders,
+        "profile": profile,
         "user_initials": user_initials,
         "on_profile_page": True,
     }

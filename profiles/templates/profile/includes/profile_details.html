@@ -1,0 +1,29 @@
+<div id="profile-details" class="d-none">
+  <div class="bg-white text-dp">
+    <div class="d-flex flex-column align-items-center py-2">
+      <div class="icon text-lv mb-2">
+        <i class="fa-solid fa-id-card fs-2"></i>
+      </div>
+      <h4>My Details</h4>
+    </div>
+    <hr class="text-lv my-0" style="height: 0.75rem !important;">
+    <div class="p-3 mx-md-5">
+      <div class="text-md-center">
+        <h6 class="text-dp text-capitalize mt-2">Saved details</h6>
+      </div>
+      <div>
+        <p>First Name: {{ user.first_name }}</p>
+        <p>Last Name: {{ user.last_name }}</p>
+        <p>Email: {{ profile.user.email }}</p>
+        <p>Phone number: {{ profile.default_phone_number }}</p>
+      </div>
+      <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group me-2" role="group" aria-label="First group">
+          <a role="button" class="btn btn-outline-dp" href="{% url 'account_reset_password' %}">Reset Password</a>
+          <a role="button" class="btn btn-outline-dp" href="{% url 'account_email' %}">Change email</a>
+        </div>
+      </div>
+    </div>
+    <hr class="text-lv my-0" style="height: 0.75rem !important;">
+  </div>
+</div>
