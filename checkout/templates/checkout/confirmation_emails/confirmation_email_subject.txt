@@ -1,0 +1,1 @@
+Eau Royal order {{ order.order_number }} has been received!

@@ -1,0 +1,35 @@
+Hi {{ order.full_name }}!
+
+Your Eau Royal order has been received!
+
+We have received your order and we will contact you as soon as your order has been shipped. Your purchase information is show below:
+
+##Order Summary:
+********
+Order date: {{ order.date }}
+Order Number: {{ order.order_number }}
+
+Order Total: £{{ order.order_total }}
+Delivery: £{{ order.delivery_cost }}
+Grand Total: £{{ order.total }}
+
+
+Billing and Shipping 
+*****
+
+Shipping address:
+***
+
+{{ order.full_name }}
+{{ order.street_address1 }}
+{{ order.street_address2 }}
+{{ order.town_or_city }}
+{{ order.county }}
+{{ order.postcode }}
+{{ order.country }}
+
+If you have any questions, please contact us at {{ contact_email }}
+
+Thank you for your order!
+
+Eau Royal 
