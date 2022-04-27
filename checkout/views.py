@@ -6,8 +6,11 @@ from django.contrib import messages
 
 from .forms import OrderForm
 from .models import Order, CartItem
+
 from bag.contexts import bag_contents
 from products.models import Product
+from profiles.models import UserProfile
+from profiles.forms import UserProfileForm
 
 import stripe
 import json
@@ -163,6 +166,7 @@ def checkout_success(request, order_number):
     template = "checkout/checkout_success.html"
     context = {
         "order": order,
+        "on_checkout_success": True,
     }
 
     return render(request, template, context)

@@ -22,14 +22,29 @@
         <p class="fw-bold fs-5">Sub-total:</p>
         <p>£{{ sub_total|floatformat:2 }}</p>
       </div>
+      <div class="d-flex justify-content-between align-items-center">
+        <p class="fw-bold fs-5">Delivery</p>
+        <p> £{{ delivery_price|floatformat:2 }}</p>
+      </div>
       <div class="mb-2">
         <h4 class="fw-bolder mb-0">Discounts:</h4>
       </div>
       {% if sub_total >= discount_threshold  %}
-      <div class="d-flex justify-content-between align-items-center">
-        <p>{{ discount_percentage }}% OFF &pound;{{ discount_threshold }}</p>
-        <p class="text-danger">- £{{ discount|floatformat:2 }}</p>
-      </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <p>{{ discount_percentage }}% OFF &pound;{{ discount_threshold }}</p>
+          <p class="text-danger">- £{{ discount|floatformat:2 }}</p>
+        </div>
+        {% if pre_delivery >= delivery_threshold %}
+          <div class="d-flex justify-content-between align-items-center">
+            <p>FREE Delivery</p>
+            <p class="text-danger">- {{ delivery_price|floatformat:2 }}</p>
+          </div>
+        {% else %}
+          <div class="d-flex justify-content-between align-items-center">
+            <p class="fw-bold fs-5">Delivery</p>
+            <p> £{{ delivery|floatformat:2 }}</p>
+          </div>
+        {% endif %}
       {% else %}
       <div>
         <p class="text-center mb-0">
@@ -162,14 +177,29 @@
           <p class="fw-bold fs-5">Sub-total:</p>
           <p>£{{ sub_total|floatformat:2 }}</p>
         </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <p class="fw-bold fs-5">Delivery</p>
+          <p> £{{ delivery_price|floatformat:2 }}</p>
+        </div>
         <div class="mb-2">
           <h4 class="fw-bolder mb-0">Discounts:</h4>
         </div>
         {% if sub_total >= discount_threshold  %}
-        <div class="d-flex justify-content-between align-items-center">
-          <p>{{ discount_percentage }}% OFF &pound;{{ discount_threshold }}</p>
-          <p class="text-danger">- £{{ discount|floatformat:2 }}</p>
-        </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <p>{{ discount_percentage }}% OFF &pound;{{ discount_threshold }}</p>
+            <p class="text-danger">- £{{ discount|floatformat:2 }}</p>
+          </div>
+          {% if pre_delivery >= delivery_threshold %}
+            <div class="d-flex justify-content-between align-items-center">
+              <p>FREE Delivery</p>
+              <p class="text-danger">- {{ delivery_price|floatformat:2 }}</p>
+            </div>
+          {% else %}
+            <div class="d-flex justify-content-between align-items-center">
+              <p class="fw-bold fs-5">Delivery</p>
+              <p> £{{ delivery|floatformat:2 }}</p>
+            </div>
+          {% endif %}
         {% else %}
         <div>
           <p class="text-center mb-0">
