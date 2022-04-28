@@ -2,50 +2,33 @@
 
 ## Overview
 
+![color palette](README/misc/live-mockup.png)
+
 ### What is this website for?
 
-Eau Royal is a e-commerce website that sells perfumes for all genders, room sprays and candles and to the consumer. It has two payment types, a one off payment and a subscription based payment for perfumes only.
+Eau Royal is a e-commerce website that sells perfumes for all genders, and candles and to the consumer. It has two payment types, a one off payment and a subscription based payment for perfumes only.
 
 ### What does it do?
 
-one paragraph, or two describing what your website does
+User can begin a shopping instance where they can select products they would like to by from the database. When the user is done, they can be directed to their shopping bag to view what they have and they can either start the payment process, modify/delete items or go back to the products page and add more items. When the user completes their shopping process, they will receive an email confirming their order. The User is also able to create and account to view previous purchases, change their default address and other user content.
 
 ### How does it work
 
-one paragraph describing how the4 website works
-This website uses AngularJS to route viewers through the site and control which Javascript is executed. The site is styled with Bootstrap. The quiz has been created using Javascript and modal for enlarging images is displayed using some JQuery code. Bower has been used to manage package dependencies for deployment of site on github pages. The site can be viewed HERE
+Eau Royal uses the Django Python framework to generate views via HTML and CSS. JavaScript is used to make the pages interactive. JavaScript was also used to handle posting user payment securely with Stripe. All the pages are mainly styled with Bootstrap5 and custom CSS. All dependences are handled by pip and live deployment is hosted on Heroku.
 
-[Live Website](https://eau-royal.herokuapp.com/)
+[Live Website](https://eau-royal.herokuapp.com/) :point_left:
 
-[GitHub Repository](https://github.com/datonex/eau-royal)
+[GitHub Repository](https://github.com/datonex/eau-royal) :point_left:
 
 ## UX
 
-Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
-
-In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
-
-- As a user type, I want to perform an action, so that I can achieve a goal.
-
-This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included as a pdf file in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.
-
 ### User Stories
 
-- #### Things are slowly getting back to normal due to the pandemic, I want to plan my next holiday
+To view user stories please follow the link to my Trello project
+[User stories](https://trello.com/b/tPgicEER/eau-royal) :point_left:
 
-1. I want to easily navigate the site relatively easily
-
-2. I want to be able to see a balance of text, images and some video to get a glimpse of where I will be visiting
-
-3. I want to be able to access links that direct me to important websites easily
-
-4. I want some clicking interaction with the page so that I don't get bored
-
-- #### As a previous who is using the website for reference
-
-1. I want to have access to the website on any device and on the go
-
-2. I want the navigation bar easily accessible so that I can get where I want quickly
+To view each user story please click on each card item. Each card follows this template: where each task review is a check list and when completed will be added to the done pile.
+![trello template](README/misc/trello/template.png)
 
 ### Design
 
