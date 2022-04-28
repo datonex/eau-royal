@@ -209,6 +209,12 @@ Key
 
 - Some product images are missing and or rendering incorrectly
 
+- Add page title for ALL pages
+
+### Marketing Information
+
+![facebook mockup](README/misc/fb-business-page.png)
+
 ## Technologies Used
 
 ### Languages used
@@ -328,7 +334,7 @@ checkboxes that behave like radio buttons [Stack overflow](https://stackoverflow
 Code Institute Boutique Ado lessons
 Add custom error pages [Stack overflow](https://stackoverflow.com/questions/17662928/django-creating-a-custom-500-404-error-page)
 Error 404 page [Omar Dsooky](https://codepen.io/linux/pen/OjmeKP)
-Error 500 page [https://codepen.io/chriskirknielsen/pen/pOLdVG](https://codepen.io/chriskirknielsen/pen/pOLdVG)
+Error 500 page [Christopher Kirk-Nielsen](https://codepen.io/chriskirknielsen/pen/pOLdVG)
 
 ### Content
 
