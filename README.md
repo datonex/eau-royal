@@ -140,27 +140,35 @@ A few things to note:
 
 #### Conceptual ERD
 
+![conceptual ERD](README/misc/conceptual-erd.png)
+
+Key
+
+- Hexagonal items are foreign key fields
+
+- Line items are generic model fields
+
+- Filed in nodes are model names
+
 #### Physical ERD
 
-For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
+![physical ERD](README/misc/physical-erd.png)
 
 ### Existing Features
-
-In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
 
 #### Common Features Across All Pages
 
 - [x] **Header** - allows user to easily navigate across all pages
 
 - Header is fixed to top of page for easy access (desktop and large tablets)
-- Zimbabwe logo and text are positioned on the left and are links that take you to the homepage
+- and text are positioned on the left and are links that take you to the homepage
 - Navigation is place on the right on the logo for easy access (under logo for mobile)
 - Navigation links change colour when hovered over. This lets the visitor know that it is clickable.
 - Navigation link is underlined to let user know what page they are on
 - Entire header disappears for mobile devices
 - Colors have been chosen with optimum contrast in mind to be pleasant to the eye.
 - [x] **Links** that are hovered over
-- All links that are surrounding text have been underlined and change color when hovered over. This helps the user to identify external links. (except logo)
+- All links that are surrounding text have been underlined and change color when hovered over. This helps the user to identify external links.
 - [x] **Navigation banner**
 - Navigation banner is the same across all pages to give uniformity and familiarity
 - background image on home is scrollable to give a more fun user experience
@@ -174,7 +182,6 @@ In addition, you may also use this section to discuss plans for additional featu
 - Footer sticks to the bottom of the page, regardless of the amount of content. This aids the overall user experience.
 - All content have near uniform layout to give a nice and engaging flow of text and images
 - Social links have been grouped together
-- 'Contact us' is form for feedback and any question the user might have
 
 ### Specific to Pages
 
@@ -388,17 +395,29 @@ checkboxes that behave like radio buttons [Stack overflow](https://stackoverflow
 
 ### Content
 
-Each bit of content must have its own link and displayed as a list
-
-- The text for section Y was copied from the [Wikipedia article Z](https://en.wikipedia.org/wiki/Z)
+- [noon perfume | Kaggle](https://www.kaggle.com/monirahabdulaziz/noon-perfume?select=read.me.txt)
+- [Fragrances of the World - Discover Michael Edwards’ world of fragrances](http://www.fragrancesoftheworld.com/)
 
 ### Media
 
-Each bit of content must have its own link and displayed as a list
-
 #### Images
 
-- video was obtained from [here](https://linkhere.com)
+- Images query - [Best Spray Bottle | Pexels Stock Photos](https://www.pexels.com/search/spray%20bottle/)
+  Hero image - Photo by [George Becker](https://www.pexels.com/@eye4dtail?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/clear-glass-bottle-136651/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+- Candles category - Photo by [George Becker](https://www.pexels.com/@eye4dtail?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/three-lighted-candles-360209/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+- His category home page - Photo by [Duané Viljoen](https://www.pexels.com/@duane-viljoen-3411736?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/man-wearing-suit-and-necktie-with-perfume-bottle-10604607/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+- Hers category home page - Photo by [Abstract Photos](https://www.pexels.com/@abstract-photos-49564378?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/close-up-shot-of-an-afro-haired-woman-holding-a-perfume-bottle-8323833/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+- salve category homepage - Photo by [Max Fischer](https://www.pexels.com/@max-fischer?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/person-holding-red-and-black-box-with-red-ribbon-5872354/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+- Profile hero image - Photo by [Egor Kamelev](https://www.pexels.com/@ekamelev?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/jellyfish-digital-wallpaper-753267/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+- Subscription hero image - Photo by [Jill Burrow](https://www.pexels.com/@jill-burrow?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/an-alphabet-made-of-purple-flower-petals-7400308/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+- Subscription box image - Photo by [Karolina Grabowska](https://www.pexels.com/@karolina-grabowska?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/gift-in-pink-box-with-scattered-petals-around-4041329/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+- Subscription spray bottle with hands - Photo by [Babi Galeane](https://www.pexels.com/@babi-galeane-58498777?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/unrecognizable-female-hand-spraying-perfume-on-wrist-10557509/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+- Subscription bottle - Photo by [Babi Galeane](https://www.pexels.com/@babi-galeane-58498777?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/bottle-of-branded-female-perfume-with-green-ivy-leaves-in-background-10557510/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+- Subscription there pack bottles -Photo by [Hamza Nouasria](https://www.pexels.com/@hamza01nsr?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/white-and-black-bottles-on-white-textile-10837815/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+- Subscription worm smelling flower - Photo by [Michelle Leman](https://www.pexels.com/@michelle-leman?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/woman-in-red-and-black-floral-dress-holding-pink-rose-6765633/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+- Subscription essence bottles - Photo by [Ekaterina Mitkina](https://www.pexels.com/@ekaterinamitkina?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/close-up-view-of-cosmetic-product-and-candle-9898734/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+- Subscription single essence bottle - Photo by [Alesia Kozik](https://www.pexels.com/@alesiakozik?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/brown-glass-bottle-on-round-mirror-7796815/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+- Subscription man holding phone - Photo by [Porapak Apichodilok](https://www.pexels.com/@nurseryart?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/man-in-plaid-shirt-using-smartphone-346734/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
 
 #### Audio
 
@@ -410,6 +429,11 @@ Each bit of content must have its own link and displayed as a list
 
 ### Acknowledgements
 
-I received inspiration for this project from following tourists sites
+#### Inspiration
+
+[ASOS](https://www.asos.com/women/)
+[The Perfume Shop](https://www.theperfumeshop.com/?gclsrc=aw.ds&ds_rl=1281542&ds_rl=1281736&gclid=Cj0KCQiAjJOQBhCkARIsAEKMtO2ZAwV6sfeDw2KwU6y2lMOCcHUgtBCRtYGA8finlhMPud18QYdhPvkaApUpEALw_wcB)
+[The Fragrance Shop](https://www.thefragranceshop.co.uk/the-fragrance-and-perfume-shop?gclid=Cj0KCQiAjJOQBhCkARIsAEKMtO0mzS36nyrzf-UftHFbVHlNz_rcMY5QtW4z43PBLi8iKYq20I4JNysaAnRrEALw_wcB)
+[GIVENCHY BEAUTY ∷ Official Store](https://www.givenchybeauty.com/us)
 
 - Thank you to my mentor for his support and guidance
