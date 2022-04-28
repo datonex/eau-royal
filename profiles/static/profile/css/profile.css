@@ -29,6 +29,10 @@ section.hero {
   font-weight: 700 !important;
 }
 
+.icon.back {
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 710px) {
   section.hero {
     height: 30vw;

@@ -23,13 +23,13 @@
     </div>
     <div class="bg-white hero-white-container position-absolute bottom-0 start-50 translate-middle-x"></div>
   </section>
-  <section class="container-md text-dp">
+  <section class="container-md text-dp d-none d-sm-block">
     <div class="row mx-lg-5">
       <div class="row bg-lv-20 py-4">
         <div class="col-4">
           <div>
             <div class="bg-white justify-content-end text-dp">
-              <div>
+              <div class="py-3 py-md-1">
                 <a class="btn-orders nav-link d-flex align-items-center justify-content-between text-dp" href="#">
                   <span class="d-flex justify-content-between align-items-center">
                     <span class="icon text-lv me-2">
@@ -43,7 +43,7 @@
                 </a>
               </div>
               <hr class="text-lv canvas-hr my-0">
-              <div>
+              <div class="py-3 py-md-1">
                 <a class="btn-subcription nav-link d-flex align-items-center justify-content-between text-dp" href="#">
                   <span class="d-flex justify-content-between align-items-center">
                     <span class="icon text-lv me-2">
@@ -57,7 +57,7 @@
                 </a>
               </div>
               <hr class="text-lv canvas-hr my-0">
-              <div>
+              <div class="py-3 py-md-1">
                 <a class="btn-returns nav-link d-flex align-items-center justify-content-between text-dp" href="#">
                   <span class="d-flex justify-content-between align-items-center">
                     <span class="icon text-lv me-2">
@@ -71,7 +71,7 @@
                 </a>
               </div>
               <hr class="text-lv my-0" style="height: 0.5rem !important;">
-              <div>
+              <div class="py-3 py-md-1">
                 <a class="btn-details nav-link d-flex align-items-center justify-content-between text-dp" href="#">
                   <span class="d-flex justify-content-between align-items-center">
                     <span class="icon text-lv me-2">
@@ -85,7 +85,7 @@
                 </a>
               </div>
               <hr class="text-lv canvas-hr my-0">
-              <div>
+              <div class="py-3 py-md-1">
                 <a class="btn-address nav-link d-flex align-items-center justify-content-between text-dp" href="#">
                   <span class="d-flex justify-content-between align-items-center">
                     <span class="icon text-lv me-2">
@@ -99,7 +99,7 @@
                 </a>
               </div>
               <hr class="text-lv my-0" style="height: 0.5rem !important;">
-              <div>
+              <div class="py-3 py-md-1">
                 <a class="nav-link d-flex align-items-center justify-content-between text-dp" href="{% url 'account_logout' %}">
                   <span class="d-flex justify-content-between align-items-center">
                     <span class="icon text-lv me-2">
@@ -115,12 +115,24 @@
             </div>
           </div>
         </div>
-        <div class="col-8">
+        <div class="d-none d-sm-block col-sm-8">
           {% include 'profile/includes/profile_orders.html' %}
           {% include 'profile/includes/profile_address.html' %}
           {% include 'profile/includes/profile_details.html' %}
         </div>
       </div>
+    </div>
+  </div>
+</section>
+<section class="container-fluid text-dp d-block d-sm-none">
+  <div class="row">
+    <div class="col-12 bg-lv-20 py-4" id="profile-mobile">
+      {% include 'profile/includes/profile_mobile.html' %}
+    </div>
+    <div class="col-12 bg-lv-20 py-4 d-none" id="mobile-view">
+      {% include 'profile/includes/profile_orders.html' %}
+      {% include 'profile/includes/profile_address.html' %}
+      {% include 'profile/includes/profile_details.html' %}
     </div>
   </div>
 </section>
@@ -138,32 +150,54 @@
       var order = $("#profile-order")
       var details = $("#profile-details")
       var address = $("#profile-address")
+      var mobile = $("#profile-mobile")
+      var mobileView = $("#mobile-view")
+      var span = $(".icon.back")
+
+      $(span).click(function () {
+        mobile.removeClass("d-none")
+        mobileView.addClass("d-none")
+        span.addClass("d-none")
+        span.removeClass("d-block d-sm-none")
+      })
 
       $(orderBtn).click(function () {
+        mobile.addClass("d-none")
+        mobileView.removeClass("d-none")
+        span.removeClass("d-none")
+        span.addClass("d-block d-sm-none")
         order.removeClass("d-none")
-        order.addClass("d-md-block")
+        order.addClass("d-block")
         address.addClass("d-none")
-        address.removeClass("d-md-block")
+        address.removeClass("d-block")
         details.addClass("d-none")
-        details.removeClass("d-md-block")
+        details.removeClass("d-block")
       })
 
       $(addressBtn).click(function () {
+        mobile.addClass("d-none")
+        mobileView.removeClass("d-none")
+        span.removeClass("d-none")
+        span.addClass("d-block d-sm-none")
         address.removeClass("d-none")
-        address.addClass("d-md-block")
+        address.addClass("d-block")
         order.addClass("d-none")
-        order.removeClass("d-md-block")
+        order.removeClass("d-block")
         details.addClass("d-none")
-        details.removeClass("d-md-block")
+        details.removeClass("d-block")
       })
 
       $(detailsBtn).click(function () {
+        mobile.addClass("d-none")
+        mobileView.removeClass("d-none")
+        span.removeClass("d-none")
+        span.addClass("d-block d-sm-none")
         details.removeClass("d-none")
-        details.addClass("d-md-block")
+        details.addClass("d-block")
         order.addClass("d-none")
-        order.removeClass("d-md-block")
+        order.removeClass("d-block")
         address.addClass("d-none")
-        address.removeClass("d-md-block")
+        address.removeClass("d-block")
       })
     </script>
   {% endblock %}
