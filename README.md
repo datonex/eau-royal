@@ -191,13 +191,25 @@ Key
 
 ### Features Left to Implement
 
-- Add a page where you can make a booking for a particular destinations. this includes adding a virtual online basket so that users can see what they have already selected (requires **Javascript** knowledge) For this reason I decided to remove the booking page from the website because it would be too incomplete and not provide a positive user experience.
+(See Trello cards)
 
-- hide the scroll to top button at the beginning of page
+- Subscription model payment for members
+
+- Form authentication at checkout before user is directed to next payment flow
+
+- Form Validation when entering phone numbers, valid zip/post codes and user enters more than one name
+
+- Allow user to add multiple addresses to their profile
+
+- Allow user to add
+
+- Change zip code to allow non zip code users to enter their bank details and complete payment
+
+- Some product images are miss matched
+
+- Some product images are missing and or rendering incorrectly
 
 ## Technologies Used
-
-In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
 
 ### Languages used
 
@@ -215,7 +227,7 @@ In this section, you should mention all of the languages, frameworks, libraries,
 
 - [Github](https://github.com/) - used to host the project files
 
-- [Heroku](https://www.heroku.com/) - used to deploy web application
+- [Heroku](https://heroku.com/) - used to deploy web application
 
 - [Postgres](https://postgresapp.com/) - used as the DBMS to store user profile data and hosted on Heroku
 
@@ -253,6 +265,10 @@ In this section, you should mention all of the languages, frameworks, libraries,
 
 - [Waypoint](http://imakewebthings.com/waypoints/) - Used ad infinite scrolling function to posts
 
+- [Stripe](https://stripe.com) - Handle secure payments for users
+
+- [AWS](https://aws.amazon.com) - Host static files for page
+
 ## Testing
 
 In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
@@ -260,78 +276,6 @@ In this section, you need to convince the assessor that you have conducted enoug
 Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your approach, link to the test file(s) and explain how to run them.
 
 For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. A particularly useful form for describing your testing process is via scenarios, such as:
-
-1. Contact form:
-
-- Go to the "Contact Us" page
-- Try to submit the empty form and verify that an error message about the required fields appears
-- Try to submit the form with an invalid email address and verify that a relevant error message appears
-- Try to submit the form with all inputs valid and verify that a success message appears.
-
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
-
-You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
-
-If this section grows too long, you may want to split it off into a separate file and link to it from here.
-
-- ### Navigation bar
-
-- When the logo or text is clicked, the user is redirected to the home page
-- All links are working and have been tested.
-- navigation bar is aligned vertically and under the logo for screens smaller than 660px
-- The navigation bar stays at the top of the page for screens larger than 660px only
-
-- ### Footer
-
-- Footer always sticks to the bottom of the page and was tested by removing all content from the page.
-- social media link open in a new tab when clicked
-- When user accesses the 'Contact us' page
-
-  - Name is required to continue submission
-  - Email field is required and has to be in the correct format.
-  - Text field has to contain at least two characters.
-  - terms and conditions have to be ticked
-  - When 'Submit' is clicked (given all fields have been filled out) the form will be sent
-
-- ### The Image grid
-
-- Any image that is hovered on (desktop only) the text is uniformly aligned and shows correct information for another device the grid is hidden and a continuous prose is displayed instead.
-
-- ### External links
-
-- All social links in the footer bring the user to the relevant social pages
-- Links to external websites, the booking and visa button bring the user to the right website in a new tab.
-
-- ### Internal Links
-
-- Logo and text all lead to home page
-- Navigation links lead to relevant pages
-- Contact us link leads to the correct page for all web pages
-
-### CSS3 validator
-
-Pass
-
-<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border: 0; width: 88px; height: 31px;" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="Valid CSS!" /></a>
-
-### HTML5 Validator
-
-**Home Page** - Pass
-**About Page** - Pass
-**Contact Us** - Pass
-**Travel Information Page** - 2 Errors
-
-1. Error: The element a must not appear as a descendant of the button element
-
-From line 345, column 63; to line 345, column 118
-
-`="button"><a href="https://www.evisa.gov.zw/home" target="_blank">Apply`
-
-<!-- markdownlint-disable-next-line MD029 -->
-
-From line 376, column 38; to line 376, column 89
-
-`="button"><a href="https://www.expedia.co.uk" target="_blank">Book f`
 
 ### Compatibility Testing
 
@@ -344,45 +288,34 @@ From line 376, column 38; to line 376, column 89
 | Tablet              | :heavy_check_mark: | Not Tested. |  Not Tested.   | :heavy_check_mark: | :heavy_check_mark: |    Not Tested     |
 
 - OS Compatibility was tested on iOS 14.5.1, MacOS Catalina, iPadOS 14.5 It is yet to be tested on Unix, Linux, Windows or Solaris Operating Systems.
-- The devices used in this testing include MacBook Pro, iPad Pro, iPhone 12 Pro Max, iPhone 7 Plus.
+- The devices used in this testing include MacBook Pro, iPad Pro, iPhone 12 Pro Max, iPhone 7 Plus, Samsung S10
 
-- The website was exhaustively tested for responsiveness on [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools). Different viewport sizes were simulated ranging from as small as iPhone 5 (320px) to large desktop sizes (1200px and above).
+- The website was exhaustively tested for responsiveness on [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools). Different viewport sizes were simulated ranging from as small as iPhone 4 (320px) to large desktop sizes (1200px and above).
+
+#### Bugs
+
+- Sorting only allows items determined by link, user are unable to select multiple queries. However multiple queries work if manually typed into the browser.
+
+- Checkout bug - client stripe instance not being created on GET method sometimes
 
 ## Deployment
 
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).
-
-In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
-
-- Different values for environment variables (Heroku Config Vars)?
-- Different configuration files?
-- Separate git branch?
-
-In addition, if it is not obvious, you should also describe how to run your code locally.
-
-This website was published using [GitHub Pages](https://pages.github.com/).
-
-1. Go to the GitHub.com and log in.
-2. On the left-hand side, you'll see all your repositories, select the appropriate one.
-3. Under the name of your chosen Repository you will see a ribbon of selections, click on 'Settings' located on the right hand side.
-4. Scroll down till you see 'Pages' heading.
-5. Under the 'Source' click on the dropdown and select 'master branch'
-6. The page will reload and you'll see the link of your published page displayed under 'GitHub' pages.
-7. It takes a few minutes for the site to be published, wait until the background of your link changes to a green color before trying to open it.
+This website was published using [Heroku](https://heroku.com/).
 
 ### Contribution
 
-1. Firstly you will need to clone this repository by running the `git clone <https://github.com/datonex/visit-zimbabwe/>` command
+1. Firstly you will need to clone this repository by running the `git clone <https://github.com/datonex/eau-royal/>` command
 2. If using VS Code type make sure you have th Git extension installed then type about code into your terminal
-3. Download the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension, one installed find the go live button at the bottom right of your vscode window
-4. The project will now run on [localhost](http://127.0.0.1:5500/)
-5. If using Gitpod use the command `python3 -m http.server`
+3. Navigate to project folder and start a virtual environment with `python3 -m venv .venv`
+4. Activate you virtual environment with `source .venv/bin/activate`
+5. Install dependencies with `pip install -r requirements.txt`
 6. Make changes to the code and if you think it belongs in here then just submit a pull request
 
 ## Credits
 
 ### Dependencies + code snippets
 
+Django documentation - [Django](https://docs.djangoproject.com/en/3.2/)
 Landing page template - [startbootstrap](https://github.com/startbootstrap/startbootstrap-scrolling-nav)
 Javascript media queries - [w3schools](https://www.w3schools.com/howto/howto_js_media_queries.asp)
 Autocomplete form attributes - [htmlspec](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofilling-form-controls%3A-the-autocomplete-attribute)
@@ -392,6 +325,10 @@ Catch exception type - [Stack overflow](https://stackoverflow.com/questions/3239
 Get min and max value of a field [Stack overflow](https://stackoverflow.com/questions/844591/how-to-do-select-max-in-django)
 JS range slider [Ion range slider](http://ionden.com/a/plugins/ion.rangeSlider/index.html)
 checkboxes that behave like radio buttons [Stack overflow](https://stackoverflow.com/questions/5839884/make-checkbox-behave-like-radio-buttons-with-javascript)
+Code Institute Boutique Ado lessons
+Add custom error pages [Stack overflow](https://stackoverflow.com/questions/17662928/django-creating-a-custom-500-404-error-page)
+Error 404 page [Omar Dsooky](https://codepen.io/linux/pen/OjmeKP)
+Error 500 page [https://codepen.io/chriskirknielsen/pen/pOLdVG](https://codepen.io/chriskirknielsen/pen/pOLdVG)
 
 ### Content
 
@@ -419,21 +356,13 @@ checkboxes that behave like radio buttons [Stack overflow](https://stackoverflow
 - Subscription single essence bottle - Photo by [Alesia Kozik](https://www.pexels.com/@alesiakozik?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/brown-glass-bottle-on-round-mirror-7796815/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
 - Subscription man holding phone - Photo by [Porapak Apichodilok](https://www.pexels.com/@nurseryart?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/man-in-plaid-shirt-using-smartphone-346734/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
 
-#### Audio
-
-- audio was obtained from [here](https://linkhere.com)
-
-#### Video
-
-- video was obtained from [here](https://linkhere.com)
-
 ### Acknowledgements
 
 #### Inspiration
 
-[ASOS](https://www.asos.com/women/)
-[The Perfume Shop](https://www.theperfumeshop.com/?gclsrc=aw.ds&ds_rl=1281542&ds_rl=1281736&gclid=Cj0KCQiAjJOQBhCkARIsAEKMtO2ZAwV6sfeDw2KwU6y2lMOCcHUgtBCRtYGA8finlhMPud18QYdhPvkaApUpEALw_wcB)
-[The Fragrance Shop](https://www.thefragranceshop.co.uk/the-fragrance-and-perfume-shop?gclid=Cj0KCQiAjJOQBhCkARIsAEKMtO0mzS36nyrzf-UftHFbVHlNz_rcMY5QtW4z43PBLi8iKYq20I4JNysaAnRrEALw_wcB)
-[GIVENCHY BEAUTY ∷ Official Store](https://www.givenchybeauty.com/us)
+- [ASOS](https://www.asos.com/women/)
+- [The Perfume Shop](https://www.theperfumeshop.com/?gclsrc=aw.ds&ds_rl=1281542&ds_rl=1281736&gclid=Cj0KCQiAjJOQBhCkARIsAEKMtO2ZAwV6sfeDw2KwU6y2lMOCcHUgtBCRtYGA8finlhMPud18QYdhPvkaApUpEALw_wcB)
+- [The Fragrance Shop](https://www.thefragranceshop.co.uk/the-fragrance-and-perfume-shop?gclid=Cj0KCQiAjJOQBhCkARIsAEKMtO0mzS36nyrzf-UftHFbVHlNz_rcMY5QtW4z43PBLi8iKYq20I4JNysaAnRrEALw_wcB)
+- [GIVENCHY BEAUTY ∷ Official Store](https://www.givenchybeauty.com/us)
 
 - Thank you to my mentor for his support and guidance
