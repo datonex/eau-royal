@@ -443,5 +443,5 @@
   </script>
   {{ stripe_public_key|json_script:"id_stripe_public_key" }}
   {{ client_secret|json_script:"id_client_secret" }}
-  <script type="text/javascript" src="{% static '/checkout/js/stripe_element.js' %}"></script>
+  <script type="text/javascript" src="{% static 'checkout/js/stripe_element.js' %}"></script>
 {% endblock %}
