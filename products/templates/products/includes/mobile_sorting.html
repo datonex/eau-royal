@@ -4,42 +4,42 @@
       <p class="mb-0 me-3">Sort</p>
       <i class="fa-solid fa-chevron-down"></i>
     </a>
-    <ul class="dropdown-menu col-12 bg-white py-0" aria-labelledby="sort-sm-link" >
+    <div class="dropdown-menu col-12 bg-white py-0" aria-labelledby="sort-sm-link" >
       <div class="bg-lv-60 pt-0 pb-2">
-        <li class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
+        <div class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
           <div>Sort by</div>
           <a type="button" class="btn btn-outline-dp btn-sm" href="{% url 'products' %}" role="button">Clear</a>
-        </li>
-        <li class="mx-3">
+        </div>
+        <div class="mx-3">
           {% comment %} prettier-ignore {% endcomment %}
           <a class="dropdown-item bg-white py-2 {% if current_sorting == 'None_None' %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}">Default</a>
-        </li>
-        <li class=" mx-3">
+        </div>
+        <div class=" mx-3">
           <hr class="text-lv dropdown-hr my-0">
-        </li>
-        <li class="mx-3">
+        </div>
+        <div class="mx-3">
           {% comment %} prettier-ignore {% endcomment %}
           <a class="dropdown-item bg-white py-2 {% if current_sorting == 'price_asc' %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}?sort=price&direction=asc">Price Low to High</a>
-        </li>
-        <li class="mx-3">
+        </div>
+        <div class="mx-3">
           <hr class="text-lv dropdown-hr my-0">
-        </li>
-        <li class="mx-3">
+        </div>
+        <div class="mx-3">
           {% comment %} prettier-ignore {% endcomment %}
           <a  class="dropdown-item bg-white py-2 {% if current_sorting == 'price_desc' %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}?sort=price&direction=desc">Price High to Low</a>
-        </li>
-        <li class="mx-3">
+        </div>
+        <div class="mx-3">
           <hr class="text-lv dropdown-hr my-0">
-        </li>
-        <li class="mx-3">
+        </div>
+        <div class="mx-3">
           {% comment %} prettier-ignore {% endcomment %}
           <a  class="dropdown-item bg-white py-2 {% if current_sorting == 'rating_desc' %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}?sort=rating&direction=desc">Rating</a>
-        </li>
-        <li class="mx-3">
+        </div>
+        <div class="mx-3">
           <hr class="text-lv dropdown-hr my-0">
-        </li>
+        </div>
       </div>
-    </ul>
+    </div>
   </div>
   <div class="col-6 bg-white px-0">
     <a class=" py-2 btn btn-outline-dp rounded-0 d-flex justify-content-center align-items-center" href="#offcanvasSort" role="button" id="filter-sm-link" data-bs-toggle="offcanvas" aria-label="Open sorting options" aria-controls="offcanvasSort">

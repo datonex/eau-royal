@@ -18,42 +18,42 @@
         </div>
       <i class="fa-solid fa-chevron-down"></i>
     </a>
-    <ul class="dropdown-menu col-12 bg-white py-0" aria-labelledby="sort-md-link" >
+    <div class="dropdown-menu col-12 bg-white py-0" aria-labelledby="sort-md-link" >
       <div class="bg-lv-60 pt-0 pb-2">
-        <li class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
+        <div class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
           <div>Sort by</div>
           <a type="button" class="btn btn-outline-dp btn-sm" href="{% url 'products' %}" role="button">Clear</a>
-        </li>
-        <li class="mx-3">
+        </div>
+        <div class="mx-3">
           {% comment %} prettier-ignore {% endcomment %}
           <a class="dropdown-item bg-white py-2 {% if current_sorting == 'None_None' %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}">Default</a>
-        </li>
-        <li class=" mx-3">
+        </div>
+        <div class=" mx-3">
           <hr class="text-lv dropdown-hr my-0">
-        </li>
-        <li class="mx-3">
+        </div>
+        <div class="mx-3">
           {% comment %} prettier-ignore {% endcomment %}
           <a class="dropdown-item bg-white py-2 {% if current_sorting == 'price_asc' %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}?sort=price&direction=asc">Price Low to High</a>
-        </li>
-        <li class="mx-3">
+        </div>
+        <div class="mx-3">
           <hr class="text-lv dropdown-hr my-0">
-        </li>
-        <li class="mx-3">
+        </div>
+        <div class="mx-3">
           {% comment %} prettier-ignore {% endcomment %}
           <a  class="dropdown-item bg-white py-2 {% if current_sorting == 'price_desc' %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}?sort=price&direction=desc">Price High to Low</a>
-        </li>
-        <li class="mx-3">
+        </div>
+        <div class="mx-3">
           <hr class="text-lv dropdown-hr my-0">
-        </li>
-        <li class="mx-3">
+        </div>
+        <div class="mx-3">
           {% comment %} prettier-ignore {% endcomment %}
           <a  class="dropdown-item bg-white py-2 {% if current_sorting == 'rating_desc' %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}?sort=rating&direction=desc">Rating</a>
-        </li>
-        <li class="mx-3">
+        </div>
+        <div class="mx-3">
           <hr class="text-lv dropdown-hr my-0">
-        </li>
+        </div>
       </div>
-    </ul>
+    </div>
   </div>
   <div class="dropdown col-3 bg-white px-0 scroll">
     <a class=" py-2 btn btn-outline-dp rounded-0 d-flex justify-content-between align-items-center" href="#" role="button" id="category-md-link" data-bs-toggle="dropdown" aria-expanded="false">
@@ -71,35 +71,35 @@
         </div>
       <i class="fa-solid fa-chevron-down"></i>
     </a>
-    <ul class="dropdown-menu col-12 bg-white py-0" aria-labelledby="category-md-link">
+    <div class="dropdown-menu col-12 bg-white py-0" aria-labelledby="category-md-link">
       <div class="bg-lv-60 pt-0 pb-2">
-        <li class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
+        <div class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
           <div>category</div>
           <a type="button" class="btn btn-outline-dp btn-sm" href="{% url 'products' %}" role="button">Clear</a>
-        </li>
-        <li class="mx-3">
+        </div>
+        <div class="mx-3">
           {% comment %} prettier-ignore {% endcomment %}
           <a class="dropdown-item bg-white py-2 {% if request.get_full_path == "/products/" %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}">All</a>
-        </li>
-        <li class=" mx-3">
+        </div>
+        <div class=" mx-3">
           <hr class="text-lv dropdown-hr my-0">
-        </li>
-        <li class="mx-3">
+        </div>
+        <div class="mx-3">
           {% comment %} prettier-ignore {% endcomment %}
           <a class="dropdown-item bg-white py-2 {% if request.get_full_path == "/products/?category=candles" %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}?category=candles">Candles</a>
-        </li>
-        <li class="mx-3">
+        </div>
+        <div class="mx-3">
           <hr class="text-lv dropdown-hr my-0">
-        </li>
-        <li class="mx-3">
+        </div>
+        <div class="mx-3">
           {% comment %} prettier-ignore {% endcomment %}
           <a class="dropdown-item bg-white py-2 {% if request.get_full_path == "/products/?category=perfumes" or 'gender' in request.GET %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}?category=perfumes">Perfumes</a>
-        </li>
-        <li class="mx-3">
+        </div>
+        <div class="mx-3">
           <hr class="text-lv dropdown-hr my-0">
-        </li>
+        </div>
       </div>
-    </ul>
+    </div>
   </div>
   <div class="dropdown col-3 bg-white px-0 scroll">
     <a class=" py-2 btn btn-outline-dp rounded-0 d-flex justify-content-between align-items-center" href="#" role="button" id="brand-md-link" data-bs-toggle="dropdown" aria-expanded="false">
@@ -115,54 +115,54 @@
         </div>
       <i class="fa-solid fa-chevron-down"></i>
     </a>
-    <ul class="dropdown-menu col-12 bg-white py-0" aria-labelledby="brand-md-link">
+    <div class="dropdown-menu col-12 bg-white py-0" aria-labelledby="brand-md-link">
       <div class="bg-lv-60 pt-0 pb-2">
-        <li class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
+        <div class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
           <div>Brand</div>
           <a type="button" class="btn btn-outline-dp btn-sm" href="{% url 'products' %}" role="button">Clear</a>
-        </li>
-        <li class="mx-3">
+        </div>
+        <div class="mx-3">
           {% comment %} prettier-ignore {% endcomment %}
           <a class="dropdown-item bg-white py-2 {% if request.get_full_path == "/products/" %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}">
             All
           </a>
-        </li>
-        <li class=" mx-3">
+        </div>
+        <div class=" mx-3">
           <hr class="text-lv dropdown-hr my-0">
-        </li>
-          {% for b in brands %}
-            <li class="mx-3">
-              {% comment %} prettier-ignore {% endcomment %}
-              <a class="dropdown-item bg-white py-2 {% if  b.db_name in request.get_full_path %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}?brand={{ b.db_name }}">
-                {{ b.name }}
-              </a>
-            </li>
-            <li class=" mx-3">
-              <hr class="text-lv dropdown-hr my-0">
-            </li>
-          {% endfor %}
+        </div>
+        {% for b in brands %}
+          <div class="mx-3">
+            {% comment %} prettier-ignore {% endcomment %}
+            <a class="dropdown-item bg-white py-2 {% if  b.db_name in request.get_full_path %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}?brand={{ b.db_name }}">
+              {{ b.name }}
+            </a>
+          </div>
+          <div class=" mx-3">
+            <hr class="text-lv dropdown-hr my-0">
+          </div>
+        {% endfor %}
       </div>
-    </ul>
+    </div>
   </div>
   <div class="dropdown col-3 bg-white px-0">
     <a class=" py-2 btn btn-outline-dp rounded-0 d-flex justify-content-between align-items-center" href="#" role="button" id="price-md-link" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-        <div class="d-flex justify-content-between align-items-center">
-          <p class="mb-0 me-3">Price</p>
-          {% if request.get_full_path == "/products/" %}
-            <small class="text-muted fw-light">All</small>
-          {% elif 'price_from' or 'price_to' in request.GET %}
-            <small class="text-muted fw-light">£{{ price_from }} - £{{ price_to }}</small>
-          {% endif %}
-        </div>
+      <div class="d-flex justify-content-between align-items-center">
+        <p class="mb-0 me-3">Price</p>
+        {% if request.get_full_path == "/products/" %}
+          <small class="text-muted fw-light">All</small>
+        {% elif 'price_from' or 'price_to' in request.GET %}
+          <small class="text-muted fw-light">£{{ price_from }} - £{{ price_to }}</small>
+        {% endif %}
+      </div>
       <i class="fa-solid fa-chevron-down"></i>
     </a>
-    <ul class="dropdown-menu col-12 price-range-dropdown bg-white py-0" aria-labelledby="price-md-link">
+    <div class="dropdown-menu col-12 price-range-dropdown bg-white py-0" aria-labelledby="price-md-link">
       <div class="bg-lv-60 pt-0 pb-2">
-        <li class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
+        <div class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
           <div>price range</div>
           <a type="button" class="btn btn-outline-dp btn-sm" href="{% url 'products' %}" role="button">Clear</a>
-        </li>
-        <li class="mx-3 py-2 px-3 bg-white">
+        </div>
+        <div class="mx-3 py-2 px-3 bg-white">
           <div class="dropdown-item">
             <form method="GET" action="{% url 'products' %}" class="d-flex flex-column align-items-center justify-content-between" id="range-form">
               <div class="range-container col-12 mb-2">
@@ -174,8 +174,8 @@
               </div>
             </form>
           </div>
-        </li>
+        </div>
       </div>
-    </ul>
+    </div>
   </div>
 </div>
