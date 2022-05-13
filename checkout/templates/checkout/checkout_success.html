@@ -157,13 +157,13 @@
             <div>
               <h6 class="text-center"> Thank you!</h6>
               <br>
-              <p class="text-center">A confimation email has been sent to <strong>{{ order.email }}</strong>.</p>
+              <p class="text-center">A confirmation email has been sent to <strong>{{ order.email }}</strong>.</p>
               <p class="text-center fw-bolder">Order Number: <small>{{ order.order_number }}</small></p>
               <p class="text-center">Order Date: {{ order.date }}</p>
               <p class="text-center fw-bolder">Deliver to:</p>
             </div>
             <div class="row">
-              <div class="col-6">
+              <div class="col-8">
                 <p class="mb-0">{{ order.full_name }}</p>
                 <p class="mb-0">{{ order.street_address1 }}</p>
                 {% if order.street_address2 %}
@@ -178,7 +178,7 @@
                 {% endif %}
                 <p class="mb-0">{{ order.country }}</p>
               </div>
-              <div class="col-6">
+              <div class="col-4">
                 <i class="fa-solid fa-truck fa-5x"></i>
               </div>
             </div>
@@ -195,7 +195,7 @@
           {% endif %}
           <a class="btn btn-dp d-flex justify-content-center align-items-center" href="{% url 'home' %}" role="button">
             <span class="icon">
-              <i class="fas fa-house text-lv fs-4"></i>
+              <i class="fas fa-house fs-4"></i>
             </span>
             <span class="text-capitalize">Home</span>
           </a>
@@ -215,7 +215,6 @@
                 <p class="mb-0">£{{ order.order_total }}</p>
             </div>
           </div>
-  
           <div class="row">
             <div class="col-12 col-md-6">
               <p class="mb-0 text-black font-weight-bold">Delivery</p>
@@ -285,10 +284,6 @@
         </div>
       </div>
     </div>
-    
-
-      
   </section>
 {% endblock %}
 
-{% block page_footer %}{% endblock %}
