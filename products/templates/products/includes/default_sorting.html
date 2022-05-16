@@ -102,13 +102,15 @@
     </div>
   </div>
   <div class="dropdown col-3 bg-white px-0 scroll">
-    <a class=" py-2 btn btn-outline-dp rounded-0 d-flex justify-content-between align-items-center" href="#" role="button" id="brand-md-link" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class=" py-2 btn btn-outline-dp rounded-0 d-flex justify-content-between align-items-center" href="#" role="button" id="brand-md-link" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
         <div class="d-flex justify-content-between align-items-center">
           <p class="mb-0 me-3">Brand</p>
           {% if 'brand' in request.GET %}
-            {% for b in current_brands %}
-            <small class="text-muted fw-light">{{ b.name }}</small>
-            {% endfor %}
+            {% if current_brands|length < 2  %}
+              <small class="text-muted fw-light">{{ current_brands.0.name }}</small>
+            {% else %}
+              <small class="text-muted fw-light">{{ current_brands.0.name }} + {{ current_brands|length }} </small>
+            {% endif %}
           {% else %}
             <small class="text-muted fw-light">All</small>
           {% endif %}
@@ -116,31 +118,29 @@
       <i class="fa-solid fa-chevron-down"></i>
     </a>
     <div class="dropdown-menu col-12 bg-white py-0" aria-labelledby="brand-md-link">
-      <div class="bg-lv-60 pt-0 pb-2">
-        <div class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
-          <div>Brand</div>
-          <a type="button" class="btn btn-outline-dp btn-sm" href="{% url 'products' %}" role="button">Clear</a>
-        </div>
-        <div class="mx-3">
-          {% comment %} prettier-ignore {% endcomment %}
-          <a class="dropdown-item bg-white py-2 {% if request.get_full_path == "/products/" %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}">
-            All
-          </a>
-        </div>
-        <div class=" mx-3">
-          <hr class="text-lv dropdown-hr my-0">
-        </div>
-        {% for b in brands %}
-          <div class="mx-3">
-            {% comment %} prettier-ignore {% endcomment %}
-            <a class="dropdown-item bg-white py-2 {% if  b.db_name in request.get_full_path %}active-custom" aria-current="true" {% else %}"{% endif %} href="{% url 'products' %}?brand={{ b.db_name }}">
-              {{ b.name }}
-            </a>
+      <div class="bg-lv-60 pt-0">
+        <form action="{% url 'products' %}" method="GET">
+          <div class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
+            <div>Brand</div>
+            <button type="submit" name="brand" value="reset" class="btn btn-outline-dp btn-sm">Clear</button>
           </div>
-          <div class=" mx-3">
-            <hr class="text-lv dropdown-hr my-0">
+          <div class="scroll-brands">
+            <div class="mx-3">
+              <div class="btn-group-vertical w-100" role="group" aria-label="Brand checkbox toggle button group">
+                {% for b in brands %}
+                  <div class="mb-2 w-100">
+                    <input type="checkbox" class="btn-check w-100" name="brand" value="{{ b.db_name }}" id="brand_{{ b.db_name }}" {% if b in current_brands %} checked="checked" {% endif %}>
+                    <label class="btn btn-checkbox w-100" for="brand_{{ b.db_name }}">{{ b.name}}</label> 
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
           </div>
-        {% endfor %}
+          <div class="dropdown-header text-dp bg-white mx-0 py-2 d-flex justify-content-between align-items-center">
+            <div>item</div>
+            <button type="submit" class="btn btn-dp btn-sm">Submit</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

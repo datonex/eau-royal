@@ -83,13 +83,50 @@ def all_products(request):
                 return redirect(reverse("products"))
 
         if "brand" in request.GET:
-            brands = request.GET["brand"].split(",")
-            products = products.filter(brand__db_name__in=brands)
-            brands = Brand.objects.filter(db_name__in=brands)
-            total_products = products.count()
-            if not brands:
-                messages.error(request, (f"'{brands}' does not exist in Brand table"))
+            brands = request.GET.getlist("brand")
+            if "reset" in brands:
+                brands = None
                 return redirect(reverse("products"))
+            else:
+                products = products.filter(brand__db_name__in=brands)
+                brands = Brand.objects.filter(db_name__in=brands)
+                total_products = products.count()
+                if not brands:
+                    messages.error(
+                        request, (f"'{brands}' does not exist in Brand table")
+                    )
+                    return redirect(reverse("products"))
+
+            # print(brands)
+            # print(len(brands))
+
+            # print(brand_list)
+            # for key in brand_list:
+            #     print(f"brand = {key}")
+            #     for i in brands:
+            #         print(i)
+        # form = FilterForm(request.GET)
+        # if form.is_valid():
+        #     if all(brand in db_brands for brand in brands):
+        #         query = Q(*[Q(("brand)__db_name__in", value)) for value in brands])
+        #         products = products.filter(query)
+        #         total_products = products.count()
+        #     if not brands:
+        #         messages.error(
+        #             request, (f"'{brands}' does not exist in Brand table")
+        #         )
+        #         return redirect(reverse("products"))
+        # else:
+        #     form = FilterForm()
+
+        # if "brand" in request.GET:
+        #     brands = request.GET["brand"].split(",")
+        #     products = products.filter(brand__db_name__in=brands)
+        #     brands = Brand.objects.filter(db_name__in=brands)
+        #     total_products = products.count()
+        #     if not brands:
+        #         messages.error(request, (f"'{brands}' does not exist in Brand table"))
+        #         return redirect(reverse("products"))
 
         if "has_discount" in request.GET:
             try:

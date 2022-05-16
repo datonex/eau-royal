@@ -19,6 +19,29 @@ input {
   text-align: center;
 }
 
+.btn-checkbox {
+  color: var(--dark-purple) !important;
+  background-color: white;
+  border-color: white;
+  border-radius: 0 !important;
+}
+
+.btn-checkbox:hover {
+  color: var(--dark-purple);
+  background-color: var(--lavender);
+  border-color: var(--lavender);
+}
+
+.btn-check:active + .btn-checkbox,
+.btn-check:checked + .btn-checkbox,
+.btn-checkbox.active,
+.btn-checkbox.dropdown-toggle.show,
+.btn-checkbox:active {
+  color: var(--white) !important;
+  background-color: var(--dark-purple) !important;
+  border-color: var(--dark-purple) !important;
+}
+
 /* ---------------- Chrome, Safari, Edge, Opera remove spin---------------- */
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -33,7 +56,13 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-.scroll .dropdown-menu {
+.scroll-brands {
+  max-height: 240px;
+  overflow-y: auto;
+  z-index: -100;
+}
+
+.scroll.dropdown-menu {
   max-height: 240px;
   overflow-y: auto;
 }
