@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    "url_tools",
     "home",
     "products",
     "bag",
@@ -88,6 +89,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "bag.contexts.bag_contents",
+                "url_tools.context_processors.current_url",
             ],
             "builtins": [
                 "crispy_forms.templatetags.crispy_forms_tags",

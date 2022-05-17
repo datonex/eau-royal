@@ -11,6 +11,7 @@ django-allauth==0.41.0
 django-countries==7.3.2
 django-crispy-forms==1.14.0
 django-storages==1.12.3
+django-url-tools-py3==0.2.1
 gunicorn==20.1.0
 idna==3.3
 install==1.3.5
