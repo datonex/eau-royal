@@ -1,105 +1,114 @@
 <script type="text/javascript">
-    $(function () {
-      /** Add a single column very small screens */
-      var singleColumn = function (screenSize) {
+  $(function () {
+    /** Add a single column very small screens */
+    var singleColumn = function (screenSize) {
 
-        if (screenSize.matches) {
-          $("#product-detail-container")
-            .removeClass("row-cols-2")
-            .addClass("row-cols-1");
-        }
+      if (screenSize.matches) {
+        $("#product-detail-container")
+          .removeClass("row-cols-2")
+          .addClass("row-cols-1");
       }
-      var smallScreen = window.matchMedia("(max-width: 370px)");
+    }
+    var smallScreen = window.matchMedia("(max-width: 370px)");
 
-      singleColumn(smallScreen);
+    singleColumn(smallScreen);
 
-      smallScreen.addListener(singleColumn);
+    smallScreen.addListener(singleColumn);
 
-      /** Begin waypoint infinite scrolling */
-      var infinite = new Waypoint.Infinite({
-        element: $('.infinite-container')[0],
-        onBeforePageLoad: function () {
-          $('#loading').show();
-        },
-        onAfterPageLoad: function ($items) {
-          $('#loading').hide();
-        }
-      });
-
-      /** Begin range slider */
-
-      var min = {{ min_price }};
-      var max = {{ max_price }};
-      var from = 0;
-      var to = 0;
-
-      $(".range-slider").ionRangeSlider({
-          skin: "round",
-          type: "double",
-          min: min,
-          max: max,
-          prefix: "£",
-          from: {{ price_from }},
-          to: {{ price_to }},
-          onStart: updateInputs,
-          onChange: updateInputs,
-          onFinish: function() {
-            updateInputs
-
-            if ($('#range-form')) {
-              $('#range-form').submit()
-            } else {
-              $('#range-form-mobile').submit()
-            }
-          }
-          
-      });
-
-      var instance = $(".range-slider").data("ionRangeSlider");
-      
-      function updateInputs (data) {
-          from = data.from;
-          to = data.to;
-      
-          $(".input-from").prop("value", from);
-          $(".input-to").prop("value", to);
-
+    /** Begin waypoint infinite scrolling */
+    var infinite = new Waypoint.Infinite({
+      element: $('.infinite-container')[0],
+      onBeforePageLoad: function () {
+        $('#loading').show();
+      },
+      onAfterPageLoad: function ($items) {
+        $('#loading').hide();
       }
+    });
+
+    /** Begin range slider */
+
+    var min = {{ min_price }};
+    var max = {{ max_price }};
+    var from = 0;
+    var to = 0;
+
+    $(".range-slider").ionRangeSlider({
+        skin: "round",
+        type: "double",
+        min: min,
+        max: max,
+        prefix: "£",
+        from: {{ price_from }},
+        to: {{ price_to }},
+        onStart: updateInputs,
+        onChange: updateInputs,
+        onFinish: updateInputs,
+    });
+
+    var instance = $(".range-slider").data("ionRangeSlider");
+    
+    function updateInputs (data) {
+        from = data.from;
+        to = data.to;
+    
+        $(".input-from").prop("value", from);
+        $(".input-to").prop("value", to);
+
+    }
+    
+    $(".input-from").on("change", function () {
+        var val = $(this).prop("value");
+    
+        // validate
+        if (val < min) {
+            val = min;
+        } else if (val > to) {
+            val = to;
+        }
+    
+        instance.update({
+            from: val
+        });
+    
+        $(this).prop("value", val);
+    
+    });
+    
+    $(".input-to").on("change", function () {
+        var val = $(this).prop("value");
+    
+        // validate
+        if (val < from) {
+            val = from;
+        } else if (val > max) {
+            val = max;
+        }
+    
+        instance.update({
+            to: val
+        });
+    
+        $(this).prop("value", val);
+    });
       
-      $(".input-from").on("change", function () {
-          var val = $(this).prop("value");
-      
-          // validate
-          if (val < min) {
-              val = min;
-          } else if (val > to) {
-              val = to;
-          }
-      
-          instance.update({
-              from: val
-          });
-      
-          $(this).prop("value", val);
-      
-      });
-      
-      $(".input-to").on("change", function () {
-          var val = $(this).prop("value");
-      
-          // validate
-          if (val < from) {
-              val = from;
-          } else if (val > max) {
-              val = max;
-          }
-      
-          instance.update({
-              to: val
-          });
-      
-          $(this).prop("value", val);
-      });
-        
-    });     
-  </script>
+  });
+
+  /** Add direction query parameter */
+  const sortPriceAsc = $('input#sort_price_asc')
+  const sortPriceDesc = $('input#sort_price_desc')
+  const sortRatingDesc = $('input#sort_rating_desc')
+  const directionPriceAsc = $('input#direction_price_asc');
+  const directionPriceDesc = $('input#direction_price_desc')
+  const directionRatingDesc = $('input#direction_rating_desc');
+
+  function handleDirection(sort, direction) {
+    if (sort.is(':checked')) {
+      directionPriceAsc.attr('checked', false);
+      directionPriceDesc.attr('checked', false);
+      directionRatingDesc.attr('checked', false);
+      direction.attr('checked', true)
+    }
+  }
+  
+</script>
