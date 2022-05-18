@@ -100,6 +100,16 @@
                   </div>
                 </div>
                 <div class="card-body p-0 text-center">
+                  <div class="mb-2 text-center">
+                    {% if product.rating %}
+                    <i class="fas fa-star fa-1x text-lv"></i>
+                      <small class="text-muted ms-2">
+                        {{ product.rating }} / 5
+                      </small>
+                    {% else %}
+                      <small class="text-muted">No Rating</small>
+                    {% endif %}
+                  </div>
                   <p class="mb-1">£{{ product.price }}</p>
                 </div>
               </a>
