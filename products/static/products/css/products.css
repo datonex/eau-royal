@@ -7,7 +7,7 @@
 }
 
 .product-body {
-  height: 20vh;
+  height: 18vh;
 }
 
 #product-detail-section img {
@@ -99,7 +99,7 @@ input[type="number"] {
 
 @media only screen and (max-width: 768px) {
   .product-body {
-    height: 18vh;
+    height: 14vh;
   }
 }
 
