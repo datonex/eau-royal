@@ -1,19 +1,5 @@
 <script type="text/javascript">
   $(function () {
-    /** Add a single column very small screens */
-    var singleColumn = function (screenSize) {
-
-      if (screenSize.matches) {
-        $("#product-detail-container")
-          .removeClass("row-cols-2")
-          .addClass("row-cols-1");
-      }
-    }
-    var smallScreen = window.matchMedia("(max-width: 370px)");
-
-    singleColumn(smallScreen);
-
-    smallScreen.addListener(singleColumn);
 
     /** Begin waypoint infinite scrolling */
     var infinite = new Waypoint.Infinite({
@@ -95,6 +81,13 @@
   });
 
   /** Add direction query parameter */
+  const sortPriceAscMobile = $('input#sort_price_asc_mobile')
+  const sortPriceDescMobile = $('input#sort_price_desc_mobile')
+  const sortRatingDescMobile = $('input#sort_rating_desc_mobile')
+  const directionPriceAscMobile = $('input#direction_price_asc_mobile');
+  const directionPriceDescMobile = $('input#direction_price_desc_mobile')
+  const directionRatingDescMobile = $('input#direction_rating_desc_mobile');
+
   const sortPriceAsc = $('input#sort_price_asc')
   const sortPriceDesc = $('input#sort_price_desc')
   const sortRatingDesc = $('input#sort_rating_desc')
@@ -107,6 +100,9 @@
       directionPriceAsc.attr('checked', false);
       directionPriceDesc.attr('checked', false);
       directionRatingDesc.attr('checked', false);
+      directionPriceAscMobile.attr('checked', false);
+      directionPriceDescMobile.attr('checked', false);
+      directionRatingDescMobile.attr('checked', false);
       direction.attr('checked', true)
     }
   }
