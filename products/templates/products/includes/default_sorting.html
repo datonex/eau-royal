@@ -1,177 +1,200 @@
 {% load urls %}
 <form action="{% url 'products' %}" method="GET" id="form-default-sorting">
-<div class="row text-center pb-2 mb-2 d-none d-md-flex">
-  <div class="dropdown col-3 bg-white px-0 scroll">
-    <a class=" py-2 btn btn-outline-dp rounded-0 d-flex justify-content-between align-items-center" href="#" role="button" id="sort-md-link" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+  <div class="row text-center pb-2 mb-2">
+    <div class="dropdown col-3 bg-white px-0 scroll">
+      <a class=" py-2 btn btn-outline-dp rounded-0 d-flex justify-content-between align-items-center" href="#" role="button" id="sort-md-link" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
         <div class="d-flex justify-content-between align-items-center">
           <p class="mb-0 me-3">Sort</p>
-          {% if current_sorting == 'None_None' %} 
-            <small class="text-muted fw-light">By default</small> 
+          {% if current_sorting == 'None_None' %}
+            <small class="text-muted fw-light">By default</small>
           {% endif %}
-          {% if current_sorting == 'price_asc' %} 
-            <small class="text-muted fw-light">By price low to high</small> 
+          {% if current_sorting == 'price_asc' %}
+            <small class="text-muted fw-light">By price low to high</small>
           {% endif %}
-          {% if current_sorting == 'price_desc' %} 
-            <small class="text-muted fw-light">By price high to low</small> 
+          {% if current_sorting == 'price_desc' %}
+            <small class="text-muted fw-light">By price high to low</small>
           {% endif %}
-          {% if current_sorting == 'rating_desc' %} 
-            <small class="text-muted fw-light">Top rated</small> 
+          {% if current_sorting == 'rating_desc' %}
+            <small class="text-muted fw-light">Top rated</small>
           {% endif %}
         </div>
-      <i class="fa-solid fa-chevron-down"></i>
-    </a>
-    <div class="dropdown-menu col-12 bg-white py-0" aria-labelledby="sort-md-link" >
-      <div class="bg-lv-60 pt-0">
-        <div class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
-          <div>Sort by</div>
-          <a class="btn btn-outline-dp btn-sm" href="{% del_params request.get_full_path 'sort' 'direction' %}" role="button">Clear</a>
-        </div>
-        <div class="mx-3">
-          <div class="btn-group-vertical w-100" role="group" aria-label="Sort radio toggle button group">
-            <div class="mb-2 w-100">
-              <input type="radio" class="btn-check w-100" name="sort" value="price" id="sort_price_asc" autocomplete="off" {% if current_sorting == 'price_asc' %} checked="checked" {% endif %} onclick="handleDirection(sortPriceAsc, directionPriceAsc)">
-              <label class="btn btn-checkbox w-100" for="sort_price_asc">Price High to Low</label> 
-            </div>
-            <div class="mb-2 w-100 d-none" id="direction-price_asc-container">
-              <input type="radio" name="direction" value="asc" class="btn-check w-100" id="direction_price_asc" {% if current_sorting == 'price_asc' %} checked="checked" {% endif %} autocomplete="off">
-              <label class="btn btn-checkbox w-100" for="direction_price_asc">direction asc</label> 
-            </div>
-            <div class="mb-2 w-100">
-              <input type="radio" class="btn-check w-100" name="sort" value="price" id="sort_price_desc" autocomplete="off" {% if current_sorting == 'price_desc' %} checked="checked" {% endif %} onclick="handleDirection(sortPriceDesc, directionPriceDesc)">
-              <label class="btn btn-checkbox w-100" for="sort_price_desc">Price Low to High</label> 
-            </div>
-            <div class="mb-2 w-100 d-none" id="direction-price_desc-container">
-              <input type="radio" name="direction" value="desc" class="btn-check w-100" id="direction_price_desc" {% if current_sorting == 'price_desc' %} checked="checked" {% endif %} autocomplete="off">
-              <label class="btn btn-checkbox w-100" for="direction_price_desc">direction desc</label> 
-            </div>
-            <div class="mb-2 w-100">
-              <input type="radio" class="btn-check w-100" name="sort" value="rating" id="sort_rating_desc" autocomplete="off" {% if current_sorting == 'rating_desc' %} checked="checked" {% endif %} onclick="handleDirection(sortRatingDesc, directionRatingDesc)">
-              <label class="btn btn-checkbox w-100" for="sort_rating_desc">Top rated</label> 
-            </div>
-            <div class="mb-2 w-100 d-none" id="direction-rating_desc-container">
-              <input type="radio" name="direction" value="desc" class="btn-check w-100" id="direction_rating_desc" {% if current_sorting == 'rating_desc' %} checked="checked" {% endif %} autocomplete="off">
-              <label class="btn btn-checkbox w-100" for="direction_rating_desc">direction desc</label> 
+        <i class="fa-solid fa-chevron-down"></i>
+      </a>
+      <div class="dropdown-menu col-12 bg-white py-0" aria-labelledby="sort-md-link">
+        <div class="bg-lv-60 pt-0">
+          <div class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
+            <div>Sort by</div>
+            <a class="btn btn-outline-dp btn-sm" href="{% del_params request.get_full_path 'sort' 'direction' %}" role="button">Clear</a>
+          </div>
+          <div class="mx-3">
+            <div class="btn-group-vertical w-100" role="group" aria-label="Sort radio toggle button group">
+              <div class="mb-2 w-100">
+                <input type="radio" class="btn-check w-100" name="sort" value="price" id="sort_price_asc" autocomplete="off" {% if current_sorting == 'price_asc' %} checked="checked" {% endif %} onclick="handleDirection(sortPriceAsc, directionPriceAsc)">
+                <label class="btn btn-checkbox w-100" for="sort_price_asc">Price High to Low</label>
+              </div>
+              <div class="mb-2 w-100 d-none" id="direction-price_asc-container">
+                <input type="radio" name="direction" value="asc" class="btn-check w-100" id="direction_price_asc" {% if current_sorting == 'price_asc' %} checked="checked" {% endif %} autocomplete="off">
+                <label class="btn btn-checkbox w-100" for="direction_price_asc">direction asc</label>
+              </div>
+              <div class="mb-2 w-100">
+                <input type="radio" class="btn-check w-100" name="sort" value="price" id="sort_price_desc" autocomplete="off" {% if current_sorting == 'price_desc' %} checked="checked" {% endif %} onclick="handleDirection(sortPriceDesc, directionPriceDesc)">
+                <label class="btn btn-checkbox w-100" for="sort_price_desc">Price Low to High</label>
+              </div>
+              <div class="mb-2 w-100 d-none" id="direction-price_desc-container">
+                <input type="radio" name="direction" value="desc" class="btn-check w-100" id="direction_price_desc" {% if current_sorting == 'price_desc' %} checked="checked" {% endif %} autocomplete="off">
+                <label class="btn btn-checkbox w-100" for="direction_price_desc">direction desc</label>
+              </div>
+              <div class="mb-2 w-100">
+                <input type="radio" class="btn-check w-100" name="sort" value="rating" id="sort_rating_desc" autocomplete="off" {% if current_sorting == 'rating_desc' %} checked="checked" {% endif %} onclick="handleDirection(sortRatingDesc, directionRatingDesc)">
+                <label class="btn btn-checkbox w-100" for="sort_rating_desc">Top rated</label>
+              </div>
+              <div class="mb-2 w-100 d-none" id="direction-rating_desc-container">
+                <input type="radio" name="direction" value="desc" class="btn-check w-100" id="direction_rating_desc" {% if current_sorting == 'rating_desc' %} checked="checked" {% endif %} autocomplete="off">
+                <label class="btn btn-checkbox w-100" for="direction_rating_desc">direction desc</label>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="dropdown-header text-dp bg-white mx-0 py-2 d-flex justify-content-between align-items-center">
-          <div>item</div>
-          <button type="submit" class="btn btn-dp btn-sm">Submit</button>
+          <div class="dropdown-header text-dp bg-white mx-0 py-2 d-flex justify-content-end align-items-center">
+            <button type="submit" class="btn btn-dp btn-sm">Submit</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="dropdown col-3 bg-white px-0 scroll">
-    <a class="py-2 btn btn-outline-dp rounded-0 d-flex justify-content-between align-items-center" href="#" role="button" id="category-md-link" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+    <div class="dropdown col-3 bg-white px-0 scroll">
+      <a class="py-2 btn btn-outline-dp rounded-0 d-flex justify-content-between align-items-center" href="#" role="button" id="category-md-link" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
         <div class="d-flex justify-content-between align-items-center">
           <p class="mb-0 me-3">Category</p>
-            {% if 'category' in request.GET %}
-              {% for c in current_categories %}
-                <small class="text-muted fw-light">{{ c.name }},</small> 
-              {% endfor %}
-            {% elif 'gender' in request.get_full_path %}
-            <small class="text-muted fw-light">perfumes,</small>
-            {% else %}
-              <small class="text-muted fw-light">All</small>
-            {% endif %}
-        </div>
-      <i class="fa-solid fa-chevron-down"></i>
-    </a>
-    <div class="dropdown-menu col-12 bg-white py-0" aria-labelledby="category-md-link">
-      <div class="bg-lv-60 pt-0">
-        <div class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
-          <div>Category</div>
-          <a class="btn btn-outline-dp btn-sm" href="{% del_params request.get_full_path 'category' %}" role="button">Clear</a>
-        </div>
-        <div class="mx-3">
-          <div class="btn-group-vertical w-100" role="group" aria-label="Category radio toggle button group">
-            {% for c in category_list %}
-              <div class="mb-2 w-100">
-                <input type="radio" class="btn-check w-100" name="category" value="{{ c.db_name }}" id="category_{{ c.db_name }}" autocomplete="off" {% if c in current_categories %} checked="checked" {% endif %}>
-                <label class="btn btn-checkbox w-100" for="category_{{ c.db_name }}">{{ c.name}}</label> 
-              </div>
+          {% if 'category' in request.GET or 'gender' in request.GET %}
+            {% for g in current_genders %}
+              <small class="text-muted fw-light">{{ g.name }} &nbsp;</small>
             {% endfor %}
-          </div>
+            {% for c in current_categories %}
+              <small class="text-muted fw-light">{{ c.name }}</small>
+            {% endfor %}
+          {% elif 'gender' in request.get_full_path %}
+            <small class="text-muted fw-light">perfumes,</small>
+          {% else %}
+            <small class="text-muted fw-light">All</small>
+          {% endif %}
         </div>
-        <div class="dropdown-header text-dp bg-white mx-0 py-2 d-flex justify-content-between align-items-center">
-          <div>item</div>
-          <button type="submit" class="btn btn-dp btn-sm">Submit</button>
+        <i class="fa-solid fa-chevron-down"></i>
+      </a>
+      <div class="dropdown-menu col-12 bg-white py-0" aria-labelledby="category-md-link">
+        <div class="bg-lv-60 pt-0">
+          <div class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
+            <div>Category</div>
+            <a class="btn btn-outline-dp btn-sm" href="{% del_params request.get_full_path 'category' 'gender' %}" role="button">Clear</a>
+          </div>
+          <div class="mx-3">
+            <div class="btn-group-vertical w-100" role="group" aria-label="Category radio toggle button group">
+              {% for c in category_list %}
+                <div class="mb-2 w-100">
+                  <input type="radio" class="btn-check w-100" name="category" value="{{ c.db_name }}" id="category_{{ c.db_name }}" autocomplete="off" {% if c in current_categories %} checked="checked" {% endif %}>
+                  <label class="btn btn-checkbox w-100 text-capitalize" for="category_{{ c.db_name }}">{{ c.name}}</label>
+                </div>
+              {% endfor %}
+              {% for g in gender_list %}
+                <div class="mb-2 w-100">
+                  <input type="radio" class="btn-check w-100" name="gender" value="{{ g.db_name }}" id="gender_{{ g.name }}" autocomplete="off" {% if g in current_genders %} checked="checked" {% endif %}>
+                  <label class="btn btn-checkbox w-100 text-capitalize" for="gender_{{ g.name }}">{% if g.name == 'all' %}unisex {% else %}{{ g.name }}{% endif %}</label>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="dropdown-header text-dp bg-white mx-0 py-2 d-flex justify-content-between align-items-center">
+            <div>
+              {% if 'category' in request.GET or 'gender' in request.GET %}
+                {% for g in current_genders %}
+                  <strong>{{ g.name }}</strong>
+                {% endfor %}
+                {% for c in current_categories %}
+                  <strong>{{ c.name }}</strong> 
+                {% endfor %}
+              {% else %}
+                none
+              {% endif %}
+              selected
+            </div>
+            <button type="submit" class="btn btn-dp btn-sm">Submit</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="dropdown col-3 bg-white px-0 scroll">
-    <a class="py-2 btn btn-outline-dp rounded-0 d-flex justify-content-between align-items-center" href="#" role="button" id="brand-md-link" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+    <div class="dropdown col-3 bg-white px-0 scroll">
+      <a class="py-2 btn btn-outline-dp rounded-0 d-flex justify-content-between align-items-center" href="#" role="button" id="brand-md-link" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
         <div class="d-flex justify-content-between align-items-center">
           <p class="mb-0 me-3">Brand</p>
           {% if 'brand' in request.GET %}
-            {% if current_brands|length < 2  %}
+            {% if current_brands|length < 2 %}
               <small class="text-muted fw-light">{{ current_brands.0.name }}</small>
             {% else %}
-              <small class="text-muted fw-light">{{ current_brands.0.name }} + {{ current_brands|length }} </small>
+              <small class="text-muted fw-light">
+                {{ current_brands|length }} selected
+              </small>
             {% endif %}
           {% else %}
             <small class="text-muted fw-light">All</small>
           {% endif %}
         </div>
-      <i class="fa-solid fa-chevron-down"></i>
-    </a>
-    <div class="dropdown-menu col-12 bg-white py-0" aria-labelledby="brand-md-link">
-      <div class="bg-lv-60 pt-0">
-        <div class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
-          <div>Brand</div>
-          <a class="btn btn-outline-dp btn-sm" href="{% del_params request.get_full_path 'brand' %}" role="button">Clear</a>
-        </div>
-        <div class="scroll-brands">
-          <div class="mx-3">
-            <div class="btn-group-vertical w-100" role="group" aria-label="Brand checkbox toggle button group">
-              {% for b in brand_list %}
-                <div class="mb-2 w-100">
-                  <input type="checkbox" class="btn-check w-100" name="brand" value="{{ b.db_name }}" id="brand_{{ b.db_name }}" autocomplete="off" {% if b in current_brands %} checked="checked" {% endif %}>
-                  <label class="btn btn-checkbox w-100" for="brand_{{ b.db_name }}">{{ b.name}}</label> 
-                </div>
-              {% endfor %}
-            </div>
+        <i class="fa-solid fa-chevron-down"></i>
+      </a>
+      <div class="dropdown-menu col-12 bg-white py-0" aria-labelledby="brand-md-link">
+        <div class="bg-lv-60 pt-0">
+          <div class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
+            <div>Brand</div>
+            <a class="btn btn-outline-dp btn-sm" href="{% del_params request.get_full_path 'brand' %}" role="button">Clear</a>
           </div>
-        </div>
-        <div class="dropdown-header text-dp bg-white mx-0 py-2 d-flex justify-content-between align-items-center">
-          <div>item</div>
-          <button type="submit" class="btn btn-dp btn-sm">Submit</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="dropdown col-3 bg-white px-0">
-    <a class=" py-2 btn btn-outline-dp rounded-0 d-flex justify-content-between align-items-center" href="#" role="button" id="price-md-link" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-      <div class="d-flex justify-content-between align-items-center">
-        <p class="mb-0 me-3">Price</p>
-        {% if 'price_from' or 'price_to' in request.GET %}
-          <small class="text-muted fw-light">£{{ price_from }} - £{{ price_to }}</small>
-        {% endif %}
-      </div>
-      <i class="fa-solid fa-chevron-down"></i>
-    </a>
-    <div class="dropdown-menu col-12 price-range-dropdown bg-white py-0" aria-labelledby="price-md-link">
-      <div class="bg-lv-60 pt-0">
-        <div class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
-          <div>price range</div>
-          <a class="btn btn-outline-dp btn-sm" href="{% del_params request.get_full_path 'price_from' 'price_to' %}" role="button">Clear</a>
-        </div>
-        <div class="mx-3 mb-3 py-2 px-3 bg-white">
-          <div class="dropdown-item">
-            <div class="d-flex flex-column align-items-center justify-content-between">
-              <div class="range-container col-12 mb-2">
-                <div class="d-flex align-items-center justify-content-between">
-                  <input class="form-control w-25 d-none input-from" type="number" name="price_from" min="{{ min_price }}" max="{{ max_price }}">
-                  <input class="form-control w-25 d-none input-to" type="number" name="price_to" min="{{ min_price }}" max="{{ max_price }}">
-                </div>
-                <input type="text" class="range-slider" value="" />
+          <div class="scroll-brands">
+            <div class="mx-3">
+              <div class="btn-group-vertical w-100" role="group" aria-label="Brand checkbox toggle button group">
+                {% for b in brand_list %}
+                  <div class="mb-2 w-100">
+                    <input type="checkbox" class="btn-check w-100" name="brand" value="{{ b.db_name }}" id="brand_{{ b.db_name }}" autocomplete="off" {% if b in current_brands %} checked="checked" {% endif %}>
+                    <label class="btn btn-checkbox w-100" for="brand_{{ b.db_name }}">{{ b.name}}</label>
+                  </div>
+                {% endfor %}
               </div>
             </div>
           </div>
+          <div class="dropdown-header text-dp bg-white mx-0 py-2 d-flex justify-content-between align-items-center">
+            <div>{{ current_brands|length }} selected</div>
+            <button type="submit" class="btn btn-dp btn-sm">Submit</button>
+          </div>
         </div>
-        <div class="dropdown-header text-dp bg-white mx-0 py-2 d-flex justify-content-between align-items-center">
-          <button type="submit" class="btn btn-dp btn-sm">Submit</button>
+      </div>
+    </div>
+    <div class="dropdown col-3 bg-white px-0">
+      <a class=" py-2 btn btn-outline-dp rounded-0 d-flex justify-content-between align-items-center" href="#" role="button" id="price-md-link" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+        <div class="d-flex justify-content-between align-items-center">
+          <p class="mb-0 me-3">Price</p>
+          {% if 'price_from' or 'price_to' in request.GET %}
+            <small class="text-muted fw-light">£{{ price_from }} - £{{ price_to }}</small>
+          {% endif %}
+        </div>
+        <i class="fa-solid fa-chevron-down"></i>
+      </a>
+      <div class="dropdown-menu col-12 price-range-dropdown bg-white py-0" aria-labelledby="price-md-link">
+        <div class="bg-lv-60 pt-0">
+          <div class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
+            <div>price range</div>
+            <a class="btn btn-outline-dp btn-sm" href="{% del_params request.get_full_path 'price_from' 'price_to' %}" role="button">Reset</a>
+          </div>
+          <div class="mx-3 mb-3 py-2 px-3 bg-white">
+            <div class="dropdown-item">
+              <div class="d-flex flex-column align-items-center justify-content-between">
+                <div class="range-container col-12 mb-2">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <input class="form-control w-25 d-none input-from" type="number" name="price_from" min="{{ min_price }}" max="{{ max_price }}">
+                    <input class="form-control w-25 d-none input-to" type="number" name="price_to" min="{{ min_price }}" max="{{ max_price }}">
+                  </div>
+                  <input type="text" class="range-slider" value=""/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="dropdown-header text-dp bg-white mx-0 py-2 d-flex justify-content-end align-items-center">
+            <button type="submit" class="btn btn-dp btn-sm">Submit</button>
+          </div>
         </div>
       </div>
     </div>

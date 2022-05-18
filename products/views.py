@@ -24,6 +24,7 @@ def all_products(request):
     total_products = products.count()
 
     brand_list = Brand.objects.all()
+    gender_list = Gender.objects.all()
     category_list = Category.objects.all()
 
     min_price_dict = Product.objects.aggregate(Min("price"))
@@ -137,6 +138,7 @@ def all_products(request):
         "products": products,
         "brand_list": brand_list,
         "category_list": category_list,
+        "gender_list": gender_list,
         "total_products": total_products,
         "search_term": query,
         "current_categories": categories,
