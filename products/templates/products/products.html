@@ -13,37 +13,35 @@
 {% endblock %}
 
 {% block content %}
-  <section class="container-fluid products-dropdown">
+  <section class="container-fluid products-dropdown mb-2">
     <div class="row text-center bg-dp">
       <div class="col py-2">
-          {% if request.get_full_path == "/products/" %}
-            <h4 class="text-lv text-uppercase mt-2">All products</h4>
-          {% else %}
-            {% if 'category' in request.GET %}
-              {% for c in current_categories %}
-                <h4 class="text-lv text-uppercase mt-2">{{ c.name }}</h4>
-              {% endfor %}
-            {% elif 'gender' in request.GET %}
-              {% for g in current_genders %}
-                <h4 class="text-lv text-uppercase mt-2">{{ g.name }}</h4>
-              {% endfor %}
-            {% elif 'has_discount' in request.GET %}
-              <h4 class="text-lv text-uppercase mt-2">Sale</h4>
-            {% else %}
-              <h4 class="text-lv text-uppercase mt-2">All products</h4>
-            {% endif %}
-          {% endif %}
+        {% if 'category' in request.GET %}
+          {% for c in current_categories %}
+            <h4 class="text-lv text-uppercase mt-2">{{ c.name }}</h4>
+          {% endfor %}
+        {% elif 'gender' in request.GET %}
+          {% for g in current_genders %}
+            <h4 class="text-lv text-uppercase mt-2">{{ g.name }}</h4>
+          {% endfor %}
+        {% elif 'has_discount' in request.GET %}
+          <h4 class="text-lv text-uppercase mt-2">Sale</h4>
+        {% else %}
+          <h4 class="text-lv text-uppercase mt-2">All products</h4>
+        {% endif %}
       </div>
     </div>
+    <div class="d-none d-md-block">
+      {% include 'products/includes/default_sorting.html' %}
+    </div>
 
-    {% include 'products/includes/mobile_sorting.html' %}
+    <div class="d-block d-md-none">
+      {% include 'products/includes/mobile_sorting.html' %}
+    </div>
 
   </section>
   <section id="product-list-section" class="pb-5 text-dp products-dropdown">
     <div class="container-lg px-4 px-lg-5">
-
-      {% include 'products/includes/default_sorting.html' %}
-
       <div class="row gx-2 gx-l-5">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
           <ol class="breadcrumb">
@@ -81,12 +79,11 @@
           {% if search_term %}
             found for "{{ search_term }}"
           {% endif %}
-          of
+          out of
           {{ total_products }}
-          items
         </p>
       </div>
-      <div id="product-detail-container" class="infinite-container row gx-2 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 justify-content-center">
+      <div id="product-detail-container" class="infinite-container row gx-2 gx-lg-5 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 justify-content-start">
         {% for product in products %}
           <div class="infinite-item col shadow mb-2">
             <div class="card h-100 border-white">
@@ -107,12 +104,15 @@
                 </div>
               </a>
               {% if request.user.is_superuser %}
-                <div class="card-footer bg-white">
-                  <small class="ml-3 d-flex justify-content-around">
-                    <a class="btn btn-dp" href="{% url 'edit_product' product.id %}">Edit</a>
-                    
-                    <a class="btn btn-outline-danger" href="{% url 'delete_product' product.id %}">Delete</a>
-                  </small>
+                <div class="card-footer bg-white px-2">
+                  <div class="row">
+                    <div class="col-6 p-1">
+                      <a class="btn btn-dp w-100" href="{% url 'edit_product' product.id %}">Edit</a>
+                    </div>
+                    <div class="col-6 p-1">
+                      <a class="btn btn-outline-danger w-100" href="{% url 'delete_product' product.id %}">Delete</a>
+                    </div>
+                  </div>
                 </div>
               {% endif %}
             </div>
