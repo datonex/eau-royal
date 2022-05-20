@@ -76,6 +76,10 @@ body {
   border-color: var(--dark-purple) !important;
 }
 
+.border-lv {
+  border-color: var(--lavender) !important;
+}
+
 .border-transparent {
   border-color: var(--transparent) !important;
 }

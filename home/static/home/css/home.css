@@ -10,10 +10,6 @@ section.hero {
   background-size: cover;
 }
 
-.hero .btn-primary {
-  border: 2px var(--lavender);
-}
-
 .home-card img {
   height: 260px !important;
   object-fit: cover !important;
