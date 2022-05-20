@@ -1,5 +1,9 @@
 @import "../../../../static/css/base.css";
 
+section.min-height {
+  min-height: calc(100vh - 128px) !important;
+}
+
 img {
   /* max-height: 200px; */
   object-fit: contain;

@@ -1,5 +1,9 @@
 @import "../../../../static/css/base.css";
 
+section.min-height {
+  min-height: calc(100vh - 110px) !important;
+}
+
 .dot {
   height: 3rem;
   width: 3rem;
@@ -15,7 +19,6 @@
 }
 
 img {
-  /* max-height: 200px; */
   object-fit: contain;
   max-height: 160px;
 }
