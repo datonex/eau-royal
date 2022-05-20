@@ -1,0 +1,171 @@
+<script type="text/javascript">
+  $(function () {
+    // Update progress bar if details form field is completed + validate form input
+
+    $("#save-details").click(function () {
+      var namePattern = new RegExp(/^[a-zA-Z-']+ [a-zA-Z-']+$/);
+      var emailPattern = new RegExp(/^[a-zA-Z0-9._-]+@[a-zA-Z]+\.[a-zA-Z]+$/);
+      var phoneNumberPattern = new RegExp(/^\+[1-9]\d{2}\d{10}|\+[1-9][0-9]\d{10}|0?1?8?\d{4,15}$/);
+      var name = $("#id_full_name");
+      var email = $("#id_email");
+      var phoneNumber = $("#id_phone_number");
+      var nameErrorDiv = document.getElementById("name-error");
+      var emailErrorDiv = document.getElementById("email-error");
+      var phoneNumberErrorDiv = document.getElementById("phone-number-error");
+      var nameErrorMessage = `
+                      <span class="icon" role="alert">
+                        <i class="fas fa-times fs-6"></i>
+                      </span>
+                      <span>${name.attr("title")}</span>
+                    `;
+      var emailErrorMessage = `
+                      <span class="icon" role="alert">
+                        <i class="fas fa-times fs-6"></i>
+                      </span>
+                      <span>${email.attr("title")}</span>
+                    `;
+      var phoneNumberErrorMessage = `
+                      <span class="icon" role="alert">
+                        <i class="fas fa-times fs-6"></i>
+                      </span>
+                      <span>${phoneNumber.attr("title")}</span>
+                    `;
+
+      if (namePattern.test(name.val())) {
+        nameErrorDiv.textContent = "";
+      }
+      if (emailPattern.test(email.val())) {
+        emailErrorDiv.textContent = "";
+      }
+      if (phoneNumberPattern.test(phoneNumber.val())) {
+        phoneNumberErrorDiv.textContent = "";
+      }
+
+      if (namePattern.test(name.val()) === false) {
+        $(nameErrorDiv).html(nameErrorMessage);
+      } else if (emailPattern.test(email.val()) === false) {
+        $(emailErrorDiv).html(emailErrorMessage);
+      } else if (phoneNumberPattern.test(phoneNumber.val()) === false) {
+        $(phoneNumberErrorDiv).html(phoneNumberErrorMessage);
+      } else {
+        nameErrorDiv.textContent = "";
+        emailErrorDiv.textContent = "";
+        phoneNumberErrorDiv.textContent = "";
+        if ($("fieldset").hasClass("delivery-progress")) {
+          $(".delivery-progress").removeClass("d-none");
+          $(".progress-bar").css("width", "31%");
+          $(".delivery-dot").removeClass("bg-lv-80");
+          $(".delivery-dot").addClass("bg-dp");
+          $(".save-details").toggleClass("d-none");
+          $(".edit-details").removeClass("d-none");
+          $("#details-field")
+            .find("input")
+            .each(function () {
+              $(this).prop("readonly", true);
+            });
+        }
+      }
+    });
+
+    $("#save-delivery").click(function () {
+      // Define postal code dictionary
+
+      var streetPattern = new RegExp(/^[a-zA-Z0-9-.']+ [a-zA-Z0-9-.']+ [a-zA-Z0-9-.']+$/);
+      var genericPattern = new RegExp(/^[a-zA-Z-.' ]+$/);
+      var address1 = $("#id_street_address1");
+      var town = $("#id_town_or_city");
+      var country = $("#id_country");
+      var countryText = $("#id_country option:selected").text();
+      var address1ErrorDiv = document.getElementById("address1-error");
+      var townErrorDiv = document.getElementById("town-error");
+      var countryErrorDiv = document.getElementById("country-error");
+      var address1ErrorMessage = `
+                        <span class="icon" role="alert">
+                          <i class="fas fa-times fs-6"></i>
+                        </span>
+                        <span>${address1.attr("title")}</span>
+                      `;
+      var genericErrorMessage = `
+                        <span class="icon" role="alert">
+                          <i class="fas fa-times fs-6"></i>
+                        </span>
+                        <span>Please enter a valid location.</span>
+                      `;
+      var countryErrorMessage = `
+                        <span class="icon" role="alert">
+                          <i class="fas fa-times fs-6"></i>
+                        </span>
+                        <span>Please select a country.</span>
+                      `;
+
+      if (streetPattern.test(address1.val())) {
+        address1ErrorDiv.textContent = "";
+      }
+
+      if (genericPattern.test(town.val())) {
+        townErrorDiv.textContent = "";
+      }
+
+      if (countryText !== "Country *") {
+        countryErrorDiv.textContent = "";
+      }
+
+      if (streetPattern.test(address1.val()) === false) {
+        $(address1ErrorDiv).html(address1ErrorMessage);
+      } else if (genericPattern.test(town.val()) === false) {
+        $(townErrorDiv).html(genericErrorMessage);
+      } else if (countryText === "Country *") {
+        $(countryErrorDiv).html(countryErrorMessage);
+      } else {
+        address1ErrorDiv.textContent = "";
+        townErrorDiv.textContent = "";
+        countryErrorDiv.textContent = "";
+        if ($("fieldset").hasClass("payment-progress")) {
+          $(".payment-progress").removeClass("d-none");
+          $(".progress-bar").css("width", "65%");
+          $(".delivery-dot, .payment-dot").removeClass("bg-lv-80");
+          $(".delivery-dot, .payment-dot").addClass("bg-dp");
+          $(".save-delivery").toggleClass("d-none");
+          $(".edit-delivery").removeClass("d-none");
+          $("#delivery-field")
+            .find("input")
+            .each(function () {
+              $(this).prop("readonly", true);
+            });
+        }
+      }
+    });
+
+    $(".edit-details").click(function () {
+      if ($("fieldset").hasClass("delivery-progress")) {
+        $(".delivery-progress").addClass("d-none");
+        $(".progress-bar").css("width", "0");
+        $(".delivery-dot").addClass("bg-lv-80");
+        $(".delivery-dot").removeClass("bg-dp");
+        $(".save-details").toggleClass("d-none");
+        $(".edit-details").addClass("d-none");
+        $("#details-field")
+          .find("input")
+          .each(function () {
+            $(this).prop("readonly", false);
+          });
+      }
+    });
+
+    $(".edit-delivery").click(function () {
+      if ($("fieldset").hasClass("payment-progress")) {
+        $(".payment-progress").addClass("d-none");
+        $(".progress-bar").css("width", "31%");
+        $(".delivery-dot, .payment-dot").addClass("bg-lv-80");
+        $(".delivery-dot, .payment-dot").removeClass("bg-dp");
+        $(".save-delivery").toggleClass("d-none");
+        $(".edit-delivery").addClass("d-none");
+        $("#delivery-field")
+          .find("input")
+          .each(function () {
+            $(this).prop("readonly", false);
+          });
+      }
+    });
+  });
+</script>
