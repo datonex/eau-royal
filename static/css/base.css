@@ -300,6 +300,11 @@ body {
   border: 0;
 }
 
+.shopping-bag-dropdown img {
+  width: 100%;
+  object-fit: contain;
+}
+
 /* ---------------- Toasts ---------------- */
 
 .message-container {

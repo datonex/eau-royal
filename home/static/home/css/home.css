@@ -14,13 +14,13 @@ section.hero {
   border: 2px var(--lavender);
 }
 
-.card img {
+.home-card img {
   height: 260px !important;
   object-fit: cover !important;
 }
 
 @media only screen and (max-width: 374px) {
-  .card img {
+  .home-card img {
     height: 220px !important;
   }
 }
