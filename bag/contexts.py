@@ -2,6 +2,7 @@ from decimal import Decimal
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from products.models import Product
+from products.models import Brand
 
 
 def get_price(product, key):
@@ -19,6 +20,7 @@ def bag_contents(request):
     sub_total = 0
     product_count = 0
     bag = request.session.get("bag", {})
+    brands = Brand.objects.all()
 
     for item_id, item_data in bag.items():
         if isinstance(item_data, int):
@@ -73,6 +75,7 @@ def bag_contents(request):
     context = {
         "bag_items": bag_items,
         "product_count": product_count,
+        "meta_brands": brands,
         "sub_total": sub_total,
         "total": total,
         "discount": discount,
