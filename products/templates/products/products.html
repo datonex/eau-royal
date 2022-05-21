@@ -8,8 +8,8 @@
 {% endblock %}
 
 {% block extrajs %}
-  <script type="text/javascript" src="{% static 'products/js/lib/Waypoints/jquery.waypoints.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'products/js/lib/Waypoints/infinite.min.js' %}"></script>
+  <script src="{% static 'products/js/lib/Waypoints/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'products/js/lib/Waypoints/infinite.min.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -147,7 +147,7 @@
 
 {% block postloadjs %}
   {{ block.super }}
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
 
   {% include 'products/includes/products_script.html' %}
   
