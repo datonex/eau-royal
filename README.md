@@ -283,6 +283,102 @@ Users have option to sign up to Eau-Royal's newsletter at the home page so that 
 
 - [XML-Sitemaps](https://www.xml-sitemaps.com/) - used to generate Eau Royal Sitemap
 
+### HTML5 Validator
+
+#### Bag App
+
+- **bag.html** -> :white_check_mark:
+
+#### Checkout App
+
+#### Eau Royal Project
+
+#### Home App
+
+#### Products App
+
+#### Profiles App
+
+#### Misc files
+
+- **base.html**
+
+  :warning: Warnings
+
+  - Unclosed div
+
+  - :x:
+
+### CSS Validator
+
+#### Bag App
+
+- **bag.css** -> :white_check_mark: pass
+
+#### Checkout App
+
+#### Eau Royal Project
+
+#### Home App
+
+#### Products App
+
+#### Profiles App
+
+#### Misc files
+
+- **base.css** --> :white_check_mark: pass
+
+  :warning: Warnings
+
+  - Imported style sheets are not checked in direct input and file upload modes
+
+  - 24 `::-webkit-outer-spin-button` is a vendor extended pseudo-element
+
+  - 25 `::-webkit-inner-spin-button` is a vendor extended pseudo-element
+
+  - 26 `-webkit-appearance` is a vendor extension
+
+  - 33 `-moz-appearance` is a vendor extension
+
+### JavaScript Validator
+
+### Python Validator
+
+Code validation with [pep8online](http://pep8online.com/)
+
+#### Bag App
+
+- **contexts.py** -> :white_check_mark:
+
+- **urls.py** -> :white_check_mark:
+
+- **views.py** -> :white_check_mark:
+
+#### Checkout App
+
+- **admin.py** -> :white_check_mark:
+
+- **forms.py** -> :white_check_mark:
+
+- **contexts.py** -> :white_check_mark:
+
+- **models.py** -> :white_check_mark:
+
+- **urls.py** -> :white_check_mark:
+
+- **views.py** -> :white_check_mark:
+
+#### Eau Royal Project
+
+#### Home App
+
+#### Products App
+
+#### Profiles App
+
+#### Other files
+
 ## Testing
 
 In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
@@ -361,6 +457,7 @@ This website was published using [Heroku](https://heroku.com/).
 - International dialing codes to generate regex for phone numbers - [Iban](https://www.iban.com/dialing-codes)
 
 - Regex tester - [Regexr](https://regexr.com/)
+
 - Regex generator - [Regex-generator](https://regex-generator.olafneumann.org/)
 
 - Checkbox filtering -[Reddit](https://www.reddit.com/r/django/comments/i80npw/checkbox_filtering/)
@@ -368,9 +465,8 @@ This website was published using [Heroku](https://heroku.com/).
 ### Content
 
 - [noon perfume | Kaggle](https://www.kaggle.com/monirahabdulaziz/noon-perfume?select=read.me.txt)
-- [Fragrances of the World - Discover Michael Edwards’ world of fragrances](http://www.fragrancesoftheworld.com/)
 
-### Media
+- [Fragrances of the World - Discover Michael Edwards’ world of fragrances](http://www.fragrancesoftheworld.com/)
 
 #### Images
 
