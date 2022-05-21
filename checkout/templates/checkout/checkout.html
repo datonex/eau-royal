@@ -36,27 +36,27 @@
         </div>
         <div class="position-absolute top-50 start-50 translate-middle mt-2 mx-2 progress-width">
           <div class="d-flex justify-content-between">
-            <div clas="d-flex flex-column justify-content-center align-items-center">
+            <div>
               <span class="dot bg-dp d-flex justify-content-center align-items-center mx-auto">
-                <h3 class="mb-0 text-white">1</h3>
+                <p class="h3 mb-0 text-white">1</p>
               </span>
               <p class="mb-0">Details</p>
             </div>
-            <div clas="d-flex flex-column justify-content-center align-items-center">
+            <div>
               <span class="dot delivery-dot bg-lv-80 d-flex justify-content-center align-items-center mx-auto">
-                <h3 class="mb-0 text-white">2</h3>
+                <p class="h3 mb-0 text-white">2</p>
               </span>
               <p class="mb-0">Delivery</p>
             </div>
-            <div clas="d-flex flex-column justify-content-center align-items-center">
+            <div>
               <span class="dot payment-dot bg-lv-80 d-flex justify-content-center align-items-center mx-auto">
-                <h3 class="mb-0 text-white">3</h3>
+                <p class="h3 mb-0 text-white">3</p>
               </span>
               <p class="mb-0">Payment</p>
             </div>
-            <div clas="d-flex flex-column justify-content-center align-items-center me-0">
+            <div>
               <span class="dot bg-lv-80 d-flex justify-content-center align-items-center align-self mx-auto">
-                <h3 class="mb-0 text-white">4</h3>
+                <p class="h3 mb-0 text-white">4</p>
               </span>
               <p class="mb-0">Complete</p>
             </div>
@@ -118,7 +118,7 @@
                           <div class="col-9 col-md-8 ps-0">
                             <div class="card-body p-2 d-flex flex-column">
                               <div class="d-flex justify-content-between align-items-center">
-                                <p clas="fw-bold">{{ item.product.brand.name }}</p>
+                                <p class="fw-bold">{{ item.product.brand.name }}</p>
                                 <div class="d-flex justify-content-between">
                                 </div>
                               </div>
@@ -302,7 +302,7 @@
                 <div class="col-9 col-md-8 ps-0">
                   <div class="card-body p-2 d-flex flex-column">
                     <div class="d-flex justify-content-between align-items-center">
-                      <p clas="fw-bold">{{ item.product.brand.name }}</p>
+                      <p class="fw-bold">{{ item.product.brand.name }}</p>
                       <div class="d-flex justify-content-between">
                       </div>
                     </div>
@@ -395,5 +395,5 @@
   {% include 'checkout/includes/checkout_script.html' %}
   {{ stripe_public_key|json_script:"id_stripe_public_key" }}
   {{ client_secret|json_script:"id_client_secret" }}
-  <script type="text/javascript" src="{% static 'checkout/js/stripe_element.js' %}"></script>
+  <script src="{% static 'checkout/js/stripe_element.js' %}"></script>
 {% endblock %}
