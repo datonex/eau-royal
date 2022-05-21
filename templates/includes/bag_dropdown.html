@@ -36,7 +36,7 @@
           <div class="col-9 col-md-8 ps-0">
             <div class="card-body p-2 d-flex flex-column">
               <div class="d-flex justify-content-between align-items-center">
-                <p clas="fw-bold mb-2">{{ item.product.brand.name }}</p>
+                <p class="mb-2">{{ item.product.brand.name }}</p>
                 <div class="d-flex justify-content-between">
                   <a class="remove-item text-decoration-none" id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}">
                     <span class="text-dp d-flex flex-column align-items-center">
@@ -120,7 +120,7 @@
     </div>
   </div>
 {% endif %}
-  <script type="text/javascript">
+  <script>
     // Remove item and reload on click
     $('.remove-item').click(function(e) {
       var csrfToken = "{{ csrf_token }}";

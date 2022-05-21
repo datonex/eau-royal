@@ -1,61 +1,63 @@
 <li class="list-inline-item dropdown d-none d-md-block d-lg-none">
-  <button class="btn btn-nav-dp" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="user account">
+  <button type="button" class="btn btn-nav-dp" data-bs-toggle="dropdown" aria-expanded="false" aria-label="user account">
     <span class="icon text-lv">
       <i class="fa-solid fa-user icon"></i>
     </span>
   </button>
-  <ul class="dropdown-menu text-dp" id="user-options">
-  <li class="text-center">
+  <ul class="dropdown-menu text-dp" id="user-options-mobile">
     {% if request.user.is_authenticated %}
-      <h5 class="text-dp text-uppercase ">hi,
-        {{request.user.username}}</h5>
-    </li>
-    <li>
-      <hr class="text-lv canvas-hr my-0">
-    </li>
-    {% if request.user.is_superuser %}
+      <li class="text-center">
+        <h5 class="text-dp text-uppercase ">
+          hi, {{request.user.username}}
+        </h5>
+      </li>
+      <li>
+        <hr class="text-lv canvas-hr my-0">
+      </li>
+      {% if request.user.is_superuser %}
+        <li class="py-2 text-center fs-6">
+          <a class="dropdown-item py-3" href="{% url 'add_product' %}">Product Management</a>
+        </li>
+        <li>
+          <hr class="text-lv canvas-hr my-0">
+        </li>
+      {% endif %}
       <li class="py-2 text-center fs-6">
-        <a class="dropdown-item py-3" href="{% url 'add_product' %}">Product Management</a>
+        <a class="dropdown-item py-3" href="{% url 'profile' %}">My Profile</a>
+      </li>
+      <li>
+        <hr class="text-lv canvas-hr my-0">
+      </li>
+      <li class="py-2 text-center fs-6">
+        <a class="dropdown-item py-3" href="{% url 'account_logout' %}">Logout</a>
+      </li>
+      <li>
+        <hr class="text-lv canvas-hr my-0">
+      </li>
+    {% else %}
+      <li class="text-center">
+        <p class=" text-dp text-uppercase text-center">MY ACCOUNT</p>
+      </li>
+      <li>
+        <hr class="text-lv canvas-hr my-0">
+      </li>
+      <li class="py-2 text-center fs-6">
+        <a class="dropdown-item py-3" href="{% url 'account_signup' %}">Register</a>
+      </li>
+      <li>
+        <hr class="text-lv canvas-hr my-0">
+      </li>
+      <li class="py-2 text-center fs-6">
+        <a class="dropdown-item py-3" href="{% url 'account_login' %}">Login</a>
       </li>
       <li>
         <hr class="text-lv canvas-hr my-0">
       </li>
     {% endif %}
-    <li class="py-2 text-center fs-6">
-      <a class="dropdown-item py-3" href="{% url 'profile' %}">My Profile</a>
-    </li>
-    <li>
-      <hr class="text-lv canvas-hr my-0">
-    </li>
-    <li class="py-2 text-center fs-6">
-      <a class="dropdown-item py-3" href="{% url 'account_logout' %}">Logout</a>
-    </li>
-    <li>
-      <hr class="text-lv canvas-hr my-0">
-    </li>
-  {% else %}
-    <p class=" text-dp text-uppercase text-center">MY ACCOUNT</p>
-  </li>
-  <li>
-    <hr class="text-lv canvas-hr my-0">
-  </li>
-  <li class="py-2 text-center fs-6">
-    <a class="dropdown-item py-3" href="{% url 'account_signup' %}">Register</a>
-  </li>
-  <li>
-    <hr class="text-lv canvas-hr my-0">
-  </li>
-  <li class="py-2 text-center fs-6">
-    <a class="dropdown-item py-3" href="{% url 'account_login' %}">Login</a>
-  </li>
-  <li>
-    <hr class="text-lv canvas-hr my-0">
-  </li>
-{% endif %}
-</ul>
+  </ul>
 </li>
 <li class="list-inline-item d-block d-lg-none dropdown">
-  <button class="btn btn-nav-dp" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="view shopping bag">
+  <button class="btn btn-nav-dp" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="view shopping bag">
     <span class="position-relative">
       <i class="fa-solid fa-bag-shopping icon text-lv"></i>
       {% if bag_items %}
@@ -69,7 +71,7 @@
     </span>
   </button>
   <div class="dropdown-menu px-3 bag-sm" aria-labelledby="shopping-bag-button">
-    <div class"container-fluid">
+    <div>
       {% include 'includes/bag_dropdown.html' %}
     </div>
   </div>
