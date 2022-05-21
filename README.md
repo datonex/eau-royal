@@ -275,6 +275,10 @@ Key
 
 - [AWS](https://aws.amazon.com) - Host static files for page
 
+- [Django url tools](https://github.com/kbuzsaki/django-url-tools-py3) - used to handle urls when searching for products
+
+- [XML-Sitemaps](https://www.xml-sitemaps.com/) - used to generate Eau Royal Sitemap
+
 ## Testing
 
 In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
@@ -300,9 +304,9 @@ For any scenarios that have not been automated, test the user stories manually a
 
 #### Bugs
 
-- Sorting only allows items determined by link, user are unable to select multiple queries. However multiple queries work if manually typed into the browser.
+- [x] Sorting only allows items determined by link, user are unable to select multiple queries. However multiple queries work if manually typed into the browser.
 
-- Checkout bug - client stripe instance not being created on GET method sometimes
+- [x] Checkout bug - client stripe instance not being created on GET method sometimes
 
 ## Deployment
 
@@ -315,26 +319,47 @@ This website was published using [Heroku](https://heroku.com/).
 3. Navigate to project folder and start a virtual environment with `python3 -m venv .venv`
 4. Activate you virtual environment with `source .venv/bin/activate`
 5. Install dependencies with `pip install -r requirements.txt`
-6. Make changes to the code and if you think it belongs in here then just submit a pull request
+6. Make changes to the code and if you think it belongs in here then submit a pull request
 
 ## Credits
 
 ### Dependencies + code snippets
 
-Django documentation - [Django](https://docs.djangoproject.com/en/3.2/)
-Landing page template - [startbootstrap](https://github.com/startbootstrap/startbootstrap-scrolling-nav)
-Javascript media queries - [w3schools](https://www.w3schools.com/howto/howto_js_media_queries.asp)
-Autocomplete form attributes - [htmlspec](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofilling-form-controls%3A-the-autocomplete-attribute)
-Hide input spinners - [w3schools](https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp)
-Waypoints infinite scroll - [ImakeWebThings](http://imakewebthings.com/waypoints/)
-Catch exception type - [Stack overflow](https://stackoverflow.com/questions/32394032/the-best-way-to-determine-exception-type)
-Get min and max value of a field [Stack overflow](https://stackoverflow.com/questions/844591/how-to-do-select-max-in-django)
-JS range slider [Ion range slider](http://ionden.com/a/plugins/ion.rangeSlider/index.html)
-checkboxes that behave like radio buttons [Stack overflow](https://stackoverflow.com/questions/5839884/make-checkbox-behave-like-radio-buttons-with-javascript)
-Code Institute Boutique Ado lessons
-Add custom error pages [Stack overflow](https://stackoverflow.com/questions/17662928/django-creating-a-custom-500-404-error-page)
-Error 404 page [Omar Dsooky](https://codepen.io/linux/pen/OjmeKP)
-Error 500 page [Christopher Kirk-Nielsen](https://codepen.io/chriskirknielsen/pen/pOLdVG)
+- Django documentation - [Django](https://docs.djangoproject.com/en/3.2/)
+
+- Landing page template - [startbootstrap](https://github.com/startbootstrap/startbootstrap-scrolling-nav)
+- Javascript media queries - [w3schools](https://www.w3schools.com/howto/howto_js_media_queries.asp)
+
+- Autocomplete form attributes - [htmlspec](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofilling-form-controls%3A-the-autocomplete-attribute)
+
+- Hide input spinners - [w3schools](https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp)
+
+- Waypoints infinite scroll - [ImakeWebThings](http://imakewebthings.com/waypoints/)
+
+- Catch exception type - [Stack overflow](https://stackoverflow.com/questions/32394032/the-best-way-to-determine-exception-type)
+
+- Get min and max value of a field - [Stack overflow](https://stackoverflow.com/questions/844591/how-to-do-select-max-in-django)
+
+- JS range slider - [Ion range slider](http://ionden.com/a/plugins/ion.rangeSlider/index.html)
+
+- Checkboxes that behave like radio buttons - [Stack overflow](https://stackoverflow.com/questions/5839884/make-checkbox-behave-like-radio-buttons-with-javascript)
+
+- Code Institute Boutique Ado lessons
+
+- Add custom error pages [Stack overflow](https://stackoverflow.com/questions/17662928/django-creating-a-custom-500-404-error-page)
+
+- Error 404 page - [Omar Dsooky](https://codepen.io/linux/pen/OjmeKP)
+
+- Error 500 page - [Christopher Kirk-Nielsen](https://codepen.io/chriskirknielsen/pen/pOLdVG)
+
+- Django url parameters Documentation - [Bitbucket](https://bitbucket.org/monwara/django-url-tools/src/master/#rst-header-overview)
+
+- International dialing codes to generate regex for phone numbers - [Iban](https://www.iban.com/dialing-codes)
+
+- Regex tester - [Regexr](https://regexr.com/)
+- Regex generator - [Regex-generator](https://regex-generator.olafneumann.org/)
+
+- Checkbox filtering -[Reddit](https://www.reddit.com/r/django/comments/i80npw/checkbox_filtering/)
 
 ### Content
 
@@ -345,21 +370,37 @@ Error 500 page [Christopher Kirk-Nielsen](https://codepen.io/chriskirknielsen/pe
 
 #### Images
 
+- Product images - [Parfumo](https://www.parfumo.net/)
+
 - Images query - [Best Spray Bottle | Pexels Stock Photos](https://www.pexels.com/search/spray%20bottle/)
   Hero image - Photo by [George Becker](https://www.pexels.com/@eye4dtail?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/clear-glass-bottle-136651/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+
 - Candles category - Photo by [George Becker](https://www.pexels.com/@eye4dtail?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/three-lighted-candles-360209/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+
 - His category home page - Photo by [Duané Viljoen](https://www.pexels.com/@duane-viljoen-3411736?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/man-wearing-suit-and-necktie-with-perfume-bottle-10604607/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+
 - Hers category home page - Photo by [Abstract Photos](https://www.pexels.com/@abstract-photos-49564378?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/close-up-shot-of-an-afro-haired-woman-holding-a-perfume-bottle-8323833/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+
 - salve category homepage - Photo by [Max Fischer](https://www.pexels.com/@max-fischer?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/person-holding-red-and-black-box-with-red-ribbon-5872354/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+
 - Profile hero image - Photo by [Egor Kamelev](https://www.pexels.com/@ekamelev?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/jellyfish-digital-wallpaper-753267/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+
 - Subscription hero image - Photo by [Jill Burrow](https://www.pexels.com/@jill-burrow?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/an-alphabet-made-of-purple-flower-petals-7400308/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+
 - Subscription box image - Photo by [Karolina Grabowska](https://www.pexels.com/@karolina-grabowska?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/gift-in-pink-box-with-scattered-petals-around-4041329/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+
 - Subscription spray bottle with hands - Photo by [Babi Galeane](https://www.pexels.com/@babi-galeane-58498777?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/unrecognizable-female-hand-spraying-perfume-on-wrist-10557509/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+
 - Subscription bottle - Photo by [Babi Galeane](https://www.pexels.com/@babi-galeane-58498777?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/bottle-of-branded-female-perfume-with-green-ivy-leaves-in-background-10557510/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+
 - Subscription there pack bottles -Photo by [Hamza Nouasria](https://www.pexels.com/@hamza01nsr?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/white-and-black-bottles-on-white-textile-10837815/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+
 - Subscription worm smelling flower - Photo by [Michelle Leman](https://www.pexels.com/@michelle-leman?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/woman-in-red-and-black-floral-dress-holding-pink-rose-6765633/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+
 - Subscription essence bottles - Photo by [Ekaterina Mitkina](https://www.pexels.com/@ekaterinamitkina?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/close-up-view-of-cosmetic-product-and-candle-9898734/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+
 - Subscription single essence bottle - Photo by [Alesia Kozik](https://www.pexels.com/@alesiakozik?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/brown-glass-bottle-on-round-mirror-7796815/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
+
 - Subscription man holding phone - Photo by [Porapak Apichodilok](https://www.pexels.com/@nurseryart?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/man-in-plaid-shirt-using-smartphone-346734/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
 
 ### Acknowledgements
