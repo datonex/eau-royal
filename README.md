@@ -140,7 +140,7 @@ A few things to note:
 
 #### Conceptual ERD
 
-![conceptual ERD](README/misc/conceptual-erd.png)
+![conceptual ERD](README/misc/conceptual-erd-revised.png)
 
 Key
 
@@ -152,7 +152,7 @@ Key
 
 #### Physical ERD
 
-![physical ERD](README/misc/physical-erd.png)
+![physical ERD](README/misc/physical-erd-revised.png)
 
 ### Existing Features
 
@@ -187,31 +187,35 @@ Key
 
 - [x] **Home Page**
 
-- Image grid to easily see a handful of places the user can visit. When the mouse hovers you get addition information about the location
-
 ### Features Left to Implement
 
 (See Trello cards)
 
-- Subscription model payment for members
+- [ ] Subscription model payment for members
 
-- Form authentication at checkout before user is directed to next payment flow
+- [x] Form authentication at checkout before user is directed to next payment flow
 
-- Form Validation when entering phone numbers, valid zip/post codes and user enters more than one name
+- [x] Form Validation when entering phone numbers, valid zip/post codes and user enters more than one name at frontend
 
-- Allow user to add multiple addresses to their profile
+- [ ] Form Validation when entering phone numbers, valid zip/post codes and user enters more than one name at backend
 
-- Allow user to add
+- [ ] Allow user to add multiple addresses to their profile
 
-- Change zip code to allow non zip code users to enter their bank details and complete payment
+- [ ] Allow users to save their card information for a faster checkout
 
-- Some product images are miss matched
+- [ ] Some product images are mismatched
 
-- Some product images are missing and or rendering incorrectly
+- [ ] Some product images are missing and or rendering incorrectly
 
-- Add page title for ALL pages
+- [ ] Add page title for ALL pages
+
+- [ ] Admin panel that allows shop owners to send emails to all users that are subscribed to Eau Royal
+
+- [ ] Create a stock manager database and users are shown if certain items are out of stock. If users want to be notified when it will be back in stock, they can enter their email address directly from product detail page.
 
 ### Marketing Information
+
+Users have option to sign up to Eau-Royal's newsletter at the home page so that they can receive news about any new products, special offers and events.
 
 ![facebook mockup](README/misc/fb-business-page.png)
 
