@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from sentry_sdk.integrations.django import DjangoIntegration
+
 import os
+import sentry_sdk
 import dj_database_url
 
 if os.path.isfile("env.py"):
@@ -127,7 +130,8 @@ WSGI_APPLICATION = "eau_royal.wsgi.application"
 
 # Postgres database on Heroku
 if "DATABASE_URL" in os.environ:
-    DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
+    DATABASES = {"default": dj_database_url.parse(
+        os.environ.get("DATABASE_URL"))}
 else:
     DATABASES = {
         "default": {
@@ -231,9 +235,6 @@ else:
     DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_HOST_USER")
 
 # SENTRY SETUP
-
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
 
 SENTRY_DSN = os.environ.get("SENTRY_DSN")
 
