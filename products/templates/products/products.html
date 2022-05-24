@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block content %}
-  <section class="container-fluid products-dropdown mb-2">
+  <section class="container-fluid products-dropdown">
     <div class="row text-center bg-dp">
       <div class="col py-2">
         {% if 'category' in request.GET %}
@@ -31,17 +31,15 @@
         {% endif %}
       </div>
     </div>
-    <div class="d-none d-md-block">
-      {% include 'products/includes/default_sorting.html' %}
-    </div>
-
     <div class="d-block d-md-none">
       {% include 'products/includes/mobile_sorting.html' %}
     </div>
-
   </section>
   <section id="product-list-section" class="pb-5 text-dp products-dropdown">
-    <div class="container-lg px-4 px-lg-5">
+    <div class="container-lg">
+      <div class="d-none d-md-block">
+        {% include 'products/includes/default_sorting.html' %}
+      </div>
       <div class="row gx-2 gx-l-5">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
           <ol class="breadcrumb">
