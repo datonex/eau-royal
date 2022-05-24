@@ -82,12 +82,12 @@
                 <div class="bg-lv-20 modal-body d-flex justify-content-center align-items-center">
                   <div class="col-10 text-center">
                     <p>Sign up to our newsletter.</p>
-                    <form method="POST" action="" class="p-3">
-                        {% csrf_token %}
-                        {{ form|crispy }}
-                        <div class="text-center">
-                          <button class="btn btn-dp" type="submit">Subscribe</button>
-                        </div>
+                    <form method="POST" action="{% url 'home' %}" class="p-3">
+                      {% csrf_token %}
+                      {{ form|crispy }}
+                      <div class="text-center">
+                        <button class="btn btn-dp" type="submit">Subscribe</button>
+                      </div>
                     </form>
                   </div>   
                 </div>
@@ -97,6 +97,7 @@
               </div>
             </div>
           </div>
+        </div>
       </div>
     </div>
   </section>
