@@ -280,44 +280,44 @@
     if ($("section").hasClass("fixed-footer")) {
       $("#footer").addClass("fixed-bottom");
     }
-
-    // Remove fixed-bottom class given screen size 
+  
+    // Remove fixed-bottom class given screen size
     var fixedFooter = function (screenSize) {
       if (screenSize.matches) {
         $("#footer").removeClass("fixed-bottom");
       }
     };
-
+  
     var smallScreen = window.matchMedia("(max-height: 520px)");
-
+  
     fixedFooter(smallScreen);
-
+  
     smallScreen.addListener(fixedFooter);
-
+  
     // Update quantity on click
     function submitForm(itemId, size) {
-      form = $(`.update-form-${itemId}-${size}`)
-      form.submit()
+      var form = $(`.update-form-${itemId}-${size}`);
+      form.submit();
     }
-
-    $('.update-link').click(function() {
-      var itemId = $(this).data('item_id');
-      var size = $(this).data('size');
-      submitForm(itemId, size)
-    })
-
+  
+    $(".update-link").click(function () {
+      var itemId = $(this).data("item_id");
+      var size = $(this).data("size");
+      submitForm(itemId, size);
+    });
+  
     // Remove item and reload on click
-    $('.remove-item').click(function(e) {
+    $(".remove-item").click(function (e) {
       var csrfToken = "{{ csrf_token }}";
-      var itemId = $(this).attr('id').split('remove_')[1];
-      var size = $(this).data('product_size');
+      var itemId = $(this).attr("id").split("remove_")[1];
+      var size = $(this).data("product_size");
       var url = `/bag/remove/${itemId}/`;
-      var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
-
-      $.post(url, data).done(function() {
+      var data = { "csrfmiddlewaretoken": csrfToken, "product_size": size };
+  
+      $.post(url, data).done(function () {
         location.reload();
       });
-    })
+    });
   });
 </script>
 {% include 'products/includes/quantity_input_script.html' %}
