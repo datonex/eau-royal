@@ -48,7 +48,7 @@
       {% else %}
       <div>
         <p class="text-center mb-0">
-          Spend £{{ discount_delta }} more to get {{ discount_percentage }}% OFF
+          Spend £{{ discount_delta|floatformat:2 }} more to get {{ discount_percentage }}% OFF
         </p>
       </div>
       {% endif %}
@@ -210,7 +210,7 @@
         {% else %}
         <div>
           <p class="text-center mb-0">
-            Spend £{{ discount_delta }} more to get {{ discount_percentage }}% OFF
+            Spend £{{ discount_delta|floatformat:2 }} more to get {{ discount_percentage }}% OFF
           </p>
         </div>
         {% endif %}

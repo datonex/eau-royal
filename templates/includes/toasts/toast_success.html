@@ -15,87 +15,87 @@
     {% if total and not on_profile_page and not on_checkout_success %}
       <div class="d-none d-md-block">
         <hr class="default-hr w-100 border-2 mx-auto">
-          <div class="row ">
-            <div class="col py-2">
-              <p class="text-dp fw-bolder text-uppercase">SUB-TOTAL: {{ sub_total|floatformat:2 }}</p>
-            </div>
+        <div class="row ">
+          <div class="col py-2">
+            <p class="text-dp fw-bolder text-uppercase">SUB-TOTAL: {{ sub_total|floatformat:2 }}</p>
           </div>
-          <div class="bag-toast-container">
-            {% for item in bag_items %}
-              <div class="row d-flex flex-column justify-content-center align-items-center mt-1">
-                <div class="col-12">
-                  <div class="card w-100 border-0">
-                    <div class="row row-cols-1">
-                      <div class="col-3 col-md-4 pe-0">
-                        {% if item.product.image %}
-                          <img
-                            src="{{ item.product.image.url }}"
-                            class="card-img-top"
-                            alt="{{ item.product.brand.name }} {{ item.product.name }}" />
-                        {% else %}
+        </div>
+        <div class="bag-toast-container">
+          {% for item in bag_items %}
+            <div class="row d-flex flex-column justify-content-center align-items-center mt-1">
+              <div class="col-12">
+                <div class="card w-100 border-0">
+                  <div class="row row-cols-1">
+                    <div class="col-3 col-md-4 pe-0">
+                      {% if item.product.image %}
                         <img
-                        src="{{ MEDIA_URL }}noimage.png"
-                        class="card-img-top"
-                        alt="{{ item.product.brand.name }} {{ item.product.name }}" />
-                        {% endif %}
-                      </div>
-                      <div class="col-9 col-md-8 ps-0">
-                        <div class="card-body p-2 d-flex flex-column">
-                          <div class="d-flex justify-content-between align-items-center">
-                            <p>{{ item.product.brand.name }}</p>
-                          </div>
-                          <div class="d-flex align-items-center">
-                            <p>{{ item.product.name }}</p>
-                          </div>
-                          <div class="d-flex justify-content-between align-items-center">
-                            <p class="text-muted">SIZE: 
-                              {% if item.product.has_sizes %}
-                                {{ item.size }}
-                                {% else %}
-                                N/A
-                              {% endif %}
-                            </p>
-                            <p class="text-muted">&pound;{{ item.item_price|floatformat:2 }}</p>
-                          </div>
-                          <div class="d-flex justify-content-between align-items-center">
-                            <p class="text-muted"> QTY: {{ item.quantity }}</p>
-                            <p>&pound; {{ item.item_total|floatformat:2 }}</p>
-                          </div>
+                          src="{{ item.product.image.url }}"
+                          class="card-img-top"
+                          alt="{{ item.product.brand.name }} {{ item.product.name }}" />
+                      {% else %}
+                      <img
+                      src="{{ MEDIA_URL }}noimage.png"
+                      class="card-img-top"
+                      alt="{{ item.product.brand.name }} {{ item.product.name }}" />
+                      {% endif %}
+                    </div>
+                    <div class="col-9 col-md-8 ps-0">
+                      <div class="card-body p-2 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <p>{{ item.product.brand.name }}</p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <p>{{ item.product.name }}</p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                          <p class="text-muted">SIZE: 
+                            {% if item.product.has_sizes %}
+                              {{ item.size }}
+                              {% else %}
+                              N/A
+                            {% endif %}
+                          </p>
+                          <p class="text-muted">&pound;{{ item.item_price|floatformat:2 }}</p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                          <p class="text-muted"> QTY: {{ item.quantity }}</p>
+                          <p>&pound; {{ item.item_total|floatformat:2 }}</p>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <hr class="default-hr w-100 border-2 mx-auto">
                 </div>
+                <hr class="default-hr w-100 border-2 mx-auto">
               </div>
-            {% endfor %}
-          </div>
-          <div class="col-12 mx-auto mb-3 d-grid gap-2">
-            <div>
-            {% if sub_total >= discount_threshold  %}
-              <div class="text-center bg-lv-40">
-                <p class="py-2 mb-0">Get {{ discount_percentage }}% OFF in checkout</p>
-              </div>
-            {% else %}
-              <div class="text-center bg-lv-40">
-                <p class="py-2 mb-0">
-                  Spend £{{ discount_delta }} more to get {{ discount_percentage }}% OFF
-                </p>
-              </div>
-            {% endif %}
             </div>
-            <div class="d-grid gap-2 d-flex justify-content-center justify-content-md-around">
-              <a
-                class="btn btn-dp capitalize d-flex justify-content-center align-items-center flex-fill"
-                href="{% url 'view_bag' %}"
-                role="button">
-                <span class="icon">
-                  <i class="fa-solid fa-lock"></i>
-                </span>
-                <span class="text-capitalize">Checkout</span>
-              </a>
+          {% endfor %}
+        </div>
+        <div class="col-12 mx-auto mb-3 d-grid gap-2">
+          <div>
+          {% if sub_total >= discount_threshold  %}
+            <div class="text-center bg-lv-40">
+              <p class="py-2 mb-0">Get {{ discount_percentage }}% OFF in checkout</p>
             </div>
+          {% else %}
+            <div class="text-center bg-lv-40">
+              <p class="py-2 mb-0">
+                Spend £{{ discount_delta|floatformat:2 }} more to get {{ discount_percentage }}% OFF
+              </p>
+            </div>
+          {% endif %}
           </div>
+          <div class="d-grid gap-2 d-flex justify-content-center justify-content-md-around">
+            <a
+              class="btn btn-dp capitalize d-flex justify-content-center align-items-center flex-fill"
+              href="{% url 'view_bag' %}"
+              role="button">
+              <span class="icon">
+                <i class="fa-solid fa-lock"></i>
+              </span>
+              <span class="text-capitalize">Checkout</span>
+            </a>
+          </div>
+        </div>
         </div>
     {% endif %}
   </div>
