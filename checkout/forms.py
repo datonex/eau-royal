@@ -1,13 +1,7 @@
 from django import forms
-from django.forms.widgets import TextInput
 
 from .models import Order
-
-
-class PhoneInput(TextInput):
-    """Define a telephone input class for use with phone numbers"""
-
-    input_type = "tel"
+from .widgets import PhoneInput
 
 
 class OrderForm(forms.ModelForm):
