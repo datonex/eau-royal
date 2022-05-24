@@ -11,7 +11,10 @@ from .forms import ProductForm
 
 
 def all_products(request):
-    """View function that returns all products, including search and sorting queries"""
+    """
+    View function that returns all products,
+    including search and sorting queries
+    """
 
     def get_dict_value(dictionary):
         """Function that returns a value given a dictionary key"""
@@ -69,7 +72,8 @@ def all_products(request):
             total_products = products.count()
             if not categories:
                 messages.error(
-                    request, (f"'{categories}' does not exist in Categories table")
+                    request,
+                    (f"'{categories}' does not exist in Categories table")
                 )
                 return redirect(reverse("products"))
 
@@ -79,7 +83,10 @@ def all_products(request):
             genders = Gender.objects.filter(db_name__in=genders)
             total_products = products.count()
             if not genders:
-                messages.error(request, (f"'{genders}' does not exist in Gender table"))
+                messages.error(
+                    request,
+                    (f"'{genders}' does not exist in Gender table")
+                )
                 return redirect(reverse("products"))
 
         if "brand" in request.GET:
@@ -88,7 +95,8 @@ def all_products(request):
             brands = Brand.objects.filter(db_name__in=brands)
             total_products = products.count()
             if not brands:
-                messages.error(request, (f"'{brands}' does not exist in Brand table"))
+                messages.error(
+                    request, (f"'{brands}' does not exist in Brand table"))
                 return redirect(reverse("products"))
 
         if "has_discount" in request.GET:
@@ -102,7 +110,8 @@ def all_products(request):
                     messages.error(
                         request,
                         (
-                            f"'{discounts}' is not a boolean value, please enter 'True' or 'False'"
+                            f"'{discounts}' is not a boolean value. "
+                            f"Please enter either 'True' or 'False'"
                         ),
                     )
                     return redirect(reverse("products"))
@@ -110,7 +119,8 @@ def all_products(request):
         if "q" in request.GET:
             query = request.GET["q"]
             if not query:
-                messages.error(request, ("You didn't enter any search criteria!"))
+                messages.error(
+                    request, ("You didn't enter any search criteria!"))
                 return redirect(reverse("products"))
 
             queries = (
@@ -183,7 +193,11 @@ def add_product(request):
             return redirect(reverse("product_detail", args=[product.id]))
         else:
             messages.error(
-                request, ("Failed to add product. " "Please ensure the form is valid.")
+                request,
+                (
+                    "Failed to add product. "
+                    "Please ensure the form is valid."
+                )
             )
     else:
         form = ProductForm()
@@ -213,7 +227,10 @@ def edit_product(request, product_id):
         else:
             messages.error(
                 request,
-                ("Failed to update product. " "Please ensure the form is valid."),
+                (
+                    "Failed to update product. "
+                    "Please ensure the form is valid."
+                )
             )
     else:
         form = ProductForm(instance=product)
