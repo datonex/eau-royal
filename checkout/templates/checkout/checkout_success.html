@@ -1,12 +1,12 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 
-{% load static %} 
+{% load static %}
 
 {% block extra_css %}
-  <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}" />
-{% endblock %} 
+  <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}"/>
+{% endblock %}
 
-{% block extra_title %}| Order Complete{% endblock %} 
+{% block extra_title %}| Order Complete{% endblock %}
 
 {% block content %}
   <section class="container-lg text-dp">
@@ -66,10 +66,10 @@
                 <div class="bg-lv-20 py-2 px-3 mb-2">
                   <div class="row">
                     <div class="col-6">
-                        <p class="mb-0 text-black font-weight-bold">Item Total</p>
+                      <p class="mb-0 text-black font-weight-bold">Item Total</p>
                     </div>
                     <div class="col-6 text-end">
-                        <p class="mb-0">£{{ order.order_total }}</p>
+                      <p class="mb-0">£{{ order.order_total }}</p>
                     </div>
                   </div>
                   <div class="row">
@@ -84,7 +84,7 @@
                     <div class="col-6">
                       <p class="mb-0 text-black font-weight-bold">Discount</p>
                     </div>
-                    
+
                     <div class="col-6 text-end">
                       <p class="mb-0">£{{ discount|floatformat:2 }}</p>
                     </div>
@@ -102,30 +102,23 @@
                   <div class="card w-100 border-0">
                     <div class="row g-0">
                       <div class="col-3 col-md-4 pe-0">
-                      {% if item.product.image %}
-                        <img
-                          src="{{ item.product.image.url }}"
-                          class="card-img-top"
-                          alt="{{ item.product.brand.name }} {{ item.product.name }}" />
-                      {% else %}
-                        <img
-                          src="{{ MEDIA_URL }}noimage.png"
-                          class="card-img-top"
-                          alt="{{ item.product.brand.name }} {{ item.product.name }}" />
-                      {% endif %}
+                        {% if item.product.image %}
+                          <img src="{{ item.product.image.url }}" class="card-img-top" alt="{{ item.product.brand.name }} {{ item.product.name }}"/>
+                        {% else %}
+                          <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top" alt="{{ item.product.brand.name }} {{ item.product.name }}"/>
+                        {% endif %}
                       </div>
                       <div class="col-9 col-md-8 ps-0">
                         <div class="card-body p-2 d-flex flex-column">
                           <div class="d-flex justify-content-between align-items-center">
                             <p class="fw-bold">{{ item.product.brand.name }}</p>
-                            <div class="d-flex justify-content-between">
-                            </div>
+                            <div class="d-flex justify-content-between"></div>
                           </div>
                           <div class="d-flex align-items-center">
                             <p>{{ item.product.name }}</p>
                           </div>
                           <div class="d-flex justify-content-between align-items-center">
-                            <p class="text-muted">SIZE: 
+                            <p class="text-muted">SIZE:
                               {% if item.product_size %}
                                 {{ item.product_size }}
                               {% else %}
@@ -135,8 +128,8 @@
                             <p class="text-muted">&pound;{{ item.cartitem_price|floatformat:2 }}</p>
                           </div>
                           <div class="d-flex justify-content-between align-items-center">
-                            <p class="text-muted mb-0"> QTY: {{ item.quantity }}</p>
-                            <p class="mb-0">&pound; {{ item.cartitem_total|floatformat:2 }}</p>
+                            <p class="text-muted mb-0">QTY: {{ item.quantity }}</p>
+                            <p class="mb-0">&pound;{{ item.cartitem_total|floatformat:2 }}</p>
                           </div>
                         </div>
                       </div>
@@ -155,11 +148,20 @@
         <div class="bg-lv-20 shadow">
           <div class="d-flex flex-column justify-content-evenly align-items-center p-3">
             <div>
-              <h6 class="text-center"> Thank you!</h6>
+              <h6 class="text-center">Thank you!</h6>
               <br>
-              <p class="text-center">A confirmation email has been sent to <strong>{{ order.email }}</strong>.</p>
-              <p class="text-center fw-bolder">Order Number: <small>{{ order.order_number }}</small></p>
-              <p class="text-center">Order Date: {{ order.date }}</p>
+              <p class="text-center">
+                A confirmation email has been sent to
+                <strong>{{ order.email }}</strong>.
+              </p>
+              <p class="text-center fw-bolder">
+                Order Number:
+                <small>{{ order.order_number }}</small>
+              </p>
+              <p class="text-center">
+                Order Date:
+                {{ order.date }}
+              </p>
               <p class="text-center fw-bolder">Deliver to:</p>
             </div>
             <div class="row">
@@ -174,7 +176,7 @@
                   <p class="mb-0">{{ order.county }}</p>
                 {% endif %}
                 {% if order.postcode %}
-                <p class="mb-0">{{ order.postcode }}</p>
+                  <p class="mb-0">{{ order.postcode }}</p>
                 {% endif %}
                 <p class="mb-0">{{ order.country }}</p>
               </div>
@@ -186,12 +188,12 @@
         </div>
         <div class="d-grid my-5">
           {% if from_profile %}
-          <a class="btn btn-outline-dp d-flex justify-content-center align-items-center mb-2" href="{% url 'profile' %}" role="button">
-            <span class="icon">
-              <i class="fas fa-chevron-left fs-4"></i>
-            </span>
-            <span class="text-capitalize">Back to Profile</span>
-          </a>
+            <a class="btn btn-outline-dp d-flex justify-content-center align-items-center mb-2" href="{% url 'profile' %}" role="button">
+              <span class="icon">
+                <i class="fas fa-chevron-left fs-4"></i>
+              </span>
+              <span class="text-capitalize">Back to Profile</span>
+            </a>
           {% endif %}
           <a class="btn btn-dp d-flex justify-content-center align-items-center" href="{% url 'home' %}" role="button">
             <span class="icon">
@@ -209,10 +211,10 @@
         <div class="bg-lv-20 py-2 px-3 mb-2">
           <div class="row">
             <div class="col-12 col-md-6">
-                <p class="mb-0 text-black font-weight-bold">Item Total</p>
+              <p class="mb-0 text-black font-weight-bold">Item Total</p>
             </div>
             <div class="col-12 col-md-6 text-end">
-                <p class="mb-0">£{{ order.order_total }}</p>
+              <p class="mb-0">£{{ order.order_total }}</p>
             </div>
           </div>
           <div class="row">
@@ -227,12 +229,12 @@
             <div class="col-12 col-md-6">
               <p class="mb-0 text-black font-weight-bold">Discount</p>
             </div>
-            
+
             <div class="col-12 col-md-6 text-end">
               <p class="mb-0">£{{ discount|floatformat:2 }}</p>
             </div>
           </div>
-    
+
           <div class="row">
             <div class="col-12 col-md-6">
               <p class="mb-0 text-black font-weight-bold">Total</p>
@@ -244,46 +246,45 @@
         </div>
         <div class="scroll">
           {% for item in order.cartitems.all %}
-          <div class="card w-100 border-0">
-            <div class="row g-0">
-              <div class="col-3 col-md-4 pe-0">
-                <img
-                  src="{{ item.product.image.url }}"
-                  class="card-img-top"
-                  alt="{{ item.product.brand.name }} {{ item.product.name }}" />
-              </div>
-              <div class="col-9 col-md-8 ps-0">
-                <div class="card-body p-2 d-flex flex-column">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <p class="fw-bold">{{ item.product.brand.name }}</p>
-                    <div class="d-flex justify-content-between">
+            <div class="card w-100 border-0">
+              <div class="row g-0">
+                <div class="col-3 col-md-4 pe-0">
+                  <img src="{{ item.product.image.url }}" class="card-img-top" alt="{{ item.product.brand.name }} {{ item.product.name }}"/>
+                </div>
+                <div class="col-9 col-md-8 ps-0">
+                  <div class="card-body p-2 d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <p class="fw-bold">{{ item.product.brand.name }}</p>
+                      <div class="d-flex justify-content-between"></div>
                     </div>
-                  </div>
-                  <div class="d-flex align-items-center">
-                    <p>{{ item.product.name }}</p>
-                  </div>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <p class="text-muted">SIZE: 
-                      {% if item.product_size %}
-                        {{ item.product_size }}
-                      {% else %}
-                        N/A
-                      {% endif %}
-                    </p>
-                    <p class="text-muted">&pound;{{ item.cartitem_price|floatformat:2 }}</p>
-                  </div>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <p class="text-muted mb-0"> QTY: {{ item.quantity }}</p>
-                    <p class="mb-0">&pound; {{ item.cartitem_total|floatformat:2 }}</p>
+                    <div class="d-flex align-items-center">
+                      <p>{{ item.product.name }}</p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <p class="text-muted">SIZE:
+                        {% if item.product_size %}
+                          {{ item.product_size }}
+                        {% else %}
+                          N/A
+                        {% endif %}
+                      </p>
+                      <p class="text-muted">&pound;{{ item.cartitem_price|floatformat:2 }}</p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <p class="text-muted mb-0">
+                        QTY:
+                        {{ item.quantity }}</p>
+                      <p class="mb-0">&pound;
+                        {{ item.cartitem_total|floatformat:2 }}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          <hr class="default-hr w-100 border-2 mx-auto mt-1">
-          {% endfor %}
+              <hr class="default-hr w-100 border-2 mx-auto mt-1">
+            {% endfor %}
+          </div>
         </div>
       </div>
     </div>
   </section>
 {% endblock %}
-

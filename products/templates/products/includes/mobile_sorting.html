@@ -16,27 +16,27 @@
           <div class="mx-3">
             <div class="btn-group-vertical w-100" role="group" aria-label="Sort radio toggle button group">
               <div class="mb-2 w-100">
-                <input type="radio" class="btn-check w-100" name="sort" value="price" id="sort_price_asc_mobile" autocomplete="off" {% if current_sorting == 'price_asc' %} checked="checked" {% endif %} onclick="handleDirection(sortPriceAscMobile, directionPriceAscMobile)">
+                <input type="radio" class="btn-check w-100" name="sort" value="price" id="sort_price_asc_mobile" {% if current_sorting == 'price_asc' %} checked="checked" {% endif %} onclick="handleDirection(sortPriceAscMobile, directionPriceAscMobile)">
                 <label class="btn btn-checkbox w-100" for="sort_price_asc_mobile">Price High to Low</label> 
               </div>
               <div class="mb-2 w-100 d-none">
-                <input type="radio" name="direction" value="asc" class="btn-check w-100" id="direction_price_asc_mobile" {% if current_sorting == 'price_asc' %} checked="checked" {% endif %} autocomplete="off">
+                <input type="radio" name="direction" value="asc" class="btn-check w-100" id="direction_price_asc_mobile" {% if current_sorting == 'price_asc' %} checked="checked" {% endif %}>
                 <label class="btn btn-checkbox w-100" for="direction_price_asc_mobile">direction asc</label> 
               </div>
               <div class="mb-2 w-100">
-                <input type="radio" class="btn-check w-100" name="sort" value="price" id="sort_price_desc_mobile" autocomplete="off" {% if current_sorting == 'price_desc' %} checked="checked" {% endif %} onclick="handleDirection(sortPriceDescMobile, directionPriceDescMobile)">
+                <input type="radio" class="btn-check w-100" name="sort" value="price" id="sort_price_desc_mobile" {% if current_sorting == 'price_desc' %} checked="checked" {% endif %} onclick="handleDirection(sortPriceDescMobile, directionPriceDescMobile)">
                 <label class="btn btn-checkbox w-100" for="sort_price_desc_mobile">Price Low to High</label> 
               </div>
               <div class="mb-2 w-100 d-none">
-                <input type="radio" name="direction" value="desc" class="btn-check w-100" id="direction_price_desc_mobile" {% if current_sorting == 'price_desc' %} checked="checked" {% endif %} autocomplete="off">
+                <input type="radio" name="direction" value="desc" class="btn-check w-100" id="direction_price_desc_mobile" {% if current_sorting == 'price_desc' %} checked="checked" {% endif %}>
                 <label class="btn btn-checkbox w-100" for="direction_price_desc_mobile">direction desc</label> 
               </div>
               <div class="mb-2 w-100">
-                <input type="radio" class="btn-check w-100" name="sort" value="rating" id="sort_rating_desc_mobile" autocomplete="off" {% if current_sorting == 'rating_desc' %} checked="checked" {% endif %} onclick="handleDirection(sortRatingDescMobile, directionRatingDescMobile)">
+                <input type="radio" class="btn-check w-100" name="sort" value="rating" id="sort_rating_desc_mobile" {% if current_sorting == 'rating_desc' %} checked="checked" {% endif %} onclick="handleDirection(sortRatingDescMobile, directionRatingDescMobile)">
                 <label class="btn btn-checkbox w-100" for="sort_rating_desc_mobile">Top rated</label> 
               </div>
               <div class="mb-2 w-100 d-none" id="direction-rating_desc-container">
-                <input type="radio" name="direction" value="desc" class="btn-check w-100" id="direction_rating_desc_mobile" {% if current_sorting == 'rating_desc' %} checked="checked" {% endif %} autocomplete="off">
+                <input type="radio" name="direction" value="desc" class="btn-check w-100" id="direction_rating_desc_mobile" {% if current_sorting == 'rating_desc' %} checked="checked" {% endif %}>
                 <label class="btn btn-checkbox w-100" for="direction_rating_desc_mobile">direction desc</label> 
               </div>
             </div>
@@ -85,13 +85,13 @@
                   <div class="btn-group-vertical w-100" role="group" aria-label="Category radio toggle button group">
                     {% for c in category_list %}
                       <div class="mb-2 w-100">
-                        <input type="radio" class="btn-check w-100" name="category" value="{{ c.db_name }}" id="mobile_category_{{ c.db_name }}" autocomplete="off" {% if c in current_categories %} checked="checked" {% endif %}>
+                        <input type="radio" class="btn-check w-100" name="category" value="{{ c.db_name }}" id="mobile_category_{{ c.db_name }}" {% if c in current_categories %} checked="checked" {% endif %}>
                         <label class="btn btn-checkbox w-100 text-capitalize" for="mobile_category_{{ c.db_name }}">{{ c.name}}</label> 
                       </div>
                     {% endfor %}
                     {% for g in gender_list %}
                       <div class="mb-2 w-100">
-                        <input type="radio" class="btn-check w-100" name="gender" value="{{ g.db_name }}" id="mobile_gender_{{ g.name }}" autocomplete="off" {% if g in current_genders %} checked="checked" {% endif %}>
+                        <input type="radio" class="btn-check w-100" name="gender" value="{{ g.db_name }}" id="mobile_gender_{{ g.name }}" {% if g in current_genders %} checked="checked" {% endif %}>
                         <label class="btn btn-checkbox w-100 text-capitalize" for="mobile_gender_{{ g.name }}">{% if g.name == 'all' %}unisex {% else %}{{ g.name }}{% endif %}</label>
                       </div>
                     {% endfor %}
@@ -143,7 +143,7 @@
                     <div class="btn-group-vertical w-100" role="group" aria-label="Brand checkbox toggle button group">
                       {% for b in brand_list %}
                         <div class="mb-2 w-100">
-                          <input type="checkbox" class="btn-check w-100" name="brand" value="{{ b.db_name }}" id="mobile_brand_{{ b.db_name }}" autocomplete="off" {% if b in current_brands %} checked="checked" {% endif %}>
+                          <input type="checkbox" class="btn-check w-100" name="brand" value="{{ b.db_name }}" id="mobile_brand_{{ b.db_name }}" {% if b in current_brands %} checked="checked" {% endif %}>
                           <label class="btn btn-checkbox w-100" for="mobile_brand_{{ b.db_name }}">{{ b.name}}</label> 
                         </div>
                       {% endfor %}
