@@ -1,6 +1,4 @@
-from unicodedata import name
 from django.db import models
-import glob, os
 
 
 class Category(models.Model):
@@ -48,7 +46,8 @@ class Brand(models.Model):
 class Product(models.Model):
 
     name = models.CharField(max_length=254)
-    brand = models.ForeignKey("Brand", null=True, blank=True, on_delete=models.SET_NULL)
+    brand = models.ForeignKey(
+        "Brand", null=True, blank=True, on_delete=models.SET_NULL)
     sku = models.CharField(max_length=254, null=True, blank=True, unique=True)
     category = models.ForeignKey(
         "Category", null=True, blank=True, on_delete=models.SET_NULL
@@ -60,11 +59,13 @@ class Product(models.Model):
     image = models.ImageField(null=True, blank=True)
     has_sizes = models.BooleanField(default=False, null=True, blank=True)
     has_discount = models.BooleanField(default=False, null=True, blank=True)
-    has_subscription = models.BooleanField(default=False, null=True, blank=True)
+    has_subscription = models.BooleanField(
+        default=False, null=True, blank=True)
     rating = models.DecimalField(
         max_digits=6, decimal_places=2, null=True, blank=True, default=0
     )
-    price = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
+    price = models.DecimalField(
+        max_digits=6, decimal_places=2, null=True, blank=True)
     scent = models.CharField(max_length=50, null=True, blank=True)
     description = models.TextField()
 
