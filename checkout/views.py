@@ -38,7 +38,7 @@ def cache_checkout_data(request):
                 "Sorry, your payment cannot be "
                 "processed right now. Please try "
                 "again later."
-            ),
+            )
         )
         return HttpResponse(content=e, status=400)
 
@@ -85,7 +85,8 @@ def checkout(request):
                         )
                         order_cart_item.save()
                     else:
-                        for size, quantity in item_data["items_by_size"].items():
+                        item_data_items = item_data["items_by_size"].items()
+                        for size, quantity in item_data_items:
                             order_cart_item = CartItem(
                                 order=order,
                                 product=product,
@@ -100,7 +101,7 @@ def checkout(request):
                             "One of the products in your bag wasn't "
                             "found in our database. "
                             "Please call us for assistance!"
-                        ),
+                        )
                     )
                     order.delete()
                     return redirect(reverse("view_bag"))
@@ -131,9 +132,11 @@ def checkout(request):
         except:
             messages.error(
                 request,
-                "Error processing your payment"
-                "You have not been charged"
-                "please delete your cookies and refresh your page",
+                (
+                    "Error processing your payment. "
+                    "You have not been charged. "
+                    "Please try again later"
+                )
             )
 
         if request.user.is_authenticated:
@@ -162,9 +165,8 @@ def checkout(request):
             request,
             (
                 "Stripe public key is missing. "
-                "Did you forget to set it in "
-                "your environment?"
-            ),
+                "Did you forget to set it in your environment?"
+            )
         )
 
     template = "checkout/checkout.html"
@@ -208,9 +210,11 @@ def checkout_success(request, order_number):
 
     messages.success(
         request,
-        f"Order successfully processed! \
-        Your order number is {order_number}. A confirmation \
-        email will be sent to {order.email}.",
+        (
+            f"Order successfully processed! "
+            f"Your order number is {order_number}. "
+            f"A confirmation email will be sent to {order.email}."
+        )
     )
 
     if "bag" in request.session:

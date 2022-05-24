@@ -58,12 +58,15 @@ class StripeWH_Handler:
         # Update profile information if save_info was checked
         profile = None
         username = intent.metadata.username
+        address_line_1 = shipping_details.address.line1
+        address_line_2 = shipping_details.address.line2
+
         if username != "AnonymousUser":
             profile = UserProfile.objects.get(user__username=username)
             if save_info:
                 profile.default_phone_number = shipping_details.phone
-                profile.default_street_address1 = shipping_details.address.line1
-                profile.default_street_address2 = shipping_details.address.line2
+                profile.default_street_address1 = address_line_1
+                profile.default_street_address2 = address_line_2
                 profile.default_town_or_city = shipping_details.address.city
                 profile.default_county = shipping_details.address.state
                 profile.default_postcode = shipping_details.address.postal_code
@@ -96,8 +99,8 @@ class StripeWH_Handler:
         if order_exists:
             self._send_confirmation_email(order)
             return HttpResponse(
-                content=(f"Webhook received: {event['type']} | "
-                         "SUCCESS: Verified order already in database"),
+                content=(f"Webhook received: {event['type']} "
+                         f"| SUCCESS: Verified order already in database"),
                 status=200,
             )
         else:
@@ -128,7 +131,8 @@ class StripeWH_Handler:
                         )
                         order_cart_item.save()
                     else:
-                        for size, quantity in item_data["items_by_size"].items():
+                        item_data_items = item_data["items_by_size"].items()
+                        for size, quantity in item_data_items:
                             order_cart_item = CartItem(
                                 order=order,
                                 product=product,
@@ -146,7 +150,8 @@ class StripeWH_Handler:
 
         self._send_confirmation_email(order)
         return HttpResponse(
-            content=f"Webhook received: {event['type']} | SUCCESS: Created order in webhook",
+            content=(f"Webhook received: {event['type']} "
+                     f"| SUCCESS: Created order in webhook"),
             status=200,
         )
 
