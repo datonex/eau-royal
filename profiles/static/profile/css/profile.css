@@ -1,4 +1,4 @@
-@import "./static/constants.css";
+@import url("https://eau-royal.s3.amazonaws.com/static/css/constants.css");
 
 section.hero {
   width: 100vw;
