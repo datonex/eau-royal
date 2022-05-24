@@ -1,4 +1,4 @@
-@import "../../../../static/css/base.css";
+@import "./static/constants.css";
 
 section.min-height {
   min-height: calc(100vh - 110px) !important;
@@ -35,7 +35,7 @@ img {
 
 select,
 select option {
-  color: var(--dark-purple-);
+  color: var(--dark-purple);
 }
 
 select:invalid {

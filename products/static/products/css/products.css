@@ -1,4 +1,4 @@
-@import "../../../../static/css/base.css";
+@import "./static/constants.css";
 
 #product-list-section img {
   height: 280px;

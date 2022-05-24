@@ -1,4 +1,4 @@
-@import "../../../../static/css/base.css";
+@import "./static/constants.css";
 
 section.hero {
   width: 100vw;

@@ -1,4 +1,4 @@
-@import "../../../../static/css/base.css";
+@import "./static/constants.css";
 
 section.min-height {
   min-height: calc(100vh - 128px) !important;
