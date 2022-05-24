@@ -283,102 +283,6 @@ Users have option to sign up to Eau-Royal's newsletter at the home page so that 
 
 - [XML-Sitemaps](https://www.xml-sitemaps.com/) - used to generate Eau Royal Sitemap
 
-### HTML5 Validator
-
-#### Bag App
-
-- **bag.html** -> :white_check_mark:
-
-#### Checkout App
-
-#### Eau Royal Project
-
-#### Home App
-
-#### Products App
-
-#### Profiles App
-
-#### Misc files
-
-- **base.html**
-
-  :warning: Warnings
-
-  - Unclosed div
-
-  - :x:
-
-### CSS Validator
-
-#### Bag App
-
-- **bag.css** -> :white_check_mark: pass
-
-#### Checkout App
-
-#### Eau Royal Project
-
-#### Home App
-
-#### Products App
-
-#### Profiles App
-
-#### Misc files
-
-- **base.css** --> :white_check_mark: pass
-
-  :warning: Warnings
-
-  - Imported style sheets are not checked in direct input and file upload modes
-
-  - 24 `::-webkit-outer-spin-button` is a vendor extended pseudo-element
-
-  - 25 `::-webkit-inner-spin-button` is a vendor extended pseudo-element
-
-  - 26 `-webkit-appearance` is a vendor extension
-
-  - 33 `-moz-appearance` is a vendor extension
-
-### JavaScript Validator
-
-### Python Validator
-
-Code validation with [pep8online](http://pep8online.com/)
-
-#### Bag App
-
-- **contexts.py** -> :white_check_mark:
-
-- **urls.py** -> :white_check_mark:
-
-- **views.py** -> :white_check_mark:
-
-#### Checkout App
-
-- **admin.py** -> :white_check_mark:
-
-- **forms.py** -> :white_check_mark:
-
-- **contexts.py** -> :white_check_mark:
-
-- **models.py** -> :white_check_mark:
-
-- **urls.py** -> :white_check_mark:
-
-- **views.py** -> :white_check_mark:
-
-#### Eau Royal Project
-
-#### Home App
-
-#### Products App
-
-#### Profiles App
-
-#### Other files
-
 ## Testing
 
 In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
@@ -386,6 +290,298 @@ In this section, you need to convince the assessor that you have conducted enoug
 Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your approach, link to the test file(s) and explain how to run them.
 
 For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. A particularly useful form for describing your testing process is via scenarios, such as:
+
+Each error, or warning will be written in the format: line number then error description
+
+### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height=25 /> HTML5 Validator
+
+Code validation with [W3C Validator](https://validator.w3.org/)
+
+#### Bag App
+
+- **bag.html** --> :white_check_mark: pass
+
+#### Checkout App
+
+- **checkout.html** --> :white_check_mark: pass
+
+- **checkout_success.html** --> :white_check_mark: pass
+
+#### Home App
+
+#### Products App
+
+#### Profiles App
+
+#### Base files
+
+- **base.html** --> :white_check_mark: pass
+
+  - :x:
+
+### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" height=25 /> CSS Validator
+
+Code validation with [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
+
+#### Bag App
+
+- **bag.css** --> :white_check_mark: pass
+
+#### Checkout App
+
+- **checkout.css** --> :white_check_mark: pass
+
+- 4 :warning: Warnings
+
+  - 1 Imported style sheets are not checked in direct input and file upload modes
+
+  - 38 Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 42 Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 61 Due to their dynamic nature, CSS variables are currently not statically checked
+
+#### Home App
+
+#### Products App
+
+#### Profiles App
+
+#### Base files
+
+- **base.css** --> :white_check_mark: pass
+
+  69 :warning: Warnings
+
+  - 1 --> Imported style sheets are not checked in direct input and file upload modes
+
+  - 14 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 18 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 22 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 26 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 30 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 34 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 38 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 42 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 46 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 50 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 54 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 58 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 62 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 66 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 70 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 71 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 72 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 76 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 77 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 78 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 82 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 83 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 87 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 88 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 89 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 97 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 98 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 99 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 103 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 104 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 105 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 110 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 111 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 112 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 120 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 121 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 122 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 126 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 127 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 131 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 138 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 146 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 147 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 148 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 152 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 153 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 168 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 187 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 188 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 194 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 195 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 196 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 201 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 203 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 213 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 214 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 278 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 282 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 328 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 329 --> -webkit-transition is a vendor extension
+
+  - 336 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 340 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 344 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 368 --> `.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before` Same color for background-color and border-color
+
+  - 391 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 399 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 409 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+  - 413 --> Due to their dynamic nature, CSS variables are currently not statically checked
+
+### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height=25/> JavaScript Validator
+
+Code validation with [JSHint](https://jshint.com/)
+
+#### Bag App
+
+- **bag embedded js** --> :white_check_mark: pass
+
+  - Metrics
+
+    - There are 6 functions in this file.
+
+    - Function with the largest signature takes 2 arguments, while the median is 0.5.
+
+    - Largest function has 9 statements in it, while the median is 2.5.
+
+    - The most complex function has a cyclomatic complexity value of 2 while the median is 1.
+
+#### Checkout App
+
+- **stripe_element.js** --> :white_check_mark: pass
+
+  - Metrics
+
+    - There are 5 functions in this file.
+
+    - Function with the largest signature takes 1 arguments, while the median is 1.
+
+    - Largest function has 10 statements in it, while the median is 5.
+
+    - The most complex function has a cyclomatic complexity value of 3 while the median is 1.
+
+  - Undefined variables
+
+    - Stripe
+
+- **checkout_script embedded js** --> :white_check_mark: pass
+
+  - Metrics
+
+    - There are 9 functions in this file.
+
+    - Function with the largest signature takes 0 arguments, while the median is 0.
+
+    - Largest function has 33 statements in it, while the median is 4.
+
+    - The most complex function has a cyclomatic complexity value of 8 while the median is 1.
+
+#### Products App
+
+#### Profiles App
+
+#### Misc files
+
+### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height=25/> Python Validator
+
+Code validation with [pep8online](http://pep8online.com/)
+
+#### Eau Royal Project
+
+#### Bag App
+
+- **contexts.py** --> :white_check_mark: Pass
+
+- **urls.py** --> :white_check_mark: pass
+
+- **views.py** --> :white_check_mark: pass
+
+#### Checkout App
+
+- **admin.py** --> :white_check_mark: pass
+
+- **forms.py** --> :white_check_mark: pass
+
+- **models.py** --> :white_check_mark: pass
+
+- **signals.py** --> :white_check_mark: pass
+
+- **urls.py** --> :white_check_mark: pass
+
+- **views.py** --> :white_check_mark: pass
+
+- **webhook_handler.py** --> :white_check_mark: pass
+
+- **webhooks.py** --> :white_check_mark: pass
+
+#### Home App
+
+#### Products App
+
+#### Profiles App
 
 ### Compatibility Testing
 
@@ -469,6 +665,8 @@ This website was published using [Heroku](https://heroku.com/).
 - [Fragrances of the World - Discover Michael Edwards’ world of fragrances](http://www.fragrancesoftheworld.com/)
 
 #### Images
+
+- README programming language icons - [Devicon](https://devicon.dev/)
 
 - Product images - [Parfumo](https://www.parfumo.net/)
 
