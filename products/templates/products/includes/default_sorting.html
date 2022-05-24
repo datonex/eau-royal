@@ -48,7 +48,7 @@
                 <input type="radio" class="btn-check w-100" name="sort" value="rating" id="sort_rating_desc" {% if current_sorting == 'rating_desc' %} checked="checked" {% endif %} onclick="handleDirection(sortRatingDesc, directionRatingDesc)">
                 <label class="btn btn-checkbox w-100" for="sort_rating_desc">Top rated</label>
               </div>
-              <div class="mb-2 w-100 d-none" id="direction-rating_desc-container">
+              <div class="mb-2 w-100 d-none">
                 <input type="radio" name="direction" value="desc" class="btn-check w-100" id="direction_rating_desc" {% if current_sorting == 'rating_desc' %} checked="checked" {% endif %}>
                 <label class="btn btn-checkbox w-100" for="direction_rating_desc">direction desc</label>
               </div>

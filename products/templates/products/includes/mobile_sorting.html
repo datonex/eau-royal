@@ -3,11 +3,11 @@
 <form action="{% url 'products' %}" method="GET" id="form-mobile-sorting">
   <div class="row text-center pb-2 mb-2" id="mobile-sorting">
     <div class="dropdown col-6 bg-white px-0">
-      <a class="py-2 btn btn-outline-dp rounded-0 d-flex justify-content-evenly align-items-center" href="#" role="button" id="sort-sm-link" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+      <a class="py-2 btn btn-outline-dp rounded-0 d-flex justify-content-evenly align-items-center" href="#" role="button" id="sort-sm-button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
         <p class="mb-0 me-3">Sort</p>
         <i class="fa-solid fa-chevron-down"></i>
       </a>
-      <div class="dropdown-menu col-12 bg-white py-0" aria-labelledby="sort-sm-link" >
+      <div class="dropdown-menu col-12 bg-white py-0" aria-labelledby="sort-sm-button" >
         <div class="bg-lv-60 pt-0">
           <div class="dropdown-header text-dp bg-white mx-0 mb-3 py-2 d-flex justify-content-between align-items-center">
             <div>Sort by</div>
@@ -35,7 +35,7 @@
                 <input type="radio" class="btn-check w-100" name="sort" value="rating" id="sort_rating_desc_mobile" {% if current_sorting == 'rating_desc' %} checked="checked" {% endif %} onclick="handleDirection(sortRatingDescMobile, directionRatingDescMobile)">
                 <label class="btn btn-checkbox w-100" for="sort_rating_desc_mobile">Top rated</label> 
               </div>
-              <div class="mb-2 w-100 d-none" id="direction-rating_desc-container">
+              <div class="mb-2 w-100 d-none">
                 <input type="radio" name="direction" value="desc" class="btn-check w-100" id="direction_rating_desc_mobile" {% if current_sorting == 'rating_desc' %} checked="checked" {% endif %}>
                 <label class="btn btn-checkbox w-100" for="direction_rating_desc_mobile">direction desc</label> 
               </div>
@@ -48,7 +48,7 @@
       </div>
     </div>
     <div class="col-6 bg-white px-0">
-      <a class=" py-2 btn btn-outline-dp rounded-0 d-flex justify-content-center align-items-center" href="#offcanvasSort" role="button" id="filter-sm-link" data-bs-toggle="offcanvas" aria-label="Open sorting options" aria-controls="offcanvasSort">
+      <a class=" py-2 btn btn-outline-dp rounded-0 d-flex justify-content-center align-items-center" href="#offcanvasSort" role="button" id="offcanvasSortLabel" data-bs-toggle="offcanvas" aria-label="Open sorting options" aria-controls="offcanvasSort">
         <p class="mb-0 me-3">Filter</p>
       </a>
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasSort" aria-labelledby="offcanvasSortLabel">
