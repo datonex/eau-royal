@@ -309,6 +309,8 @@ Code validation with [W3C Validator](https://validator.w3.org/)
 
 #### Home App
 
+- **index.html** --> :white_check_mark: pass
+
 #### Products App
 
 #### Profiles App
@@ -327,21 +329,22 @@ Code validation with [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
 
 - **bag.css** --> :white_check_mark: pass
 
+  - 4 :warning: Warnings
+
+  | Line | Warning text                                                      |
+  | ---: | ----------------------------------------------------------------- |
+  |   24 | `::-webkit-outer-spin-button` is a vendor extended pseudo-element |
+  |   25 | `::-webkit-inner-spin-button` is a vendor extended pseudo-element |
+  |   26 | `-webkit-appearance` is a vendor extension                        |
+  |   33 | `-moz-appearance` is a vendor extension                           |
+
 #### Checkout App
 
 - **checkout.css** --> :white_check_mark: pass
 
-- 4 :warning: Warnings
-
-  - 1 Imported style sheets are not checked in direct input and file upload modes
-
-  - 38 Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 42 Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 61 Due to their dynamic nature, CSS variables are currently not statically checked
-
 #### Home App
+
+- **home.css** --> :white_check_mark: pass
 
 #### Products App
 
@@ -349,147 +352,33 @@ Code validation with [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
 
 #### Base files
 
+- **constants.css** --> :white_check_mark: pass
+
 - **base.css** --> :white_check_mark: pass
 
-  69 :warning: Warnings
-
-  - 1 --> Imported style sheets are not checked in direct input and file upload modes
-
-  - 14 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 18 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 22 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 26 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 30 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 34 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 38 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 42 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 46 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 50 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 54 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 58 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 62 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 66 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 70 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 71 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 72 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 76 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 77 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 78 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 82 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 83 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 87 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 88 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 89 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 97 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 98 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 99 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 103 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 104 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 105 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 110 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 111 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 112 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 120 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 121 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 122 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 126 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 127 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 131 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 138 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 146 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 147 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 148 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 152 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 153 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 168 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 187 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 188 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 194 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 195 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 196 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 201 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 203 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 213 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 214 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 278 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 282 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 328 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 329 --> -webkit-transition is a vendor extension
-
-  - 336 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 340 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 344 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 368 --> `.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before` Same color for background-color and border-color
-
-  - 391 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 399 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 409 --> Due to their dynamic nature, CSS variables are currently not statically checked
-
-  - 413 --> Due to their dynamic nature, CSS variables are currently not statically checked
+  - 19 :warning: Warnings
+
+  | Line | Selector/s                                                                       | Warning text                                         |
+  | ---- | -------------------------------------------------------------------------------- | ---------------------------------------------------- |
+  | 71   | `.btn-dp`                                                                        | Same color for `background-color` and `border-color` |
+  | 77   | `.btn-dp:hover`                                                                  | Same color for `background-color` and `border-color` |
+  | 88   | `.btn-outline-dp:hover`                                                          | Same color for `background-color` and `border-color` |
+  | 98   | `.btn-check:active + .btn-outline-dp`                                            | Same color for `background-color` and `border-color` |
+  | 98   | `.btn-check:checked + .btn-outline-dp`                                           | Same color for `background-color` and `border-color` |
+  | 98   | `.btn-outline-dp.active`                                                         | Same color for `background-color` and `border-color` |
+  | 98   | `.btn-outline-dp.dropdown-toggle.show`                                           | Same color for `background-color` and `border-color` |
+  | 98   | `.btn-outline-dp:active`                                                         | Same color for `background-color` and `border-color` |
+  | 104  | `.btn-nav-dp`                                                                    | Same color for `background-color` and `border-color` |
+  | 111  | `.btn-nav-dp:hover`                                                              | Same color for `background-color` and `border-color` |
+  | 121  |                                                                                  | Same color for `background-color` and `border-color` |
+  | 147  | `.btn-check:active + .btn-outline-lv`                                            | Same color for `background-color` and `border-color` |
+  | 147  | `.btn-check:checked + .btn-outline-lv`                                           | Same color for `background-color` and `border-color` |
+  | 147  | `.btn-outline-lv.active`                                                         | Same color for `background-color` and `border-color` |
+  | 147  | `.btn-outline-lv.dropdown-toggle.show`                                           | Same color for `background-color` and `border-color` |
+  | 147  | `.btn-outline-lv:active`                                                         | Same color for `background-color` and `border-color` |
+  | 187  | `.list-group-item.active-custom`                                                 | Same color for `background-color` and `border-color` |
+  | 329  |                                                                                  | `-webkit-transition` is a vendor extension           |
+  | 368  | `.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before` | Same color for `background-color` and `border-color` |
 
 ### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height=25/> JavaScript Validator
 
@@ -551,6 +440,23 @@ Code validation with [pep8online](http://pep8online.com/)
 
 #### Eau Royal Project
 
+- **settings.py** --> :x: failed
+
+  | Code Error | Line | Error text                         |
+  | ---------- | ---- | ---------------------------------- |
+  | E505       | 149  | line too long (91 > 79 characters) |
+  | E505       | 152  | line too long (81 > 79 characters) |
+  | E505       | 155  | line too long (82 > 79 characters) |
+  | E505       | 158  | line too long (83 > 79 characters) |
+
+  All E505 errors were not fixed because they will compromise readability of django settings file
+
+- **urls.py** --> :white_check_mark: pass
+
+#### Misc files
+
+- custom_storages.py --> :white_check_mark: pass
+
 #### Bag App
 
 - **contexts.py** --> :white_check_mark: Pass
@@ -578,6 +484,16 @@ Code validation with [pep8online](http://pep8online.com/)
 - **webhooks.py** --> :white_check_mark: pass
 
 #### Home App
+
+- **admin.py** --> :white_check_mark: pass
+
+- **forms.py** --> :white_check_mark: pass
+
+- **models.py** --> :white_check_mark: pass
+
+- **urls.py** --> :white_check_mark: pass
+
+- **views.py** --> :white_check_mark: pass
 
 #### Products App
 
