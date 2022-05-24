@@ -47,83 +47,80 @@
         </div>
       </div>
     </div>
-  <div class="col-6 bg-white px-0">
-    <a class=" py-2 btn btn-outline-dp rounded-0 d-flex justify-content-center align-items-center" href="#offcanvasSort" role="button" id="filter-sm-link" data-bs-toggle="offcanvas" aria-label="Open sorting options" aria-controls="offcanvasSort">
-      <p class="mb-0 me-3">Filter</p>
-    </a>
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasSort" aria-labelledby="offcanvasSortLabel">
-      <div class="offcanvas-header bg-white">
-        <button type="button" class="btn text-dp" data-bs-dismiss="offcanvas" aria-label="Close">
-          <i class="fa-solid fa-chevron-left icon"></i>
-        </button>
-        <h5 class="offcanvas-title text-dp">Filter</h5>
-        <a type="button" class="btn btn-outline-dp btn-sm" href="{% del_params request.get_full_path 'price' 'direction' 'brand' 'gender' 'price_to' 'price_from' %}" role="button">Clear All</a>
-      </div>
-      <div class="offcanvas-body pt-0" id="mobile-filter-offcanvas-body">
-        <div class="accordion" id="accordionFilter">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="category-heading">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCategory" aria-expanded="true" aria-controls="collapseCategory">
-                <div class="d-flex justify-content-between align-items-center align-content-center">
-                  <p class="mb-0 me-3">Category</p>
-                    {% if 'category' in request.GET or 'gender' in request.GET %}
+    <div class="col-6 bg-white px-0">
+      <a class=" py-2 btn btn-outline-dp rounded-0 d-flex justify-content-center align-items-center" href="#offcanvasSort" role="button" id="filter-sm-link" data-bs-toggle="offcanvas" aria-label="Open sorting options" aria-controls="offcanvasSort">
+        <p class="mb-0 me-3">Filter</p>
+      </a>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasSort" aria-labelledby="offcanvasSortLabel">
+        <div class="offcanvas-header bg-white">
+          <button type="button" class="btn text-dp" data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="fa-solid fa-chevron-left icon"></i>
+          </button>
+          <h5 class="offcanvas-title text-dp">Filter</h5>
+          <a class="btn btn-outline-dp btn-sm" href="{% del_params request.get_full_path 'price' 'direction' 'brand' 'gender' 'price_to' 'price_from' %}" role="button">Clear All</a>
+        </div>
+        <div class="offcanvas-body pt-0" id="mobile-filter-offcanvas-body">
+          <div class="accordion" id="accordionFilter">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="category-heading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCategory" aria-expanded="true" aria-controls="collapseCategory">
+                  Category &nbsp;
+                  {% if 'category' in request.GET or 'gender' in request.GET %}
                     {% for g in current_genders %}
                       <small class="text-dp-80 fw-light mt-1">{{ g.name }} &nbsp;</small>
                     {% endfor %}
                     {% for c in current_categories %}
                       <small class="text-dp-80 fw-light mt-1">{{ c.name }}</small> 
                     {% endfor %}
-                    {% else %}
-                      <small class="text-dp-80 fw-light mt-1">All</small>
-                    {% endif %}
+                  {% else %}
+                    <small class="text-dp-80 fw-light mt-1">All</small>
+                  {% endif %}
+                </button>
+              </h2>
+              <div id="collapseCategory" class="accordion-collapse collapse" aria-labelledby="category-heading" data-bs-parent="#accordionFilter">
+                <div class="accordion-body bg-lv-20">
+                  <div class="mx-3 my-1">
+                    <div class="btn-group-vertical w-100" role="group" aria-label="Category radio toggle button group">
+                      {% for c in category_list %}
+                        <div class="mb-2 w-100">
+                          <input type="radio" class="btn-check w-100" name="category" value="{{ c.db_name }}" id="mobile_category_{{ c.db_name }}" {% if c in current_categories %} checked="checked" {% endif %}>
+                          <label class="btn btn-checkbox w-100 text-capitalize" for="mobile_category_{{ c.db_name }}">{{ c.name}}</label> 
+                        </div>
+                      {% endfor %}
+                      {% for g in gender_list %}
+                        <div class="mb-2 w-100">
+                          <input type="radio" class="btn-check w-100" name="gender" value="{{ g.db_name }}" id="mobile_gender_{{ g.name }}" {% if g in current_genders %} checked="checked" {% endif %}>
+                          <label class="btn btn-checkbox w-100 text-capitalize" for="mobile_gender_{{ g.name }}">{% if g.name == 'all' %}unisex {% else %}{{ g.name }}{% endif %}</label>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  </div>
                 </div>
-              </button>
-            </h2>
-            <div id="collapseCategory" class="accordion-collapse collapse" aria-labelledby="category-heading" data-bs-parent="#accordionFilter">
-              <div class="accordion-body bg-lv-20">
-                <div class="mx-3 my-1">
-                  <div class="btn-group-vertical w-100" role="group" aria-label="Category radio toggle button group">
-                    {% for c in category_list %}
-                      <div class="mb-2 w-100">
-                        <input type="radio" class="btn-check w-100" name="category" value="{{ c.db_name }}" id="mobile_category_{{ c.db_name }}" {% if c in current_categories %} checked="checked" {% endif %}>
-                        <label class="btn btn-checkbox w-100 text-capitalize" for="mobile_category_{{ c.db_name }}">{{ c.name}}</label> 
-                      </div>
-                    {% endfor %}
-                    {% for g in gender_list %}
-                      <div class="mb-2 w-100">
-                        <input type="radio" class="btn-check w-100" name="gender" value="{{ g.db_name }}" id="mobile_gender_{{ g.name }}" {% if g in current_genders %} checked="checked" {% endif %}>
-                        <label class="btn btn-checkbox w-100 text-capitalize" for="mobile_gender_{{ g.name }}">{% if g.name == 'all' %}unisex {% else %}{{ g.name }}{% endif %}</label>
-                      </div>
-                    {% endfor %}
+                <div class="dropdown-header text-dp bg-white mx-0 py-2 d-flex justify-content-between align-items-center">
+                  <div>
+                    {% if 'category' in request.GET or 'gender' in request.GET %}
+                      {% for g in current_genders %}
+                        <strong>{{ g.name }}</strong>
+                      {% endfor %}
+                      {% for c in current_categories %}
+                        <strong>{{ c.name }}</strong> 
+                      {% endfor %}
+                    {% else %}
+                      none
+                    {% endif %}
+                    selected
+                  </div>
+                  <div>
+                    <a class="btn btn-outline-dp btn-sm me-2" href="{% del_params request.get_full_path 'category' 'gender' %}" role="button">Clear</a>
+                    <button type="submit" class="btn btn-dp btn-sm">Submit</button>
                   </div>
                 </div>
               </div>
-              <div class="dropdown-header text-dp bg-white mx-0 py-2 d-flex justify-content-between align-items-center">
-                <div>
-                  {% if 'category' in request.GET or 'gender' in request.GET %}
-                    {% for g in current_genders %}
-                      <strong>{{ g.name }}</strong>
-                    {% endfor %}
-                    {% for c in current_categories %}
-                      <strong>{{ c.name }}</strong> 
-                    {% endfor %}
-                  {% else %}
-                    none
-                  {% endif %}
-                  selected
-                </div>
-                <div>
-                  <a class="btn btn-outline-dp btn-sm me-2" href="{% del_params request.get_full_path 'category' 'gender' %}" role="button">Clear</a>
-                  <button type="submit" class="btn btn-dp btn-sm">Submit</button>
-                </div>
-              </div>
             </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="brand-heading">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBrand" aria-expanded="false" aria-controls="collapseBrand">
-                <div class="d-flex justify-content-between align-items-center">
-                  <p class="mb-0 me-3">Brand</p>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="brand-heading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBrand" aria-expanded="false" aria-controls="collapseBrand">
+                  Brand &nbsp;
                   {% if 'brand' in request.GET %}
                     {% if current_brands|length < 3 %}
                       <small class="text-dp-80 fw-light mt-1">{{ current_brands.0.name }}, {{ current_brands.1.name }}</small>
@@ -133,63 +130,63 @@
                   {% else %}
                     <small class="text-dp-80 fw-light mt-1">All</small>
                   {% endif %}
-                </div>
-              </button>
-            </h2>
-            <div id="collapseBrand" class="accordion-collapse collapse" aria-labelledby="brand-heading" data-bs-parent="#accordionFilter">
-              <div class="accordion-body bg-lv-20">
-                <div class="scroll-brands">
-                  <div class="mx-3 my-1">
-                    <div class="btn-group-vertical w-100" role="group" aria-label="Brand checkbox toggle button group">
-                      {% for b in brand_list %}
-                        <div class="mb-2 w-100">
-                          <input type="checkbox" class="btn-check w-100" name="brand" value="{{ b.db_name }}" id="mobile_brand_{{ b.db_name }}" {% if b in current_brands %} checked="checked" {% endif %}>
-                          <label class="btn btn-checkbox w-100" for="mobile_brand_{{ b.db_name }}">{{ b.name}}</label> 
-                        </div>
-                      {% endfor %}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="dropdown-header text-dp bg-white mx-0 py-2 d-flex justify-content-between align-items-center">
-                <div>{{ current_brands|length }} selected</div>
-                <div>
-                  <a class="btn btn-outline-dp btn-sm me-2" href="{% del_params request.get_full_path 'brand' %}" role="button">Clear</a>
-                  <button type="submit" class="btn btn-dp btn-sm">Submit</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="price-range-heading">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePriceRange" aria-expanded="false" aria-controls="collapsePriceRange">
-                <div class="d-flex justify-content-between align-items-center">
-                  <p class="mb-0 me-3">Price</p>
-                  {% if 'price_from' or 'price_to' in request.GET %}
-                    <small class="text-muted fw-light">£{{ price_from }} - £{{ price_to }}</small>
-                  {% endif %}
-                </div>
-              </button>
-            </h2>
-            <div id="collapsePriceRange" class="accordion-collapse collapse" aria-labelledby="price-range-heading" data-bs-parent="#accordionFilter">
-              <div class="accordion-body bg-lv-20">
-                <div class="list-group py-2 mx-1 mx-sm-3 px-sm-3">
-                  <div class="list-group-item">
-                    <div class="d-flex flex-column align-items-center justify-content-between">
-                      <div class="range-container col-12 mb-2">
-                        <div class="d-flex align-items-center justify-content-between">
-                          <input class="form-control w-25 d-none input-from" type="number" name="price_from" min="{{ min_price }}" max="{{ max_price }}">
-                          <input class="form-control w-25 d-none input-to" type="number" name="price_to" min="{{ min_price }}" max="{{ max_price }}">
-                        </div>
-                        <input type="text" class="range-slider" value="" />
+                </button>
+              </h2>
+              <div id="collapseBrand" class="accordion-collapse collapse" aria-labelledby="brand-heading" data-bs-parent="#accordionFilter">
+                <div class="accordion-body bg-lv-20">
+                  <div class="scroll-brands">
+                    <div class="mx-3 my-1">
+                      <div class="btn-group-vertical w-100" role="group" aria-label="Brand checkbox toggle button group">
+                        {% for b in brand_list %}
+                          <div class="mb-2 w-100">
+                            <input type="checkbox" class="btn-check w-100" name="brand" value="{{ b.db_name }}" id="mobile_brand_{{ b.db_name }}" {% if b in current_brands %} checked="checked" {% endif %}>
+                            <label class="btn btn-checkbox w-100" for="mobile_brand_{{ b.db_name }}">{{ b.name}}</label> 
+                          </div>
+                        {% endfor %}
                       </div>
                     </div>
                   </div>
                 </div>
+                <div class="dropdown-header text-dp bg-white mx-0 py-2 d-flex justify-content-between align-items-center">
+                  <div>{{ current_brands|length }} selected</div>
+                  <div>
+                    <a class="btn btn-outline-dp btn-sm me-2" href="{% del_params request.get_full_path 'brand' %}" role="button">Clear</a>
+                    <button type="submit" class="btn btn-dp btn-sm">Submit</button>
+                  </div>
+                </div>
               </div>
-              <div class="dropdown-header text-dp bg-white mx-0 py-2 d-flex justify-content-end align-items-center">
-                <a class="btn btn-outline-dp btn-sm me-2" href="{% del_params request.get_full_path 'price_from' 'price_to' %}" role="button">Reset</a>
-                <button type="submit" class="btn btn-dp btn-sm">Submit</button>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="price-range-heading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePriceRange" aria-expanded="false" aria-controls="collapsePriceRange">
+                  Price
+                  {% if 'price_from' or 'price_to' in request.GET %}
+                    <small class="text-muted fw-light">
+                      £{{ price_from }} - £{{ price_to }}
+                    </small>
+                  {% endif %}
+                </button>
+              </h2>
+              <div id="collapsePriceRange" class="accordion-collapse collapse" aria-labelledby="price-range-heading" data-bs-parent="#accordionFilter">
+                <div class="accordion-body bg-lv-20">
+                  <div class="list-group py-2 mx-1 mx-sm-3 px-sm-3">
+                    <div class="list-group-item">
+                      <div class="d-flex flex-column align-items-center justify-content-between">
+                        <div class="range-container col-12 mb-2">
+                          <div class="d-flex align-items-center justify-content-between">
+                            <input class="form-control w-25 d-none input-from" type="number" name="price_from" min="{{ min_price }}" max="{{ max_price }}">
+                            <input class="form-control w-25 d-none input-to" type="number" name="price_to" min="{{ min_price }}" max="{{ max_price }}">
+                          </div>
+                          <input type="text" class="range-slider" value="" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="dropdown-header text-dp bg-white mx-0 py-2 d-flex justify-content-end align-items-center">
+                  <a class="btn btn-outline-dp btn-sm me-2" href="{% del_params request.get_full_path 'price_from' 'price_to' %}" role="button">Reset</a>
+                  <button type="submit" class="btn btn-dp btn-sm">Submit</button>
+                </div>
               </div>
             </div>
           </div>
