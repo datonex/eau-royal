@@ -39,9 +39,9 @@ def add_to_bag(request, item_id):
                         f"Updated size {size} "
                         f"{product.brand.name}, "
                         f"{product.name} {product.category.name} "
-                        "quantity to "
+                        f"quantity to "
                         f'{bag[item_id]["items_by_size"][size]}'
-                    ),
+                    )
                 )
             else:
                 bag[item_id]["items_by_size"][size] = quantity
@@ -51,7 +51,7 @@ def add_to_bag(request, item_id):
                         f"Added size {size} "
                         f"{product.brand.name}, {product.name} "
                         f"{product.category.name} to your bag"
-                    ),
+                    )
                 )
         else:
             bag[item_id] = {"items_by_size": {size: quantity}}
@@ -59,9 +59,9 @@ def add_to_bag(request, item_id):
                 request,
                 (
                     f"Added size {size} "
-                    f"{product.brand.name}, {product.name}"
+                    f"{product.brand.name}, {product.name} "
                     f"{product.category.name} to your bag"
-                ),
+                )
             )
     else:
         if item_id in list(bag.keys()):
@@ -72,14 +72,16 @@ def add_to_bag(request, item_id):
                     f"Updated {product.brand.name}, {product.name} "
                     f"{product.category.name} "
                     f"quantity to {bag[item_id]}"
-                ),
+                )
             )
         else:
             bag[item_id] = quantity
             messages.success(
                 request,
-                f"Added {product.brand.name}, {product.name} "
-                f"{product.category.name} to your bag",
+                (
+                    f"Added {product.brand.name}, {product.name} "
+                    f"{product.category.name} to your bag"
+                )
             )
 
     request.session["bag"] = bag
@@ -107,7 +109,7 @@ def adjust_bag(request, item_id):
                     f"{product.brand.name}, {product.name} "
                     f"{product.category.name} quantity to "
                     f'{bag[item_id]["items_by_size"][size]}'
-                ),
+                )
             )
         else:
             del bag[item_id]["items_by_size"][size]
@@ -119,7 +121,7 @@ def adjust_bag(request, item_id):
                     f"Removed size {size} "
                     f"{product.brand.name}, {product.name} "
                     f"{product.category.name} from your bag"
-                ),
+                )
             )
     else:
         if quantity > 0:
@@ -130,7 +132,7 @@ def adjust_bag(request, item_id):
                     f"Updated {product.brand.name}, {product.name} "
                     f"{product.category.name} "
                     f"quantity to {bag[item_id]}"
-                ),
+                )
             )
         else:
             bag.pop(item_id)
@@ -164,9 +166,9 @@ def remove_from_bag(request, item_id):
                 request,
                 (
                     f"Removed size {size} "
-                    f"{product.brand.name}, {product.name}"
+                    f"{product.brand.name}, {product.name} "
                     f"{product.category.name} from your bag"
-                ),
+                )
             )
         else:
             bag.pop(item_id)
@@ -175,7 +177,7 @@ def remove_from_bag(request, item_id):
                 (
                     f"Removed {product.brand.name}, {product.name} "
                     f"from your bag"
-                ),
+                )
             )
 
         request.session["bag"] = bag
