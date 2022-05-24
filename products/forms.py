@@ -23,12 +23,12 @@ class ProductForm(forms.ModelForm):
         categories = Category.objects.all()
         brands = Brand.objects.all()
         genders = Gender.objects.all()
-        category_friendly_names = [(c.id, c.get_friendly_name()) for c in categories]
-        brand_friendly_names = [(b.id, b.get_friendly_name()) for b in brands]
-        gender_friendly_names = [(g.id, g.get_friendly_name()) for g in genders]
+        category_names = [(c.id, c.get_friendly_name()) for c in categories]
+        brand_names = [(b.id, b.get_friendly_name()) for b in brands]
+        gender_names = [(g.id, g.get_friendly_name()) for g in genders]
 
-        self.fields["category"].choices = category_friendly_names
-        self.fields["brand"].choices = brand_friendly_names
-        self.fields["gender"].choices = gender_friendly_names
+        self.fields["category"].choices = category_names
+        self.fields["brand"].choices = brand_names
+        self.fields["gender"].choices = gender_names
         for field_name, field in self.fields.items():
             field.widget.attrs["class"] = "stripe-style-input"
