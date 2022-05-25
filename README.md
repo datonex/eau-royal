@@ -236,7 +236,11 @@ Key
 
 ### Marketing Information
 
-Users have option to sign up to Eau-Royal's newsletter at the home page so that they can receive news about any new products, special offers and events.
+Users have the option to sign up to Eau-Royal's newsletter at the home page so that they can receive news about any new products, special offers and events.
+
+![newsletter sign up](README/misc/newsletter-signup.png)
+
+The Eau Royal facebook page will have the following mock details and posts
 
 ![facebook mockup](README/misc/fb-business-page.png)
 
