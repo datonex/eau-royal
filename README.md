@@ -313,6 +313,20 @@ Code validation with [W3C Validator](https://validator.w3.org/)
 
 #### Products App
 
+- **products.html** --> :white_check_mark: pass
+
+- **product_detail.html** --> :white_check_mark: pass
+
+- **add_product.html** --> :white_check_mark: pass
+
+- **edit_product.html** --> :white_check_mark: pass
+
+- **default_sorting.html** --> :white_check_mark: pass
+
+- **mobile_sorting.html** --> :white_check_mark: pass
+
+- **custom_clearable_file_input.html** --> :white_check_mark: pass
+
 #### Profiles App
 
 #### Base files
@@ -347,6 +361,24 @@ Code validation with [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
 - **home.css** --> :white_check_mark: pass
 
 #### Products App
+
+- **products.css** --> :white_check_mark: pass
+
+  - 11 :warning: Warnings
+
+  | Line | Selector/s                         | Warning text                                                      |
+  | ---- | ---------------------------------- | ----------------------------------------------------------------- |
+  | 24   | .btn-checkbox                      | Same color for `background-color` and `border-color`              |
+  | 31   | .btn-checkbox:hover                | Same color for `background-color` and `border-color`              |
+  | 41   | .btn-check:active + .btn-checkbox  | Same color for `background-color` and `border-color`              |
+  | 41   | .btn-check:checked + .btn-checkbox | Same color for `background-color` and `border-color`              |
+  | 41   | .btn-checkbox.active               | Same color for `background-color` and `border-color`              |
+  | 41   | .btn-checkbox.dropdown-toggle.show | Same color for `background-color` and `border-color`              |
+  | 41   | .btn-checkbox:active               | Same color for `background-color` and `border-color`              |
+  | 47   |                                    | `::-webkit-outer-spin-button` is a vendor extended pseudo-element |
+  | 48   |                                    | `::-webkit-inner-spin-button` is a vendor extended pseudo-element |
+  | 49   |                                    | `-webkit-appearance` is a vendor extension                        |
+  | 56   |                                    | `-moz-appearance` is a vendor extension                           |
 
 #### Profiles App
 
@@ -388,7 +420,7 @@ Code validation with [JSHint](https://jshint.com/)
 
 - **bag embedded js** --> :white_check_mark: pass
 
-  - Metrics
+  - :chart_with_upwards_trend: Metrics
 
     - There are 6 functions in this file.
 
@@ -402,7 +434,7 @@ Code validation with [JSHint](https://jshint.com/)
 
 - **stripe_element.js** --> :white_check_mark: pass
 
-  - Metrics
+  - :chart_with_upwards_trend: Metrics
 
     - There are 5 functions in this file.
 
@@ -412,13 +444,13 @@ Code validation with [JSHint](https://jshint.com/)
 
     - The most complex function has a cyclomatic complexity value of 3 while the median is 1.
 
-  - Undefined variables
+  - :shrug: Undefined variables
 
     - Stripe
 
 - **checkout_script embedded js** --> :white_check_mark: pass
 
-  - Metrics
+  - :chart_with_upwards_trend: Metrics
 
     - There are 9 functions in this file.
 
@@ -429,6 +461,88 @@ Code validation with [JSHint](https://jshint.com/)
     - The most complex function has a cyclomatic complexity value of 8 while the median is 1.
 
 #### Products App
+
+- **product_detail embedded js** --> :white_check_mark: pass
+
+  - :chart_with_upwards_trend: Metrics
+
+    - There are 5 functions in this file.
+
+    - Function with the largest signature take 1 arguments, while the median is 0.
+
+    - Largest function has 7 statements in it, while the median is 1.
+
+    - The most complex function has a cyclomatic complexity value of 1 while the median is 1.
+
+- **add_product embedded js** --> :white_check_mark: pass
+
+  - :chart_with_upwards_trend: Metrics
+
+    - There is only one function in this file.
+
+    - It takes no arguments.
+
+    - This function contains 2 statements.
+
+    - Cyclomatic complexity number for this function is 1.
+
+- **products_script embedded js** --> :white_check_mark: pass
+
+  - :chart_with_upwards_trend: Metrics
+
+    - There are 7 functions in this file.
+
+    - Function with the largest signature take 2 arguments, while the median is 0.
+
+    - Largest function has 10 statements in it, while the median is 6.
+
+    - The most complex function has a cyclomatic complexity value of 3 while the median is 1.
+
+  - 8 :zzz: Unused variables
+
+    - infinite
+
+    - sortPriceAscMobile
+
+    - sortPriceDescMobile
+
+    - sortRatingDescMobile
+
+    - sortPriceAsc
+
+    - sortPriceDesc
+
+    - sortRatingDesc
+
+    - handleDirection
+
+  - 1 :shrug: Undefined variable
+
+    - Waypoint
+
+- **quantity_input embedded js** --> :white_check_mark: pass
+
+  - 7 :warning: Warnings
+
+    | Line | Warning text                            |
+    | ---- | --------------------------------------- |
+    | 12   | `currentValue` is already defined.      |
+    | 15   | `currentValue` used out of scope.       |
+    | 16   | `currentValue` used out of scope.       |
+    | 51   | `allQuantityInputs` is already defined. |
+    | 54   | `allQuantityInputs` used out of scope.  |
+    | 67   | `allQuantityInputs` is already defined. |
+    | 70   | `allQuantityInputs` used out of scope.  |
+
+  - :chart_with_upwards_trend: Metrics
+
+    - There are 5 functions in this file.
+
+    - Function with the largest signature take 2 arguments, while the median is 1.
+
+    - Largest function has 10 statements in it, while the median is 10.
+
+    - The most complex function has a cyclomatic complexity value of 3 while the median is 2.
 
 #### Profiles App
 
@@ -469,6 +583,8 @@ Code validation with [pep8online](http://pep8online.com/)
 
 - **admin.py** --> :white_check_mark: pass
 
+- **apps.py** --> :white_check_mark: pass
+
 - **forms.py** --> :white_check_mark: pass
 
 - **models.py** --> :white_check_mark: pass
@@ -496,6 +612,22 @@ Code validation with [pep8online](http://pep8online.com/)
 - **views.py** --> :white_check_mark: pass
 
 #### Products App
+
+- **admin.py** --> :white_check_mark: pass
+
+- **forms.py** --> :white_check_mark: pass
+
+- **models.py** --> :white_check_mark: pass
+
+- **signals.py** --> :white_check_mark: pass
+
+- **urls.py** --> :white_check_mark: pass
+
+- **views.py** --> :white_check_mark: pass
+
+  - I have omitted the `W503 line break before binary operator` warnings in views.py from this documentation because the [pep8 documentation](https://peps.python.org/pep-0008/#should-a-line-break-before-or-after-a-binary-operator) recommends line break BEFORE binary operators.
+
+- **widgets.py** --> :white_check_mark: pass
 
 #### Profiles App
 
