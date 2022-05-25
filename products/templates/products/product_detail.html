@@ -27,10 +27,10 @@
         <div class="col-md-7 col-12 mb-4 mb-md-0">
           {% if product.image %}
             <a href="{{ product.image.url }}" target="_blank">
-              <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.brand.name }} {{ product.name }}"/>
+              <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.brand.name|lower }} {{ product.name|lower }}"/>
             </a>
           {% else %}
-            <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.brand.name }} {{ product.name }}"/>
+            <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.brand.name|lower }} {{ product.name|lower }}"/>
           {% endif %}
         </div>
         <div class="col-md-5 col-12 mt-5 mt-md-0 mb-4 mb-md-0">
