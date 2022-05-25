@@ -161,26 +161,47 @@ Key
 - [x] **Header** - allows user to easily navigate across all pages
 
 - Header is fixed to top of page for easy access (desktop and large tablets)
+
 - and text are positioned on the left and are links that take you to the homepage
+
 - Navigation is place on the right on the logo for easy access (under logo for mobile)
+
 - Navigation links change colour when hovered over. This lets the visitor know that it is clickable.
+
 - Navigation link is underlined to let user know what page they are on
+
 - Entire header disappears for mobile devices
+
 - Colors have been chosen with optimum contrast in mind to be pleasant to the eye.
+
 - [x] **Links** that are hovered over
+
 - All links that are surrounding text have been underlined and change color when hovered over. This helps the user to identify external links.
+
 - [x] **Navigation banner**
+
 - Navigation banner is the same across all pages to give uniformity and familiarity
+
 - background image on home is scrollable to give a more fun user experience
+
 - [x] **Accessibility**
+
 - All images have aria labels in case they don't load and for the visually impaired
+
 - [x] **Buttons**
+
 - All buttons have the same styling and they invert colours when hovered (except for scroll to top button)
+
 - [x] **Responsiveness**
+
 - All pages work well with many screen sizes
+
 - [x] **Footer**
+
 - Footer sticks to the bottom of the page, regardless of the amount of content. This aids the overall user experience.
+
 - All content have near uniform layout to give a nice and engaging flow of text and images
+
 - Social links have been grouped together
 
 ### Specific to Pages
@@ -291,8 +312,6 @@ Whenever it is feasible, prefer to automate your tests, and if you've done so, p
 
 For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. A particularly useful form for describing your testing process is via scenarios, such as:
 
-Each error, or warning will be written in the format: line number then error description
-
 ### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height=25 /> HTML5 Validator
 
 Code validation with [W3C Validator](https://validator.w3.org/)
@@ -328,6 +347,16 @@ Code validation with [W3C Validator](https://validator.w3.org/)
 - **custom_clearable_file_input.html** --> :white_check_mark: pass
 
 #### Profiles App
+
+- **profile.html** --> :white_check_mark: pass
+
+- **profile_mobile.html** --> :white_check_mark: pass
+
+- **profile_address.html** --> :white_check_mark: pass
+
+- **profile_details.html** --> :white_check_mark: pass
+
+- **profile_details.html** --> :white_check_mark: pass
 
 #### Base files
 
@@ -381,6 +410,8 @@ Code validation with [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
   | 56   |                                    | `-moz-appearance` is a vendor extension                           |
 
 #### Profiles App
+
+- **profile.css** --> :white_check_mark: pass
 
 #### Base files
 
@@ -446,7 +477,7 @@ Code validation with [JSHint](https://jshint.com/)
 
   - :shrug: Undefined variables
 
-    - Stripe
+    - Stripe - variable is imported directly in checkout.html and is working as intended.
 
 - **checkout_script embedded js** --> :white_check_mark: pass
 
@@ -468,7 +499,7 @@ Code validation with [JSHint](https://jshint.com/)
 
     - There are 5 functions in this file.
 
-    - Function with the largest signature take 1 arguments, while the median is 0.
+    - Function with the largest signature takes 1 arguments, while the median is 0.
 
     - Largest function has 7 statements in it, while the median is 1.
 
@@ -492,7 +523,7 @@ Code validation with [JSHint](https://jshint.com/)
 
     - There are 7 functions in this file.
 
-    - Function with the largest signature take 2 arguments, while the median is 0.
+    - Function with the largest signature takes 2 arguments, while the median is 0.
 
     - Largest function has 10 statements in it, while the median is 6.
 
@@ -516,9 +547,11 @@ Code validation with [JSHint](https://jshint.com/)
 
     - handleDirection
 
+    - All the unused variables pointed out by JSHint are used directly in the html file and have been manually checked that they are working correctly.
+
   - 1 :shrug: Undefined variable
 
-    - Waypoint
+    - Waypoint - The waypoint variable is defined in the import Waypoint.js static file and is working as intended.
 
 - **quantity_input embedded js** --> :white_check_mark: pass
 
@@ -538,7 +571,7 @@ Code validation with [JSHint](https://jshint.com/)
 
     - There are 5 functions in this file.
 
-    - Function with the largest signature take 2 arguments, while the median is 1.
+    - Function with the largest signature takes 2 arguments, while the median is 1.
 
     - Largest function has 10 statements in it, while the median is 10.
 
@@ -546,7 +579,17 @@ Code validation with [JSHint](https://jshint.com/)
 
 #### Profiles App
 
-#### Misc files
+- **profile embedded js** --> :white_check_mark: pass
+
+  - :chart_with_upwards_trend: Metrics
+
+    - There are 7 functions in this file.
+
+    - Function with the largest signature takes 0 arguments, while the median is 0.
+
+    - Largest function has 10 statements in it, while the median is 7.
+
+    - The most complex function has a cyclomatic complexity value of 1 while the median is 1.
 
 ### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height=25/> Python Validator
 
@@ -625,21 +668,29 @@ Code validation with [pep8online](http://pep8online.com/)
 
 - **views.py** --> :white_check_mark: pass
 
-  - I have omitted the `W503 line break before binary operator` warnings in views.py from this documentation because the [pep8 documentation](https://peps.python.org/pep-0008/#should-a-line-break-before-or-after-a-binary-operator) recommends line break BEFORE binary operators.
+  - I have omitted the `W503 line break before binary operator` warnings in **views.py** from this documentation because the [pep8 documentation](https://peps.python.org/pep-0008/#should-a-line-break-before-or-after-a-binary-operator) recommends line break BEFORE binary operators for new code.
 
 - **widgets.py** --> :white_check_mark: pass
 
 #### Profiles App
 
+- **forms.py** --> :white_check_mark: pass
+
+- **models.py** --> :white_check_mark: pass
+
+- **urls.py** --> :white_check_mark: pass
+
+- **views.py** --> :white_check_mark: pass
+
 ### Compatibility Testing
 
 - Browser Compatibility
 
-| Screen size\Browser |       Safari       |    Opera    | Microsoft Edge |       Chrome       |      Firefox       | Internet Explorer |
-| ------------------- | :----------------: | :---------: | :------------: | :----------------: | :----------------: | :---------------: |
-| Mobile              | :heavy_check_mark: | Not Tested  |  Not Tested.   | :heavy_check_mark: | :heavy_check_mark: |    Not Tested     |
-| Desktop             | :heavy_check_mark: | Not Tested. |  Not Tested.   | :heavy_check_mark: | :heavy_check_mark: |    Not Tested     |
-| Tablet              | :heavy_check_mark: | Not Tested. |  Not Tested.   | :heavy_check_mark: | :heavy_check_mark: |    Not Tested     |
+  | Screen size\Browser |       Safari       |    Opera    | Microsoft Edge |       Chrome       |      Firefox       | Internet Explorer |
+  | ------------------- | :----------------: | :---------: | :------------: | :----------------: | :----------------: | :---------------: |
+  | Mobile              | :heavy_check_mark: | Not Tested  |  Not Tested.   | :heavy_check_mark: | :heavy_check_mark: |    Not Tested     |
+  | Desktop             | :heavy_check_mark: | Not Tested. |  Not Tested.   | :heavy_check_mark: | :heavy_check_mark: |    Not Tested     |
+  | Tablet              | :heavy_check_mark: | Not Tested. |  Not Tested.   | :heavy_check_mark: | :heavy_check_mark: |    Not Tested     |
 
 - OS Compatibility was tested on iOS 14.5.1, MacOS Catalina, iPadOS 14.5 It is yet to be tested on Unix, Linux, Windows or Solaris Operating Systems.
 - The devices used in this testing include MacBook Pro, iPad Pro, iPhone 12 Pro Max, iPhone 7 Plus, Samsung S10
