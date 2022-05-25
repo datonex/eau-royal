@@ -25,18 +25,18 @@
       <div class="row gx-4 mb-2 justify-content-center">
         <div class="col-12 col-md-6 bg-lv-20">
           <form method="POST" action="{% url 'add_product' %}" class="p-3 " enctype="multipart/form-data">
-              {% csrf_token %}
-              {% for field in form %}
-                  {% if field.name != 'image' %}
-                      {{ field | as_crispy_field }}
-                  {% else %}
-                      {{ field }}
-                  {% endif %}
-              {% endfor %}
-              <div class="d-grid gap-2">
-                  <a class="btn btn-outline-danger" role="button" href="{% url 'products' %}">Cancel</a>
-                  <button class="btn btn-dp" type="submit">Add Product</button>
-              </div>
+            {% csrf_token %}
+            {% for field in form %}
+              {% if field.name != 'image' %}
+                  {{ field | as_crispy_field }}
+              {% else %}
+                  {{ field }}
+              {% endif %}
+            {% endfor %}
+            <div class="d-grid gap-2">
+              <a class="btn btn-outline-danger" role="button" href="{% url 'products' %}">Cancel</a>
+              <button class="btn btn-dp" type="submit">Add Product</button>
+            </div>
           </form>
         </div>   
       </div>
@@ -45,12 +45,12 @@
 {% endblock %}
 
 {% block postloadjs %}
-    {{ block.super }}
-    <script>
-        $('#new-image').change(function() {
-            var file = $('#new-image')[0].files[0];
-            $('#filename').text(`Image will be set to: ${file.name}`);
-        });
-    </script>
+  {{ block.super }}
+  <script>
+    $('#new-image').change(function() {
+      var file = $('#new-image')[0].files[0];
+      $('#filename').text(`Image will be set to: ${file.name}`);
+    });
+  </script>
 {% endblock %}
 
