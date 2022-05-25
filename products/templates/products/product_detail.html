@@ -173,15 +173,13 @@
       // Make check boxes behave like radio buttons
       $(".chb").change(function(e) {
 
-        var status = $(this).prop("checked");
-
         $(".chb").prop('checked', false);
         $(this).prop('checked', true);
       });
 
-      var priceByThree = {{ product.price }}/3
-      var priceByTwo = {{ product.price }}*2
-      var price = {{ product.price }}
+      var priceByThree = {{ product.price }}/3;
+      var priceByTwo = {{ product.price }}*2;
+      var price = {{ product.price }};
 
       $("#bottle-30").click(function(){
         $(".product-price").html(`<span class="text-muted product-size">30 ML - </span>£${priceByThree.toFixed(2)}`);
