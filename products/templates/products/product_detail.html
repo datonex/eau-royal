@@ -73,7 +73,7 @@
           <form action="{% url 'add_to_bag' product.id %}" method="POST">
             {% csrf_token %}
             {% if product.has_sizes == True %}
-              <div class="btn-toolbar justify-content-center justify-content-md-start mb-5 mb-md-3" aria-label="Toolbar with button groups">
+              <div class="btn-toolbar justify-content-center justify-content-md-start mb-5 mb-md-3" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group me-3" role="group" aria-label="30 milliter bottle">
                   <input type="checkbox" class="btn-check chb" name="product_size" id="bottle-30" value="30ML">
                   <label class="btn btn-outline-lv btn-md-lg py-4" for="bottle-30">30 ML</label>
@@ -87,7 +87,7 @@
                   <label class="btn btn-outline-lv btn-md-lg py-4" for="bottle-100">100 ML</label>
                 </div>
               </div>
-              <div class="btn-toolbar justify-content-center justify-content-md-start mb-5 mb-md-3 d-none" aria-label="Toolbar with button groups">
+              <div class="btn-toolbar justify-content-center justify-content-md-start mb-5 mb-md-3 d-none" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group" role="group" aria-label="100 milliter bottle">
                   <input type="checkbox" class="btn-check" name="product_size" id="one-size" value="onesize">
                   <label class="btn btn-outline-lv btn-md-lg py-4" for="one-size">One size</label>
@@ -95,7 +95,7 @@
               </div>
             {% else %}
             <div class="d-none">
-              <div class="btn-toolbar justify-content-center justify-content-md-start mb-5 mb-md-3" aria-label="Toolbar with button groups">
+              <div class="btn-toolbar justify-content-center justify-content-md-start mb-5 mb-md-3" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group me-3" role="group" aria-label="30 milliter bottle">
                   <input type="checkbox" class="btn-check chb" name="product_size" value="30ML">
                   <label class="btn btn-outline-lv btn-md-lg py-4" for="bottle-30">30 ML</label>
@@ -110,7 +110,7 @@
                 </div>
               </div>
             </div>
-            <div class="btn-toolbar justify-content-center justify-content-md-start mb-5 mb-md-3" aria-label="Toolbar with button groups">
+            <div class="btn-toolbar justify-content-center justify-content-md-start mb-5 mb-md-3" role="toolbar" aria-label="Toolbar with button groups">
               <div class="btn-group" role="group" aria-label="one size item">
                 <input type="checkbox" class="btn-check" name="product_size" id="one-size" value="onesize" checked="checked">
                 <label class="btn btn-outline-lv btn-md-lg py-4" for="one-size">One size</label>
