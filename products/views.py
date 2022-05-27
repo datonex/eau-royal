@@ -171,8 +171,14 @@ def product_detail(request, product_id):
     template = "products/product_detail.html"
     product = get_object_or_404(Product, pk=product_id)
 
+    if request.META.get('HTTP_REFERER') == None:
+        products_url = "/products/"
+    else:
+        products_url = request.META.get('HTTP_REFERER')
+
     context = {
         "product": product,
+        "products_url": products_url,
     }
 
     return render(request, template, context)
