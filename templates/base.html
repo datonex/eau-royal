@@ -72,11 +72,11 @@
         <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
           <ul class="list-inline list-unstyled text-center text-lg-right my-0">
             <li class="list-inline-item dropdown">
-              <a class="btn btn-nav-dp" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="user account">
+              <button class="btn btn-nav-dp" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="user account" id="user-account-button">
                 <span class="icon text-lv">
                   <i class="fa-solid fa-user icon"></i>
                 </span>
-              </a>
+              </b>
               <ul class="dropdown-menu text-dp" id="user-options">
                 <li class="text-center py-2">
                   {% if request.user.is_authenticated %}
