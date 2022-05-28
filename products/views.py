@@ -46,6 +46,9 @@ def all_products(request):
     price_to = max_price
 
     if request.GET:
+        if "products_url" in request.GET:
+            url = request.GET.get("products_url")
+            request.session['products_url'] = url
         if "price_from" and "price_to" in request.GET:
             price_from = request.GET.get("price_from")
             price_to = request.GET.get("price_to")
@@ -144,6 +147,8 @@ def all_products(request):
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
 
+    request.session['products_url'] = request.get_full_path()
+
     context = {
         "products": products,
         "brand_list": brand_list,
@@ -171,10 +176,7 @@ def product_detail(request, product_id):
     template = "products/product_detail.html"
     product = get_object_or_404(Product, pk=product_id)
 
-    if request.META.get('HTTP_REFERER') == None:
-        products_url = "/products/"
-    else:
-        products_url = request.META.get('HTTP_REFERER')
+    products_url = request.session.get('products_url', '/products/')
 
     context = {
         "product": product,
