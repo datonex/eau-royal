@@ -316,25 +316,27 @@ Whenever it is feasible, prefer to automate your tests, and if you've done so, p
 
 For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. A particularly useful form for describing your testing process is via scenarios, such as:
 
-### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height=25 /> HTML5 Validator
+### Code Validation
+
+#### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height=25 /> HTML5 Validator
 
 Code validation with [W3C Validator](https://validator.w3.org/)
 
-#### Bag App
+##### Bag App
 
 - **bag.html** --> :white_check_mark: pass
 
-#### Checkout App
+##### Checkout App
 
 - **checkout.html** --> :white_check_mark: pass
 
 - **checkout_success.html** --> :white_check_mark: pass
 
-#### Home App
+##### Home App
 
 - **index.html** --> :white_check_mark: pass
 
-#### Products App
+##### Products App
 
 - **products.html** --> :white_check_mark: pass
 
@@ -350,7 +352,7 @@ Code validation with [W3C Validator](https://validator.w3.org/)
 
 - **custom_clearable_file_input.html** --> :white_check_mark: pass
 
-#### Profiles App
+##### Profiles App
 
 - **profile.html** --> :white_check_mark: pass
 
@@ -368,11 +370,11 @@ Code validation with [W3C Validator](https://validator.w3.org/)
 
   - :x:
 
-### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" height=25 /> CSS Validator
+#### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" height=25 /> CSS Validator
 
 Code validation with [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
 
-#### Bag App
+##### Bag App
 
 - **bag.css** --> :white_check_mark: pass
 
@@ -385,15 +387,15 @@ Code validation with [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
   |   26 | `-webkit-appearance` is a vendor extension                        |
   |   33 | `-moz-appearance` is a vendor extension                           |
 
-#### Checkout App
+##### Checkout App
 
 - **checkout.css** --> :white_check_mark: pass
 
-#### Home App
+##### Home App
 
 - **home.css** --> :white_check_mark: pass
 
-#### Products App
+##### Products App
 
 - **products.css** --> :white_check_mark: pass
 
@@ -413,11 +415,11 @@ Code validation with [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
   | 49   |                                    | `-webkit-appearance` is a vendor extension                        |
   | 56   |                                    | `-moz-appearance` is a vendor extension                           |
 
-#### Profiles App
+##### Profiles App
 
 - **profile.css** --> :white_check_mark: pass
 
-#### Base files
+##### Base files
 
 - **constants.css** --> :white_check_mark: pass
 
@@ -447,11 +449,11 @@ Code validation with [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
   | 329  |                                                                                  | `-webkit-transition` is a vendor extension           |
   | 368  | `.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before` | Same color for `background-color` and `border-color` |
 
-### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height=25/> JavaScript Validator
+#### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height=25/> JavaScript Validator
 
 Code validation with [JSHint](https://jshint.com/)
 
-#### Bag App
+##### Bag App
 
 - **bag embedded js** --> :white_check_mark: pass
 
@@ -465,7 +467,7 @@ Code validation with [JSHint](https://jshint.com/)
 
     - The most complex function has a cyclomatic complexity value of 2 while the median is 1.
 
-#### Checkout App
+##### Checkout App
 
 - **stripe_element.js** --> :white_check_mark: pass
 
@@ -495,7 +497,7 @@ Code validation with [JSHint](https://jshint.com/)
 
     - The most complex function has a cyclomatic complexity value of 8 while the median is 1.
 
-#### Products App
+##### Products App
 
 - **product_detail embedded js** --> :white_check_mark: pass
 
@@ -581,7 +583,7 @@ Code validation with [JSHint](https://jshint.com/)
 
     - The most complex function has a cyclomatic complexity value of 3 while the median is 2.
 
-#### Profiles App
+##### Profiles App
 
 - **profile embedded js** --> :white_check_mark: pass
 
@@ -595,11 +597,11 @@ Code validation with [JSHint](https://jshint.com/)
 
     - The most complex function has a cyclomatic complexity value of 1 while the median is 1.
 
-### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height=25/> Python Validator
+#### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height=25/> Python Validator
 
 Code validation with [pep8online](http://pep8online.com/)
 
-#### Eau Royal Project
+##### Eau Royal Project
 
 - **settings.py** --> :x: failed
 
@@ -614,11 +616,11 @@ Code validation with [pep8online](http://pep8online.com/)
 
 - **urls.py** --> :white_check_mark: pass
 
-#### Misc files
+##### Misc files
 
 - custom_storages.py --> :white_check_mark: pass
 
-#### Bag App
+##### Bag App
 
 - **contexts.py** --> :white_check_mark: Pass
 
@@ -626,7 +628,7 @@ Code validation with [pep8online](http://pep8online.com/)
 
 - **views.py** --> :white_check_mark: pass
 
-#### Checkout App
+##### Checkout App
 
 - **admin.py** --> :white_check_mark: pass
 
@@ -646,7 +648,7 @@ Code validation with [pep8online](http://pep8online.com/)
 
 - **webhooks.py** --> :white_check_mark: pass
 
-#### Home App
+##### Home App
 
 - **admin.py** --> :white_check_mark: pass
 
@@ -658,7 +660,7 @@ Code validation with [pep8online](http://pep8online.com/)
 
 - **views.py** --> :white_check_mark: pass
 
-#### Products App
+##### Products App
 
 - **admin.py** --> :white_check_mark: pass
 
@@ -676,7 +678,7 @@ Code validation with [pep8online](http://pep8online.com/)
 
 - **widgets.py** --> :white_check_mark: pass
 
-#### Profiles App
+##### Profiles App
 
 - **forms.py** --> :white_check_mark: pass
 
@@ -685,6 +687,14 @@ Code validation with [pep8online](http://pep8online.com/)
 - **urls.py** --> :white_check_mark: pass
 
 - **views.py** --> :white_check_mark: pass
+
+##### Tests folder
+
+- **test_admin.py** --> :white_check_mark: pass
+
+- **test_anon_user.py** --> :white_check_mark: pass
+
+- **test_user.py** --> :white_check_mark: pass
 
 ### Compatibility Testing
 
@@ -701,7 +711,7 @@ Code validation with [pep8online](http://pep8online.com/)
 
 - The website was exhaustively tested for responsiveness on [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools). Different viewport sizes were simulated ranging from as small as iPhone 4 (320px) to large desktop sizes (1200px and above).
 
-#### Bugs
+### Bugs
 
 - [x] Sorting only allows items determined by link, user are unable to select multiple queries. However multiple queries work if manually typed into the browser.
 
