@@ -1,7 +1,7 @@
 core.Microsoft*
 core.mongo*
 core.python*
-env.py
+*env.py
 __pycache__/
 *.py[cod]
 node_modules/
@@ -11,7 +11,7 @@ cloudinary_python.txt
 .zip
 planning
 .DS_Store
-.env
-.venv
+*.env
+*.venv
 *.sqlite3
 *.pyc
