@@ -708,6 +708,43 @@ The testing method used in this project were done using behaviour driven develop
 
 The automatic testing software used in this project is the [Selenium IDE](https://www.selenium.dev/selenium-ide/) Chrome extension. The IDE is also available on the Firefox browser. The chrome extension requires a chrome driver in order to run the tests can be found [here](https://chromedriver.chromium.org/downloads?tmpl=/system/app/templates/print/&showPrintDialog=1). The driver must be saved in the virtual environment `.venv/bin` folder. The required packages for the tests to run can be found installed by following the steps in [contribution section](#Contribution) otherwise install them manually using the command `pip3 install pytest selenium`.
 
+Before running the tests, create a `test_env.py` file in root project directory with following variables:
+
+```python
+# Admin test variables
+os.environ["ADMIN_USERNAME"] = "admin_username"
+os.environ["ADMIN_EMAIL"] = "admin_email@example.com"
+os.environ["ADMIN_PASSWORD"] = "admin_password"
+
+# Member test variables
+os.environ["USERNAME"] = "username"
+os.environ["EMAIL"] = "user@example.com"
+os.environ["PASSWORD"] = "password2"
+os.environ["FIRST_NAME"] = "first_name"
+os.environ["LAST_NAME"] = "last_name"
+os.environ["FULL_NAME"] = "first_name last_name"
+os.environ["PHONE_NUMBER"] = "0123456789"
+os.environ["ADDRESS_LINE_1"] = "12 Street Name"
+os.environ["TOWN"] = "Paris"
+os.environ["COUNTRY"] = "France"
+os.environ["CARD_NUMBER"] = "4000002500000003"
+os.environ["EXPIRY_DATE"] = "04 / 24"
+os.environ["CVC"] = "123"
+
+os.environ["TEST_FIRST_NAME"] = "Joey"
+os.environ["TEST_LAST_NAME"] = "Kangaroo"
+os.environ["TEST_FULL_NAME"] = "Joey Kangaroo"
+os.environ["TEST_EMAIL"] = "joeyk@mail.com"
+os.environ["TEST_PHONE_NUMBER"] = "0123456789"
+os.environ["TEST_ADDRESS_LINE_1"] = "12 Random Crescent"
+os.environ["TEST_TOWN"] = "Liverpool"
+os.environ["TEST_COUNTRY"] = "United Kingdom"
+os.environ["TEST_CARD_NUMBER"] = "4000008260000000"
+os.environ["TEST_EXPIRY_DATE"] = "04 / 24"
+os.environ["TEST_CVC"] = "123"
+os.environ["TEST_POSTAL_CODE"] = "L14 3LB"
+```
+
 #### EPIC: User Accounts and Registration
 
 | Test type | User Story                                                                                                                 | Expected result                                                                                                                                                                                                                                                                                                                                                                                             | Pass :white_check_mark: / Fail :x: |
