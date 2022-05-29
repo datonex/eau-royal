@@ -2,7 +2,7 @@
 
 ## Overview
 
-![color palette](README/misc/live-mockup.png)
+![Live mockup](README/misc/live-mockup.png)
 
 ### What is this website for?
 
@@ -78,19 +78,19 @@ The checkout page will have a progress meter so user know what and how many form
 
 <img src="README/wireframes/mobile/img/checkout-steps-mobile.png" height="300" /> <img src="README/wireframes/tablet/img/checkout-steps-tablet.png" height="300" /> <img src="README/wireframes/desktop/img/checkout-steps-desktop.png" height="300" />
 
-#### _Registration_
+##### _Registration_
 
 The user registration pages will be identical across all devices and will require the user's first name, last name, email address, password, and password confirmation
 
 <img src="README/wireframes/mobile/img/sign-up-mobile.png" height="300" /> <img src="README/wireframes/tablet/img/sign-up-tablet.png" height="300" /> <img src="README/wireframes/desktop/img/sign-up-desktop.png" height="300" />
 
-#### _Login_
+##### _Login_
 
 The user login page will again be identical across all devices and will require the user's email and password to login.
 
 <img src="README/wireframes/mobile/img/sign-in-mobile.png" height="300" /> <img src="README/wireframes/tablet/img/sign-in-tablet.png" height="300" /> <img src="README/wireframes/desktop/img/sign-in-desktop.png" height="300" />
 
-#### _User dashboard_
+##### _User dashboard_
 
 When the user has logged in they will access to the user dashboard, where they are able to access and view all they previous orders, change their address and personal details and also log out. The user dashboard will be displayed on multiple pages for the mobile view, where one page will display the buttons and the other will show the details related to that button. The tablet and desktop details and buttons will be displayed on the same page.
 
@@ -204,7 +204,7 @@ Key
 
 - Social links have been grouped together
 
-### Specific to Pages
+#### Specific to Pages
 
 - [x] **Home Page**
 
@@ -233,6 +233,12 @@ Key
 - [ ] Admin panel that allows shop owners to send emails to all users that are subscribed to Eau Royal
 
 - [ ] Create a stock manager database and users are shown if certain items are out of stock. If users want to be notified when it will be back in stock, they can enter their email address directly from product detail page.
+
+- [ ] Automatically generate SKU number when creating a new product
+
+- [ ] At bottom of product detail page, show users perfumes/products that smell similar to the one currently being viewed.
+
+- [ ] Allow logged in users to save a perfume/product to a which list so that they can save buy it/ access it later. non-members redirected to sign in/register
 
 ### Marketing Information
 
@@ -364,7 +370,7 @@ Code validation with [W3C Validator](https://validator.w3.org/)
 
 - **profile_details.html** --> :white_check_mark: pass
 
-#### Base files
+##### Base files
 
 - **base.html** --> :white_check_mark: pass
 
@@ -696,6 +702,55 @@ Code validation with [pep8online](http://pep8online.com/)
 
 - **test_user.py** --> :white_check_mark: pass
 
+### Software Tests
+
+The testing method used in this project were done using behaviour driven development technique. Most of the major features were tested automatically such as registering a new user or creating a new shopping instance. Other features like testing if the user if able to select filters needed to manually tested.
+
+The automatic testing software used in this project is the [Selenium IDE](https://www.selenium.dev/selenium-ide/) Chrome extension. The IDE is also available on the Firefox browser. The chrome extension requires a chrome driver in order to run the tests can be found [here](https://chromedriver.chromium.org/downloads?tmpl=/system/app/templates/print/&showPrintDialog=1). The driver must be saved in the virtual environment `.venv/bin` folder. The required packages for the tests to run can be found installed by following the steps in [contribution section](#Contribution) otherwise install them manually using the command `pip3 install pytest selenium`.
+
+#### EPIC: User Accounts and Registration
+
+| Test type | User Story                                                                                                                 | Expected result                                                                                                                                                                                                                                                                                                                                                                                             | Pass :white_check_mark: / Fail :x: |
+| --------- | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| Automatic | As an anonymous user I want to be able to register for an account so that I can view my details in a profile               | User can input their data to register for an account.<br>When form is submitted the user is prompted to verify their email address.                                                                                                                                                                                                                                                                         | :white_check_mark:                 |
+| Automatic | As a User/Admin/Staff I want to be able to login so that I can access my account information                               | User/admin/staff can logs in with their email address and password.<br>If user account exists, the user will be redirected to the home page and will receive a notification that says they have logged in.<br>Their username will be printed in the notification                                                                                                                                            | :white_check_mark:                 |
+| Automatic | As a User/Admin/Staff I want to be able to logout so that I can prevent someone else from accessing my account information | When user/staff/member clicks the sign out, they are prompted if they want to complete the action.<br>If yes, the user is signed out and they will receive a success message when sign out is complete                                                                                                                                                                                                      | :white_check_mark:                 |
+| Automatic | As a User I want to have a personal user profile so that I view my order history and change personal information           | When user is logged in, they have access to the 'My Profile' link. This will redirected them to their profile page.<br>The user is able to view the following:<br><br>- order history<br>- default address<br>- personal information <br>- link to reset their password<br>- link to change email address                                                                                                   | :white_check_mark:                 |
+| Manual    | As User I want to be able to recover my password in case I forget it so that I can get back access to my account.          | When user is on login page, They have access to reset password link where they will directed to the reset password page.<br>Here they can input their email submit the form.<br>They will receive a link that will direct them to the reset password page.<br>They will input their new password, confirm it and then submit the form.<br>User will be redirected to login page and login with new password | :white_check_mark:                 |
+
+#### EPIC: Admin and Store Management
+
+| Test type | User Story                                                                                                                                      | Expected result                                                                                                                                                                                                                                                                                                      | Pass ✅ / Fail :x: |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| Automatic | As STAFF/ADMIN I want to be able to add a product to the store so that my customers can purchase the new items.                                 | Shop staff/admin can create a new product. <br> When product is submitted to database, the staff/admin is redirected to the new product item. <br> Staff/admin will receive a notification that the product was created successfully.                                                                                | :white_check_mark: |
+| Automatic | As STAFF/ADMIN I want to be able to edit/update a product in the store so that my customers can purchase the new items with correct information | Shop staff/admin can edit a product already saved in the database. <br> All input fields with required data should already be pre-field. <br> When product is submitted to database, the staff/admin is redirected to the edited product item and receive a notification that the product was modified successfully. | :white_check_mark: |
+| Automatic | As STAFF/ADMIN I want to be able to delete a product so that I can remove items no longer for sale.                                             | Shop staff/admin can delete a product already saved in the database. <br> All input fields with required data should already be pre-field. <br> When product is submitted to database, the staff/admin is redirected to the homepage and receive a notification that the product was modified successfully.          | :white_check_mark: |
+
+#### EPIC: Viewing and Navigation
+
+| Test type          | User Story                                                                                                                          | Expected result                                                                                                                                                                                                                                                                               | Pass :white_check_mark: / Fail :x: |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| Manual + Automatic | As User I want to be able to view a list of products so that I can choose some to purchase.                                         | All user are able to view a list of products when they navigate to [products](https://eau-royal.herokuapp.com/products/) page.                                                                                                                                                                | :white_check_mark:                 |
+| Manual + Automatic | As User I want to be able to view the total of my purchases so that I avoid spending too much money                                 | User can see the total of their purchase during following conditions:<br>- add a product to the basket<br>- edit product quantity from product detail page<br>- edit product quantity from bag page<br>- delete product when the basket window is active<br>- delete product when on bag page | :white_check_mark:                 |
+| Manual             | As User I want to be able to view individual product details so that I view the price, description, size, product rating and image. | When user clicks the image card, user is directed to product detail page of specific product                                                                                                                                                                                                  | :white_check_mark:                 |
+
+#### EPIC: Sorting and Searching
+
+| Test type          | User Story                                                                                                                       | Expected result                                                                                                                                                                                                                                                                                                                        | Pass :white_check_mark: / Fail :x: |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| Manual             | As User I want to be able to sort/filter products so that I can easily identify products by price and product                    | - Select price range<br>- Select multiple brand checkbox<br>- Select either Candle or perfume product type.<br>- Select one of gender (His, Hers or Unisex)<br>- Product type and gender can be selected at the same time<br>- All filters can be sorted by either ascending price, descending price, or descending rating at one time | :white_check_mark:                 |
+| Automatic + Manual | As a user I want to be able to search products by name or description so that I can find a specific product I would like to buy. | User types search query in search bar (all devices) they can see their search results and how many items were found                                                                                                                                                                                                                    | :white_check_mark:                 |
+
+#### EPIC: Purchasing and Checkout
+
+| Test type | User Story                                                                                                                   | Expected result                                                                                      | Pass :white_check_mark: / Fail :x: |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| Automatic | As a user I want to easily select the size and quantity of a product when purchasing it so that I purchase the right product | - Select product size from product detail page<br>- Select product quantity from product detail page | :white_check_mark:                 |
+| Automatic | As a user I want to easily select the quantity of a product before I checkout                                                | - Select product quantity from bag page                                                              | :white_check_mark:                 |
+| Automatic | As a user I want to receive an email confirmation after checkout so that I can have a record of what I purchased             | - Send email to user once order is complete                                                          | :x:                                |
+| Automatic | As a user I want to enter my payment details so that I can checkout easily and receive my items                              | - User can enter their card detail at checkout page                                                  | :white_check_mark:                 |
+| Automatic | As a user I want to be able to view my items in a bag so that I can see the total amount to be purchased                     | - User has access to bag items once a product is added to the basket                                 | :white_check_mark:                 |
+
 ### Compatibility Testing
 
 - Browser Compatibility
@@ -720,6 +775,8 @@ Code validation with [pep8online](http://pep8online.com/)
 ## Deployment
 
 This website was published using [Heroku](https://heroku.com/).
+
+### Deployment to Heroku
 
 ### Contribution
 

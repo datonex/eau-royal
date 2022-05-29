@@ -26,8 +26,7 @@ class TestAdminFunctionality():
     def test_admin_login(self):
         admin_email = os.environ.get("ADMIN_EMAIL")
         admin_password = os.environ.get("ADMIN_PASSWORD")
-        # self.driver.get("https://eau-royal.herokuapp.com/")
-        self.driver.get("http://192.168.1.18:8000/")
+        self.driver.get("https://eau-royal.herokuapp.com/")
         self.driver.set_window_size(1920, 1080)
         self.driver.find_element(By.ID, "user-account-button").click()
         self.driver.find_element(By.LINK_TEXT, "Login").click()
@@ -111,8 +110,7 @@ class TestAdminFunctionality():
 
     def test_admin_logout(self):
         self.test_admin_login()
-        # self.driver.get("https://eau-royal.herokuapp.com/")
-        self.driver.get("http://192.168.1.18:8000/")
+        self.driver.get("https://eau-royal.herokuapp.com/")
         self.driver.set_window_size(1920, 1080)
         self.driver.find_element(By.ID, "user-account-button").click()
         self.driver.find_element(By.LINK_TEXT, "Logout").click()
