@@ -813,8 +813,6 @@ os.environ["TEST_POSTAL_CODE"] = "L14 3LB"
 
 This website was published using [Heroku](https://heroku.com/).
 
-### Deployment to Heroku
-
 ### Contribution
 
 1. Firstly you will need to clone this repository by running the `git clone <https://github.com/datonex/eau-royal/>` command
@@ -823,6 +821,459 @@ This website was published using [Heroku](https://heroku.com/).
 4. Activate you virtual environment with `source .venv/bin/activate`
 5. Install dependencies with `pip install -r requirements.txt`
 6. Make changes to the code and if you think it belongs in here then submit a pull request
+
+### Deployment to Heroku
+
+#### Set up local files and constants
+
+1. Before you begin deployment, create a git repository on github either by manually creating a repository from a template (or a new one)
+
+2. If you have the git hub CLI installed go to the folder you keep your projects and run, `gh repo create <project-name> --public --template <template-name>` This command will automatically initialise your local repository and create your folder for you. If you don't have a template don't enter `--template`. Other wise initialise your new repository with `git init <project directory>`.
+
+3. Follow step 3 to 5 from contribution
+
+4. Start a django project with `django-admin startproject <project_name> .` then a django app with `python manage.py startapp <appname>`
+
+5. Inside project-name create a new file _env.py_ and add it to your .gitignore file
+
+6. Open _env.py_ and enter the variables:
+
+   ```python
+   import os
+
+   os.environ["SECRET_KEY"] = "secret key"
+   os.environ["HOSTNAME"] = "192.168.1.18"
+   # os.environ["DATABASE_URL"] = "heroku_database_url"
+   os.environ["DEVELOPMENT"] = "True"
+   os.environ["AWS_ACCESS_KEY_ID"] = "aws_access_key"
+   os.environ["AWS_SECRET_ACCESS_KEY"] = "aws_secret_access_key"
+   os.environ["STRIPE_PUBLIC_KEY"] = "pk_test_public_key"
+   os.environ[ "STRIPE_SECRET_KEY"] = "sk_test_secret_key"
+   os.environ["STRIPE_WEBHOOK_SECRET"] = "whsec_key"
+   os.environ["SENTRY_DSN"] = "sentry_dsn"
+   ```
+
+7. Locate _settings.py_ in project_name and import the following:
+
+   ```python
+    from pathlib import Path
+    from sentry_sdk.integrations.django import DjangoIntegration
+
+    import os
+    import sentry_sdk
+    import dj_database_url
+
+    if os.path.isfile("env.py"):
+        import env
+   ```
+
+8. Set your environments variables from above where prompted byt comments:
+
+   ```python
+   SECRET_KEY = os.environ.get("SECRET_KEY")
+
+   if "DEVELOPMENT" in os.environ:
+       DEBUG = True
+   else:
+       DEBUG = False
+
+   ALLOWED_HOSTS = [os.environ.get("HOSTNAME")]
+   ```
+
+9. In _INSTALLED_APPS_ input the following packages installed from pip package manager:
+
+   ```python
+   INSTALLED_APPS = [
+       "django.contrib.admin",
+       "django.contrib.auth",
+       "django.contrib.contenttypes",
+       "django.contrib.sessions",
+       "django.contrib.messages",
+       "django.contrib.staticfiles",
+       "django.contrib.sites",
+       "allauth",
+       "allauth.account",
+       "allauth.socialaccount",
+       "url_tools",
+       "home",
+       "products",
+       "bag",
+       "checkout",
+       "profiles",
+       "storages",
+       "crispy_forms",
+       "crispy_bootstrap5",
+   ]
+   ```
+
+10. Set up crispy forms to to make it easy to generate consistent django forms. This project uses bootstrap 5
+
+    ```python
+    CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+    CRISPY_TEMPLATE_PACK = "bootstrap5"
+    ```
+
+11. In _TEMPLATES_ inside "DIRS" build your template directories in a tuple. _"builtins"_ key contains a list that allows django to access crispy forms to all apps in project":
+
+    ```python
+    TEMPLATES = [
+      {
+          "BACKEND": "django.template.backends.django.DjangoTemplates",
+          "DIRS": [
+              os.path.join(BASE_DIR, "templates"),
+              os.path.join(BASE_DIR, "templates", "allauth"),
+          ],
+          "APP_DIRS": True,
+          "OPTIONS": {
+              "context_processors": [
+                  "django.template.context_processors.request",
+                  "django.template.context_processors.debug",
+                  "django.contrib.auth.context_processors.auth",
+                  "django.contrib.messages.context_processors.messages",
+                  "bag.contexts.bag_contents",
+              ],
+              "builtins": [
+                  "crispy_forms.templatetags.crispy_forms_tags",
+                  "crispy_forms.templatetags.crispy_forms_field",
+              ],
+          },
+      },
+    ]
+    ```
+
+12. Set up allauth _AUTHENTICATION_BACKENDS_ and allauth constants
+
+    ```python
+    AUTHENTICATION_BACKENDS = (
+        # Needed to login by username in Django admin, regardless of `allauth`
+        "django.contrib.auth.backends.ModelBackend",
+        # `allauth` specific authentication methods, such as login by e-mail
+        "allauth.account.auth_backends.AuthenticationBackend",
+    )
+
+    SITE_ID = 1
+
+    ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+    ACCOUNT_EMAIL_REQUIRED = True
+    ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+    ACCOUNT_UNIQUE_EMAIL = True
+    ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = False
+    ACCOUNT_USERNAME_MIN_LENGTH = 4
+    LOGIN_URL = "/accounts/login/"
+    LOGIN_REDIRECT_URL = "/"
+    ```
+
+13. To set up local database and heroku database:
+
+    ```python
+    if "DATABASE_URL" in os.environ:
+        DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
+    else:
+        DATABASES = {
+            "default": {
+                "ENGINE": "django.db.backends.sqlite3",
+                "NAME": BASE_DIR / "db.sqlite3",
+            }
+        }
+    ```
+
+14. Building the static files locally and using Amazon Web Services:
+
+    ```python
+    STATIC_URL = "/static/"
+    STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+
+    MEDIA_URL = "/media/"
+    MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+    if "USE_AWS" in os.environ:
+        # Cache control
+        AWS_S3_OBJECT_PARAMETERS = {
+            "Expires": "Thu, 31 Dec 2099 20:00:00 GMT",
+            "CacheControl": "max-age=94608000",
+        }
+
+        # Bucket Config
+        AWS_STORAGE_BUCKET_NAME = "eau-royal"
+        AWS_S3_REGION_NAME = "eu-west-2"
+        AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+        AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+        AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+
+        # Static and media files
+        STATICFILES_STORAGE = "custom_storages.StaticStorage"
+        STATICFILES_LOCATION = "static"
+        DEFAULT_FILE_STORAGE = "custom_storages.MediaStorage"
+        MEDIAFILES_LOCATION = "media"
+
+        # Override static and media URLs in production
+        STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/"
+        MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/"
+    ```
+
+15. Stripe API settings to allow app to process payments via stripe
+
+    ```python
+    # Stripe API
+    STRIPE_CURRENCY = "gbp"
+    STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY", "")
+    STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "")
+    STRIPE_WEBHOOK_SECRET = os.environ.get("STRIPE_WEBHOOK_SECRET", "")
+    ```
+
+16. App has constants that define the discounts, and free delivery threshold:
+
+    ```python
+    DISCOUNT_PERCENTAGE = 15
+    DISCOUNT_THRESHOLD = 60
+    FREE_DELIVERY_THRESHOLD = 100
+    ```
+
+17. To send emails using django, you need to set up _EmailBackend_ to receive emails to your console in development and send the read emails in production:
+
+    ```python
+    if "DEVELOPMENT" in os.environ:
+        EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+        DEFAULT_FROM_EMAIL = "eau-royal@royal.com"
+    else:
+        EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+        EMAIL_USE_TLS = True
+        EMAIL_PORT = 587
+        EMAIL_HOST = "smtp.gmail.com"
+        EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+        EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASS")
+        DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_HOST_USER")
+    ```
+
+18. Finally to catch bugs and errors, particularly when project is deployment, we use Sentry and setup in _settings.py_:
+
+    ```python
+    # SENTRY SETUP
+
+    SENTRY_DSN = os.environ.get("SENTRY_DSN")
+
+    sentry_sdk.init(
+        dsn=SENTRY_DSN,
+        integrations=[DjangoIntegration()],
+        # Set traces_sample_rate to 1.0 to capture 100%
+        # of transactions for performance monitoring.
+        # We recommend adjusting this value in production.
+        traces_sample_rate=1.0,
+        # If you wish to associate users to errors (assuming you are using
+        # django.contrib.auth) you may enable sending PII data.
+        send_default_pii=True,
+    )
+    ```
+
+19. Create a _custom_storages.py_ file for django to handle static and media files from AWS. In the file add the following code:
+
+    ```python
+    from django.conf import settings
+    from storages.backends.s3boto3 import S3Boto3Storage
+
+
+    class StaticStorage(S3Boto3Storage):
+        location = settings.STATICFILES_LOCATION
+
+
+    class MediaStorage(S3Boto3Storage):
+        location = settings.MEDIAFILES_LOCATION
+    ```
+
+20. Create a Procfile in your project name root directory and input the following: `web: gunicorn eau_royal.wsgi` and save it
+
+21. To ensure continuation of support, create a _runtime.txt_ file if a for any reason your project is dependent on specific version of python and add `python-3.9.9` where 3.9.9 is the python version number. This file will instruct heroku to install that specific version of python
+
+#### Create + Setup Heroku Account
+
+1. Create a [Heroku](https://www.heroku.com/) account and login. Create a new app and select region closest to you.
+   ![create app](/README/deployment/heroku/heroku-create-new-app.png)
+   ![select region](/README/deployment/heroku/heroku-select-region.png)
+
+2. From Navigation bar click on Resources.
+
+   ![navbar](/README/deployment/heroku/heroku-navigation.png)
+
+3. Add Heroku postgres database
+
+   ![postgresql](/README/deployment/heroku/heroku-postgres.png)
+
+4. Submit the form prompt
+
+   ![submit-prompt](/README/deployment/heroku/heroku-submit-form.png)
+
+#### Create + Setup Stripe Account
+
+1. To set up stripe and get secret constants, create a new account [here](https://stripe.com/). Once created, create a new market account.
+
+2. Navigate to developer console on the far right hand side of page
+
+   ![development button on stripe](README/deployment/stripe/stripe-developers.png)
+
+3. Copy the publishable and secret API keys and save them aside to put in heroku later.n The can be found on the right hand side of the Stripe overview page.
+
+   ![stripe public and secret keys](README/deployment/stripe/stripe-keys.png)
+
+4. Navigate Webhooks on right hand side of developers console and create an endpoint url to allow stripe to send webhooks. Example the end point url for this project is `https://eau-royal.herokuapp.com/checkout/wh`
+
+   ![stripe navigate to webhooks](README/deployment/stripe/stripe-webhook.png)
+
+5. Click on select events once you have decided on a url path and click select all events then add events
+
+   ![stripe create endpoint url](README/deployment/stripe/stripe-endpoint.png)
+
+   ![stripe events url](README/deployment/stripe/stripe-events.png)
+
+6. Scroll to bottom ond page and add endpoint.
+
+   ![stripe save endpoint](README/deployment/stripe/stripe-create-endpoint.png)
+
+7. Webhook endpoint url should now be at the top as show below. Click reveal and you will get webhook secret. copy the code and save it aside for heroku
+
+   ![copy webhook secret key](README/deployment/stripe/stripe-wh-secret.png)
+
+#### Create + Setup Amazon Web Services (AWS)
+
+1. To set up AWS S3 bucket create and account [here](https://aws.amazon.com/). A payment card is required for set up but you will not be charged as long as you don't go over the free usage limits. This project does not go over these limits. If you already have an account go to step 2.
+
+2. Once At the top right corner of page, search for _s3_ and click on the link
+
+   ![search for s3](README/deployment/aws/aws-search-s3.png)
+
+3. You should see the following page. From here, create a bucket
+
+   ![create bucket button](README/deployment/aws/aws-s3-console.png)
+
+4. The create bucket page should have the following settings shown in the image below should be clicked. Where it says region used the location nearest to you and accept the public access warning
+
+   ![bucket settings](README/deployment/aws/aws-create-bucket.png)
+
+5. When you have created your bucket, navigate to it as show below
+
+   ![bucket settings with new project](README/deployment/aws/aws-new-bucket-console.png)
+
+6. Navigate to properties in your project bucket and scroll to the bottom of page to locate static website settings and click edit
+
+   ![bucket properties](README/deployment/aws/aws-settings-properties.png)
+
+   ![static website hosting settings](README/deployment/aws/aws-static-website-hosting-settings.png)
+
+7. When you have saved the static hosting settings located permission tab up and locate Cross-origin resource sharing (CORS) and click edit.
+
+   ![bucket permissions](README/deployment/aws/aws-settings-permissions.png)
+
+   ![locate CORS settings](README/deployment/aws/aws-CORS-settings.png)
+
+8. Enter the following CORS configuration and save
+
+   ```json
+   [
+    {
+     "AllowedHeaders": ["Authorization"],
+     "AllowedMethods": ["GET"],
+     "AllowedOrigins": ["*"],
+     "ExposeHeaders": []
+    }
+   ]
+   ```
+
+9. Within permissions, locate bucket policy and enter following items
+
+   ![locate policy settings](README/deployment/aws/aws-bucket-policy.png)
+
+   ![locate policy generator](README/deployment/aws/aws-policy-generator.png)
+
+   Locate Get object in actions dropdown
+
+   ![get object](README/deployment/aws/aws-get-object.png)
+
+   ![generate policy](README/deployment/aws/aws-policy-generator-2.png)
+
+10. Copy the JSON document that pops up. it should look something like this and navigate back to buckt policy page and save changes
+
+    ![policy json](README/deployment/aws/aws-policy-json.png)
+
+    ![save policy](README/deployment/aws/aws-save-bucket-policy.png)
+
+11. Go back to your permission tab and locate Access control list (ACL) and follow steps
+
+    ![locate acl list](README/deployment/aws/aws-acl-list.png)
+
+    ![acl settings](README/deployment/aws/aws-acl-edit.png)
+
+12. At top right corner of page, in search bar, search for _iam_
+
+    ![search iam](README/deployment/aws/aws-search-iam.png)
+
+13. Create a user group, and give it a name and save it
+
+    ![create user group](README/deployment/aws/aws-create-user-group.png)
+
+    ![save user group](README/deployment/aws/aws-save-group.png)
+
+14. Navigate to policies and create a policy
+
+    ![navigate policies](README/deployment/aws/aws-create-policy.png)
+
+    ![import policy](README/deployment/aws/aws-iam-policy-json.png)
+
+    ![attach s3 access policy](README/deployment/aws/aws-s3-full-access.png)
+
+    ![add source path](README/deployment/aws/aws-policy-resource-json.png)
+
+    ![skip tag](README/deployment/aws/aws-skip-tags.png)
+
+    ![name policy](README/deployment/aws/aws-confirm-policy.png)
+
+15. Navigate back to user groups and attach the new policy and save
+
+    ![attach policy](README/deployment/aws/aws-attach-policies.png)
+
+    ![save policy](README/deployment/aws/aws-perm-policies.png)
+
+16. Create a new user
+
+    ![add user](README/deployment/aws/aws-add-user.png)
+
+    ![add user details](README/deployment/aws/aws-add-user-1.png)
+
+    ![add user permissions](README/deployment/aws/aws-add-user-2.png)
+
+    ![skip tags](README/deployment/aws/aws-add-user-3.png)
+
+    ![review user settings](README/deployment/aws/aws-add-user-4.png)
+
+    ![download API keys](README/deployment/aws/aws-download-csv.png)
+
+17. Now that you have create your aws bucket, you will need to manually import your media files here
+
+    ![upload media files](README/deployment/aws/aws-upload-media-files.png)
+
+18. To set up google emails, navigate to your gmail security settings and enable 2 step verification. Finally, generate an app password here and save it aside
+
+    ![google password](README/deployment/google-password.png)
+
+#### Heroku variables
+
+1. Navigate back to Heroku and find the config vars page
+
+   ![find config vars](README/deployment/heroku/heroku-navigate-vars.png)
+
+2. Put in the following keys that you collected
+
+   ![set configuration variables](README/deployment/heroku/heroku-vars.png)
+
+3. Navigate to your text editor and commit your changes to github. then install the Heroku CLI (link is in Deploy from heroku navbar)
+
+4. When Heroku CLI is installed, put in your terminal:
+
+   ```zsh
+     heroku login
+   ```
+
+5. The connect your Git repository with: `heroku git:remote -a some-app-test` then `heroku config:set DEBUG_COLLECTSTATIC=1 --app heroku-app-name` at first deployment
+
+6. Push your changes to heroku with `git push heroku master` or `git push heroku main`
 
 ## Credits
 
