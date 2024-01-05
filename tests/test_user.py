@@ -27,7 +27,7 @@ class TestUserFunctionality():
         username = os.environ.get("USERNAME")
         email = os.environ.get("EMAIL")
         password = os.environ.get("PASSWORD")
-        self.driver.get("https://eau-royal.herokuapp.com/")
+        self.driver.get("https://eau-royal.onrender.com/")
         self.driver.set_window_size(1920, 1080)
         self.driver.find_element(By.ID, "user-account-button").click()
         self.driver.find_element(By.LINK_TEXT, "Register").click()
@@ -45,7 +45,7 @@ class TestUserFunctionality():
     def test_user_login(self):
         email = os.environ.get("EMAIL")
         password = os.environ.get("PASSWORD")
-        self.driver.get("https://eau-royal.herokuapp.com/")
+        self.driver.get("https://eau-royal.onrender.com/")
         self.driver.set_window_size(1920, 1080)
         self.driver.find_element(By.ID, "user-account-button").click()
         self.driver.find_element(By.LINK_TEXT, "Login").click()

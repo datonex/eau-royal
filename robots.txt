@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /accounts/
 Disallow: /bag/
-Sitemap: https://eau-royal.herokuapp.com/sitemap.xml
+Sitemap: https://eau-royal.onrender.com/sitemap.xml

@@ -34,7 +34,7 @@ class TestAnonymousUserFunctionality():
         card_number = os.environ.get('TEST_CARD_NUMBER')
         expiry_date = os.environ.get('TEST_EXPIRY_DATE')
         cvc = os.environ.get('TEST_CVC')
-        self.driver.get("https://eau-royal.herokuapp.com/")
+        self.driver.get("https://eau-royal.onrender.com/")
         self.driver.set_window_size(1920, 1080)
         self.driver.find_element(
             By.XPATH, "//h2[contains(.,\'Shop Now\')]").click()
