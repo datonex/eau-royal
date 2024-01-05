@@ -35,26 +35,26 @@
     - [Frameworks, Libraries and Programs Used](#frameworks-libraries-and-programs-used)
   - [Testing](#testing)
     - [Code Validation](#code-validation)
-      - [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height=25 /> HTML5 Validator](#-html5-validator)
+      - [ HTML5 Validator](#-html5-validator)
         - [Bag App](#bag-app)
         - [Checkout App](#checkout-app)
         - [Home App](#home-app)
         - [Products App](#products-app)
         - [Profiles App](#profiles-app)
         - [Base files](#base-files)
-      - [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" height=25 /> CSS Validator](#-css-validator)
+      - [ CSS Validator](#-css-validator)
         - [Bag App](#bag-app-1)
         - [Checkout App](#checkout-app-1)
         - [Home App](#home-app-1)
         - [Products App](#products-app-1)
         - [Profiles App](#profiles-app-1)
         - [Base files](#base-files-1)
-      - [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height=25/> JavaScript Validator](#-javascript-validator)
+      - [ JavaScript Validator](#-javascript-validator)
         - [Bag App](#bag-app-2)
         - [Checkout App](#checkout-app-2)
         - [Products App](#products-app-2)
         - [Profiles App](#profiles-app-2)
-      - [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height=25/> Python Validator](#-python-validator)
+      - [ Python Validator](#-python-validator)
         - [Eau Royal Project](#eau-royal-project)
         - [Misc files](#misc-files)
         - [Bag App](#bag-app-3)
@@ -102,7 +102,7 @@ User can begin a shopping instance where they can select products they would lik
 
 Eau Royal uses the Django Python framework to generate views via HTML and CSS. JavaScript is used to make the pages interactive. JavaScript was also used to handle posting user payment securely with Stripe. All the pages are mainly styled with Bootstrap5 and custom CSS. All dependences are handled by pip and live deployment is hosted on Heroku.
 
-[Live Website](https://eau-royal.herokuapp.com/) :point_left:
+[Live Website](https://eau-royal.onrender.com/) :point_left:
 
 [GitHub Repository](https://github.com/datonex/eau-royal) :point_left:
 
@@ -354,9 +354,11 @@ The Eau Royal facebook page will have the following mock details and posts
 
 - [Github](https://github.com/) - used to host the project files
 
-- [Heroku](https://heroku.com/) - used to deploy web application
+- [Render](https://render.com/) - used to deploy web application
 
-- [Postgres](https://postgresapp.com/) - used as the DBMS to store user profile data and hosted on Heroku
+- [ElephantSql](https://www.elephantsql.com/) - Database host
+
+- [Postgres](https://postgresapp.com/) - used as the DBMS to store user profile data and hosted on Elephant SQL
 
 - [Figma](https://www.figma.com/) - used to create wireframes mockups and prototypes
 
@@ -853,7 +855,7 @@ os.environ["TEST_POSTAL_CODE"] = "L14 3LB"
 
 | Test type          | User Story                                                                                                                          | Expected result                                                                                                                                                                                                                                                                               | Pass :white_check_mark: / Fail :x: |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| Manual + Automatic | As User I want to be able to view a list of products so that I can choose some to purchase.                                         | All user are able to view a list of products when they navigate to [products](https://eau-royal.herokuapp.com/products/) page.                                                                                                                                                                | :white_check_mark:                 |
+| Manual + Automatic | As User I want to be able to view a list of products so that I can choose some to purchase.                                         | All user are able to view a list of products when they navigate to [products](https://eau-royal.onrender.com/products/) page.                                                                                                                                                                 | :white_check_mark:                 |
 | Manual + Automatic | As User I want to be able to view the total of my purchases so that I avoid spending too much money                                 | User can see the total of their purchase during following conditions:<br>- add a product to the basket<br>- edit product quantity from product detail page<br>- edit product quantity from bag page<br>- delete product when the basket window is active<br>- delete product when on bag page | :white_check_mark:                 |
 | Manual             | As User I want to be able to view individual product details so that I view the price, description, size, product rating and image. | When user clicks the image card, user is directed to product detail page of specific product                                                                                                                                                                                                  | :white_check_mark:                 |
 
@@ -1200,7 +1202,7 @@ This website was published using [Heroku](https://heroku.com/).
 
    ![stripe public and secret keys](README/deployment/stripe/stripe-keys.png)
 
-4. Navigate Webhooks on right hand side of developers console and create an endpoint url to allow stripe to send webhooks. Example the end point url for this project is `https://eau-royal.herokuapp.com/checkout/wh`
+4. Navigate Webhooks on right hand side of developers console and create an endpoint url to allow stripe to send webhooks. Example the end point url for this project is `https://eau-royal.onrender.com/checkout/wh`
 
    ![stripe navigate to webhooks](README/deployment/stripe/stripe-webhook.png)
 
